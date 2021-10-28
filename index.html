@@ -21,8 +21,8 @@
         <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCourante">
         <h2 class="h4 bg-light p-3"><!--<span class="badge rounded-pill bg-info">1/20</span>-->{{ question.libelle }}</h2>
         <div class="list-group my-4">
-          <label v-on:click="questionSuivante" v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
-            <input class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
+          <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
+            <input v-on:change="questionSuivante" class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
             {{ reponse.libelle }}
           </label>
         </div>
@@ -33,7 +33,7 @@
         <div class="mt-4">
           <button type="button" z-index="-1" class="btn btn-light" v-on:click="questionPrecedente"><span class="bi-chevron-compact-left"></span>Précédent</button>
           <button type="button" v-show="isLastQuestion() == false" v-on:click="questionSuivante" class="btn btn-primary float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
-          <button type="button" v-show="isLastQuestion() == true" v-on:click="questionSuivante" class="btn btn-success float-end">Terminer<span class="bi-chevron-compact-right"></span></button>
+          <button type="button" v-show="isLastQuestion() == true" v-on:click="terminer" class="btn btn-success float-end">Terminer<span class="bi-chevron-compact-right"></span></button>
         </div>
       </section>
     </div>

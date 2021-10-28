@@ -8,13 +8,11 @@ var app = new Vue({
     isLastQuestion: function() {
       keys = Object.keys(this.questionnaire.questions);
       index = keys.indexOf(this.questionCourante);
-      console.log(index);
-      console.log(index >= keys.length - 1);
       return index >= keys.length - 1;
     },
     questionSuivante: function (event) {
       if(this.isLastQuestion()) {
-        this.terminer();
+        return this.terminer();
       }
       keys = Object.keys(this.questionnaire.questions);
       index = keys.indexOf(this.questionCourante);
