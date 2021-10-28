@@ -2,26 +2,36 @@ var app = new Vue({
   el: '#app',
   data: {
     questionnaire: questionnaire,
-    questionCourante: null
+    questionCourante: null,
   },
   methods: {
-    isLastQuestion: function() {
+    getQuestionCouranteIndex: function() {
       keys = Object.keys(this.questionnaire.questions);
-      index = keys.indexOf(this.questionCourante);
-      return index >= keys.length - 1;
+
+      return keys.indexOf(this.questionCourante);
+    },
+    getNumeroQuestion: function() {
+
+      return this.getQuestionCouranteIndex() + 1;
+    },
+    getNbQuestions: function() {
+
+      return Object.keys(this.questionnaire.questions).length - 1;
+    },
+    isLastQuestion: function() {
+
+      return this.getNumeroQuestion() >= this.getNbQuestions();
     },
     questionSuivante: function (event) {
       if(this.isLastQuestion()) {
         return this.terminer();
       }
-      keys = Object.keys(this.questionnaire.questions);
-      index = keys.indexOf(this.questionCourante);
-      this.questionCourante = keys[index + 1];
+
+      this.questionCourante = keys[this.getQuestionCouranteIndex() + 1];
     },
     questionPrecedente: function (event) {
-      keys = Object.keys(this.questionnaire.questions);
-      index = keys.indexOf(this.questionCourante);
-      this.questionCourante = keys[index - 1];
+
+      this.questionCourante = keys[this.getQuestionCouranteIndex() - 1];
     },
     terminer: function (event) {
 
