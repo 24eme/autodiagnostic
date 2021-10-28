@@ -45,6 +45,13 @@ var app = new Vue({
 
       return this.questionnaire.questions[this.questionCouranteKey];
     },
+    changeQuestion: function(index) {
+      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[index];
+      if(this.questionCouranteKey == undefined) {
+        this.questionCouranteKey = null;
+      }
+      this.loadQuestionCourante()
+    },
     getNbQuestions: function() {
 
       return Object.keys(this.questionnaire.questions).length;
@@ -58,16 +65,11 @@ var app = new Vue({
         return this.terminer();
       }
       this.storeReponses();
-      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() + 1];
-      this.loadQuestionCourante();
+      this.changeQuestion(this.getQuestionCouranteIndex() + 1);
     },
     questionPrecedente: function (event) {
       this.storeReponses();
-      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() - 1];
-      if(this.questionCouranteKey == undefined) {
-        this.questionCouranteKey = null;
-      }
-      this.loadQuestionCourante();
+      this.changeQuestion(this.getQuestionCouranteIndex() - 1);
     },
     loadReponses: function() {
       if(localStorage.getItem('reponses')) {
