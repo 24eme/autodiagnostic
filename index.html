@@ -32,7 +32,8 @@
         </p>
         <div class="mt-4">
           <button type="button" z-index="-1" class="btn btn-light" v-on:click="questionPrecedente"><span class="bi-chevron-compact-left"></span>Précédent</button>
-          <button type="button" v-on:click="questionSuivante" class="btn btn-primary float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
+          <button type="button" v-show="isLastQuestion() == false" v-on:click="questionSuivante" class="btn btn-primary float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
+          <button type="button" v-show="isLastQuestion() == true" v-on:click="questionSuivante" class="btn btn-success float-end">Terminer<span class="bi-chevron-compact-right"></span></button>
         </div>
       </section>
     </div>

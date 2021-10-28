@@ -5,27 +5,28 @@ var app = new Vue({
     questionCourante: null
   },
   methods: {
+    isLastQuestion: function() {
+      keys = Object.keys(this.questionnaire.questions);
+      index = keys.indexOf(this.questionCourante);
+      console.log(index);
+      console.log(index >= keys.length - 1);
+      return index >= keys.length - 1;
+    },
     questionSuivante: function (event) {
-      qKeyFind = (this.questionCourante === null);
-      for(qKey in this.questionnaire.questions) {
-        if(qKeyFind) {
-          this.questionCourante = qKey;
-          break;
-        }
-        if(qKey == this.questionCourante) {
-          qKeyFind = true;
-        }
+      if(this.isLastQuestion()) {
+        this.terminer();
       }
+      keys = Object.keys(this.questionnaire.questions);
+      index = keys.indexOf(this.questionCourante);
+      this.questionCourante = keys[index + 1];
     },
     questionPrecedente: function (event) {
-      qKeyPecedente = null;
-      for(qKey in this.questionnaire.questions) {
-        if(qKey == this.questionCourante) {
-          this.questionCourante = qKeyPecedente;
-          break;
-        }
-        qKeyPecedente = qKey;
-      }
+      keys = Object.keys(this.questionnaire.questions);
+      index = keys.indexOf(this.questionCourante);
+      this.questionCourante = keys[index - 1];
+    },
+    terminer: function (event) {
+
     }
   }
 });
