@@ -15,10 +15,10 @@
       <p class="mb-5">
         {{ questionnaire.complement_information }}
       </p>
-      <p v-show="questionCourante === null" class="text-center">
+      <p v-show="questionCouranteKey === null" class="text-center">
         <button type="button" v-on:click="questionSuivante" class="btn btn-primary btn-lg text-center">Démarrer le questionnaire</button>
       </p>
-        <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCourante">
+        <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCouranteKey">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ getNumeroQuestion() }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
           <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
