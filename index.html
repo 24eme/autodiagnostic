@@ -13,7 +13,7 @@
     <div id="app" class="col-6 mx-auto pb-3">
       <h1 class="text-center mt-5 mb-3">{{ questionnaire.libelle }}</h1>
       <p class="mb-5">
-        {{ questionnaire.complement_information }}
+        {{ questionnaire.complement_information }} <button type="button" class="btn btn-sm btn-link" v-on:click="reset">(recommencer le questionnaire)</button>
       </p>
       <p v-show="questionCouranteKey === null" class="text-center">
         <button type="button" v-on:click="questionSuivante" class="btn btn-primary btn-lg text-center">Démarrer le questionnaire</button>
@@ -21,8 +21,8 @@
         <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCouranteKey && !isTermine">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ getNumeroQuestion() }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
-          <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
-            <input v-on:change="questionSuivante" class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
+          <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[questionKey] == reponseKey }" role="button">
+            <input v-model="reponses[questionKey]" v-on:click="questionSuivante" class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
             {{ reponse.libelle }}
           </label>
         </div>

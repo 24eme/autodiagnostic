@@ -4,8 +4,10 @@ var app = new Vue({
     questionnaire: questionnaire,
     questionCouranteKey: null,
     isTermine: false,
+    reponses: {}
   },
   created: function() {
+    this.loadReponses();
     window.addEventListener('hashchange',this.hashChange);
     this.hashChange();
   },
@@ -54,14 +56,39 @@ var app = new Vue({
       if(this.isLastQuestion()) {
         return this.terminer();
       }
+      this.storeReponses();
       this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() + 1];
-      this.loadQuestionCourante()
-    },
-    questionPrecedente: function (event) {
-      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() - 1];
       this.loadQuestionCourante();
     },
+    questionPrecedente: function (event) {
+      this.storeReponses();
+      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() - 1];
+      if(this.questionCouranteKey == undefined) {
+        this.questionCouranteKey = null;
+      }
+      this.loadQuestionCourante();
+    },
+    loadReponses: function() {
+      if(localStorage.getItem('reponses')) {
+        this.reponses = JSON.parse(localStorage.getItem('reponses'));
+      }
+      for(qKey in this.questionnaire.questions) {
+        if(this.reponses[qKey]) {
+          continue;
+        }
+        this.reponses[qKey] = null;
+      }
+    },
+    storeReponses: function(event) {
+      localStorage.setItem('reponses', JSON.stringify(this.reponses));
+    },
+    reset: function() {
+      localStorage.clear();
+      const url = new URL(window.location);
+      document.location = url.href.replace(/#.*/, '');
+    },
     terminer: function (event) {
+      this.storeReponses();
       this.isTermine = true;
       this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getNbQuestions - 1];
       const url = new URL(window.location);
