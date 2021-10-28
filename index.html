@@ -18,7 +18,7 @@
       <p v-show="questionCouranteKey === null" class="text-center">
         <button type="button" v-on:click="questionSuivante" class="btn btn-primary btn-lg text-center">Démarrer le questionnaire</button>
       </p>
-        <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCouranteKey">
+        <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCouranteKey && !isTermine">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ getNumeroQuestion() }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
           <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
@@ -35,6 +35,9 @@
           <button type="button" v-show="isLastQuestion() == false" v-on:click="questionSuivante" class="btn btn-primary float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
           <button type="button" v-show="isLastQuestion() == true" v-on:click="terminer" class="btn btn-success float-end">Terminer<span class="bi-chevron-compact-right"></span></button>
         </div>
+      </section>
+      <section v-show="isTermine">
+        <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
       </section>
     </div>
     <script type="text/javascript" src="js/app.js"></script>

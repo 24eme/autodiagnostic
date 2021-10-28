@@ -2,7 +2,8 @@ var app = new Vue({
   el: '#app',
   data: {
     questionnaire: questionnaire,
-    questionCouranteKey: null
+    questionCouranteKey: null,
+    isTermine: false,
   },
   created: function() {
     window.addEventListener('hashchange',this.hashChange);
@@ -14,19 +15,24 @@ var app = new Vue({
       if(!url.hash.replace(/^#/, '')) {
         return;
       }
+      if(url.hash.replace(/^#/, '') == 'fin') {
+        return this.terminer();
+      }
       this.questionCouranteKey = url.hash.replace(/^#/, '');
       this.loadQuestionCourante();
     },
     loadQuestionCourante: function() {
       document.title = 'Autodiagnostic - ' + this.getQuestionCourante().libelle;
       const url = new URL(window.location);
-      url.hash = this.questionCouranteKey;
-      history.pushState({}, this.getQuestionCourante().libelle, url)
+      if(url.hash != '#'+this.questionCouranteKey) {
+        url.hash = this.questionCouranteKey;
+        history.pushState({}, this.getQuestionCourante().libelle, url);
+      }
+      this.isTermine = false;
     },
     getQuestionCouranteIndex: function() {
-      keys = Object.keys(this.questionnaire.questions);
 
-      return keys.indexOf(this.questionCouranteKey);
+      return Object.keys(this.questionnaire.questions).indexOf(this.questionCouranteKey);
     },
     getNumeroQuestion: function() {
 
@@ -38,7 +44,7 @@ var app = new Vue({
     },
     getNbQuestions: function() {
 
-      return Object.keys(this.questionnaire.questions).length - 1;
+      return Object.keys(this.questionnaire.questions).length;
     },
     isLastQuestion: function() {
 
@@ -48,15 +54,21 @@ var app = new Vue({
       if(this.isLastQuestion()) {
         return this.terminer();
       }
-      this.questionCouranteKey = keys[this.getQuestionCouranteIndex() + 1];
+      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() + 1];
       this.loadQuestionCourante()
     },
     questionPrecedente: function (event) {
-      this.questionCouranteKey = keys[this.getQuestionCouranteIndex() - 1];
+      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getQuestionCouranteIndex() - 1];
       this.loadQuestionCourante();
     },
     terminer: function (event) {
-
+      this.isTermine = true;
+      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getNbQuestions - 1];
+      const url = new URL(window.location);
+      if(url.hash != '#fin') {
+        url.hash = "fin";
+        history.pushState({}, "Autodiagnostic - Fin", url)
+      }
     }
   }
 });
