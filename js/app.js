@@ -36,9 +36,9 @@ var app = new Vue({
 
       return Object.keys(this.questionnaire.questions).indexOf(this.questionCouranteKey);
     },
-    getNumeroQuestion: function() {
+    getNumeroQuestion: function(questionKey) {
 
-      return this.getQuestionCouranteIndex() + 1;
+      return Object.keys(this.questionnaire.questions).indexOf(questionKey) + 1;
     },
     getQuestionCourante: function() {
 
@@ -50,7 +50,7 @@ var app = new Vue({
     },
     isLastQuestion: function() {
 
-      return this.getNumeroQuestion() >= this.getNbQuestions();
+      return this.getNumeroQuestion(this.questionCouranteKey) >= this.getNbQuestions();
     },
     questionSuivante: function (event) {
       if(this.isLastQuestion()) {
