@@ -15,33 +15,23 @@
       <p class="mb-5">
         {{ questionnaire.complement_information }}
       </p>
-      <h2 class="h4 bg-light p-3"><span class="badge rounded-pill bg-info">1/20</span> De quelle couleur est le cheval blanc d'Henri IV ?</h2>
-      <div class="list-group my-4">
-        <label class="list-group-item list-group-item-action py-3">
-          <input class="form-check-input me-1" name="q1" type="radio" value="pupre">
-          Pupre
-        </label>
-        <label class="list-group-item list-group-item-action py-3">
-          <input class="form-check-input me-1" name="q1" type="radio" value="has-cheval">
-          Il a un cheval Henri ?
-        </label>
-        <label class="list-group-item list-group-item-action py-3">
-          <input class="form-check-input me-1" name="q1" type="radio" value="blanc">
-          Blanc
-        </label>
-        <label class="list-group-item list-group-item-action py-3">
-          <input class="form-check-input me-1" name="q1" type="radio" value="reponse-d">
-          La réponse D
-        </label>
-      </div>
-      <p class="bg-light text-muted small">
-        <i class="bi bi-info-circle"></i>
-        Henri IV, dit « le Grand » ou « le Vert galant », né sous le nom d'Henri de Bourbon le 13 décembre 1553 à Pau et mort assassiné le 14 mai 1610 à Paris
-      </p>
-      <div class="mt-4">
-        <button type="button" class="btn btn-secondary" disabled><span class="bi-chevron-compact-left"></span>Précédent</button>
-        <button type="button" class="btn btn-success float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
-      </div>
+      <section v-for="(question, questionKey) in questionnaire.questions">
+        <h2 class="h4 bg-light p-3"><!--<span class="badge rounded-pill bg-info">1/20</span>-->{{ question.libelle }}</h2>
+        <div class="list-group my-4">
+          <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3">
+            <input class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
+            {{ reponse.libelle }}
+          </label>
+        </div>
+        <p class="bg-light text-muted small">
+          <i class="bi bi-info-circle"></i>
+          {{ question.complement_information }}
+        </p>
+        <div class="mt-4">
+          <button type="button" class="btn btn-secondary" disabled><span class="bi-chevron-compact-left"></span>Précédent</button>
+          <button type="button" class="btn btn-success float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
+        </div>
+      </section>
     </div>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
