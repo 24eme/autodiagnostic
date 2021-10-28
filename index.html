@@ -10,15 +10,18 @@
     <script type="text/javascript" src="data/questionnaire.js"></script>
   </head>
   <body>
-    <div id="app" class="col-6 mx-auto">
+    <div id="app" class="col-6 mx-auto pb-3">
       <h1 class="text-center mt-5 mb-3">{{ questionnaire.libelle }}</h1>
       <p class="mb-5">
         {{ questionnaire.complement_information }}
       </p>
-      <section v-for="(question, questionKey) in questionnaire.questions">
+      <p v-show="questionCourante === null" class="text-center">
+        <button type="button" v-on:click="questionSuivante" class="btn btn-primary btn-lg text-center">Démarrer le questionnaire</button>
+      </p>
+        <section v-for="(question, questionKey) in questionnaire.questions" v-show="questionKey == questionCourante">
         <h2 class="h4 bg-light p-3"><!--<span class="badge rounded-pill bg-info">1/20</span>-->{{ question.libelle }}</h2>
         <div class="list-group my-4">
-          <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3">
+          <label v-on:click="questionSuivante" v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
             <input class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
             {{ reponse.libelle }}
           </label>
@@ -28,8 +31,8 @@
           {{ question.complement_information }}
         </p>
         <div class="mt-4">
-          <button type="button" class="btn btn-secondary" disabled><span class="bi-chevron-compact-left"></span>Précédent</button>
-          <button type="button" class="btn btn-success float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
+          <button type="button" z-index="-1" class="btn btn-light" v-on:click="questionPrecedente"><span class="bi-chevron-compact-left"></span>Précédent</button>
+          <button type="button" v-on:click="questionSuivante" class="btn btn-primary float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
         </div>
       </section>
     </div>
