@@ -15,6 +15,7 @@ var app = new Vue({
     hashChange: function() {
       var url = new URL(window.location);
       if(!url.hash.replace(/^#/, '')) {
+        this.questionCouranteKey = null;
         return;
       }
       if(url.hash.replace(/^#/, '') == 'fin') {
