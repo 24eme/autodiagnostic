@@ -41,7 +41,11 @@ const Questionnaire = Vue.createApp({
     },
     gotoquestion: function(index) {
       if(index < 0) {
-        this.indexCourant = null;
+        this.intro();
+        return;
+      }
+      if(index > this.questionnaire.questions.length - 1) {
+        this.terminer();
         return;
       }
       var question = this.questionnaire.questions[index];
@@ -55,6 +59,10 @@ const Questionnaire = Vue.createApp({
       this.indexCourant = index;
       this.isTermine = false;
       this.storeReponses();
+    },
+    intro: function() {
+      this.isTermine = false;
+      this.indexCourant = null;
     },
     terminer: function () {
       this.isTermine = true;
