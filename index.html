@@ -23,11 +23,11 @@
         <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
       </section>
 
-      <section v-for="(question, index) in questionnaire.questions" class="questions" v-show="indexCourant === index">
+      <section v-for="(question, index) in questionnaire.questions" class="questions" v-show="indexCourant == index">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
-          <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
-            <input v-model="reponses[index]" class="form-check-input me-1" v-on:click="gotoquestion(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
+          <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
+            <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="gotoquestion(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
             {{ reponse.libelle }}
           </label>
         </div>
@@ -37,11 +37,11 @@
         </p>
         <div class="mt-4 row">
           <div class="col-3">
-            <button type="button" z-index="-1" class="btn btn-light" v-if="index-1 >= 0" v-on:click="gotoquestion(index - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
+            <button type="button" z-index="-1" class="btn btn-light" v-on:click="gotoquestion(index - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
           </div>
           <div class="col-6 pt-2">
             <div class="progress">
-              <div class="progress-bar" role="progressbar" v-bind:style="'width: ' + getprogression() + '%;'" aria-valuemin="0" aria-valuemax="100">{{ questionCouranteKey + 1 }}/{{ questionnaire.questions.length }}</div>
+              <div class="progress-bar" role="progressbar" v-bind:style="'width: ' + getprogression() + '%;'" aria-valuemin="0" aria-valuemax="100">{{ indexCourant + 1 }}/{{ questionnaire.questions.length }}</div>
             </div>
           </div>
           <div class="col-3">

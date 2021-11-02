@@ -11,26 +11,41 @@ const Questionnaire = Vue.createApp({
     if(localStorage.getItem('reponses')) {
       this.reponses = localStorage.getItem('reponses');
     }
-    var url = new URL(window.location);
-    if(!url.hash.replace(/^#/, '')) {
-      this.indexCourant = null;
-      return;
-    }
-    if(url.hash.replace(/^#/, '') == 'fin') {
-      return this.terminer();
-    }
-    this.gotoquestion(url.hash.replace(/^#/, ''));
     window.addEventListener('hashchange',this.hashChange);
+    this.hashChange();
   },
   methods: {
-    hashChange: function(event) {
-
+    hashChange: function() {
+      var url = new URL(window.location);
+      if(!url.hash.replace(/^#/, '')) {
+        this.indexCourant = null;
+        return;
+      }
+      if(url.hash.replace(/^#/, '') == 'fin') {
+        return this.terminer();
+      }
+      this.gotoquestion(this.getQuestionIndex(url.hash.replace(/^#/, '')));
     },
     storeReponses: function(event) {
       localStorage.setItem('reponses', this.reponses);
     },
+    getQuestionIndex: function(id) {
+      for(index in this.questionnaire.questions) {
+        if(this.questionnaire.questions[index].id == id) {
+
+          return index;
+        }
+      }
+
+      return null;
+    },
     gotoquestion: function(index) {
+      if(index < 0) {
+        this.indexCourant = null;
+        return;
+      }
       var question = this.questionnaire.questions[index];
+
       document.title = 'Autodiagnostic - ' + question.libelle;
       var url = new URL(window.location);
       if(url.hash != '#'+question.id) {
