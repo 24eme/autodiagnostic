@@ -19,11 +19,11 @@
         </p>
       </div>
 
-      <section v-show="questionCouranteKey === null && !isTermine" class="text-center">
+      <section v-show="indexCourant === null && !isTermine" class="text-center">
         <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
       </section>
 
-      <section v-for="(question, index) in questionnaire.questions" class="questions" v-show="questionCouranteKey === index">
+      <section v-for="(question, index) in questionnaire.questions" class="questions" v-show="indexCourant === index">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
           <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" role="button">

@@ -2,7 +2,7 @@ const Questionnaire = Vue.createApp({
   data() {
     return {
       questionnaire: questionnaire,
-      questionCouranteKey: null,
+      indexCourant: null,
       isTermine: false,
       reponses: []
     }
@@ -13,31 +13,36 @@ const Questionnaire = Vue.createApp({
     }
     var url = new URL(window.location);
     if(!url.hash.replace(/^#/, '')) {
-      this.questionCouranteKey = null;
+      this.indexCourant = null;
       return;
     }
     if(url.hash.replace(/^#/, '') == 'fin') {
       return this.terminer();
     }
     this.gotoquestion(url.hash.replace(/^#/, ''));
+    window.addEventListener('hashchange',this.hashChange);
   },
   methods: {
+    hashChange: function(event) {
+
+    },
     storeReponses: function(event) {
       localStorage.setItem('reponses', this.reponses);
     },
     gotoquestion: function(index) {
-      document.title = 'Autodiagnostic - ' + this.questionnaire.questions[index].libelle;
-      const url = new URL(window.location);
-      if(url.hash != '#'+index) {
-        url.hash = index;
-        history.pushState({}, this.questionnaire.questions[index].libelle, url);
+      var question = this.questionnaire.questions[index];
+      document.title = 'Autodiagnostic - ' + question.libelle;
+      var url = new URL(window.location);
+      if(url.hash != '#'+question.id) {
+        url.hash = question.id;
+        history.pushState({}, question.libelle, url);
       }
-      this.questionCouranteKey = index;
+      this.indexCourant = index;
       this.isTermine = false;
     },
     terminer: function () {
       this.isTermine = true;
-      this.questionCouranteKey = null;
+      this.indexCourant = null;
       var url = new URL(window.location);
       if(url.hash != '#fin') {
         url.hash = "fin";
@@ -47,12 +52,12 @@ const Questionnaire = Vue.createApp({
     reset: function() {
       localStorage.clear();
       this.isTermine = false;
-      this.questionCouranteKey = null;
+      this.indexCourant = null;
       var url = new URL(window.location);
       document.location = url.href.replace(/#.*/, '');
     },
     getprogression: function() {
-      return Math.round((this.questionCouranteKey + 1) * 100 / this.questionnaire.questions.length);
+      return Math.round((this.indexCourant + 1) * 100 / this.questionnaire.questions.length);
     }
   }
 });
