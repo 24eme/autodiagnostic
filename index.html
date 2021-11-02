@@ -12,14 +12,13 @@
   <body>
     <div id="questionnaire" class="col-6 mx-auto pb-3">
       <button type="button" class="btn btn-sm btn-link position-absolute top-0 end-0" v-on:click="reset">(recommencer le questionnaire)</button>
+
       <h1 class="text-center mt-5 mb-3">{{ questionnaire.libelle }}</h1>
-      <div class="text-center">
-        <p class="mb-5">
-          {{ questionnaire.complement_information }}
-        </p>
-      </div>
 
       <section v-show="indexCourant === null && !isTermine" class="text-center">
+        <p class="mb-5 text-center">
+          {{ questionnaire.complement_information }}
+        </p>
         <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
       </section>
 
