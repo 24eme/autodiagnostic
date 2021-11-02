@@ -32,8 +32,7 @@ const Questionnaire = Vue.createApp({
     getQuestionIndex: function(id) {
       for(index in this.questionnaire.questions) {
         if(this.questionnaire.questions[index].id == id) {
-
-          return index;
+          return parseInt(index);
         }
       }
 
