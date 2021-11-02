@@ -4,12 +4,12 @@ const Questionnaire = Vue.createApp({
       questionnaire: questionnaire,
       indexCourant: null,
       isTermine: false,
-      reponses: []
+      reponses: {}
     }
   },
   mounted() {
     if(localStorage.getItem('reponses')) {
-      this.reponses = localStorage.getItem('reponses');
+      this.reponses = JSON.parse(localStorage.getItem('reponses'));
     }
     window.addEventListener('hashchange',this.hashChange);
     this.hashChange();
@@ -26,8 +26,8 @@ const Questionnaire = Vue.createApp({
       }
       this.gotoquestion(this.getQuestionIndex(url.hash.replace(/^#/, '')));
     },
-    storeReponses: function(event) {
-      localStorage.setItem('reponses', this.reponses);
+    storeReponses: function() {
+      localStorage.setItem('reponses', JSON.stringify(this.reponses));
     },
     getQuestionIndex: function(id) {
       for(index in this.questionnaire.questions) {
@@ -54,6 +54,7 @@ const Questionnaire = Vue.createApp({
       }
       this.indexCourant = index;
       this.isTermine = false;
+      this.storeReponses();
     },
     terminer: function () {
       this.isTermine = true;
@@ -63,6 +64,7 @@ const Questionnaire = Vue.createApp({
         url.hash = "fin";
         history.pushState({}, "Autodiagnostic - Fin", url)
       }
+      this.storeReponses();
     },
     reset: function() {
       localStorage.clear();
