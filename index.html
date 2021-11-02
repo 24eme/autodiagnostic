@@ -27,7 +27,7 @@
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
           <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
-            <input v-model="reponses[index]" class="form-check-input me-1" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
+            <input v-model="reponses[index]" class="form-check-input me-1" v-on:click="gotoquestion(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
             {{ reponse.libelle }}
           </label>
         </div>
