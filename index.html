@@ -8,21 +8,56 @@
     <link rel="stylesheet" href="lib/vendor/bootstrap-icons-1.6.1/bootstrap-icons.css" />
     <script type="text/javascript" src="lib/vendor/vuejs-3.2.20/vue.global.js"></script> <!-- version de dev -->
     <script type="text/javascript" src="data/questionnaire.js"></script>
+    <style>
+      body {
+        margin: 30px;
+        position:relative;
+        overflow-x: hidden;
+      }
+
+      .container-slider {
+        position: relative;
+        overflow-x: visible;
+      }
+
+      .slide-enter-active, .slide-leave-active {
+        position: absolute;
+        width: 100%;
+        transition: all 2s;
+        top: 0;
+      }
+
+      .slide-enter-active {
+        left: 150%;
+      }
+
+      .slide-leave-active {
+        left: 0;
+      }
+
+      .slide-enter-to {
+        left: 0;
+      }
+
+      .slide-leave-to {
+        left: -150%;
+      }
+    </style>
   </head>
   <body>
-    <div id="questionnaire" class="col-6 mx-auto pb-3">
+    <div id="questionnaire" class="col-6 mx-auto pb-3" style="overflow: visible" >
       <button type="button" class="btn btn-sm btn-link position-absolute top-0 end-0" v-on:click="reset">(recommencer le questionnaire)</button>
 
       <h1 class="text-center mt-5 mb-3">{{ questionnaire.libelle }}</h1>
 
-      <section v-show="indexCourant === null && !isTermine" class="text-center">
-        <p class="mb-5 text-center">
-          {{ questionnaire.complement_information }}
-        </p>
-        <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
-      </section>
-
-      <section v-for="(question, index) in questionnaire.questions" v-show="indexCourant == index">
+      <transition-group tag="div" class="container-slider" name="slide">
+        <section v-show="indexCourant === null && !isTermine" class="text-center" key="-1">
+          <p class="mb-5 text-center">
+            {{ questionnaire.complement_information }}
+          </p>
+          <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
+        </section>
+        <section v-for="(question, index) in questionnaire.questions" v-show="indexCourant == index" v-bind:key="index">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
           <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
@@ -35,16 +70,17 @@
           {{ question.complement_information }}
         </p>
       </section>
-      <section v-show="isTermine">
-        <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
-      </section>
+        <section v-show="isTermine" v-bind:key="questionnaire.questions.length">
+          <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
+        </section>
+      </transition-group>
       <div class="fixed-bottom shadow bg-light row" v-if="indexCourant !== null && !isTermine">
         <div class="col-6 pt-2 pb-2 mx-auto">
           <div class="row">
             <div class="col-3">
               <button type="button" z-index="-1" class="btn btn-light" v-on:click="gotoquestion(indexCourant - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
             </div>
-            <div class="col-6 pt-3">
+            <div class="col-6 pt-2">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" v-bind:style="'width: ' + getprogression() + '%;'" aria-valuemin="0" aria-valuemax="100">{{ indexCourant + 1 }}/{{ questionnaire.questions.length }}</div>
               </div>
