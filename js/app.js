@@ -1,104 +1,59 @@
-var app = new Vue({
-  el: '#app',
-  data: {
-    questionnaire: questionnaire,
-    questionCouranteKey: null,
-    isTermine: false,
-    reponses: {}
+const Questionnaire = Vue.createApp({
+  data() {
+    return {
+      questionnaire: questionnaire,
+      questionCouranteKey: null,
+      isTermine: false,
+      reponses: []
+    }
   },
-  created: function() {
-    this.loadReponses();
-    window.addEventListener('hashchange',this.hashChange);
-    this.hashChange();
+  mounted() {
+    if(localStorage.getItem('reponses')) {
+      this.reponses = localStorage.getItem('reponses');
+    }
+    var url = new URL(window.location);
+    if(!url.hash.replace(/^#/, '')) {
+      this.questionCouranteKey = null;
+      return;
+    }
+    if(url.hash.replace(/^#/, '') == 'fin') {
+      return this.terminer();
+    }
+    this.gotoquestion(url.hash.replace(/^#/, ''));
   },
   methods: {
-    hashChange: function() {
-      var url = new URL(window.location);
-      if(!url.hash.replace(/^#/, '')) {
-        this.questionCouranteKey = null;
-        return;
-      }
-      if(url.hash.replace(/^#/, '') == 'fin') {
-        return this.terminer();
-      }
-      this.questionCouranteKey = url.hash.replace(/^#/, '');
-      this.loadQuestionCourante();
+    storeReponses: function(event) {
+      localStorage.setItem('reponses', this.reponses);
     },
-    loadQuestionCourante: function() {
-      document.title = 'Autodiagnostic - ' + this.getQuestionCourante().libelle;
+    gotoquestion: function(index) {
+      document.title = 'Autodiagnostic - ' + this.questionnaire.questions[index].libelle;
       const url = new URL(window.location);
-      if(url.hash != '#'+this.questionCouranteKey) {
-        url.hash = this.questionCouranteKey;
-        history.pushState({}, this.getQuestionCourante().libelle, url);
+      if(url.hash != '#'+index) {
+        url.hash = index;
+        history.pushState({}, this.questionnaire.questions[index].libelle, url);
       }
+      this.questionCouranteKey = index;
       this.isTermine = false;
     },
-    getQuestionCouranteIndex: function() {
-
-      return Object.keys(this.questionnaire.questions).indexOf(this.questionCouranteKey);
-    },
-    getNumeroQuestion: function(questionKey) {
-
-      return Object.keys(this.questionnaire.questions).indexOf(questionKey) + 1;
-    },
-    getQuestionCourante: function() {
-
-      return this.questionnaire.questions[this.questionCouranteKey];
-    },
-    changeQuestion: function(index) {
-      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[index];
-      if(this.questionCouranteKey == undefined) {
-        this.questionCouranteKey = null;
-      }
-      this.loadQuestionCourante()
-    },
-    getNbQuestions: function() {
-
-      return Object.keys(this.questionnaire.questions).length;
-    },
-    isLastQuestion: function() {
-
-      return this.getNumeroQuestion(this.questionCouranteKey) >= this.getNbQuestions();
-    },
-    questionSuivante: function (event) {
-      if(this.isLastQuestion()) {
-        return this.terminer();
-      }
-      this.storeReponses();
-      this.changeQuestion(this.getQuestionCouranteIndex() + 1);
-    },
-    questionPrecedente: function (event) {
-      this.storeReponses();
-      this.changeQuestion(this.getQuestionCouranteIndex() - 1);
-    },
-    loadReponses: function() {
-      if(localStorage.getItem('reponses')) {
-        this.reponses = JSON.parse(localStorage.getItem('reponses'));
-      }
-      for(qKey in this.questionnaire.questions) {
-        if(this.reponses[qKey]) {
-          continue;
-        }
-        this.reponses[qKey] = null;
-      }
-    },
-    storeReponses: function(event) {
-      localStorage.setItem('reponses', JSON.stringify(this.reponses));
-    },
-    reset: function() {
-      localStorage.clear();
-      const url = new URL(window.location);
-      document.location = url.href.replace(/#.*/, '');
-    },
-    terminer: function (event) {
-      this.storeReponses();
+    terminer: function () {
       this.isTermine = true;
-      this.questionCouranteKey = Object.keys(this.questionnaire.questions)[this.getNbQuestions - 1];
-      const url = new URL(window.location);
+      this.questionCouranteKey = null;
+      var url = new URL(window.location);
       if(url.hash != '#fin') {
         url.hash = "fin";
         history.pushState({}, "Autodiagnostic - Fin", url)
       }
+    },
+    reset: function() {
+      localStorage.clear();
+      this.isTermine = false;
+      this.questionCouranteKey = null;
+      var url = new URL(window.location);
+      document.location = url.href.replace(/#.*/, '');
+    },
+    getprogression: function() {
+      return Math.round((this.questionCouranteKey + 1) * 100 / this.questionnaire.questions.length);
     }
   }
 });
+Questionnaire.mount('#questionnaire');

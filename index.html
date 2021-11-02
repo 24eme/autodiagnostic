@@ -6,37 +6,28 @@
     <title>Autodiagnostic</title>
     <link rel="stylesheet" href="lib/vendor/bootstrap-5.1.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="lib/vendor/bootstrap-icons-1.6.1/bootstrap-icons.css" />
-    <script type="text/javascript" src="lib/vendor/vuejs-2.5.16/js/vue.js"></script> <!-- vue.js => version de dev / vue.min.js => version de prod -->
-    <style>
-      .slide-fade-enter-active {
-        transition: all .3s ease;
-        transition-delay: .3s;
-      }
-      .slide-fade-leave-active {
-        transition: all .3s ease;
-      }
-      .slide-fade-enter, .slide-fade-leave-to {
-        opacity: 0;
-      }
-    </style>
+    <script type="text/javascript" src="lib/vendor/vuejs-3.2.20/vue.global.js"></script> <!-- version de dev -->
     <script type="text/javascript" src="data/questionnaire.js"></script>
   </head>
   <body>
-    <div id="app" class="col-6 mx-auto pb-3">
+    <div id="questionnaire" class="col-6 mx-auto pb-3">
       <button type="button" class="btn btn-sm btn-link position-absolute top-0 end-0" v-on:click="reset">(recommencer le questionnaire)</button>
       <h1 class="text-center mt-5 mb-3">{{ questionnaire.libelle }}</h1>
-      <div v-show="questionCouranteKey === null" class="text-center">
+      <div class="text-center">
         <p class="mb-5">
           {{ questionnaire.complement_information }}
         </p>
-        <button type="button" v-on:click="questionSuivante" class="btn btn-primary btn-lg text-center">Démarrer le questionnaire</button>
       </div>
-      <transition v-for="(question, questionKey) in questionnaire.questions" name="slide-fade">
-        <section v-show="questionKey == questionCouranteKey && !isTermine">
-        <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ getNumeroQuestion(questionKey) }}.</small> {{ question.libelle }}</h2>
+
+      <section v-show="questionCouranteKey === null && !isTermine" class="text-center">
+        <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
+      </section>
+
+      <section v-for="(question, index) in questionnaire.questions" class="questions" v-show="questionCouranteKey === index">
+        <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
-          <label v-for="(reponse, reponseKey) in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[questionKey] == reponseKey }" role="button">
-            <input v-model="reponses[questionKey]" v-on:click="questionSuivante" class="form-check-input me-1" :name="questionKey" type="radio" :value="reponseKey">
+          <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" role="button">
+            <input v-model="reponses[index]" class="form-check-input me-1" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
             {{ reponse.libelle }}
           </label>
         </div>
@@ -44,18 +35,26 @@
           <i class="bi bi-info-circle"></i>
           {{ question.complement_information }}
         </p>
-        <div class="mt-4">
-          <button type="button" z-index="-1" class="btn btn-light" v-on:click="questionPrecedente"><span class="bi-chevron-compact-left"></span>Précédent</button>
-          <button type="button" v-show="isLastQuestion() == false" v-on:click="questionSuivante" class="btn btn-primary float-end">Suivant<span class="bi-chevron-compact-right"></span></button>
-          <button type="button" v-show="isLastQuestion() == true" v-on:click="terminer" class="btn btn-success float-end">Terminer<span class="bi-chevron-compact-right"></span></button>
+        <div class="mt-4 row">
+          <div class="col-3">
+            <button type="button" z-index="-1" class="btn btn-light" v-if="index-1 >= 0" v-on:click="gotoquestion(index - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
+          </div>
+          <div class="col-6 pt-2">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" v-bind:style="'width: ' + getprogression() + '%;'" aria-valuemin="0" aria-valuemax="100">{{ questionCouranteKey + 1 }}/{{ questionnaire.questions.length }}</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-primary float-end" v-if="index+1 < questionnaire.questions.length" v-on:click="gotoquestion(index + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
+            <button type="button" class="btn btn-success float-end" v-if="index+1 >= questionnaire.questions.length" v-on:click="terminer()">Terminer</button>
+          </div>
         </div>
       </section>
-      </transition>
-      <transition name="slide-fade">
+
       <section v-show="isTermine">
         <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
       </section>
-    </transition>
+
     </div>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
