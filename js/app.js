@@ -9,6 +9,20 @@ const Questionnaire = Vue.createApp({
     }
   },
   mounted() {
+    let categorie = null;
+    let num = 0;
+    for(let i in this.questionnaire.questions) {
+      if (this.questionnaire.questions[i].type == 'categorie') {
+        num = 0;
+        categorie = this.questionnaire.questions[i];
+        continue;
+      }
+      if (categorie) {
+        this.questionnaire.questions[i].categorie_couleur = categorie.couleur;
+        this.questionnaire.questions[i].num = num;
+        num++;
+      }
+    }
     if(localStorage.getItem('reponses')) {
       this.reponses = JSON.parse(localStorage.getItem('reponses'));
     }
