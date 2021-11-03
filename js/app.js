@@ -68,35 +68,32 @@ const Questionnaire = Vue.createApp({
         return;
       }
       var question = this.questionnaire.questions[index];
-
-      document.title = 'Autodiagnostic - ' + question.libelle;
-      var url = new URL(window.location);
-      if(url.hash != '#'+question.id) {
-        url.hash = question.id;
-        history.pushState({}, question.libelle, url);
-      }
+      this.updatePageInfos('#'+question.id, question.libelle);
       this.indexCourant = index;
       this.isTermine = false;
       this.storeReponses();
-      setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
+      if (document.querySelector('#question_' + question.id + ' input')) {
+        setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
+      }
+    },
+    updatePageInfos: function (hash, title) {
+      let libelle = (title)? 'Autodiagnostic - ' + title : 'Autodiagnostic';
+      document.title = libelle;
+      var url = new URL(window.location);
+      if(url.hash != hash) {
+        url.hash = hash;
+        history.pushState({}, libelle, url);
+      }
     },
     intro: function() {
       this.isTermine = false;
       this.indexCourant = -1;
-      var url = new URL(window.location);
-      if(url.hash != "") {
-        url.hash = "";
-        history.pushState({}, "Autodiagnostic", url);
-      }
+      this.updatePageInfos('', '');
     },
     terminer: function () {
       this.isTermine = true;
       this.indexCourant = this.questionnaire.questions.length;
-      var url = new URL(window.location);
-      if(url.hash != '#fin') {
-        url.hash = "fin";
-        history.pushState({}, "Autodiagnostic - Fin", url)
-      }
+      this.updatePageInfos('#fin', 'Fin');
       this.storeReponses();
     },
     reset: function() {
