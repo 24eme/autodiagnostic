@@ -64,34 +64,47 @@
       <h1 class="text-center mt-4 mb-5">{{ questionnaire.libelle }}</h1>
 
       <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
+
         <section v-show="indexCourant == -1" class="text-center" key="-1">
           <p class="mb-5 text-center">
             {{ questionnaire.complement_information }}
           </p>
-          <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
+          <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="deplacer(0)">Démarrer le questionnaire</button>
         </section>
+
         <section v-for="(question, index) in questionnaire.questions" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
-        <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
-        <div class="list-group my-4">
-          <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
-            <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="gotoquestion(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
-            {{ reponse.libelle }}
-          </label>
-        </div>
-        <p class="bg-light text-muted small">
-          <i class="bi bi-info-circle"></i>
-          {{ question.complement_information }}
-        </p>
-      </section>
+          <div v-if="question.type === 'categorie'" class="p-5" v-bind:style="'color: white; background-color: ' + question.couleur + ';'">
+            <h2 class="py-5 m-0"><span class="bi-chevron-right">{{ question.libelle }}</span></h2>
+            <p class="pb-5 m-0">
+              {{ question.complement_information }}
+            </p>
+          </div>
+          <div v-if="question.type === 'question'" v-bind:style="'border-left: 2px solid ' +  question.categorie_couleur + ';'" class="ps-2">
+            <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small>{{ question.libelle }}</h2>
+            <div class="list-group my-4">
+              <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
+                <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
+                {{ reponse.libelle }}
+              </label>
+            </div>
+            <p class="bg-light text-muted small">
+              <i class="bi bi-info-circle"></i>
+              {{ question.complement_information }}
+            </p>
+          </div>
+        </section>
+
         <section v-show="isTermine" v-bind:key="questionnaire.questions.length">
           <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
         </section>
+
       </transition-group>
+
       <div class="fixed-bottom shadow bg-light row" v-if="indexCourant > -1 && !isTermine">
         <div class="col-6 pt-2 pb-2 mx-auto">
           <div class="row">
             <div class="col-3">
-              <button type="button" z-index="-1" class="btn btn-light" v-on:click="gotoquestion(indexCourant - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
+              <button type="button" z-index="-1" class="btn btn-light" v-on:click="deplacer(indexCourant - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
             </div>
             <div class="col-6 pt-2">
               <div class="progress">
@@ -99,7 +112,7 @@
               </div>
             </div>
             <div class="col-3">
-              <button type="button" class="btn btn-primary float-end" v-if="indexCourant+1 < questionnaire.questions.length" v-on:click="gotoquestion(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
+              <button type="button" class="btn btn-primary float-end" v-if="indexCourant+1 < questionnaire.questions.length" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
               <button type="button" class="btn btn-success float-end" v-if="indexCourant+1 >= questionnaire.questions.length" v-on:click="terminer()">Terminer</button>
             </div>
           </div>

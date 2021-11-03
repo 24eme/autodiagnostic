@@ -26,8 +26,7 @@ const Questionnaire = Vue.createApp({
         this.gotoquestion(this.questionnaire.questions.length);
         return;
       }
-
-      this.gotoquestion(this.getQuestionIndex(url.hash.replace(/^#/, '')));
+      this.deplacer(index);
     },
     storeReponses: function() {
       localStorage.setItem('reponses', JSON.stringify(this.reponses));
@@ -38,10 +37,9 @@ const Questionnaire = Vue.createApp({
           return parseInt(index);
         }
       }
-
       return -1;
     },
-    gotoquestion: function(index) {
+    deplacer: function(index) {
       if(this.indexPrecedent === null) {
         this.indexPrecedent = index;
       } else {
