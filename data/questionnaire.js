@@ -15,58 +15,6 @@ var questionnaire = {
       "id": "SURFACE_NON_TRAITEE",
       "libelle": "Quelle part de mon exploitation représente la surface non traitée ?",
       "complement_information": "SAU non traitée : parcelle en AB ou conversion, parcelles et bordures n'ayant reçu aucun produit phyto de synthèse en cours de campgane étudiées (hors traitement obligatoires comme flavescence dorée), ZNT et IAE",
-      "reponses": [
-        {
-          "id": "0_10POURCENT",
-          "libelle": "Inférieur ou égal à 10%",
-          "point": 1
-        },
-        {
-          "id": "10_20POURCENT",
-          "libelle": "Entre 10 et 20%",
-          "point": 2
-        },
-        {
-          "id": "20_30POURCENT",
-          "libelle": "Entre 20 et 30%",
-          "point": 3
-        },
-        {
-          "id": "30_40POURCENT",
-          "libelle": "Entre 30 et 40%",
-          "point": 4
-        },
-        {
-          "id": "40_50POURCENT",
-          "libelle": "Entre 40 et 50%",
-          "point": 5
-        },
-        {
-          "id": "50_60POURCENT",
-          "libelle": "Entre 50 et 60%",
-          "point": 6
-        },
-        {
-          "id": "60_70POURCENT",
-          "libelle": "Entre 60 et 70%",
-          "point": 7
-        },
-        {
-          "id": "70_80POURCENT",
-          "libelle": "Entre 70 et 80%",
-          "point": 8
-        },
-        {
-          "id": "80_90POURCENT",
-          "libelle": "Entre 80 et 90%",
-          "point": 9
-        },
-        {
-          "id": "90_100POURCENT",
-          "libelle": "Supérieur à 90%",
-          "point": 10
-        }
-      ]
     },
     {
       "type": "question",
