@@ -18,13 +18,13 @@ const Questionnaire = Vue.createApp({
   methods: {
     hashChange: function() {
       var url = new URL(window.location);
+      var index = null;
       if(!url.hash.replace(/^#/, '')) {
-        this.gotoquestion(-1);
-        return;
-      }
-      if(url.hash.replace(/^#/, '') == 'fin') {
-        this.gotoquestion(this.questionnaire.questions.length);
-        return;
+        index = -1;
+      } else if(url.hash.replace(/^#/, '') == 'fin') {
+        index = this.questionnaire.questions.length;
+      } else {
+        index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
       this.deplacer(index);
     },
