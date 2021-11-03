@@ -63,10 +63,10 @@ const Questionnaire = Vue.createApp({
         url.hash = question.id;
         history.pushState({}, question.libelle, url);
       }
-
       this.indexCourant = index;
       this.isTermine = false;
       this.storeReponses();
+      setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
     },
     intro: function() {
       this.isTermine = false;

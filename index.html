@@ -28,26 +28,32 @@
 
       .slide-enter-active {
         left: 150%;
+        opacity: 0.25;
       }
 
       .slide-leave-active, .slideback-leave-active {
         left: 0;
+        opacity: 1;
       }
 
       .slideback-enter-active {
         left: -150%;
+        opacity: 0.25;
       }
 
       .slide-enter-to, .slideback-enter-to {
         left: 0;
+        opacity: 1;
       }
 
       .slide-leave-to {
         left: -150%;
+        opacity: 0.25;
       }
 
       .slideback-leave-to {
         left: 150%;
+        opacity: 0.25;
       }
     </style>
   </head>
@@ -64,7 +70,7 @@
           </p>
           <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="gotoquestion(0)">Démarrer le questionnaire</button>
         </section>
-        <section v-for="(question, index) in questionnaire.questions" v-show="indexCourant == index" v-bind:key="index">
+        <section v-for="(question, index) in questionnaire.questions" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
         <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ index + 1  }}.</small> {{ question.libelle }}</h2>
         <div class="list-group my-4">
           <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
