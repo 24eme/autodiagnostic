@@ -3,6 +3,7 @@ const Questionnaire = Vue.createApp({
     return {
       questionnaire: questionnaire,
       indexCourant: null,
+      indexPrecedent: null,
       isTermine: false,
       reponses: {}
     }
@@ -18,12 +19,14 @@ const Questionnaire = Vue.createApp({
     hashChange: function() {
       var url = new URL(window.location);
       if(!url.hash.replace(/^#/, '')) {
-        this.indexCourant = null;
+        this.gotoquestion(-1);
         return;
       }
       if(url.hash.replace(/^#/, '') == 'fin') {
-        return this.terminer();
+        this.gotoquestion(this.questionnaire.questions.length);
+        return;
       }
+
       this.gotoquestion(this.getQuestionIndex(url.hash.replace(/^#/, '')));
     },
     storeReponses: function() {
@@ -36,9 +39,14 @@ const Questionnaire = Vue.createApp({
         }
       }
 
-      return null;
+      return -1;
     },
     gotoquestion: function(index) {
+      if(this.indexPrecedent === null) {
+        this.indexPrecedent = index;
+      } else {
+        this.indexPrecedent = this.indexCourant;
+      }
       if(index < 0) {
         this.intro();
         return;
@@ -55,17 +63,23 @@ const Questionnaire = Vue.createApp({
         url.hash = question.id;
         history.pushState({}, question.libelle, url);
       }
+
       this.indexCourant = index;
       this.isTermine = false;
       this.storeReponses();
     },
     intro: function() {
       this.isTermine = false;
-      this.indexCourant = null;
+      this.indexCourant = -1;
+      var url = new URL(window.location);
+      if(url.hash != "") {
+        url.hash = "";
+        history.pushState({}, "Autodiagnostic", url);
+      }
     },
     terminer: function () {
       this.isTermine = true;
-      this.indexCourant = null;
+      this.indexCourant = this.questionnaire.questions.length;
       var url = new URL(window.location);
       if(url.hash != '#fin') {
         url.hash = "fin";
@@ -75,10 +89,9 @@ const Questionnaire = Vue.createApp({
     },
     reset: function() {
       localStorage.clear();
-      this.isTermine = false;
-      this.indexCourant = null;
+      this.intro();
       var url = new URL(window.location);
-      document.location = url.href.replace(/#.*/, '');
+      document.location = url.href.replace(/#.*/, '#');
     },
     getprogression: function() {
       return Math.round((this.indexCourant + 1) * 100 / this.questionnaire.questions.length);

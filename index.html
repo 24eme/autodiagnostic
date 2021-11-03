@@ -10,7 +10,6 @@
     <script type="text/javascript" src="data/questionnaire.js"></script>
     <style>
       body {
-        margin: 30px;
         position:relative;
         overflow-x: hidden;
       }
@@ -20,10 +19,10 @@
         overflow-x: visible;
       }
 
-      .slide-enter-active, .slide-leave-active {
+      .slide-enter-active, .slide-leave-active, .slideback-enter-active, .slideback-leave-active {
         position: absolute;
         width: 100%;
-        transition: all 2s;
+        transition: all 1.5s;
         top: 0;
       }
 
@@ -31,16 +30,24 @@
         left: 150%;
       }
 
-      .slide-leave-active {
+      .slide-leave-active, .slideback-leave-active {
         left: 0;
       }
 
-      .slide-enter-to {
+      .slideback-enter-active {
+        left: -150%;
+      }
+
+      .slide-enter-to, .slideback-enter-to {
         left: 0;
       }
 
       .slide-leave-to {
         left: -150%;
+      }
+
+      .slideback-leave-to {
+        left: 150%;
       }
     </style>
   </head>
@@ -48,10 +55,10 @@
     <div id="questionnaire" class="col-6 mx-auto pb-3" style="overflow: visible" >
       <button type="button" class="btn btn-sm btn-link position-absolute top-0 end-0" v-on:click="reset">(recommencer le questionnaire)</button>
 
-      <h1 class="text-center mt-5 mb-3">{{ questionnaire.libelle }}</h1>
+      <h1 class="text-center mt-4 mb-5">{{ questionnaire.libelle }}</h1>
 
-      <transition-group tag="div" class="container-slider" name="slide">
-        <section v-show="indexCourant === null && !isTermine" class="text-center" key="-1">
+      <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
+        <section v-show="indexCourant == -1" class="text-center" key="-1">
           <p class="mb-5 text-center">
             {{ questionnaire.complement_information }}
           </p>
@@ -74,7 +81,7 @@
           <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
         </section>
       </transition-group>
-      <div class="fixed-bottom shadow bg-light row" v-if="indexCourant !== null && !isTermine">
+      <div class="fixed-bottom shadow bg-light row" v-if="indexCourant > -1 && !isTermine">
         <div class="col-6 pt-2 pb-2 mx-auto">
           <div class="row">
             <div class="col-3">
