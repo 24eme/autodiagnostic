@@ -3,10 +3,18 @@ var questionnaire = {
   "complement_information": "Afin de vous faire une idée du positionnement de votre exploitation en terme de d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.",
   "questions": [
     {
+      "type": "categorie",
+      "id": "PROTECTION_VIGNE",
+      "libelle": "Protection de la vigne",
+      "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
+      "couleur": "#f39c12"
+
+    },
+    {
+      "type": "question",
       "id": "SURFACE_NON_TRAITEE",
       "libelle": "Quelle part de mon exploitation représente la surface non traitée ?",
       "complement_information": "SAU non traitée : parcelle en AB ou conversion, parcelles et bordures n'ayant reçu aucun produit phyto de synthèse en cours de campgane étudiées (hors traitement obligatoires comme flavescence dorée), ZNT et IAE",
-      "categorie": "Protection de la vigne",
       "reponses": [
         {
           "id": "0_10POURCENT",
@@ -61,10 +69,10 @@ var questionnaire = {
       ]
     },
     {
+      "type": "question",
       "id": "IFT_HERBICIDE",
       "libelle": "Mon IFT herbicides",
       "complement_information": "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'outil suivant",
-      "categorie": "Protection de la vigne",
       "reponses": [
         {
           "id": "1080_SUP",
@@ -99,10 +107,10 @@ var questionnaire = {
       ]
     },
     {
+      "type": "question",
       "id": "IFT_HORS_HERBICIDE",
       "libelle": "Mon IFT hors herbicides",
       "complement_information": "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calcul à l'aide de l'outil suivant. L'IFT Hors Herbicide correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Le Biocontrôle n'est pas pris en compte.",
-      "categorie": "Protection de la vigne",
       "reponses": [
         {
           "id": "1089_SUP",
@@ -137,10 +145,10 @@ var questionnaire = {
       ]
     },
     {
+      "type": "question",
       "id": "SURFACE_ALTERNATIVE_CHIMIE",
       "libelle": "Surface sur laquelle j'utilise au moins une méthode alternative à la lutte chimique",
       "complement_information": "Les méthodes physiques (ex: désherbage mécanique) et biologiques sont prises en compte.Voir liste des méthodes",
-      "categorie": "Protection de la vigne",
       "reponses": [
         {
           "id": "INF_25POURCENT",
@@ -165,10 +173,10 @@ var questionnaire = {
       ]
     },
     {
+      "type": "question",
       "id": "MATERIELS",
       "libelle": "J'utilise du matériels ou équipements permettant de limiter les fuites vers l'environnement, au-delà des obligations règlementaires ?",
       "complement_information": "Liste des équipements",
-      "categorie": "Protection de la vigne",
       "reponses": [
         {
           "id": "NEANT",
@@ -188,10 +196,10 @@ var questionnaire = {
       ]
     },
     {
+      "type": "question",
       "id": "PLANT_MASSALE",
       "libelle": "J'utilise des plants issus de sélection massale ?",
       "complement_information": "La sélection massale permet de préserver la diversité génétique, qui au sein d'une même parcelle, concourt à la complexité du vin et assure une complémentarité de la vigne là où une sélection clonage est plus homogène.",
-      "categorie": "Protection de la vigne",
       "reponses": [
         {
           "id": "NEANT",
@@ -214,6 +222,22 @@ var questionnaire = {
           "point": 4
         }
       ]
+    },
+    {
+      "type": "categorie",
+      "id": "FERTILISATION",
+      "libelle": "Fertilisation",
+      "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
+      "couleur": "#3498db"
+
+    },
+    {
+      "type": "categorie",
+      "id": "BIODIVERSITE",
+      "libelle": "Biodiversité",
+      "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
+      "couleur": "#2ecc71"
+
     }
   ]
 };
