@@ -80,7 +80,7 @@
             </p>
           </div>
           <div v-if="question.type === 'question'" v-bind:style="'border-left: 2px solid ' +  question.categorie_couleur + ';'" class="ps-2">
-            <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small>{{ question.libelle }}</h2>
+            <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
             <div class="list-group my-4">
               <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
                 <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
