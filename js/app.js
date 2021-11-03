@@ -26,7 +26,7 @@ const Questionnaire = Vue.createApp({
     if(localStorage.getItem('reponses')) {
       this.reponses = JSON.parse(localStorage.getItem('reponses'));
     }
-    window.addEventListener('hashchange',this.hashChange);
+    window.addEventListener('hashchange', this.hashChange);
     this.hashChange();
   },
   methods: {
