@@ -19,7 +19,7 @@ const Questionnaire = Vue.createApp({
       if (question.type == 'categorie') {
         num = 0;
         categorie = question;
-        this.categories.push({"name": question.libelle, "questions": 0})
+        this.categories.push({"name": question.libelle, "couleur": categorie.couleur, "questions": 0})
         return;
       }
       if (categorie) {
