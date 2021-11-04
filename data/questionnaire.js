@@ -180,12 +180,30 @@ var questionnaire = {
 
     },
     {
+      "type": "question",
+      "id": "CURABITUR_IMPERDIET",
+      "libelle": "In tincidunt elit vitae eleifend ultricies.",
+      "complement_information": "",
+    },
+    {
       "type": "categorie",
       "id": "BIODIVERSITE",
       "libelle": "Biodiversité",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
       "couleur": "#2ecc71"
 
-    }
+    },
+    {
+      "type": "question",
+      "id": "SED_A_SAPIEN",
+      "libelle": "Duis eu eros sit amet purus vehicula vestibulum ut id risus.",
+      "complement_information": "",
+    },
+    {
+      "type": "question",
+      "id": "SUSPENDISSE_POTENTI",
+      "libelle": "Duis semper vel libero nec ullamcorper.",
+      "complement_information": "",
+    },
   ]
 };
