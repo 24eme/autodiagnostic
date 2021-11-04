@@ -5,6 +5,7 @@ const Questionnaire = Vue.createApp({
   data() {
     return {
       questionnaire: questionnaire,
+      categories: [],
       indexCourant: null,
       indexPrecedent: null,
       isTermine: false,
@@ -18,14 +19,17 @@ const Questionnaire = Vue.createApp({
       if (question.type == 'categorie') {
         num = 0;
         categorie = question;
+        this.categories.push({"name": question.libelle, "questions": 0})
         return;
       }
       if (categorie) {
         question.categorie_couleur = categorie.couleur;
         question.num = num;
         num++;
+
+        this.categories.find(cat => cat.name === categorie.libelle).questions += 1;
       }
-    });
+    }, this);
 
     if(localStorage.getItem('reponses')) {
       this.reponses = JSON.parse(localStorage.getItem('reponses'));
