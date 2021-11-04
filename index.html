@@ -58,8 +58,14 @@
     </style>
   </head>
   <body>
+    <div id="progress-bar" class="progress">
+      <progress class="progress-bar" style="width: 60%" value="100" max="100"></progress>
+      <progress class="progress-bar" style="width: 10%" value="50" max="100"></progress>
+      <progress class="progress-bar" style="width: 30%" value="0" max="100"></progress>
+    </div>
+
     <div id="questionnaire" class="col-6 mx-auto pb-3" style="overflow: visible" >
-      <button type="button" class="btn btn-sm btn-link position-absolute top-0 end-0" v-on:click="reset">(recommencer le questionnaire)</button>
+      <button type="button" class="btn btn-sm btn-link position-absolute end-0" v-on:click="reset">(recommencer le questionnaire)</button>
 
       <h1 class="text-center mt-4 mb-5">{{ questionnaire.libelle }}</h1>
 
