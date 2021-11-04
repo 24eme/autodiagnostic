@@ -1,3 +1,6 @@
+/* global Vue */
+/* global questionnaire */
+
 const Questionnaire = Vue.createApp({
   data() {
     return {
@@ -46,7 +49,7 @@ const Questionnaire = Vue.createApp({
       localStorage.setItem('reponses', JSON.stringify(this.reponses));
     },
     getQuestionIndex: function(id) {
-      for(index in this.questionnaire.questions) {
+      for(let index in this.questionnaire.questions) {
         if(this.questionnaire.questions[index].id == id) {
           return parseInt(index);
         }
