@@ -113,6 +113,12 @@ const Questionnaire = Vue.createApp({
     },
     getprogression: function() {
       return Math.round((this.indexCourant + 1) * 100 / this.questionnaire.questions.length);
+    },
+    updateCategorieProgress: function (categorie) {
+      return Math.floor(Math.random() * 100);
+    },
+    calculateCategorieWidth: function (categorie) {
+      return Math.ceil((categorie.questions * 100)) / (this.questionnaire.questions.length - this.categories.length);
     }
   }
 });

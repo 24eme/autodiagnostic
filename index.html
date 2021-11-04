@@ -58,13 +58,12 @@
     </style>
   </head>
   <body>
-    <div id="progress-bar" class="progress">
-      <progress class="progress-bar" style="width: 60%" value="100" max="100"></progress>
-      <progress class="progress-bar" style="width: 10%" value="50" max="100"></progress>
-      <progress class="progress-bar" style="width: 30%" value="0" max="100"></progress>
+  <div id="questionnaire">
+    <div id="progress-bar" class="progress position-fixed top-0 w-100" style="height: 0.5rem;">
+      <progress v-for="categorie in categories" class="progress-bar" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%;'" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
     </div>
 
-    <div id="questionnaire" class="col-6 mx-auto pb-3" style="overflow: visible" >
+    <div class="col-6 mx-auto pb-3" style="overflow: visible">
       <button type="button" class="btn btn-sm btn-link position-absolute end-0" v-on:click="reset">(recommencer le questionnaire)</button>
 
       <h1 class="text-center mt-4 mb-5">{{ questionnaire.libelle }}</h1>
@@ -128,6 +127,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="js/app.js"></script>
+  </div>
+  <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
