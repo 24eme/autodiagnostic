@@ -14,21 +14,23 @@ const Questionnaire = Vue.createApp({
   mounted() {
     let categorie = null;
     let num = 0;
-    for(let i in this.questionnaire.questions) {
-      if (this.questionnaire.questions[i].type == 'categorie') {
+    this.questionnaire.questions.forEach(function (question) {
+      if (question.type == 'categorie') {
         num = 0;
-        categorie = this.questionnaire.questions[i];
-        continue;
+        categorie = question;
+        return;
       }
       if (categorie) {
-        this.questionnaire.questions[i].categorie_couleur = categorie.couleur;
-        this.questionnaire.questions[i].num = num;
+        question.categorie_couleur = categorie.couleur;
+        question.num = num;
         num++;
       }
-    }
+    });
+
     if(localStorage.getItem('reponses')) {
       this.reponses = JSON.parse(localStorage.getItem('reponses'));
     }
+
     window.addEventListener('hashchange', this.hashChange);
     this.hashChange();
   },
