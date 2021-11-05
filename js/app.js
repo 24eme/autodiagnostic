@@ -15,11 +15,11 @@ const Questionnaire = Vue.createApp({
   mounted() {
     let categorie = null;
     let num = 0;
-    this.questionnaire.questions.forEach(function (question) {
+    this.questionnaire.questions.forEach(function (question, index) {
       if (question.type == 'categorie') {
         num = 0;
         categorie = question;
-        this.categories.push({"name": question.libelle, "couleur": categorie.couleur, "questions": 0})
+        this.categories.push({"name": question.libelle, "couleur": categorie.couleur, "questions": 0, "index": [index]})
         return;
       }
       if (categorie) {
@@ -27,7 +27,9 @@ const Questionnaire = Vue.createApp({
         question.num = num;
         num++;
 
-        this.categories.find(cat => cat.name === categorie.libelle).questions += 1;
+        const cat = this.categories.find(cat => cat.name === categorie.libelle);
+        cat.questions += 1;
+        cat.index.push(index)
       }
     }, this);
 
@@ -115,7 +117,18 @@ const Questionnaire = Vue.createApp({
       return Math.round((this.indexCourant + 1) * 100 / this.questionnaire.questions.length);
     },
     updateCategorieProgress: function (categorie) {
-      return Math.floor(Math.random() * 100);
+      const selfIndex = this.categories.findIndex(cat => cat.name === categorie.name)
+      const currentCategorie = this.categories.findIndex(cat => cat.index.includes(this.indexCourant) === true)
+
+      if (selfIndex > currentCategorie) {
+        return 0;
+      }
+
+      if (selfIndex < currentCategorie) {
+        return 100;
+      }
+
+      return categorie.index.indexOf(this.indexCourant) * 100 / categorie.questions;
     },
     calculateCategorieWidth: function (categorie) {
       return Math.ceil((categorie.questions * 100)) / (this.questionnaire.questions.length - this.categories.length);
