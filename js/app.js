@@ -113,9 +113,6 @@ const Questionnaire = Vue.createApp({
       var url = new URL(window.location);
       document.location = url.href.replace(/#.*/, '#');
     },
-    getprogression: function() {
-      return Math.round((this.indexCourant + 1) * 100 / this.questionnaire.questions.length);
-    },
     updateCategorieProgress: function (categorie) {
       const selfIndex = this.categories.findIndex(cat => cat.name === categorie.name)
       const currentCategorie = this.categories.findIndex(cat => cat.index.includes(this.indexCourant) === true)
