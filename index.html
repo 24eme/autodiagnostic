@@ -77,7 +77,7 @@
           <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="deplacer(0)">Démarrer le questionnaire</button>
         </section>
 
-        <section v-for="(question, index) in questionnaire.questions" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
+        <section v-for="(question, index) in getQuestions()" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
           <div v-if="question.type === 'categorie'" class="p-5" v-bind:style="'color: white; background-color: ' + question.couleur + ';'">
             <h2 class="py-5 m-0"><span class="bi-chevron-right">{{ question.libelle }}</span></h2>
             <p class="pb-5 m-0">
@@ -117,8 +117,8 @@
             <div class="col">
             </div>
             <div class="col-3">
-              <button type="button" class="btn btn-primary float-end" v-if="indexCourant+1 < questionnaire.questions.length" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
-              <button type="button" class="btn btn-success float-end" v-if="indexCourant+1 >= questionnaire.questions.length" v-on:click="terminer()">Terminer</button>
+              <button type="button" class="btn btn-primary float-end" v-if="indexCourant+1 < getQuestions().length" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
+              <button type="button" class="btn btn-success float-end" v-if="indexCourant+1 >= getQuestions().length" v-on:click="terminer()">Terminer</button>
             </div>
           </div>
         </div>
