@@ -129,6 +129,9 @@ const Questionnaire = Vue.createApp({
     },
     calculateCategorieWidth: function (categorie) {
       return Math.ceil((categorie.questions * 100)) / (this.questionnaire.questions.length - this.categories.length);
+    },
+    getReponsesIds: function() {
+      return Object.keys(this.reponses);
     }
   }
 });
