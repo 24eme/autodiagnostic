@@ -102,8 +102,20 @@
           </div>
         </section>
 
-        <section v-show="isTermine" v-bind:key="questionnaire.questions.length">
-          <p class="lead text-center">Bravo vous avez terminé le questionnaire !<br /><br /><a class="btn btn-primary btn-lg">Voir les résultats<span></span></a></p>
+        <section v-show="isTermine" v-bind:key="getQuestions().length">
+          <p class="lead text-center"><span class="bi bi-hand-thumbs-up">&nbsp;Bravo vous avez terminé le questionnaire.</span></p>
+          <p class="text-center my-5" v-if="hasQuestionsEnAttentesReponses()">
+            Vous n'avez pas répondu à l'ensemble du questionnaire.<br />
+            <button type="button" class="btn btn-warning mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Repasser les questions non repondues</button>
+          </p>
+          <p class="text-center my-5">
+            Revoir mes réponses.<br />
+            <button type="button" class="btn btn-light mt-2" v-on:click="passerToutesQuestions()">Repasser mes réponses</button>
+          </p>
+          <p class="text-center my-5">
+            <a v-if="hasQuestionsEnAttentesReponses()" class="btn btn-success btn-lg disabled" aria-disabled="true" href="#">Voir les résultats</a>
+            <a v-else class="btn btn-success btn-lg">Voir les résultats</a>
+          </p>
         </section>
 
       </transition-group>
