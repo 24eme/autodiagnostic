@@ -9,7 +9,8 @@ const Questionnaire = Vue.createApp({
       indexCourant: null,
       indexPrecedent: null,
       isTermine: false,
-      reponses: {}
+      reponses: {},
+      modeQuestionsNonRepondues: false
     }
   },
   mounted() {
@@ -142,6 +143,13 @@ const Questionnaire = Vue.createApp({
     getQuestionsEnAttentesReponses: function () {
       return this.questionnaire.questions.filter(function (question) { return (!this.getReponsesIds().includes(question.id)); }, this);
     },
+    getQuestions: function() {
+      if (this.modeQuestionsNonRepondues) {
+        return this.getQuestionsEnAttentesReponses();
+      } else {
+        return this.questionnaire.questions;
+      }
+    }
   }
 });
 Questionnaire.mount('#questionnaire');
