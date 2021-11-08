@@ -149,6 +149,14 @@ const Questionnaire = Vue.createApp({
       } else {
         return this.questionnaire.questions;
       }
+    },
+    passerQuestionsEnAttentesReponses: function() {
+      this.modeQuestionsNonRepondues = true;
+      this.deplacer(0);
+    },
+    passerToutesQuestions: function() {
+      this.modeQuestionsNonRepondues = false;
+      this.deplacer(0);
     }
   }
 });
