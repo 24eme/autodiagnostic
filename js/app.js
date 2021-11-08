@@ -48,7 +48,7 @@ const Questionnaire = Vue.createApp({
       if(!url.hash.replace(/^#/, '')) {
         index = -1;
       } else if(url.hash.replace(/^#/, '') == 'fin') {
-        index = this.questionnaire.questions.length;
+        index = this.getQuestions().length;
       } else {
         index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
@@ -58,8 +58,8 @@ const Questionnaire = Vue.createApp({
       localStorage.setItem('reponses', JSON.stringify(this.reponses));
     },
     getQuestionIndex: function(id) {
-      for(let index in this.questionnaire.questions) {
-        if(this.questionnaire.questions[index].id == id) {
+      for(let index in this.getQuestions()) {
+        if(this.getQuestions()[index].id == id) {
           return parseInt(index);
         }
       }
@@ -75,11 +75,11 @@ const Questionnaire = Vue.createApp({
         this.intro();
         return;
       }
-      if(index > this.questionnaire.questions.length - 1) {
+      if(index > this.getQuestions().length - 1) {
         this.terminer();
         return;
       }
-      var question = this.questionnaire.questions[index];
+      var question = this.getQuestions()[index];
       this.updatePageInfos('#'+question.id, question.libelle);
       this.indexCourant = index;
       this.isTermine = false;
@@ -104,7 +104,7 @@ const Questionnaire = Vue.createApp({
     },
     terminer: function () {
       this.isTermine = true;
-      this.indexCourant = this.questionnaire.questions.length;
+      this.indexCourant = this.getQuestions().length;
       this.updatePageInfos('#fin', 'Fin');
       this.storeReponses();
     },
