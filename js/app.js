@@ -132,6 +132,9 @@ const Questionnaire = Vue.createApp({
     },
     getReponsesIds: function() {
       return Object.keys(this.reponses);
+    },
+    getInitialNbQuestions: function() {
+      return this.questionnaire.questions.length - this.categories.length;
     }
   }
 });
