@@ -138,7 +138,10 @@ const Questionnaire = Vue.createApp({
     },
     hasQuestionsEnAttentesReponses: function () {
       return !(this.getInitialNbQuestions() == this.getReponsesIds().length);
-    }
+    },
+    getQuestionsEnAttentesReponses: function () {
+      return this.questionnaire.questions.filter(function (question) { return (!this.getReponsesIds().includes(question.id)); }, this);
+    },
   }
 });
 Questionnaire.mount('#questionnaire');
