@@ -104,6 +104,7 @@ const Questionnaire = Vue.createApp({
       this.updatePageInfos('', '');
     },
     terminer: function () {
+      this.clean(this.reponses)
       this.isTermine = true;
       this.indexCourant = this.getQuestions().length;
       this.updatePageInfos('#fin', 'Fin');
@@ -116,6 +117,9 @@ const Questionnaire = Vue.createApp({
       this.intro();
       var url = new URL(window.location);
       document.location = url.href.replace(/#.*/, '#');
+    },
+    clean: function (obj) {
+      Object.keys(obj).forEach((k) => obj[k] == "" && delete obj[k]);
     },
     updateCategorieProgress: function (categorie) {
       const selfIndex = this.categories.findIndex(cat => cat.name === categorie.name)
