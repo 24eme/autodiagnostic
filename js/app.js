@@ -89,6 +89,12 @@ const Questionnaire = Vue.createApp({
         setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
       }
     },
+    nsp: function (index) {
+      const q = this.getQuestions()[index]
+      this.reponses[q.id] = "NSP"
+      this.storeReponses()
+      this.deplacer(index + 1)
+    },
     updatePageInfos: function (hash, title) {
       let libelle = (title)? 'Autodiagnostic - ' + title : 'Autodiagnostic';
       document.title = libelle;

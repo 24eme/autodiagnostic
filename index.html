@@ -95,6 +95,9 @@
             <div class="my-4" v-else>
               <input v-model="reponses[question.id]" type="text" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
             </div>
+            <div class="d-grid d-md-flex justify-content-end my-4">
+              <button class="btn btn-outline-primary" v-on:click="nsp(index)">Ne se prononce pas</button>
+            </div>
             <p class="bg-light text-muted small">
               <i class="bi bi-info-circle"></i>
               {{ question.complement_information }}
