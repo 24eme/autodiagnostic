@@ -117,6 +117,8 @@ const Questionnaire = Vue.createApp({
     },
     reset: function() {
       localStorage.clear();
+      this.reponses = {}
+      this.modeQuestionsNonRepondues = false;
       this.intro();
       var url = new URL(window.location);
       document.location = url.href.replace(/#.*/, '#');
