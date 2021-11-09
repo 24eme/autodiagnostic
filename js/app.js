@@ -16,7 +16,7 @@ const Questionnaire = Vue.createApp({
   mounted() {
     let categorie = null;
     let num = 0;
-    this.questionnaire.questions.forEach(function (question, index) {
+    this.getQuestions().forEach(function (question, index) {
       if (question.type == 'categorie') {
         num = 0;
         categorie = question;
@@ -132,13 +132,13 @@ const Questionnaire = Vue.createApp({
       return categorie.index.indexOf(this.indexCourant) * 100 / categorie.questions;
     },
     calculateCategorieWidth: function (categorie) {
-      return Math.ceil((categorie.questions * 100)) / (this.questionnaire.questions.length - this.categories.length);
+      return Math.ceil((categorie.questions * 100)) / (this.getQuestions().length - this.categories.length);
     },
     getReponsesIds: function() {
       return Object.keys(this.reponses);
     },
     getInitialNbQuestions: function() {
-      return this.questionnaire.questions.length - this.categories.length;
+      return this.getQuestions().length - this.categories.length;
     },
     hasQuestionsEnAttentesReponses: function () {
       return this.getInitialNbQuestions() !== this.getReponsesIds().length;
