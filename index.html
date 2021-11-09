@@ -105,20 +105,27 @@
           </div>
         </section>
 
-        <section v-show="isTermine" v-bind:key="getQuestions().length">
-          <p class="lead text-center"><span class="bi bi-hand-thumbs-up">&nbsp;Bravo vous avez terminé le questionnaire.</span></p>
-          <p class="text-center my-5" v-if="hasQuestionsEnAttentesReponses()">
-            Vous n'avez pas répondu à l'ensemble du questionnaire.<br />
-            <button type="button" class="btn btn-warning mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Repasser les questions non repondues</button>
-          </p>
-          <p class="text-center my-5">
-            Revoir mes réponses.<br />
-            <button type="button" class="btn btn-light mt-2" v-on:click="passerToutesQuestions()">Repasser mes réponses</button>
-          </p>
-          <p class="text-center my-5">
-            <a v-if="hasQuestionsEnAttentesReponses()" class="btn btn-success btn-lg disabled" aria-disabled="true" href="#">Voir les résultats</a>
-            <a v-else class="btn btn-success btn-lg">Voir les résultats</a>
-          </p>
+        <section v-show="isTermine" v-bind:key="getQuestions().length" class="container-fluid py-5 text-center">
+          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Bravo !</h1>
+          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire.</p>
+
+          <div class="my-5 bg-light border rounded">
+            <p class="text-center my-5" v-if="hasQuestionsEnAttentesReponses()">
+              Vous n'avez pas répondu à l'ensemble du questionnaire.<br />
+              <button type="button" class="btn btn-warning mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Répondre aux questions non repondues</button>
+            </p>
+          </div>
+
+          <div class="col-md-8 mx-auto">
+            <p class="text-center lead">
+              Vous pouvez vérifier vos réponses avant de valider votre auto-diagnostic, ou confirmer et voir vos résultats.
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+              <button type="button" class="btn btn-outline-secondary" v-on:click="passerToutesQuestions()">Vérifier mes réponses</button>
+              <a v-if="hasQuestionsEnAttentesReponses()" class="btn btn-primary disabled" aria-disabled="true" href="#">Voir les résultats</a>
+              <a v-else class="btn btn-success">Voir les résultats</a>
+            </div>
+          </div>
         </section>
 
       </transition-group>
