@@ -90,7 +90,6 @@ const Questionnaire = Vue.createApp({
       this.updatePageInfos('#'+question.id, question.libelle);
       this.indexCourant = index;
       this.isTermine = false;
-      this.storeReponses();
       if (document.querySelector('#question_' + question.id + ' input')) {
         setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
       }

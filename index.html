@@ -88,12 +88,12 @@
             <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
             <div class="list-group my-4" v-if="question.reponses">
               <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
-                <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id">
+                <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses">
                 {{ reponse.libelle }}
               </label>
             </div>
             <div class="my-4" v-else>
-              <input v-model="reponses[question.id]" type="text" class="form-control" v-bind:name="question.id" />
+              <input v-model="reponses[question.id]" type="text" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
             </div>
             <p class="bg-light text-muted small">
               <i class="bi bi-info-circle"></i>
