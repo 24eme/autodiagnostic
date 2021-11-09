@@ -84,7 +84,7 @@
               {{ question.complement_information }}
             </p>
           </div>
-          <div v-if="question.type === 'question'" v-bind:style="'border-left: 2px solid ' +  question.categorie_couleur + ';'" class="ps-2">
+          <div v-if="question.type === 'question'" v-bind:style="'border-left: 5px solid ' +  question.categorie_couleur + ';'" class="ps-2">
             <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
             <div class="list-group my-4" v-if="question.reponses">
               <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
