@@ -58,12 +58,7 @@ const Questionnaire = Vue.createApp({
       localStorage.setItem('reponses', JSON.stringify(this.reponses));
     },
     getQuestionIndex: function(id) {
-      for(let index in this.getQuestions()) {
-        if(this.getQuestions()[index].id == id) {
-          return parseInt(index);
-        }
-      }
-      return -1;
+      return this.getQuestions().findIndex(q => q.id == id);
     },
     deplacer: function(index) {
       if (this.modeQuestionsNonRepondues && index < this.getQuestions().length) {
