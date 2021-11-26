@@ -114,7 +114,7 @@
               <input v-model="reponses[question.id]" type="text" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
             </div>
             <div class="d-grid d-md-flex justify-content-end my-4">
-              <button class="btn btn-outline-primary" v-on:click="nsp(index)">Ne se prononce pas</button>
+              <button class="btn btn-outline-primary" v-on:click="nonConcerne(index)">Non concerné</button>
             </div>
           </div>
         </section>
