@@ -146,8 +146,9 @@
       <div class="fixed-bottom shadow bg-light row" v-if="indexCourant > -1 && !isTermine">
         <div class="col-6 pt-2 pb-2 mx-auto">
           <div class="row">
-            <div class="col-3">
-              <button type="button" z-index="-1" class="btn btn-light" v-on:click="deplacer(indexCourant - 1)"><span class="bi-chevron-compact-left"></span>Précédent</button>
+            <div class="col-6">
+              <button type="button" z-index="-1" title="Retour au début" class="btn btn-secondary me-2" v-on:click="deplacer(-1)"><span class="bi bi-chevron-double-left"></span>Retour au début</button>
+              <button type="button" z-index="-1" class="btn btn-light border" v-on:click="deplacer(indexCourant - 1)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
             </div>
             <div class="col">
             </div>
