@@ -101,7 +101,6 @@
           <div v-if="question.type === 'question'" v-bind:style="'border-left: 5px solid ' +  question.categorie_couleur + ';'" class="ps-2">
             <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
             <p v-if="question.complement_information" class="bg-light p-2 text-muted small">
-              <i class="bi bi-info-circle"></i>
               {{ question.complement_information }}
             </p>
             <div class="list-group my-4" v-if="question.reponses">
