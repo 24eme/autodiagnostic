@@ -63,10 +63,20 @@ const Questionnaire = Vue.createApp({
       return this.getQuestions().findIndex(q => q.id == id);
     },
     deplacer: function(index) {
+      if(index < 0) {
+        this.intro();
+        return;
+      }
+
+      if(index > this.nombreQuestionsTotal - 1) {
+        this.terminer();
+        return;
+      }
+
       if (this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
         const question = this.questionnaire.questions[index]
         if (this.getReponsesIds().includes(question.id)) {
-          return this.deplacer(index + 1)
+          return (index > this.indexCourant) ? this.deplacer(index + 1) : this.deplacer(index - 1);
         }
       }
 
@@ -75,14 +85,7 @@ const Questionnaire = Vue.createApp({
       } else {
         this.indexPrecedent = this.indexCourant;
       }
-      if(index < 0) {
-        this.intro();
-        return;
-      }
-      if(index > this.nombreQuestionsTotal - 1) {
-        this.terminer();
-        return;
-      }
+
       var question = this.getQuestions()[index];
       this.updatePageInfos('#'+question.id, question.libelle);
       this.indexCourant = index;
