@@ -10,7 +10,7 @@ const Questionnaire = Vue.createApp({
       indexPrecedent: null,
       isTermine: false,
       reponses: {},
-      modeQuestionsNonRepondues: false,
+      modeQuestionsNonRepondues: true,
       nombreQestionsTotal: 0
     }
   },
@@ -121,7 +121,7 @@ const Questionnaire = Vue.createApp({
     reset: function() {
       localStorage.clear();
       this.reponses = {}
-      this.modeQuestionsNonRepondues = false;
+      this.modeQuestionsNonRepondues = true;
       this.intro();
       var url = new URL(window.location);
       document.location = url.href.replace(/#.*/, '#');
