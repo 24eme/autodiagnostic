@@ -25,11 +25,29 @@
 
       <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
 
-        <section v-show="indexCourant == -1" class="text-center" key="-1">
-          <p class="mb-5 text-center">
+        <section id="page_home" v-show="indexCourant == -1" class="text-center" key="-1">
+          <p class="mb-5 fs-5">
             {{ questionnaire.complement_information }}
           </p>
-          <button type="button" class="btn btn-primary btn-lg text-center" v-on:click="deplacer(0)">Démarrer le questionnaire</button>
+
+          <div class="mb-5 p-2 bg-light border rounded">
+            <p class="text-center m-0">
+            <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {{ getReponsesIds().length }} questions sur un total de {{ getInitialNbQuestions() }}.
+            </p>
+          </div>
+
+          <div class="col-md-8 mx-auto">
+            <p class="text-center lead">
+              Plusieurs choix s'offrent à vous :
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+              <button type="button" class="btn btn-outline-danger" v-on:click="reset">
+                <i class="bi-exclamation-triangle-fill"></i> Recommencer le questionnaire
+              </button>
+              <button v-if="getReponsesIds().length == 0" class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
+              <button v-else class="btn btn-primary" v-on:click="deplacer(getQuestionIndex('PROTECTION_VIGNE'))">Continuer le questionnaire</button>
+            </div>
+          </div>
         </section>
 
         <section v-for="(question, index) in getQuestions()" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
