@@ -10,12 +10,14 @@ const Questionnaire = Vue.createApp({
       indexPrecedent: null,
       isTermine: false,
       reponses: {},
-      modeQuestionsNonRepondues: false
+      modeQuestionsNonRepondues: false,
+      nombreQestionsTotal: 0
     }
   },
   mounted() {
     let categorie = null;
     let num = 0;
+    this.nombreQuestionsTotal = this.getQuestions().length;
     this.getQuestions().forEach(function (question, index) {
       if (question.type == 'categorie') {
         num = 0;
@@ -48,7 +50,7 @@ const Questionnaire = Vue.createApp({
       if(!url.hash.replace(/^#/, '')) {
         index = -1;
       } else if(url.hash.replace(/^#/, '') == 'fin') {
-        index = this.getQuestions().length;
+        index = this.nombreQuestionsTotal;
       } else {
         index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
@@ -61,7 +63,7 @@ const Questionnaire = Vue.createApp({
       return this.getQuestions().findIndex(q => q.id == id);
     },
     deplacer: function(index) {
-      if (this.modeQuestionsNonRepondues && index < this.getQuestions().length) {
+      if (this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
         const question = this.questionnaire.questions[index]
         if (this.getReponsesIds().includes(question.id)) {
           return this.deplacer(index + 1)
@@ -77,7 +79,7 @@ const Questionnaire = Vue.createApp({
         this.intro();
         return;
       }
-      if(index > this.getQuestions().length - 1) {
+      if(index > this.nombreQuestionsTotal - 1) {
         this.terminer();
         return;
       }
@@ -112,7 +114,7 @@ const Questionnaire = Vue.createApp({
     terminer: function () {
       this.clean(this.reponses)
       this.isTermine = true;
-      this.indexCourant = this.getQuestions().length;
+      this.indexCourant = this.nombreQuestionsTotal;
       this.updatePageInfos('#fin', 'Fin');
       this.storeReponses();
     },
@@ -142,13 +144,13 @@ const Questionnaire = Vue.createApp({
       return categorie.index.indexOf(this.indexCourant) * 100 / categorie.questions;
     },
     calculateCategorieWidth: function (categorie) {
-      return Math.ceil((categorie.questions * 100)) / (this.getQuestions().length - this.categories.length);
+      return Math.ceil((categorie.questions * 100)) / (this.nombreQuestionsTotal - this.categories.length);
     },
     getReponsesIds: function() {
       return Object.keys(this.reponses);
     },
     getInitialNbQuestions: function() {
-      return this.getQuestions().length - this.categories.length;
+      return this.nombreQuestionsTotal - this.categories.length;
     },
     hasQuestionsEnAttentesReponses: function () {
       return this.getInitialNbQuestions() !== this.getReponsesIds().length;
@@ -157,7 +159,7 @@ const Questionnaire = Vue.createApp({
       return this.questionnaire.questions;
     },
     getProgress: function () {
-      return Math.ceil((this.indexCourant) * 100 / this.getQuestions().length);
+      return Math.ceil((this.indexCourant) * 100 / this.nombreQuestionsTotal);
     },
     passerQuestionsEnAttentesReponses: function() {
       this.modeQuestionsNonRepondues = true;
