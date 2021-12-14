@@ -156,6 +156,9 @@ const Questionnaire = Vue.createApp({
     getQuestions: function() {
       return this.questionnaire.questions;
     },
+    getProgress: function () {
+      return Math.ceil((this.indexCourant) * 100 / this.getQuestions().length);
+    },
     passerQuestionsEnAttentesReponses: function() {
       this.modeQuestionsNonRepondues = true;
       this.deplacer(0);
