@@ -119,7 +119,7 @@
                 Progression : {{ getProgress() }}%</span>
             </div>
             <div class="col-3">
-              <button type="button" class="btn btn-primary float-end" v-if="indexCourant+1 < nombreQuestionsTotal" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
+              <button type="button" class="btn float-end" v-bind:style="'background-color: ' + getCategorieCouleur(indexCourant) + ';'" v-if="indexCourant+1 < nombreQuestionsTotal" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
               <button type="button" class="btn btn-success float-end" v-if="indexCourant+1 >= nombreQuestionsTotal" v-on:click="terminer()">Terminer</button>
             </div>
           </div>
