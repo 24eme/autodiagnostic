@@ -15,7 +15,7 @@
   <div id="questionnaire">
 
     <div id="progress-bar" class="progress position-fixed top-0 w-100" style="height: 0.5rem;">
-      <progress v-for="categorie in categories" v-bind:id="categorie.id" class="progress-bar" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
+      <progress v-for="categorie in categories" v-bind:id="categorie.id" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
     </div>
 
     <div class="col-6 mx-auto pb-3" style="overflow: visible">
@@ -39,22 +39,27 @@
               {{ question.complement_information }}
             </p>
           </div>
-          <div v-if="question.type === 'question'" v-bind:style="'border-left: 5px solid ' +  question.categorie_couleur + ';'" class="ps-2">
-            <h2 class="h4 bg-light p-3"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
-            <p v-if="question.complement_information" class="bg-light p-2 text-muted small">
-              {{ question.complement_information }}
-            </p>
-            <div class="list-group my-4" v-if="question.reponses">
-              <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
-                <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses">
-                {{ reponse.libelle }}
-              </label>
+          <div v-if="question.type === 'question'" class="ps-2 question">
+            <div class="question-title">
+              <h2 class="h4 p-3" v-bind:style="'background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
             </div>
-            <div class="my-4" v-else>
-              <input v-model="reponses[question.id]" type="text" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
-            </div>
-            <div class="d-grid d-md-flex justify-content-end my-4">
-              <button class="btn btn-outline-primary" v-on:click="nonConcerne(index)">Non concerné</button>
+            <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
+              <p v-if="question.complement_information" class="bg-light p-2 text-muted small">
+                {{ question.complement_information }}
+              </p>
+              <div class="list-group my-4" v-if="question.reponses">
+                <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
+                  <input v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses">
+                  {{ reponse.libelle }}
+                </label>
+              </div>
+              <div class="my-4 input-group" v-else>
+                <input v-model="reponses[question.id]" type="number" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
+                <span class="input-group-text">.00</span>
+              </div>
+              <div class="d-grid d-md-flex justify-content-end my-4">
+                <button class="btn btn-outline-primary" v-on:click="nonConcerne(index)">Non concerné</button>
+              </div>
             </div>
           </div>
         </section>
