@@ -7,6 +7,10 @@ body {
   cursor: pointer;
 }
 
+.cursor-help {
+  cursor: help;
+}
+
 .container-slider {
   position: relative;
   overflow-x: visible;
