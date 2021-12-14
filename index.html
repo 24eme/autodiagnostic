@@ -18,9 +18,7 @@
       <progress v-for="categorie in categories" v-bind:id="categorie.id" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
     </div>
 
-    <div class="col-6 mx-auto pb-3" style="overflow: visible">
-      <button type="button" class="btn btn-sm btn-link position-absolute end-0" v-on:click="reset">(recommencer le questionnaire)</button>
-
+    <div class="col-6 mx-auto pb-3">
       <h1 class="text-center mt-4 mb-5">{{ questionnaire.libelle }}</h1>
 
       <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
