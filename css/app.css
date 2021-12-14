@@ -3,6 +3,10 @@ body {
   overflow-x: hidden;
 }
 
+.categorie {
+  cursor: pointer;
+}
+
 .container-slider {
   position: relative;
   overflow-x: visible;
