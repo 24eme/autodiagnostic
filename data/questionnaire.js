@@ -13,6 +13,17 @@ var questionnaire = {
     },
     {
       "type": "question",
+      "id": "SELECTION_CERTIF",
+      "libelle": "Sélection de la certification",
+      "complement_information": "En fonction de vos choix, certaines des réponses seront préremplies.",
+      "couleur": "#f39c12",
+      "type_reponse": "checkbox",
+      "reponses": [
+        {"id": "BIO", "libelle": "Bio"}, {"id": "HVE", "libelle": "HVE"}, {"id": "TERRAVITIS", "libelle": "Terravitis"}
+      ]
+    },
+    {
+      "type": "question",
       "id": "SURFACE_NON_TRAITEE",
       "libelle": "Quelle part de mon exploitation représente la surface non traitée ?",
       "complement_information": "SAU non traitée : parcelle en AB ou conversion, parcelles et bordures n'ayant reçu aucun produit phyto de synthèse en cours de campgane étudiées (hors traitement obligatoires comme flavescence dorée), ZNT et IAE",
