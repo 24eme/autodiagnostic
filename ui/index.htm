@@ -5,18 +5,18 @@
   </div>
 
   <div class="col-6 mx-auto pb-3">
-    <h1 class="text-center mt-4 mb-5">{{ questionnaire.libelle }}</h1>
+    <h1 class="text-center mt-4 mb-5">{% questionnaire.libelle %}</h1>
 
     <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
 
       <section id="page_home" v-show="indexCourant == -1" class="text-center" key="-1">
         <p class="mb-5 fs-5">
-          {{ questionnaire.complement_information }}
+          {% questionnaire.complement_information %}
         </p>
 
         <div class="mb-5 p-2 bg-light border rounded">
           <p class="text-center m-0">
-          <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {{ getReponsesIds().length }} question(s) sur un total de {{ getInitialNbQuestions() }}.
+          <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {% getReponsesIds().length %} question(s) sur un total de {% getInitialNbQuestions() %}.
           </p>
         </div>
 
@@ -36,24 +36,24 @@
 
       <section v-for="(question, index) in getQuestions()" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
         <div v-if="question.type === 'categorie'" class="p-5 categorie" v-bind:style="'color: white; background-color: ' + question.couleur + ';'" v-on:click="deplacer(index+1)">
-          <h2 class="py-5 m-0"><span class="bi-chevron-right">{{ question.libelle }}</span></h2>
+          <h2 class="py-5 m-0"><span class="bi-chevron-right">{% question.libelle %}</span></h2>
           <p class="pb-5 m-0">
-            {{ question.complement_information }}
+            {% question.complement_information %}
           </p>
         </div>
         <div v-if="question.type === 'question'" class="ps-2 question">
           <div class="question-title">
-            <h2 class="h4 p-3" v-bind:style="'background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-50">{{ question.num + 1  }}.</small> {{ question.libelle }}</h2>
+            <h2 class="h4 p-3" v-bind:style="'background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-50">{% question.num + 1  %}.</small> {% question.libelle %}</h2>
           </div>
           <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
             <p v-if="question.complement_information" class="bg-light p-2 text-muted small">
-              {{ question.complement_information }}
+              {% question.complement_information %}
             </p>
             <div class="list-group my-4" v-if="question.reponses">
               <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
                 <input v-if="question.type_reponse === 'checkbox'" v-model="reponses[question.id]" v-bind:id="reponse.id" class="form-check-input me-1" type="checkbox" v-bind:value="reponse.id" v-on:change="storeReponses">
                 <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses">
-                {{ reponse.libelle }}
+                {% reponse.libelle %}
               </label>
             </div>
             <div class="my-4 input-group" v-else>
@@ -103,7 +103,7 @@
             <span class="text-muted">
               <i v-if="modeQuestionsNonRepondues" class="bi-file cursor-help" title="Mode non répondues"></i>
               <i v-else class="bi-file-text cursor-help" title="Mode vérification"></i>
-              Progression : {{ getProgress() }}%</span>
+              Progression : {% getProgress() %}%</span>
           </div>
           <div class="col-3">
             <button type="button" class="btn float-end" v-bind:style="'background-color: ' + getCategorieCouleur(indexCourant) + ';'" v-if="indexCourant+1 < nombreQuestionsTotal" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>

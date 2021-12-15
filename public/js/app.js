@@ -2,6 +2,7 @@
 /* global questionnaire */
 
 const Questionnaire = Vue.createApp({
+  delimiters: ['{%', '%}'],
   data() {
     return {
       questionnaire: questionnaire,
