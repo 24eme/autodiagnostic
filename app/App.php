@@ -18,6 +18,9 @@ class App {
         }
         $f3->reroute('/resultats');
     }
+    function resultats($f3) {
+        $f3->set('inc','resultats.htm');
+    }
     function afterroute() {
 		echo Template::instance()->render('layout.html');
 	}
