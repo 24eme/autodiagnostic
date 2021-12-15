@@ -1,0 +1,17 @@
+[globals]
+AUTOLOAD=../app/
+UI=../ui/
+LOGS=../var/log/
+UPLOADS=assets/
+
+DEBUG=3 ; Supprimer pour prod
+ONERROR="CMS->error"
+
+site="Autodiagnostic"
+db="sqlite:../db/autodiagnostic.db"
+
+expiry=24
+time_format="d M Y h:ia"
+max_kb=8192
+allowed="image/gif","image/jpeg","image/png"
+eurocookie=TRUE
