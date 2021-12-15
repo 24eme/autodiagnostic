@@ -122,6 +122,13 @@ const Questionnaire = Vue.createApp({
       this.updatePageInfos('#fin', 'Fin');
       this.storeReponses();
     },
+    synthetiser: function() {
+      let file = new File([localStorage.getItem('reponses')], "test.json", {type:"application/json"});
+      let container = new DataTransfer();
+      container.items.add(file);
+      document.getElementById("jsonReponses").files = container.files;
+      document.forms["synthetiserForm"].submit();
+    },
     reset: function() {
       localStorage.clear();
       this.reponses = {}
