@@ -37,6 +37,7 @@ var questionnaire = {
       "id": "SURFACE_NON_TRAITEE",
       "libelle": "Quelle part de mon exploitation représente la surface non traitée ?",
       "complement_information": "SAU non traitée : parcelle en AB ou conversion, parcelles et bordures n'ayant reçu aucun produit phyto de synthèse en cours de campgane étudiées (hors traitement obligatoires comme flavescence dorée), ZNT et IAE",
+      "unite": "%"
     },
     {
       "type": "question",
@@ -55,6 +56,7 @@ var questionnaire = {
       "id": "SURFACE_ALTERNATIVE_CHIMIE",
       "libelle": "Surface sur laquelle j'utilise au moins une méthode alternative à la lutte chimique",
       "complement_information": "Les méthodes physiques (ex: désherbage mécanique) et biologiques sont prises en compte. Voir liste des méthodes",
+      "unite": "ha"
     },
     {
       "type": "question",
