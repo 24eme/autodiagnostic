@@ -12,7 +12,7 @@ const Questionnaire = Vue.createApp({
       isTermine: false,
       reponses: {},
       modeQuestionsNonRepondues: true,
-      nombreQestionsTotal: 0
+      nombreQuestionsTotal: 0
     }
   },
   mounted() {
