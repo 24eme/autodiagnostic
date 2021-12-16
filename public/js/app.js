@@ -36,6 +36,9 @@ const Questionnaire = Vue.createApp({
         cat.questions += 1;
         cat.index.push(index)
       }
+      if (question.type == 'question' && question.multiple === true) {
+        this.reponses[question.id] = [];
+      }
     }, this);
 
     if(localStorage.getItem('reponses')) {

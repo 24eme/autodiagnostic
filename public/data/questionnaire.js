@@ -18,7 +18,7 @@ var questionnaire = {
       "libelle": "Sélection de la certification",
       "complement_information": "En fonction de vos choix, certaines des réponses seront préremplies.",
       "couleur": "#f39c12",
-      "type_reponse": "checkbox",
+      "multiple": true,
       "reponses": [
         {"id": "BIO", "libelle": "Bio"}, {"id": "HVE", "libelle": "HVE"}, {"id": "TERRAVITIS", "libelle": "Terravitis"}
       ]
