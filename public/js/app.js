@@ -23,11 +23,12 @@ const Questionnaire = Vue.createApp({
       if (question.type == 'categorie') {
         num = 0;
         categorie = question;
-        this.categories.push({"id": question.id, "name": question.libelle, "couleur": categorie.couleur, "opacite": categorie.opacite, "questions": 0, "index": [index]})
+        this.categories.push({"id": question.id, "name": question.libelle, "couleur": categorie.couleur, "opacite": categorie.opacite, "couleur_texte": categorie.couleur_texte, "questions": 0, "index": [index]})
         return;
       }
       if (categorie) {
         question.categorie_couleur = categorie.couleur;
+        question.categorie_couleur_texte = categorie.couleur_texte;
         question.num = num;
         num++;
 
@@ -160,6 +161,10 @@ const Questionnaire = Vue.createApp({
     getCategorieCouleur: function (index) {
       const question = this.questionnaire.questions[index]
       return (question.categorie_couleur) ? question.categorie_couleur : question.couleur;
+    },
+    getCategorieTexteCouleur: function (index) {
+      const question = this.questionnaire.questions[index]
+      return (question.categorie_couleur_texte) ? question.categorie_couleur_texte : question.couleur_texte;
     },
     getReponsesIds: function() {
       return Object.keys(this.reponses);

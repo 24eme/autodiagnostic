@@ -8,7 +8,8 @@ var questionnaire = {
       "libelle": "Protection de la vigne",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
       "couleur": "#f39c12",
-      "opacite": "#eec37f"
+      "opacite": "#eec37f",
+      "couleur_texte": "#fff"
 
     },
     {
@@ -190,6 +191,7 @@ var questionnaire = {
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
       "couleur": "#3498db",
       "opacite": "#8dc1e4",
+      "couleur_texte": "#fff"
 
     },
     {
@@ -204,7 +206,8 @@ var questionnaire = {
       "libelle": "Biodiversité",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
       "couleur": "#2ecc71",
-      "opacite": "#8adbaf"
+      "opacite": "#8adbaf",
+      "couleur_texte": "#fff"
 
     },
     {
