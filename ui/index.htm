@@ -56,9 +56,11 @@
                 {% reponse.libelle %}
               </label>
             </div>
-            <div class="my-4 input-group" v-else>
-              <input v-model="reponses[question.id]" type="number" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
-              <span class="input-group-text">.00</span>
+            <div class="col-6" v-else>
+              <div class="my-4 input-group">
+                <input v-model="reponses[question.id]" type="number" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
+                <span class="input-group-text">.00</span>
+              </div>
             </div>
             <div class="d-grid d-md-flex justify-content-end my-4">
               <button class="btn btn-outline-primary" v-on:click="nonConcerne(index)">Non concerné</button>
