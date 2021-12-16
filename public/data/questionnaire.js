@@ -19,7 +19,33 @@ var questionnaire = {
       "complement_information": "En fonction de vos choix, certaines des réponses seront préremplies.",
       "multiple": true,
       "reponses": [
-        {"id": "BIO", "libelle": "Bio"}, {"id": "HVE", "libelle": "HVE"}, {"id": "TERRAVITIS", "libelle": "Terravitis"}
+        {
+          "id": "BIO",
+          "libelle": "Bio",
+          "reponses_automatiques" : {
+              "IFT_HERBICIDE": 5,
+              "PLANT_MASSALE": 1,
+              "ANTI_BROTRYTIS": 0
+
+          }
+        },
+        {
+          "id": "HVE",
+          "libelle": "HVE",
+          "reponses_automatiques" : {
+              "SURFACE_ALTERNATIVE_CHIMIE": 46,
+              "PLANT_MASSALE": 1,
+              "IFT_HERBICIDE": 0.53
+
+          }
+        },
+        {
+          "id": "TERRAVITIS",
+          "libelle": "Terravitis",
+          "reponses_automatiques" : {
+              "IFT_HORS_HERBICIDE": 6
+          }
+        }
       ]
     },
     {
