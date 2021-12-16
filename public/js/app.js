@@ -61,8 +61,50 @@ const Questionnaire = Vue.createApp({
       }
       this.deplacer(index);
     },
-    storeReponses: function() {
+    storeReponses: function(question = null) {
+      this.gererReponsesAutomatiques(question);
       localStorage.setItem('reponses', JSON.stringify(this.reponses));
+    },
+    gererReponsesAutomatiques: function(question = null) {
+      if (question && question.reponses) {
+        this.resetReponsesAutomatiques(question);
+        let reponses = this.reponses;
+        let reponse = reponses[question.id];
+        if (!reponse) {
+          console.log('yop');
+          return;
+        }
+        if (!Array.isArray(reponse)) {
+          reponse = [reponse];
+        }
+        reponse.forEach(function(rep){
+          let ind = question.reponses.findIndex(r => r.id == rep);
+          if (ind >= 0) {
+            let reponse = question.reponses[ind];
+            if (reponse.reponses_automatiques) {
+              for(let index in reponse.reponses_automatiques) {
+                let valeur = reponse.reponses_automatiques[index];
+                console.log(valeur, index);
+                reponses[index] = valeur;
+              }
+            }
+          }
+        });
+        this.reponses = reponses;
+      }
+    },
+    resetReponsesAutomatiques: function(question) {
+      let reponses = this.reponses;
+      question.reponses.forEach(function(reponse) {
+        if (reponse.reponses_automatiques) {
+          for(let index in reponse.reponses_automatiques) {
+            if (reponses[index]) {
+              delete(reponses[index]);
+            }
+          }
+        }
+      });
+      this.reponses = reponses;
     },
     getQuestionIndex: function(id) {
       return this.getQuestions().findIndex(q => q.id == id);

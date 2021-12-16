@@ -51,14 +51,14 @@
             </p>
             <div class="list-group my-4" v-if="question.reponses">
               <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
-                <input v-if="question.multiple" v-model="reponses[question.id]" v-bind:id="reponse.id" class="form-check-input me-1" type="checkbox" v-bind:value="reponse.id" v-on:change="storeReponses">
-                <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses">
+                <input v-if="question.multiple" v-model="reponses[question.id]" v-bind:id="reponse.id" class="form-check-input me-1" type="checkbox" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
+                <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
                 {% reponse.libelle %}
               </label>
             </div>
             <div class="col-6" v-else>
               <div class="my-4 input-group">
-                <input v-model="reponses[question.id]" type="number" class="form-control" v-bind:name="question.id" v-on:change="storeReponses"/>
+                <input v-model="reponses[question.id]" type="number" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
                 <span class="input-group-text" v-show="question.unite">{% question.unite %}</span>
               </div>
             </div>
