@@ -16,7 +16,7 @@ class App {
         if(!$jsonFile) {
             $f3->error(403);
         }
-        $f3->reroute('/resultats');
+        $f3->reroute('@results');
     }
     function resultats($f3) {
         $f3->set('inc','resultats.htm');
