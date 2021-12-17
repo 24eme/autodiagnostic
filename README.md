@@ -13,6 +13,9 @@ Récupération des sources :
 git clone https://github.com/24eme/autodiagnostic.git
 ```
 
+Copier le fichier config/config.ini.example en config/config.ini
+
+
 Pour le lancer :
 
 ```
