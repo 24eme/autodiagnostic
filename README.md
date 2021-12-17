@@ -13,15 +13,6 @@ Récupération des sources :
 git clone https://github.com/24eme/autodiagnostic.git
 ```
 
-Récupération des sources de Fat-Free
-
-```
-git submodule init
-```
-```
-git submodule update
-```
-
 Pour le lancer :
 
 ```
