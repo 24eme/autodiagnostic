@@ -1,3 +1,8 @@
+*~
+tags
+node_modules/*
+public/assets/*
+!public/assets/.gitignore
 config/config.ini
 public/tmp
 db/*
