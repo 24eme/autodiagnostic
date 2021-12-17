@@ -71,7 +71,6 @@ const Questionnaire = Vue.createApp({
         let reponses = this.reponses;
         let reponse = reponses[question.id];
         if (!reponse) {
-          console.log('yop');
           return;
         }
         if (!Array.isArray(reponse)) {
@@ -84,7 +83,6 @@ const Questionnaire = Vue.createApp({
             if (reponse.reponses_automatiques) {
               for(let index in reponse.reponses_automatiques) {
                 let valeur = reponse.reponses_automatiques[index];
-                console.log(valeur, index);
                 reponses[index] = valeur;
               }
             }
