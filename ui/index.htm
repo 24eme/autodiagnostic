@@ -87,7 +87,7 @@
           <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-outline-secondary" v-on:click="passerToutesQuestions()">Vérifier mes réponses</button>
             <a v-show="hasQuestionsEnAttentesReponses()" class="btn btn-primary disabled" aria-disabled="true" href="#">Voir les résultats</a>
-            <form name="synthetiserForm" v-show="!hasQuestionsEnAttentesReponses()" action="{{ @synthetiser | alias }}" method="post" enctype="multipart/form-data">
+            <form name="synthetiserForm" v-show="!hasQuestionsEnAttentesReponses()" action="{{ 'synthetiser' | alias }}" method="post" enctype="multipart/form-data">
               <input class="d-none" type="file" id="jsonReponses" name="jsonReponses" accept=".json,application/json">
               <button type="button" v-on:click="synthetiser()" class="btn btn-success">Voir les résultats</button>
             </form>
