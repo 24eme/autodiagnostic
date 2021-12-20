@@ -34,6 +34,12 @@ class App
 
     public function resultats(Base $f3)
     {
+        $f3->set('file', json_encode(
+            json_decode(
+                file_get_contents($f3->get('UPLOADS').'test.json')
+            ),
+            JSON_PRETTY_PRINT
+        ));
         $f3->set('inc', 'resultats.htm');
     }
 
