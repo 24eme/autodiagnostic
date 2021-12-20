@@ -1,9 +1,5 @@
 <?php
 
-use Base;
-use Template;
-use Web;
-
 class App
 {
     public function index(Base $f3)
