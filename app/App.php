@@ -1,27 +1,48 @@
 <?php
-class App {
-    function index($f3) {
-        $f3->set('inc','index.htm');
+
+use Base;
+use Template;
+use Web;
+
+class App
+{
+    public function index(Base $f3)
+    {
+        $f3->set('inc', 'index.htm');
     }
-    function synthetiser($f3) {
-        $web = \Web::instance();
-        $files = $web->receive(function($file, $formFieldName) { return true; }, true, true);
+
+    public function synthetiser(Base $f3)
+    {
+        $web = Web::instance();
+        $files = $web->receive(function ($file, $formFieldName) {
+            if ($file['type'] !== 'application/json') {
+                return false;
+            }
+            return true;
+        }, true, true);
+
         $jsonFile = null;
-        foreach($files as $file => $valid) {
-            if(!$valid) {
+        foreach ($files as $file => $valid) {
+            if (!$valid) {
                 continue;
             }
             $jsonFile = $file;
         }
-        if(!$jsonFile) {
-            $f3->error(403);
+
+        if (!$jsonFile) {
+            $f3->error(415, 'Type de fichier non supportés');
         }
+
         $f3->reroute('@results');
     }
-    function resultats($f3) {
-        $f3->set('inc','resultats.htm');
+
+    public function resultats(Base $f3)
+    {
+        $f3->set('inc', 'resultats.htm');
     }
-    function afterroute() {
-		echo Template::instance()->render('layout.html');
-	}
+
+    public function afterroute()
+    {
+        echo Template::instance()->render('layout.html');
+    }
 }
