@@ -77,3 +77,8 @@ body {
 #CERTIFICATION::-moz-progress-bar {
   background-color: #2ecc71;
 }
+
+#resultats-title {
+  background-color: #f39c12;
+  color: #fff;
+}
