@@ -82,3 +82,7 @@ body {
   background-color: #f39c12;
   color: #fff;
 }
+
+#resultats-radar-chart {
+  max-height: 400px;
+}
