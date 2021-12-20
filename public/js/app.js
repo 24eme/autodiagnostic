@@ -120,7 +120,8 @@ const Questionnaire = Vue.createApp({
 
       if (this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
         const question = this.questionnaire.questions[index]
-        if (this.getReponsesIds().includes(question.id)) {
+        const r = this.getReponsesIds().includes(question.id)
+        if (r && (! Array.isArray(this.reponses[question.id]) || this.reponses[question.id].length > 0)) {
           return (index > this.indexCourant) ? this.deplacer(index + 1) : this.deplacer(index - 1);
         }
       }
