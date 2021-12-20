@@ -121,6 +121,12 @@ const Questionnaire = Vue.createApp({
       if (this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
         const question = this.questionnaire.questions[index]
         const r = this.getReponsesIds().includes(question.id)
+
+        // On check si c'est une categorie et que toutes les questions sont répondues
+         if (question.type === 'categorie' && this.categorieFullAnswered(question.id)) {
+           return (index > this.indexCourant) ? this.deplacer(index + 1) : this.deplacer(index - 1);
+         }
+
         if (r && (! Array.isArray(this.reponses[question.id]) || this.reponses[question.id].length > 0)) {
           return (index > this.indexCourant) ? this.deplacer(index + 1) : this.deplacer(index - 1);
         }
@@ -139,6 +145,18 @@ const Questionnaire = Vue.createApp({
       if (document.querySelector('#question_' + question.id + ' input')) {
         setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
       }
+    },
+    categorieFullAnswered: function (id) {
+      const categorie = this.categories.findIndex(c => c.id === id)
+
+      // Est-ce que chaque question de la categorie sont dans les réponses ?
+      return this.categories[categorie].index.every(function (qIndex, arrayIndex) {
+        if (arrayIndex === 0) return true; // Le premier élément est la catégorie
+                                           // donc pas dans le tab de réponses
+
+        const questionId = this.getQuestions()[qIndex].id
+        return this.getReponsesIds().includes(questionId);
+      }, this)
     },
     nonConcerne: function (index) {
       const q = this.getQuestions()[index]
