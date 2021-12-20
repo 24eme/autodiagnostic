@@ -17,5 +17,11 @@
   <check if="{{ @inc === 'index.htm' }}">
     <true><script type="text/javascript" src="/js/app.js"></script></true>
   </check>
+  <check if="{{ @inc === 'resultats.htm' }}">
+    <true>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js" integrity="sha256-D2tkh/3EROq+XuDEmgxOLW1oNxf0rLNlOwsPIUX+co4=" crossorigin="anonymous"></script>
+      <script src="/js/charts.js"></script>
+    </true>
+  </check>
   </body>
 </html>

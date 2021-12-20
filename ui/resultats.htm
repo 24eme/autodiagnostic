@@ -6,13 +6,19 @@
   </div>
 </div>
 
-<div id="resultats-content">
-  <div id="resultats-file" class="container">
-    <h3 class="display-6">Vos données brutes</h3>
-    <details>
-      <summary>Fichier brut</summary>
-      <pre>{{ @file }}</pre>
-    </details>
+<div class="container">
+  <div id="resultats-content" class="row">
+    <div id="resultats-file" class="col-sm-6">
+      <h3 class="display-6">Vos données brutes</h3>
+      <details>
+        <summary>Fichier brut</summary>
+        <pre>{{ @file }}</pre>
+      </details>
+    </div>
+
+    <div id="resultats-graphs" class="col-sm-6">
+      <canvas id="resultats-radar-chart"></canvas>
+    </div>
   </div>
 </div>
 
