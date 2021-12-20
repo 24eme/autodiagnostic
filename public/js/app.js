@@ -231,6 +231,9 @@ const Questionnaire = Vue.createApp({
     passerToutesQuestions: function() {
       this.modeQuestionsNonRepondues = false;
       this.deplacer(0);
+    },
+    switchModeQuestions: function () {
+      this.modeQuestionsNonRepondues = ! this.modeQuestionsNonRepondues;
     }
   }
 });
