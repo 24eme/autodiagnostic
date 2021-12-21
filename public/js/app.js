@@ -119,8 +119,7 @@ const Questionnaire = Vue.createApp({
       }
 
       if (this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
-        const question = this.questionnaire.questions[index]
-        const r = this.getReponsesIds().includes(question.id)
+        const question = this.questionnaire.questions[index];
 
         // On check si c'est une categorie et que toutes les questions sont répondues
          if (question.type === 'categorie' && this.categorieFullAnswered(question.id)) {
@@ -128,7 +127,7 @@ const Questionnaire = Vue.createApp({
          }
 
         // On check si il y a une réponse, ou s'il y a un tableau vide (checkbox)
-        if (r && (! Array.isArray(this.reponses[question.id]) || this.reponses[question.id].length > 0)) {
+                if (this.getReponsesIds().includes(question.id)) {
           return (index > this.indexCourant) ? this.deplacer(index + 1) : this.deplacer(index - 1);
         }
       }
@@ -229,8 +228,17 @@ const Questionnaire = Vue.createApp({
       const question = this.questionnaire.questions[index]
       return (question.categorie_couleur_texte) ? question.categorie_couleur_texte : question.couleur_texte;
     },
+    getRealReponses: function() {
+      let reponses = {};
+      Object.keys(this.reponses).forEach(key => {
+        if (!Array.isArray(this.reponses[key]) || this.reponses[key].length > 0) {
+          reponses[key] = this.reponses[key];
+        }
+      });
+      return reponses;
+    },
     getReponsesIds: function() {
-      return Object.keys(this.reponses);
+      return Object.keys(this.getRealReponses());
     },
     getInitialNbQuestions: function() {
       return this.nombreQuestionsTotal - this.categories.length;
