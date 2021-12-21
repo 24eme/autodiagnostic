@@ -7,57 +7,60 @@
 </div>
 
 <div class="container">
-  <div id="resultats-content" class="row">
-    <div id="resultats-file" class="col-sm-6">
-      <h3 class="display-6">Vos données brutes</h3>
-      <details>
-        <summary>Fichier brut</summary>
-        <pre>{{ @file }}</pre>
-      </details>
-    </div>
-
+  <div id="resultats-content" class="row mb-5">
     <div id="resultats-graphs" class="col-sm-6">
+      <h3 class="display-6">Votre répartition</h3>
       <canvas id="resultats-radar-chart"></canvas>
     </div>
-  </div>
-</div>
 
-<div class="container">
-  <div id="resultats-points-amelioration" class="row">
-    <div class="col-sm-12">
-      <h3 class="display-6">Vos points forts et d'amélioration</h3>
-      <div class="row row-cols-auto g-4">
-        <div class="col">
-          <div class="card">
-            <div class="card-body bg-success">
-              <h5 class="card-title"><i class="bi-brightness-high"></i> Point fort !</h5>
-              <p class="card-text">Bravo, vous avez de bonnes pratiques pour X</p>
-            </div>
-          </div>
+    <div id="resultats-points-amelioration" class="col-sm-6">
+      <h3 class="display-6">Vos points forts</h3>
+      <div class="p-3 d-flex" style="align-items: center">
+        <i class="bi-check-circle-fill fs-3 text-success me-3"></i> Usage de produits naturels
+      </div>
+      <div class="p-3 d-flex" style="align-items: center">
+        <i class="bi-check-circle-fill fs-3 text-success me-3"></i> Niveau d'azote dans la norme
+      </div>
+
+      <h3 class="display-6 mt-4">Vos points d'améliorations</h3>
+      <div class="p-3 d-flex align-items-center">
+        <i class="bi-circle fs-3 text-warning me-3"></i> Sequi in in non alias
+      </div>
+      <div class="p-3 d-flex align-items-center">
+        <i class="bi-circle fs-3 text-warning me-3"></i> Dolor optio iure fugiat
+      </div>
+      <div class="p-3 d-flex" style="align-items: center">
+        <i class="bi-circle fs-3 text-warning me-3"></i> Repellendus id iste provident
+      </div>
+
+    </div>
+  </div>
+
+  <div id="cta" class="py-4 bg-light">
+    <h3 class="display-5 text-center mb-5"><i class="bi-gem"></i> Je m'engage !</h3>
+    <div class="justify-content-center text-center">
+      <p>Je m'engage à améliorer la qualité de traitement de mes différentes parcelles afin de correspondre aux demandes environnementales.</p>
+      <div class="row g-3 m-auto">
+        <div class="col-auto">
+          <input type="email" class="form-control" placeholder="Email">
         </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body bg-success">
-              <h5 class="card-title"><i class="bi-brightness-high"></i> Point fort !</h5>
-              <p class="card-text">Bravo, vous avez de bonnes pratiques pour X</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body bg-warning">
-              <h5 class="card-title"><i class="bi-cloud-sun"></i> Point d'amélioration !</h5>
-              <p class="card-text">Vous êtes sur la bonne voie.</p>
-              <a href="#" class="btn btn-primary">Comment m'améliorer ?</a>
-            </div>
-          </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Je m'engage</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div id="resultats-file" class="col-sm-12">
+    <h3 class="display-6 text-center">Vos données brutes</h3>
+    <details>
+      <summary>Fichier brut</summary>
+      <pre>{{ @file }}</pre>
+    </details>
+  </div>
 </div>
 
-<div class="fixed-bottom shadow bg-light row">
+<div class="bg-light row">
   <div class="col-6 pt-2 pb-2 mx-auto">
     <div class="row">
       <div class="col-6">
