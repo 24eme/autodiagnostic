@@ -82,7 +82,7 @@ var questionnaire = {
       "id": "SURFACE_ALTERNATIVE_CHIMIE",
       "libelle": "Surface sur laquelle j'utilise au moins une méthode alternative à la lutte chimique",
       "complement_information": "Les méthodes physiques (ex: désherbage mécanique) et biologiques sont prises en compte. Voir liste des méthodes",
-      "unite": "ha"
+      "unite": "%"
     },
     {
       "type": "question",
@@ -131,6 +131,67 @@ var questionnaire = {
             "libelle": "Non",
           }
       ]
-    }
+    },
+    {
+     "type": "categorie",
+     "id": "FERTILISATION",
+     "libelle": "Fertilisation",
+     "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
+     "couleur": "#3498db",
+     "opacite": "#8dc1e4",
+     "couleur_texte": "#fff"
+   },
+   {
+     "type": "question",
+     "id": "BILAN_AZOTE",
+     "libelle": "Que représente mon bilan azote global ?",
+     "complement_information": "",
+     "unite": "kg N/ha"
+   },
+   {
+     "type": "question",
+     "id": "AZOTE_ORGANIQUE",
+     "libelle": "J'utilise de l'azote 100% organique ?",
+     "complement_information": "",
+     "reponses": [
+         {
+           "id": 1,
+           "libelle": "Oui"
+         },
+         {
+           "id": 0,
+           "libelle": "Non",
+         }
+     ]
+   },
+   {
+     "type": "question",
+     "id": "UNITE_AZOTE",
+     "libelle": "Combien d'unité d'azote chimique/ha ai-je utilisé sur la campagne ?",
+     "complement_information": "",
+     "unite": "N/ha"
+   },
+   {
+      "type": "categorie",
+      "id": "BIODIVERSITE",
+      "libelle": "Biodiversité",
+      "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
+      "couleur": "#c582af",
+      "opacite": "#debdd3",
+      "couleur_texte": "#fff"
+
+    },
+    {
+      "type": "question",
+      "id": "SED_A_SAPIEN",
+      "libelle": "Duis eu eros sit amet purus vehicula vestibulum ut id risus.",
+      "complement_information": "",
+    },
+    {
+      "type": "question",
+      "id": "SUSPENDISSE_POTENTI",
+      "libelle": "Duis semper vel libero nec ullamcorper.",
+      "complement_information": "",
+    },
   ]
 };
