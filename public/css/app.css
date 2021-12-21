@@ -78,6 +78,14 @@ body {
   background-color: #2ecc71;
 }
 
+#FERTILISATION::-moz-progress-bar {
+  background-color: #3498db;
+}
+
+#BIODIVERSITE::-moz-progress-bar {
+  background-color: #c582af;
+}
+
 #resultats-title {
   background-color: #f39c12;
   color: #fff;
