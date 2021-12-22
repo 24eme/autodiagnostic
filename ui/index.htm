@@ -97,23 +97,21 @@
 
     </transition-group>
 
-    <div class="fixed-bottom shadow bg-light row" v-if="indexCourant > -1 && !isTermine">
-      <div class="col-6 pt-2 pb-2 mx-auto">
-        <div class="row">
-          <div class="col-6">
-            <button type="button" z-index="-1" title="Retour au début" class="btn btn-light border me-2" v-on:click="intro()"><span class="bi bi-chevron-double-left"></span></button>
-            <button type="button" z-index="-1" class="btn btn-light border" v-on:click="deplacer(indexCourant - 1)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
-          </div>
-          <div class="col align-self-center">
-            <span class="text-muted" v-on:click="switchModeQuestions">
-              <i v-if="modeQuestionsNonRepondues" class="bi-file cursor-help" title="Mode non répondues"></i>
-              <i v-else class="bi-file-text cursor-help" title="Mode vérification"></i>
-              Progression : {% getProgress() %}%</span>
-          </div>
-          <div class="col-3">
-            <button type="button" class="btn float-end" v-bind:style="'color: ' + getCategorieTexteCouleur(indexCourant) + '; background-color: ' + getCategorieCouleur(indexCourant) + ';'" v-if="indexCourant+1 < nombreQuestionsTotal" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
-            <button type="button" class="btn btn-success float-end" v-if="indexCourant+1 >= nombreQuestionsTotal" v-on:click="terminer()">Terminer</button>
-          </div>
+    <div class="fixed-bottom col-6 mx-auto py-1" v-if="indexCourant > -1 && !isTermine">
+      <div class="row">
+        <div class="col-3">
+          <button type="button" z-index="-1" title="Retour au début" class="btn btn-light border me-2" v-on:click="intro()"><span class="bi bi-chevron-double-left"></span></button>
+          <button type="button" z-index="-1" class="btn btn-light border" v-on:click="deplacer(indexCourant - 1)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
+        </div>
+        <div class="col align-self-center text-center">
+          <span class="text-muted" v-on:click="switchModeQuestions">
+            <i v-if="modeQuestionsNonRepondues" class="bi-file cursor-help" title="Mode non répondues"></i>
+            <i v-else class="bi-file-text cursor-help" title="Mode vérification"></i>
+            Progression : {% getProgress() %}%</span>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn float-end" v-bind:style="'color: ' + getCategorieTexteCouleur(indexCourant) + '; background-color: ' + getCategorieCouleur(indexCourant) + ';'" v-if="indexCourant+1 < nombreQuestionsTotal" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
+          <button type="button" class="btn btn-success float-end" v-if="indexCourant+1 >= nombreQuestionsTotal" v-on:click="terminer()">Terminer</button>
         </div>
       </div>
     </div>
