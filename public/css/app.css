@@ -13,6 +13,9 @@ body {
 .question .question-title {
   margin-bottom: -40px;
   width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: intrinsic;
   position: relative;
   z-index: 2;
 }
@@ -70,6 +73,45 @@ body {
   opacity: 0.25;
 }
 
+/* reset pour chrom* */
+progress {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+#CERTIFICATION::-webkit-progress-bar {
+  background-color: #8adbaf;
+}
+
+#CERTIFICATION::-webkit-progress-value {
+  background-color: #2ecc71;
+}
+
+#PROTECTION_VIGNE::-webkit-progress-bar {
+  background-color: #eec37f;
+}
+
+#PROTECTION_VIGNE::-webkit-progress-value {
+  background-color: #f39c12;
+}
+
+#FERTILISATION::-webkit-progress-bar {
+  background-color: #8dc1e4;
+}
+
+#FERTILISATION::-webkit-progress-value {
+  background-color: #3498db;
+}
+
+#BIODIVERSITE::-webkit-progress-bar {
+  background-color: #debdd3;
+}
+
+#BIODIVERSITE::-webkit-progress-value {
+  background-color: #c582af;
+}
+
 #PROTECTION_VIGNE::-moz-progress-bar {
   background-color: #f39c12;
 }
@@ -93,4 +135,12 @@ body {
 
 #resultats-radar-chart {
   max-height: 400px;
+}
+
+#resultats-content h3 {
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: intrinsic;
+  padding: .25rem .5rem;
 }
