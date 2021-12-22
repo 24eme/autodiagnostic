@@ -61,24 +61,13 @@
       </div>
     </div>
   </div>
-
-  <div id="resultats-file" class="col-sm-12">
-    <h3 class="display-6 text-center">Vos données brutes</h3>
-    <details>
-      <summary>Fichier brut</summary>
-      <pre>{{ @statistiques->getReponses() }}</pre>
-    </details>
-  </div>
 </div>
 
-<div class="bg-light row">
-  <div class="col-6 pt-2 pb-2 mx-auto">
-    <div class="row">
-      <div class="col-6">
-        <a href="{{ 'home' | alias }}" title="Retourner à l'écran d'accueil" class="btn btn-secondary me-2">
-          <i class="bi-chevron-double-left"></i> Retourner à l'écran d'accueil
-        </a>
-      </div>
+<div id="retour" class="py-4">
+    <div class="text-center">
+      <a href="{{ 'home' | alias }}" title="Retourner à l'accueil" class="btn border me-2">
+        Je recommence
+      </a>
     </div>
   </div>
 </div>
