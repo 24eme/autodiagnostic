@@ -104,10 +104,7 @@
           <button type="button" z-index="-1" class="btn btn-light border" v-on:click="deplacer(indexCourant - 1)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
         </div>
         <div class="col align-self-center text-center">
-          <span class="text-muted" v-on:click="switchModeQuestions">
-            <i v-if="modeQuestionsNonRepondues" class="bi-file cursor-help" title="Mode non répondues"></i>
-            <i v-else class="bi-file-text cursor-help" title="Mode vérification"></i>
-            Progression : {% getProgress() %}%</span>
+          <span class="text-muted">Progression : {% getProgress() %}%</span>
         </div>
         <div class="col-3">
           <button type="button" class="btn float-end" v-bind:style="'color: ' + getCategorieTexteCouleur(indexCourant) + '; background-color: ' + getCategorieCouleur(indexCourant) + ';'" v-if="indexCourant+1 < nombreQuestionsTotal" v-on:click="deplacer(indexCourant + 1)">Suivant<span class="bi-chevron-compact-right"></span></button>
@@ -116,4 +113,12 @@
       </div>
     </div>
   </div>
+
+  <div class="position-fixed bottom-0 start-0 p-1 opacity-25">
+    <span v-on:click="switchModeQuestions">
+      <i v-if="modeQuestionsNonRepondues" class="bi-file cursor-help" title="Mode non répondues"></i>
+      <i v-else class="bi-file-text cursor-help" title="Mode vérification"></i>
+    </span>
+  </div>
+
 </div>
