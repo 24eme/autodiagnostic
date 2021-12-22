@@ -13,6 +13,9 @@ body {
 .question .question-title {
   margin-bottom: -40px;
   width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: intrinsic;
   position: relative;
   z-index: 2;
 }
@@ -93,4 +96,11 @@ body {
 
 #resultats-radar-chart {
   max-height: 400px;
+}
+
+#resultats-content h3 {
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: intrinsic;
 }
