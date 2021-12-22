@@ -1,28 +1,25 @@
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-];
-
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
-  }]
-};
-
-const config = {
-  type: 'radar',
-  data: data
-}
-
+const canvas = document.getElementById('resultats-radar-chart');
 const radarChart = new Chart(
-  document.getElementById('resultats-radar-chart'),
-  config
-)
+  canvas,
+  {
+      'type': canvas.getAttribute('data-type'),
+      'data': {
+          labels: canvas.getAttribute('data-labels').split(","),
+          datasets: [{
+              label: 'Mon score',
+              data: canvas.getAttribute('data-series').split(","),
+              fill: true,
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgb(255, 99, 132)',
+          },
+          {
+              label: 'Moyenne vignoble',
+              data: [8,3,1],
+              fill: true,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgb(54, 162, 235)',
+          }
+        ]
+      }
+    }
+);
