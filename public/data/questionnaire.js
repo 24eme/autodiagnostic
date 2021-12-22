@@ -1,6 +1,6 @@
 var questionnaire = {
   "libelle": "Autodiagnostic Développement Durable",
-  "complement_information": "Afin de vous faire une idée du positionnement de votre exploitation en terme de d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.",
+  "complement_information": "Afin de vous faire une idée du positionnement de votre exploitation en terme d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.",
   "questions": [
     {
       "type": "categorie",
