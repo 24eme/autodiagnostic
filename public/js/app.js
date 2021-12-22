@@ -127,7 +127,7 @@ const Questionnaire = Vue.createApp({
          }
 
         // On check si il y a une réponse, ou s'il y a un tableau vide (checkbox)
-                if (this.getReponsesIds().includes(question.id)) {
+        if (this.getReponsesIds().includes(question.id)) {
           return (index > this.indexCourant) ? this.deplacer(index + 1) : this.deplacer(index - 1);
         }
       }
