@@ -201,7 +201,7 @@ const Questionnaire = Vue.createApp({
       document.location = url.href.replace(/#.*/, '#');
     },
     clean: function (obj) {
-      Object.keys(obj).forEach((k) => obj[k] == "" && delete obj[k]);
+      Object.keys(obj).forEach((k) => obj[k] === "" && delete obj[k]);
     },
     updateCategorieProgress: function (categorie) {
       const selfIndex = this.categories.findIndex(cat => cat.name === categorie.name)
