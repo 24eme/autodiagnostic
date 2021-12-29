@@ -80,7 +80,7 @@ class Statistiques {
                 $this->hightScores[$categorieCourante] = 0;
             }
             $this->scores[$categorieCourante] += $notation['score'];
-            $this->hightScores[$tegorieCourante] += $this->getNotationByReponse($question['notation']);
+            $this->hightScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
             if ($notation['bilan_poids'] < 0) {
                 $this->ptsAmeliorations[$notation['bilan_poids']*(-1)] = $notation['bilan_phrase'];
             }
