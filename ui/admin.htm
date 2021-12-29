@@ -20,13 +20,13 @@
   </div>
   </check>
 
-  <div class="row">
+  <div class="row g-2">
     <div class="col-sm-6">
       <h3 class="display-6 mb-5">Tous les résultats</h3>
       <check if="{{ @reponses }}">
         <true>
           <repeat group="{{ @reponses }}" value="{{ @name }}">
-            {{ @name }}
+          <p class="border-bottom">{{ @name }} <a href="#" class="float-end">Voir les réponses</a></p>
           </repeat>
         </true>
         <false><p class="lead text-center"><i class="bi-folder-x"></i> Aucun résultat</p></false>
