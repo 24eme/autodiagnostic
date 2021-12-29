@@ -1,5 +1,11 @@
 <?php
 
+namespace Controllers;
+
+use Base;
+use Session;
+use Template;
+
 class Admin
 {
     public function beforeroute(Base $f3)

@@ -1,5 +1,12 @@
 <?php
 
+namespace Controllers;
+
+use Base;
+use Statistiques;
+use Template;
+use Web;
+
 class App
 {
     public function index(Base $f3)
