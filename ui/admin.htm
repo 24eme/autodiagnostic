@@ -1,1 +1,36 @@
-<h1>Page d'admin</h1>
+<div id="administration-title">
+  <div class="p-5">
+    <div class="container-fluid">
+      <h1 class="text-center display-5 fw-bold"><i class="bi-shield-lock"></i> Administration</h1>
+    </div>
+  </div>
+</div>
+
+<div id="administration-content" class="container">
+  <check if="{{ @SESSION.flash }}">
+  <div class="text-center">
+    <div class="mb-5 alert alert-danger d-flex align-items-center" role="alert">
+      <div class="border-end me-3">
+        <i class="fs-2 bi-x-circle-fill"></i>
+      </div>
+      <div>
+        {{ @SESSION.flash }}
+      </div>
+    </div>
+  </div>
+  </check>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h3 class="display-6 mb-5">Tous les résultats</h3>
+      <check if="{{ @reponses }}">
+        <true>
+          <repeat group="{{ @reponses }}" value="{{ @name }}">
+            {{ @name }}
+          </repeat>
+        </true>
+        <false><p class="lead text-center"><i class="bi-folder-x"></i> Aucun résultat</p></false>
+      </check>
+    </div>
+  </div>
+</div>
