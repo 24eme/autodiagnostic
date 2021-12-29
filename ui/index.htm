@@ -14,23 +14,27 @@
           {% questionnaire.complement_information %}
         </p>
 
-        <div class="mb-5 p-2 bg-light border rounded">
-          <p class="text-center m-0">
-          <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {% getReponsesIds().length %} question(s) sur un total de {% getInitialNbQuestions() %}.
-          </p>
-        </div>
-
-        <div class="col-md-8 mx-auto">
-          <p class="text-center lead">
-            Plusieurs choix s'offrent à vous :
-          </p>
-          <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-outline-danger" v-on:click="reset">
-              <i class="bi-exclamation-triangle-fill"></i> Recommencer le questionnaire
-            </button>
-            <button v-if="getReponsesIds().length == 0" class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
-            <button v-else class="btn btn-primary" v-on:click="deplacer(getQuestionIndex('PROTECTION_VIGNE'))">Continuer le questionnaire</button>
+        <div id="startup-content" v-if="questionnaireStarted">
+          <div class="mb-5 p-2 bg-light border rounded">
+            <p class="text-center m-0">
+            <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {% getReponsesIds().length %} question(s) sur un total de {% getInitialNbQuestions() %}.
+            </p>
           </div>
+
+          <div class="col-md-8 mx-auto">
+            <p class="text-center lead">
+              Plusieurs choix s'offrent à vous :
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+              <button type="button" class="btn btn-outline-danger" v-on:click="reset">
+                <i class="bi-exclamation-triangle-fill"></i> Recommencer le questionnaire
+              </button>
+              <button class="btn btn-primary" v-on:click="deplacer(getQuestionIndex('PROTECTION_VIGNE'))">Continuer le questionnaire</button>
+            </div>
+          </div>
+        </div>
+        <div v-else id="startup-content">
+          <button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
         </div>
       </section>
 

@@ -48,6 +48,11 @@ const Questionnaire = Vue.createApp({
     window.addEventListener('hashchange', this.hashChange);
     this.hashChange();
   },
+  computed: {
+    questionnaireStarted() {
+      return this.getReponsesIds().length > 0
+    }
+  },
   methods: {
     hashChange: function() {
       var url = new URL(window.location);
