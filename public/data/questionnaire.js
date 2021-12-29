@@ -14,7 +14,7 @@ var questionnaire = {
     {
       "type": "question",
       "id": "SELECTION_CERTIF",
-      "libelle": "Sélection de la certification",
+      "libelle": "Quelles sont vos certifications actuelles ?",
       "complement_information": "En fonction de vos choix, certaines des réponses seront préremplies.",
       "multiple": true,
       "reponses": [
