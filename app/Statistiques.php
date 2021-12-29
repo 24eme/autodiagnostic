@@ -67,11 +67,11 @@ class Statistiques {
                 continue;
             }
             if (isset($question['notation']) && !isset($reponses[$question['id']])) {
-                throw new sfException('Une réponse est attendue pour la question : '.$question['id']);
+                throw new Exception('Une réponse est attendue pour la question : '.$question['id']);
             }
             $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
             if (!$notation) {
-                throw new sfException('Réponse non traitée dans les notations de la question '.$question['id'].' : '.$reponses[$question['id']]);
+                throw new Exception('Réponse non traitée dans les notations de la question '.$question['id'].' : '.$reponses[$question['id']]);
             }
             if (!isset($this->scores[$categorieCourante])) {
                 $this->scores[$categorieCourante] = 0;
@@ -120,7 +120,7 @@ class Statistiques {
                 return ($reponse == $valeur);
                 break;
             default:
-                throw new sfException('Comparateur non connu : '.$comparateur);
+                throw new Exception('Comparateur non connu : '.$comparateur);
                 break;
         }
     }
