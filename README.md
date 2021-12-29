@@ -16,6 +16,11 @@ git clone https://github.com/24eme/autodiagnostic.git
 Copier le fichier config/config.ini.example en config/config.ini
 
 
+```
+cp config/config.ini.example config/config.ini
+```
+
+
 Pour le lancer :
 
 ```
