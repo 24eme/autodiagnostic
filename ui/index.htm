@@ -34,7 +34,18 @@
           </div>
         </div>
         <div v-else id="startup-content">
-          <button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
+          <div class="text-center">
+            <div class="mb-5 alert alert-primary d-flex align-items-center" role="alert">
+              <div class="border-end">
+                <i class="fs-2 bi-info-circle-fill"></i>
+              </div>
+              <div>
+                En répondant à ce questionnaire, vous acceptez l'utilisation de vos données par le BIVC à des fins de traitement statistiques collectives
+                (<a href="#" class="alert-link">Charte environnementale Centre Loire</a>).
+              </div>
+            </div>
+            <button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
+          </div>
         </div>
       </section>
 
