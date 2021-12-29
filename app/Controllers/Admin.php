@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Base;
+use Questions;
 use Session;
 use Template;
 
@@ -30,6 +31,8 @@ class Admin
         }
 
         $files = array_map('basename', $files);
+
+        $questions = new Questions();
 
         $f3->set('reponses', $files);
         $f3->set('inc', 'admin.htm');
