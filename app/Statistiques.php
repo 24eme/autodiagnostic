@@ -15,7 +15,7 @@ class Statistiques {
 
     public function __construct($reponses) {
         $this->config = json_decode(preg_replace('/;$/', '', preg_replace('/^.+{/', '{', file_get_contents('data/questionnaire.js'))), true);
-        $this->setReponses($reponses);
+        $this->reponses = $reponses;
         $this->scores = [];
         $this->hightScores = [];
         $this->ptsForts = [];
@@ -49,10 +49,6 @@ class Statistiques {
 
     public function getReponses() {
         return json_encode(json_decode($this->reponses), JSON_PRETTY_PRINT);
-    }
-
-    public function setReponses($reponses) {
-        $this->reponses = $reponses;
     }
 
     private function synthetiserReponses() {
