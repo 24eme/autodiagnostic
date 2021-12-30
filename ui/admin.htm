@@ -77,7 +77,7 @@
                 </p>
                 <p>Texte d'aide :<textarea class="form-control" placeholder="Texte d'aide" readonly>{{ @questionnaire->getQuestionAide(@question.id) }}</textarea></p>
 
-                <p>Réponses automatiques : {{ @questionnaire->hasReponsesAutomatiques(@question.id) ? 'Oui' : 'Non' }}
+                <p>Réponses automatiques : {{ @questionnaire->hasReponsesAutomatiques(@question.id) ? '<span class="text-success">Oui</span>' : '<span class="text-danger">Non</span>' }}
                 <check if="@questionnaire->hasReponsesAutomatiques(@question.id)">
                   <repeat group="@questionnaire->getReponsesAutomatiques(@question.id)" key="{{ @reponse }}" value="{{ @reponses }}">
                     <div class="row">
