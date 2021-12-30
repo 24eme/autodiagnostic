@@ -72,13 +72,13 @@
                 <h6>{{ @question.libelle }}</h6>
                 <hr style="width: 25%;">
                 <p>
-                  Type de question : {{ @questionnaire->getQuestionType(@question.id) }}
+                  <span class="text-decoration-underline">Type de question :</span> {{ @questionnaire->getQuestionType(@question.id) }}
                   <check if="@questionnaire->getQuestionUnite(@question.id)">(Unité : {{ @questionnaire->getQuestionUnite(@question.id) }})</check>
                 </p>
-                <p>Texte d'aide :<br/>{{ @questionnaire->getQuestionAide(@question.id) }}</p>
-                <p class="mb-0"><small class="text-muted">ID: {{ @question.id }}</small></p>
+                <p><span class="text-decoration-underline">Texte d'aide :</span><textarea class="form-control" placeholder="Texte d'aide" readonly>{{ @questionnaire->getQuestionAide(@question.id) }}</textarea></p>
               </div>
               <div class="modal-footer">
+                <p class="me-auto"><small class="text-muted">ID: {{ @question.id }}</small></p>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
               </div>
             </div>
