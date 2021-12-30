@@ -66,6 +66,14 @@ class Questions
         }
     }
 
+    public function getQuestionUnite(string $id): string
+    {
+        $key = array_search($id, array_column($this->getQuestions(), 'id'));
+        $question = $this->getQuestions()[$key];
+
+        return $question['unite'] ?? '';
+    }
+
     public function getQuestionAide(string $id): string
     {
         $key = array_search($id, array_column($this->getQuestions(), 'id'));

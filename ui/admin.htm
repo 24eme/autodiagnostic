@@ -71,7 +71,10 @@
               <div class="modal-body">
                 <h6>{{ @question.libelle }}</h6>
                 <hr style="width: 25%;">
-                <p>Type de question : {{ @questionnaire->getQuestionType(@question.id) }}</p>
+                <p>
+                  Type de question : {{ @questionnaire->getQuestionType(@question.id) }}
+                  <check if="@questionnaire->getQuestionUnite(@question.id)">(Unité : {{ @questionnaire->getQuestionUnite(@question.id) }})</check>
+                </p>
                 <p>Texte d'aide :<br/>{{ @questionnaire->getQuestionAide(@question.id) }}</p>
                 <p class="mb-0"><small class="text-muted">ID: {{ @question.id }}</small></p>
               </div>
