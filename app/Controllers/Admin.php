@@ -34,6 +34,7 @@ class Admin
 
         $questions = new Questions();
 
+        $f3->set('questionnaire', $questions);
         $f3->set('reponses', $files);
         $f3->set('inc', 'admin.htm');
     }

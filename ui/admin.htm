@@ -35,6 +35,28 @@
 
     <div id="administration-questions" class="col-sm-6">
       <h3 class="display-6 mb-5">Liste des questions</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Categorie</th>
+            <th>Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <repeat group="{{ @questionnaire->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions }}">
+            <repeat group="{{ @questions }}" value="{{ @question }}" counter="{{ @ctr }}">
+              <tr>
+                <check if="{{ @ctr === 1 }}">
+                  <true>
+                    <th scope="row" rowspan="{{ count(@questions) }}">{{ @questions[0].libelle }}</th>
+                  </true>
+                  <false><td>{{ @question.libelle }}</td></false>
+                </check>
+              </tr>
+            </repeat>
+          </repeat>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
