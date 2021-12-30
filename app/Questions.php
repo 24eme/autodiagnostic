@@ -54,7 +54,7 @@ class Questions
         return $this->questionnaire;
     }
 
-    public function getQuestionType(string $id)
+    public function getQuestionType(string $id): string
     {
         $key = array_search($id, array_column($this->getQuestions(), 'id'));
         $question = $this->getQuestions()[$key];
@@ -64,5 +64,13 @@ class Questions
         } else {
             return 'Nombre';
         }
+    }
+
+    public function getQuestionAide(string $id): string
+    {
+        $key = array_search($id, array_column($this->getQuestions(), 'id'));
+        $question = $this->getQuestions()[$key];
+
+        return $question['complement_information'];
     }
 }
