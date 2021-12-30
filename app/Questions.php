@@ -7,6 +7,7 @@ class Questions
     private array $questions = [];
     private array $categories = [];
     private array $questionnaire = [];
+    private array $found = [];
 
     public function __construct()
     {
@@ -56,8 +57,13 @@ class Questions
 
     public function find(string $id): array
     {
+        if (array_key_exists($id, $this->found)) {
+            return $this->found[$id];
+        }
+
         $key = array_search($id, array_column($this->getQuestions(), 'id'));
-        return $this->getQuestions()[$key];
+        $this->found[$id] = $this->getQuestions()[$key];
+        return $this->found[$id];
     }
 
     public function getQuestionType(string $id): string
