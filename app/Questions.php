@@ -39,6 +39,12 @@ class Questions
         return $build;
     }
 
+    private function find(string $id): array
+    {
+        $key = array_search($id, array_column($this->getQuestions(), 'id'));
+        return $this->getQuestions()[$key];
+    }
+
     public function getQuestions(): array
     {
         return $this->questions;
@@ -56,8 +62,7 @@ class Questions
 
     public function getQuestionType(string $id): string
     {
-        $key = array_search($id, array_column($this->getQuestions(), 'id'));
-        $question = $this->getQuestions()[$key];
+        $question = $this->find($id);
 
         if (isset($question['reponses'])) {
             return (isset($question['multiple'])) ? 'Choix multiple' : 'Choix unique';
@@ -68,17 +73,13 @@ class Questions
 
     public function getQuestionUnite(string $id): string
     {
-        $key = array_search($id, array_column($this->getQuestions(), 'id'));
-        $question = $this->getQuestions()[$key];
-
+        $question = $this->find($id);
         return $question['unite'] ?? '';
     }
 
     public function getQuestionAide(string $id): string
     {
-        $key = array_search($id, array_column($this->getQuestions(), 'id'));
-        $question = $this->getQuestions()[$key];
-
+        $question = $this->find($id);
         return $question['complement_information'];
     }
 }
