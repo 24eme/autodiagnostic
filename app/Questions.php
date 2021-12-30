@@ -39,12 +39,6 @@ class Questions
         return $build;
     }
 
-    private function find(string $id): array
-    {
-        $key = array_search($id, array_column($this->getQuestions(), 'id'));
-        return $this->getQuestions()[$key];
-    }
-
     public function getQuestions(): array
     {
         return $this->questions;
@@ -58,6 +52,12 @@ class Questions
     public function getQuestionnaire(): array
     {
         return $this->questionnaire;
+    }
+
+    public function find(string $id): array
+    {
+        $key = array_search($id, array_column($this->getQuestions(), 'id'));
+        return $this->getQuestions()[$key];
     }
 
     public function getQuestionType(string $id): string
@@ -81,5 +81,21 @@ class Questions
     {
         $question = $this->find($id);
         return $question['complement_information'];
+    }
+
+    public function hasReponsesAutomatiques(string $id)
+    {
+        $question = $this->find($id);
+        return isset($question['reponses']) && array_column($question['reponses'], 'reponses_automatiques');
+    }
+
+    public function getReponsesAutomatiques(string $id): array
+    {
+        if ($this->hasReponsesAutomatiques($id) === false) {
+            return [];
+        }
+
+        $question = $this->find($id);
+        return array_column($question['reponses'], 'reponses_automatiques', 'libelle');
     }
 }
