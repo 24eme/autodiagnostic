@@ -48,9 +48,9 @@
               <tr>
                 <check if="{{ @ctr === 1 }}">
                   <true>
-                    <th scope="row" rowspan="{{ count(@questions) }}">{{ @questions[0].libelle }}</th>
+                    <th scope="row" rowspan="{{ count(@questions) }}">{{ @questions[@categorie].libelle }}</th>
                   </true>
-                  <false><td>{{ @question.libelle }}</td></false>
+                  <false><td>{{ @question.libelle }}<span class="float-end" title="Plus d'info sur la question"><i class="bi-eye"></i></span></td></false>
                 </check>
               </tr>
             </repeat>
@@ -59,4 +59,32 @@
       </table>
     </div>
   </div>
+</div>
+
+<div id="administration-modals">
+  <repeat group="{{ @questionnaire->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions }}">
+    <repeat group="{{ @questions }}" value="{{ @question }}" counter="{{ @ctr }}">
+      <check if="{{ @ctr !== 1 }}">
+        <div class="modal-lg" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Informations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Type de question : {{ @questionnaire->getQuestionType(@question.id) }}
+                </p>
+                <p><small class="text-muted">ID: {{ @question.id }}</small></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </check>
+    </repeat>
+  </repeat>
 </div>

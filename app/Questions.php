@@ -16,14 +16,14 @@ class Questions
         $this->questionnaire = $this->build($questionnaire['questions']);
     }
 
-    private function extract(string $type, array $content)
+    private function extract(string $type, array $content): array
     {
-        return array_filter($content, function (array $question) use ($type) {
+        return array_values(array_filter($content, function (array $question) use ($type) {
             return $question['type'] === $type;
-        });
+        }));
     }
 
-    private function build(array $content)
+    private function build(array $content): array
     {
         $build = [];
         $categorie = '';
@@ -33,13 +33,13 @@ class Questions
                 $build[$categorie] = [];
             }
 
-            $build[$categorie][] = $question;
+            $build[$categorie][$question['id']] = $question;
         }
 
         return $build;
     }
 
-    public function getQuestions()
+    public function getQuestions(): array
     {
         return $this->questions;
     }
@@ -49,8 +49,20 @@ class Questions
         return $this->categories;
     }
 
-    public function getQuestionnaire()
+    public function getQuestionnaire(): array
     {
         return $this->questionnaire;
+    }
+
+    public function getQuestionType(string $id)
+    {
+        $key = array_search($id, array_column($this->getQuestions(), 'id'));
+        $question = $this->getQuestions()[$key];
+
+        if (isset($question['reponses'])) {
+            return (isset($question['multiple'])) ? 'Choix multiple' : 'Choix unique';
+        } else {
+            return 'Nombre';
+        }
     }
 }
