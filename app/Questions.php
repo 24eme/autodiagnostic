@@ -45,7 +45,7 @@ class Questions
         return $this->questions;
     }
 
-    public function getCategories()
+    public function getCategories(): array
     {
         return $this->categories;
     }
@@ -89,7 +89,23 @@ class Questions
         return $question['complement_information'];
     }
 
-    public function hasReponsesAutomatiques(string $id)
+    public function hasReponses(string $id): bool
+    {
+        $question = $this->find($id);
+        return isset($question['reponses']);
+    }
+
+    public function getReponses(string $id): array
+    {
+        if ($this->hasReponses($id) === false) {
+            return [];
+        }
+
+        $question = $this->find($id);
+        return $question['reponses'];
+    }
+
+    public function hasReponsesAutomatiques(string $id): bool
     {
         $question = $this->find($id);
         return isset($question['reponses']) && array_column($question['reponses'], 'reponses_automatiques');
