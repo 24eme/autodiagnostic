@@ -120,4 +120,20 @@ class Questions
         $question = $this->find($id);
         return array_column($question['reponses'], 'reponses_automatiques', 'libelle');
     }
+
+    public function hasNotation(string $id): bool
+    {
+        $question = $this->find($id);
+        return isset($question['notation']);
+    }
+
+    public function getNotation(string $id): array
+    {
+        if ($this->hasNotation($id) === false) {
+            return [];
+        }
+
+        $question = $this->find($id);
+        return $question['notation'];
+    }
 }

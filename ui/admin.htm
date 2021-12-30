@@ -108,6 +108,14 @@
                     </repeat>
                   </check>
                 </div>
+
+                <check if="{{ @questionnaire->hasNotation(@question.id) }}">
+                  <div class="mb-1">
+                    <p class="mb-0">Notation :</p>
+                      <repeat group="{{ @questionnaire->getNotation(@question.id) }}" key="{{ @comparateur }}" value="{{ @notes }}">
+                      </repeat>
+                  </div>
+                </check>
               </div>
               <div class="modal-footer">
                 <p class="me-auto"><small class="text-muted">ID: {{ @question.id }}</small></p>
