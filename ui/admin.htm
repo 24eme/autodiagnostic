@@ -90,7 +90,7 @@
                   </div>
                 </check>
 
-                <div class="border p-2">
+                <div class="border p-2 mb-1">
                   <p class="mb-0">Réponses automatiques : {{ @questionnaire->hasReponsesAutomatiques(@question.id) ? '<span class="text-success">Oui</span>' : '<span class="text-danger">Non</span>' }}</p>
                   <check if="@questionnaire->hasReponsesAutomatiques(@question.id)">
                     <repeat group="@questionnaire->getReponsesAutomatiques(@question.id)" key="{{ @reponse }}" value="{{ @reponses }}">
@@ -113,6 +113,24 @@
                   <div class="mb-1">
                     <p class="mb-0">Notation :</p>
                       <repeat group="{{ @questionnaire->getNotation(@question.id) }}" key="{{ @comparateur }}" value="{{ @notes }}">
+                        <p>Si la valeur est <strong>
+                          <check if="{{ @comparateur === 'EQ' }}">
+                            égale
+                          </check>
+                          <check if="{{ @comparateur === 'LTE' }}">
+                            inférieure
+                          </check>
+                          <check if="{{ @comparateur === 'GTE' }}">
+                            supérieure
+                          </check>
+                        </strong> à :
+                        <table class="table table-striped">
+                        <repeat group="{{ @notes }}" key="{{ @note }}" value="{{ @points }}">
+                          <tr><td title="{{ @points.bilan_phrase }}">
+                          {{ @note }} alors, le score est de {{ @points.score }} avec un poids de {{ @points.bilan_poids }}
+                          </td></tr>
+                        </repeat>
+                        </table>
                       </repeat>
                   </div>
                 </check>
