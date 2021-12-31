@@ -50,7 +50,7 @@
                   <true>
                     <th scope="row" rowspan="{{ count(@questions) }}">{{ @questions[@categorie].libelle }}</th>
                   </true>
-                  <false><td>{{ @question.libelle }}<span class="float-end" title="Plus d'info sur la question"><i class="bi-eye"></i></span></td></false>
+                  <false><td>{{ @question.libelle }}<span class="float-end modal-open" title="Plus d'info sur la question" data-modal="modal-{{ @categorie }}-{{ @question.id }}"><i class="bi-eye"></i></span></td></false>
                 </check>
               </tr>
             </repeat>
@@ -65,8 +65,8 @@
   <repeat group="{{ @questionnaire->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions }}">
     <repeat group="{{ @questions }}" value="{{ @question }}" counter="{{ @ctr }}">
       <check if="{{ @ctr !== 1 }}">
-        <div class="modal-lg" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
-          <div class="modal-dialog">
+        <div class="modal fade" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-body">
                 <h6>{{ @question.libelle }}</h6>
@@ -137,7 +137,7 @@
               </div>
               <div class="modal-footer">
                 <p class="me-auto"><small class="text-muted">ID: {{ @question.id }}</small></p>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-secondary modal-close">Fermer</button>
               </div>
             </div>
           </div>
@@ -146,3 +146,46 @@
     </repeat>
   </repeat>
 </div>
+<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+
+<script>
+  const modals = document.getElementById('administration-modals')
+  const questions = document.getElementById('administration-questions')
+  const backdrop = document.getElementById('backdrop')
+
+  questions.addEventListener('click', function (e) {
+    for (let target = e.target; target && target !== this; target = target.parentNode) {
+        if (target.matches('.modal-open')) {
+          openModal.call(target, e)
+        }
+    }
+  })
+
+  modals.addEventListener('click', function (e) {
+    for (let target = e.target; target && target !== this; target = target.parentNode) {
+        if (target.matches('.modal-close')) {
+          closeModal.call(target, e)
+        }
+    }
+  })
+
+  function openModal(target, event) {
+    const id = target.target.parentNode.dataset.modal
+    const modal = document.getElementById(id)
+    modal.classList.add('show')
+    modal.style.display = 'block';
+    backdrop.style.display = 'block';
+  }
+
+  function closeModal(target, event) {
+    let parent = target.target.parentNode
+    while (parent.classList.contains('modal') !== true) {
+      parent = parent.parentNode
+    }
+
+    const modal = document.getElementById(parent.id)
+    modal.classList.remove('show')
+    modal.style.display = 'none';
+    backdrop.style.display = 'none';
+  }
+</script>
