@@ -4,10 +4,10 @@ class Questions
 {
     const DATA_QUESTIONNAIRE = 'data/questionnaire.js';
 
-    private array $questions = [];
-    private array $categories = [];
-    private array $questionnaire = [];
-    private array $found = [];
+    private $questions = [];
+    private $categories = [];
+    private $questionnaire = [];
+    private $found = [];
 
     public function __construct()
     {
