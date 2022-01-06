@@ -40,11 +40,11 @@ class Statistiques {
         return $this->highScores;
     }
 
-    public function getPtsForts(int $limit = null) {
+    public function getPtsForts($limit = null) {
         return ($limit)? array_slice($this->ptsForts, 0, $limit, true) : $this->ptsForts;
     }
 
-    public function getPtsAmeliorations(int $limit = null) {
+    public function getPtsAmeliorations($limit = null) {
         return ($limit)? array_slice($this->ptsAmeliorations, 0, $limit, true) : $this->ptsAmeliorations;
     }
 

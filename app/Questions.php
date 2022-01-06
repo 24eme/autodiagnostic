@@ -17,14 +17,14 @@ class Questions
         $this->questionnaire = $this->build($questionnaire['questions']);
     }
 
-    private function extract(string $type, array $content): array
+    private function extract($type, array $content)
     {
         return array_values(array_filter($content, function (array $question) use ($type) {
             return $question['type'] === $type;
         }));
     }
 
-    private function build(array $content): array
+    private function build(array $content)
     {
         $build = [];
         $categorie = '';
@@ -40,22 +40,22 @@ class Questions
         return $build;
     }
 
-    public function getQuestions(): array
+    public function getQuestions()
     {
         return $this->questions;
     }
 
-    public function getCategories(): array
+    public function getCategories()
     {
         return $this->categories;
     }
 
-    public function getQuestionnaire(): array
+    public function getQuestionnaire()
     {
         return $this->questionnaire;
     }
 
-    public function find(string $id): array
+    public function find($id)
     {
         if (array_key_exists($id, $this->found)) {
             return $this->found[$id];
@@ -66,7 +66,7 @@ class Questions
         return $this->found[$id];
     }
 
-    public function getQuestionType(string $id): string
+    public function getQuestionType($id)
     {
         $question = $this->find($id);
 
@@ -77,25 +77,25 @@ class Questions
         }
     }
 
-    public function getQuestionUnite(string $id): string
+    public function getQuestionUnite($id)
     {
         $question = $this->find($id);
-        return $question['unite'] ?? '';
+        return isset($question['unite']) ? $question['unite'] : '';
     }
 
-    public function getQuestionAide(string $id): string
+    public function getQuestionAide($id)
     {
         $question = $this->find($id);
         return $question['complement_information'];
     }
 
-    public function hasReponses(string $id): bool
+    public function hasReponses($id)
     {
         $question = $this->find($id);
         return isset($question['reponses']);
     }
 
-    public function getReponses(string $id): array
+    public function getReponses($id)
     {
         if ($this->hasReponses($id) === false) {
             return [];
@@ -105,13 +105,13 @@ class Questions
         return $question['reponses'];
     }
 
-    public function hasReponsesAutomatiques(string $id): bool
+    public function hasReponsesAutomatiques($id)
     {
         $question = $this->find($id);
         return isset($question['reponses']) && array_column($question['reponses'], 'reponses_automatiques');
     }
 
-    public function getReponsesAutomatiques(string $id): array
+    public function getReponsesAutomatiques($id)
     {
         if ($this->hasReponsesAutomatiques($id) === false) {
             return [];
@@ -121,13 +121,13 @@ class Questions
         return array_column($question['reponses'], 'reponses_automatiques', 'libelle');
     }
 
-    public function hasNotation(string $id): bool
+    public function hasNotation($id)
     {
         $question = $this->find($id);
         return isset($question['notation']);
     }
 
-    public function getNotation(string $id): array
+    public function getNotation($id)
     {
         if ($this->hasNotation($id) === false) {
             return [];
