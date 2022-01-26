@@ -3,6 +3,15 @@ body {
   overflow-x: hidden;
 }
 
+.bodyblurize {
+  filter: blur(4px);
+  padding-top:20px;
+}
+
+.decolorize {
+  filter: grayscale(100%);
+}
+
 .categorie {
   cursor: pointer;
 }
