@@ -30,7 +30,22 @@ class App
             phpCAS::setNoCasServerValidation();
         }
 
-        phpCAS::forceAuthentication();
+        if (phpCAS::isAuthenticated()) {
+            $f3->set('SESSION.user', phpCAS::getUser());
+        }
+
+        if ($f3->get('GET.visiteur')) {
+            $f3->set('SESSION.user', 'VISITEUR');
+            $f3->reroute('@home');
+        }
+
+        if (!phpCAS::isAuthenticated() && $f3->get('GET.bivcauth')) {
+            phpCAS::forceAuthentication();
+        }
+
+        if (phpCAS::isAuthenticated() && $f3->get('GET.bivcauth')) {
+            $f3->reroute('@home');
+        }
     }
 
     public function index(Base $f3)
