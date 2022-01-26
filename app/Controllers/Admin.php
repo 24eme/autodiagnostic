@@ -13,7 +13,7 @@ class Admin
     {
         new Session();
         $f3->clear('SESSION.flash');
-
+        $f3->set('SESSION.user', 'ADMIN');
         // check droits admin
     }
 
