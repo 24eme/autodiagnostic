@@ -24,6 +24,14 @@
     </true>
   </check>
 
+  <check if="{{ @SESSION.user && @SESSION.user !== 'VISITEUR' }}">
+  <true><p class="fixed-bottom text-end small text-muted pe-2"><i class="bi bi-person-fill"></i> Connecté <a href="https://declaration.vins-centre-loire.com">BIVC</a></p></true>
+  </check>
+  <check if="{{ @SESSION.user && @SESSION.user === 'VISITEUR' }}">
+  <true><p class="fixed-bottom text-end small text-muted pe-2"><i class="bi bi-person-fill"></i> Visiteur</p></true>
+  </check>
+
+
   <check if="{{ @inc === 'index.htm' }}">
     <true><script type="text/javascript" src="/js/app.js"></script></true>
   </check>
