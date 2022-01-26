@@ -12,7 +12,17 @@
   </head>
   <body>
 
-  <include href="{{ @inc }}" />
+  <check if="@SESSION.user">
+    <false>
+      <include href="authmodal.htm" />
+      <div class="bodyblurize">
+        <include href="{{ @inc }}" />
+      </div>
+    </false>
+    <true>
+        <include href="{{ @inc }}" />
+    </true>
+  </check>
 
   <check if="{{ @inc === 'index.htm' }}">
     <true><script type="text/javascript" src="/js/app.js"></script></true>
