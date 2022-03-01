@@ -5,13 +5,13 @@
   </div>
 
   <div class="col-6 mx-auto pb-3">
-    <h1 class="text-center mt-4 mb-5">{% questionnaire.libelle %}</h1>
+    <h1 class="text-center mt-4 mb-5">Autodiagnostic Développement Durable</h1>
 
     <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
 
       <section id="page_home" v-show="indexCourant == -1" class="text-center" key="-1">
         <p class="mb-5 fs-5">
-          {% questionnaire.complement_information %}
+          Afin de vous faire une idée du positionnement de votre exploitation en terme d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.
         </p>
 
         <div id="startup-content" v-if="questionnaireStarted">
