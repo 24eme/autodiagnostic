@@ -1,11 +1,33 @@
 /* global Vue */
-/* global questionnaire */
+
+const file = 'data/questionnaire.yml'
+let yaml = ''
+
+fetch(file)
+  .then(function (response) {
+    if (! response.ok) {
+      throw new Error('Impossible de récupérer le fichier de question')
+    }
+    return response.text();
+  })
+  .then(function (text) {
+    yaml = jsyaml.load(text)
+  })
+  .then(function () {
+    Questionnaire.mount('#questionnaire');
+  })
+  .catch(function(error) {
+    document.body.innerHTML = '';
+    document.body.appendChild(
+      document.createTextNode('Error: ' + error.message)
+    );
+  })
 
 const Questionnaire = Vue.createApp({
   delimiters: ['{%', '%}'],
   data() {
     return {
-      questionnaire: questionnaire,
+      questionnaire: {},
       categories: [],
       indexCourant: null,
       indexPrecedent: null,
@@ -16,6 +38,7 @@ const Questionnaire = Vue.createApp({
     }
   },
   mounted() {
+    this.questionnaire = yaml
     let categorie = null;
     let num = 0;
     this.nombreQuestionsTotal = this.getQuestions().length;
@@ -270,4 +293,4 @@ const Questionnaire = Vue.createApp({
     }
   }
 });
-Questionnaire.mount('#questionnaire');
+
