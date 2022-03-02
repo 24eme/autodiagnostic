@@ -21,10 +21,6 @@ const Questionnaire = Vue.createApp({
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
     this.loadQuestions(file)
 
-    if(localStorage.getItem('reponses')) {
-      this.reponses = JSON.parse(localStorage.getItem('reponses'));
-    }
-
     window.addEventListener('hashchange', this.hashChange);
     this.hashChange();
   },
@@ -57,6 +53,10 @@ const Questionnaire = Vue.createApp({
         }
         if (question.type == 'question' && question.multiple === true) {
           this.reponses[question.id] = [];
+        }
+
+        if (localStorage.key('reponses')) {
+          this.reponses = JSON.parse(localStorage.getItem('reponses'))
         }
       }, this);
     },
