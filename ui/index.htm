@@ -73,7 +73,7 @@
             </div>
             <div class="col-6" v-else>
               <div class="my-4 input-group">
-                <input v-model="reponses[question.id]" type="number" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
+                <input v-model="reponses[question.id]" type="number" min=0 :max="(question.unite === '%') ? 100 : null" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
                 <span class="input-group-text" v-show="question.unite">{% question.unite %}</span>
               </div>
             </div>
