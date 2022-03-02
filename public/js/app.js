@@ -1,13 +1,12 @@
 /* global Vue */
 
 const file = 'data/questionnaire.yml'
-let yaml = ''
 
 const Questionnaire = Vue.createApp({
   delimiters: ['{%', '%}'],
   data() {
     return {
-      questionnaire: {},
+      questionnaire: {questions:[]},
       categories: [],
       indexCourant: null,
       indexPrecedent: null,
@@ -18,31 +17,9 @@ const Questionnaire = Vue.createApp({
     }
   },
   mounted() {
-    this.questionnaire = yaml
-    let categorie = null;
-    let num = 0;
-    this.nombreQuestionsTotal = this.getQuestions().length;
-    this.getQuestions().forEach(function (question, index) {
-      if (question.type == 'categorie') {
-        num = 0;
-        categorie = question;
-        this.categories.push({"id": question.id, "name": question.libelle, "couleur": categorie.couleur, "opacite": categorie.opacite, "couleur_texte": categorie.couleur_texte, "questions": 0, "index": [index]})
-        return;
-      }
-      if (categorie) {
-        question.categorie_couleur = categorie.couleur;
-        question.categorie_couleur_texte = categorie.couleur_texte;
-        question.num = num;
-        num++;
-
-        const cat = this.categories.find(cat => cat.name === categorie.libelle);
-        cat.questions += 1;
-        cat.index.push(index)
-      }
-      if (question.type == 'question' && question.multiple === true) {
-        this.reponses[question.id] = [];
-      }
-    }, this);
+    // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L55
+    // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
+    this.loadQuestions(file)
 
     if(localStorage.getItem('reponses')) {
       this.reponses = JSON.parse(localStorage.getItem('reponses'));
@@ -57,6 +34,44 @@ const Questionnaire = Vue.createApp({
     }
   },
   methods: {
+    init: function() {
+      let categorie = null;
+      let num = 0;
+      this.nombreQuestionsTotal = this.getQuestions().length;
+      this.getQuestions().forEach(function (question, index) {
+        if (question.type == 'categorie') {
+          num = 0;
+          categorie = question;
+          this.categories.push({"id": question.id, "name": question.libelle, "couleur": categorie.couleur, "opacite": categorie.opacite, "couleur_texte": categorie.couleur_texte, "questions": 0, "index": [index]})
+          return;
+        }
+        if (categorie) {
+          question.categorie_couleur = categorie.couleur;
+          question.categorie_couleur_texte = categorie.couleur_texte;
+          question.num = num;
+          num++;
+
+          const cat = this.categories.find(cat => cat.name === categorie.libelle);
+          cat.questions += 1;
+          cat.index.push(index)
+        }
+        if (question.type == 'question' && question.multiple === true) {
+          this.reponses[question.id] = [];
+        }
+      }, this);
+    },
+    loadQuestions: function(file) {
+      fetch(file)
+        .then(stream => stream.text())
+        .then(data => this.questionnaire = jsyaml.load(data))
+        .then(() => this.init())
+        .catch(function(error) {
+          document.body.innerHTML = '';
+          document.body.appendChild(
+            document.createTextNode('Error: ' + error.message)
+          );
+        })
+    },
     hashChange: function() {
       var url = new URL(window.location);
       var index = null;
@@ -274,23 +289,5 @@ const Questionnaire = Vue.createApp({
   }
 });
 
-fetch(file)
-  .then(function (response) {
-    if (! response.ok) {
-      throw new Error('Impossible de récupérer le fichier de question')
-    }
-    return response.text();
-  })
-  .then(function (text) {
-    yaml = jsyaml.load(text)
-  })
-  .then(function () {
-    Questionnaire.mount('#questionnaire');
-  })
-  .catch(function(error) {
-    document.body.innerHTML = '';
-    document.body.appendChild(
-      document.createTextNode('Error: ' + error.message)
-    );
-  })
+Questionnaire.mount('#questionnaire');
 
