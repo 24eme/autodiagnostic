@@ -655,7 +655,7 @@ var questionnaire = {
       "id": "ANTI_BROTRYTIS",
       "libelle": "Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?",
       "notation": {
-        "GT": {
+        "GTE": {
           "1": {
             "score": -5
           },
