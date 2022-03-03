@@ -736,7 +736,7 @@ questions:
   - id: GARAGISTE
     libelle: Je les dépose chez un garagiste ou concessionnaire automobile
   - id: COLLECTEUR
-    libelle: Je les dépose chez un collecteur agréé 
+    libelle: Je les dépose chez un collecteur agréé
   - id: STOCK
     libelle: Je les stocke
   - id: EAUX_USEES
@@ -746,12 +746,12 @@ questions:
 
 - type: question
   id: QUOI_BATTERIES
-  libelle: Que faites vous des batteries usagées ? 
+  libelle: Que faites vous des batteries usagées ?
   reponses:
   - id: DECHETTERIE
     libelle: Je les dépose en déchetterie
   - id: DISTRIBUTEUR
-    libelle: Je les dépose chez mon distributeur 
+    libelle: Je les dépose chez mon distributeur
   - id: STOCK
     libelle: Je les stocke
   - id: AUTRE
