@@ -89,12 +89,28 @@ progress {
           appearance: none;
 }
 
+#INFORMATIONS::-webkit-progress-bar {
+  background-color: #e6d4bc;
+}
+
+#INFORMATIONS::-webkit-progress-value {
+  background-color: #d3ba9b;
+}
+
+#INFORMATIONS::-moz-progress-bar {
+  background-color: #d3ba9b;
+}
+
 #CERTIFICATION::-webkit-progress-bar {
-  background-color: #8adbaf;
+  background-color: #fd5b5b;
 }
 
 #CERTIFICATION::-webkit-progress-value {
-  background-color: #2ecc71;
+  background-color: #bb0001;
+}
+
+#CERTIFICATION::-moz-progress-bar {
+  background-color: #bb0001;
 }
 
 #PROTECTION_VIGNE::-webkit-progress-bar {
@@ -105,12 +121,20 @@ progress {
   background-color: #f39c12;
 }
 
+#PROTECTION_VIGNE::-moz-progress-bar {
+  background-color: #f39c12;
+}
+
 #FERTILISATION::-webkit-progress-bar {
-  background-color: #8dc1e4;
+  background-color: #ff9d01;
 }
 
 #FERTILISATION::-webkit-progress-value {
-  background-color: #3498db;
+  background-color: #f98901;
+}
+
+#FERTILISATION::-moz-progress-bar {
+  background-color: #f98901;
 }
 
 #BIODIVERSITE::-webkit-progress-bar {
@@ -121,20 +145,44 @@ progress {
   background-color: #c582af;
 }
 
-#PROTECTION_VIGNE::-moz-progress-bar {
-  background-color: #f39c12;
+#BIODIVERSITE::-moz-progress-bar {
+  background-color: #c582af;
 }
 
-#CERTIFICATION::-moz-progress-bar {
-  background-color: #2ecc71;
+#EAU::-webkit-progress-bar {
+  background-color: #8dc1e4;
 }
 
-#FERTILISATION::-moz-progress-bar {
+#EAU::-webkit-progress-value {
   background-color: #3498db;
 }
 
-#BIODIVERSITE::-moz-progress-bar {
-  background-color: #c582af;
+#EAU::-moz-progress-bar {
+  background-color: #3498db;
+}
+
+#RECYCLAGE::-webkit-progress-bar {
+  background-color: #8adbaf;
+}
+
+#RECYCLAGE::-webkit-progress-value {
+  background-color: #2ecc71;
+}
+
+#RECYCLAGE::-moz-progress-bar {
+  background-color: #2ecc71;
+}
+
+#PLASTIQUE::-webkit-progress-bar {
+  background-color: #d1d1d1;
+}
+
+#PLASTIQUE::-webkit-progress-value {
+  background-color: #babab8;
+}
+
+#PLASTIQUE::-moz-progress-bar {
+  background-color: #babab8;
 }
 
 #resultats-title {
