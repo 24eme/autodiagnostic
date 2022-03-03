@@ -205,7 +205,7 @@ questions:
 - type: question
   id: SURFACE_SANS_HERBICIDE
   libelle: Quel est le pourcentage de vos surfaces sans aucun herbicide cette année ?
-  unite: %
+  unite: "%"
 
 - type: question
   id: PASSAGE_OUTILS_HORS_HERBICIDES
