@@ -2,13 +2,13 @@ var questionnaire = {
   "libelle": "Autodiagnostic Développement Durable",
   "complement_information": "Afin de vous faire une idée du positionnement de votre exploitation en terme d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.",
   "questions": [
-    {
+{
       "type": "categorie",
       "id": "INFORMATIONS",
       "libelle": "Informations générales",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
-      "couleur": "#2ecc71",
-      "opacite": "#8adbaf",
+      "couleur": "#d3ba9b",
+      "opacite": "#e6d4bc",
       "couleur_texte": "#fff"
     },
     {
@@ -135,8 +135,8 @@ var questionnaire = {
       "id": "CERTIFICATION",
       "libelle": "Certification",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
-      "couleur": "#2ecc71",
-      "opacite": "#8adbaf",
+      "couleur": "#bb0001",
+      "opacite": "#fd5b5b",
       "couleur_texte": "#fff"
     },
     {
@@ -148,11 +148,29 @@ var questionnaire = {
       "reponses": [
         {
           "id": "BIO_CONVERSION",
-          "libelle": "En conversion vers AB"
+          "libelle": "En conversion vers AB",
+          "reponses_automatiques": {
+            "SURFACE_NON_TRAITEE": 100,
+            "DESHERBAGE_CHIMIQUE": "NON",
+            "SURFACE_SANS_HERBICIDE": 100,
+            "PRODUITS_CMR": 0,
+            "INSECTICIDES_NON_AB": 0,
+            "ANTI_BROTRYTIS": 0,
+            "STADE_ANTI_BROTRYTIS": "NC"
+          }
         },
         {
           "id": "BIO",
-          "libelle": "AB"
+          "libelle": "AB",
+          "reponses_automatiques": {
+            "SURFACE_NON_TRAITEE": 100,
+            "DESHERBAGE_CHIMIQUE": "NON",
+            "SURFACE_SANS_HERBICIDE": 100,
+            "PRODUITS_CMR": 0,
+            "INSECTICIDES_NON_AB": 0,
+            "ANTI_BROTRYTIS": 0,
+            "STADE_ANTI_BROTRYTIS": "NC"
+          }
         },
         {
           "id": "HVE",
@@ -164,11 +182,29 @@ var questionnaire = {
         },
         {
           "id": "DEMETER",
-          "libelle": "Demeter"
+          "libelle": "Demeter",
+          "reponses_automatiques": {
+            "SURFACE_NON_TRAITEE": 100,
+            "DESHERBAGE_CHIMIQUE": "NON",
+            "SURFACE_SANS_HERBICIDE": 100,
+            "PRODUITS_CMR": 0,
+            "INSECTICIDES_NON_AB": 0,
+            "ANTI_BROTRYTIS": 0,
+            "STADE_ANTI_BROTRYTIS": "NC"
+          }
         },
         {
           "id": "BIODYVIN",
-          "libelle": "Biodyvin"
+          "libelle": "Biodyvin",
+          "reponses_automatiques": {
+            "SURFACE_NON_TRAITEE": 100,
+            "DESHERBAGE_CHIMIQUE": "NON",
+            "SURFACE_SANS_HERBICIDE": 100,
+            "PRODUITS_CMR": 0,
+            "INSECTICIDES_NON_AB": 0,
+            "ANTI_BROTRYTIS": 0,
+            "STADE_ANTI_BROTRYTIS": "NC"
+          }
         }
       ]
     },
@@ -176,7 +212,6 @@ var questionnaire = {
       "type": "question",
       "id": "SELECTION_SANS_CERTIF",
       "libelle": "Même sans être certifié, suivez-vous un ou plusieurs de ces cahiers des charges ?",
-      "complement_information": "",
       "multiple": true,
       "reponses": [
         {
@@ -267,19 +302,94 @@ var questionnaire = {
           "id": "RINCAGE",
           "libelle": "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d’automisation de rinçage des cuves"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "AMENAGEMENT": {
+            "score": 1
+          },
+          "POTENCE": {
+            "score": 1
+          },
+          "RETENTION": {
+            "score": 1
+          },
+          "PAILLASSE": {
+            "score": 1
+          },
+          "COLLECTE": {
+            "score": 1
+          },
+          "VOLUCOMPTEUR": {
+            "score": 1
+          },
+          "ANTIGOUTTES": {
+            "score": 1
+          },
+          "PRECISION": {
+            "score": 1
+          },
+          "RINCAGE": {
+            "score": 1
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "IFT_HERBICIDE",
       "libelle": "Quel est votre IFT herbicides ?",
-      "complement_information": "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'outil suivant"
+      "complement_information": "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'outil suivant",
+      "notation": {
+        "GTE": {
+          "1.08": {
+            "score": 0
+          },
+          "0.945": {
+            "score": 2
+          },
+          "0.81": {
+            "score": 4
+          },
+          "0.675": {
+            "score": 6
+          },
+          "0.54": {
+            "score": 8
+          },
+          "0.00": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "IFT_HORS_HERBICIDE",
       "libelle": "Quel est votre IFT hors herbicides ?",
-      "complement_information": "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT"
+      "complement_information": "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT",
+      "notation": {
+        "GTE": {
+          "10.89": {
+            "score": 0
+          },
+          "9.53": {
+            "score": 2
+          },
+          "8.17": {
+            "score": 4
+          },
+          "6.81": {
+            "score": 6
+          },
+          "5.45": {
+            "score": 8
+          },
+          "0.00": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -298,13 +408,60 @@ var questionnaire = {
           "id": "PENTES",
           "libelle": "Uniquement sur les pentes d'au moins 40% de dénivelé"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 0
+          },
+          "NON": {
+            "score": 2
+          },
+          "PENTES": {
+            "score": 2
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "SURFACE_SANS_HERBICIDE",
       "libelle": "Quel est le pourcentage de vos surfaces sans aucun herbicide cette année ?",
-      "unite": "%"
+      "unite": "%",
+      "notation": {
+        "LTE": {
+          "10": {
+            "score": 1
+          },
+          "20": {
+            "score": 2
+          },
+          "30": {
+            "score": 3
+          },
+          "40": {
+            "score": 4
+          },
+          "50": {
+            "score": 5
+          },
+          "60": {
+            "score": 6
+          },
+          "70": {
+            "score": 7
+          },
+          "80": {
+            "score": 8
+          },
+          "90": {
+            "score": 9
+          },
+          "100": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -329,7 +486,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 0
+          },
+          "NON": {
+            "score": 5
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -344,7 +511,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 0
+          },
+          "NON": {
+            "score": 5
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -359,18 +536,57 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": -5
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "PRODUITS_CMR",
       "libelle": "Combien de CMR avez-vous utilisés sur la campagne ?",
-      "complement_information": "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC ou l'étiquette du produit"
+      "complement_information": "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC ou l'étiquette du produit",
+      "notation": {
+        "GTE": {
+          "3": {
+            "score": -5
+          },
+          "2": {
+            "score": -2
+          },
+          "1": {
+            "score": 0
+          },
+          "0": {
+            "score": 1
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "INSECTICIDES_NON_AB",
-      "libelle": "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
+      "libelle": "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?",
+      "notation": {
+        "GTE": {
+          "3": {
+            "score": 3
+          },
+          "1": {
+            "score": 5
+          },
+          "0": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -437,7 +653,20 @@ var questionnaire = {
     {
       "type": "question",
       "id": "ANTI_BROTRYTIS",
-      "libelle": "Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?"
+      "libelle": "Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?",
+      "notation": {
+        "GT": {
+          "1": {
+            "score": -5
+          },
+          "0": {
+            "score": 0
+          },
+          "-1": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -456,7 +685,20 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "A": {
+            "score": 0
+          },
+          "B": {
+            "score": 0
+          },
+          "AUTRE": {
+            "score": -5
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -521,15 +763,28 @@ var questionnaire = {
       "id": "FERTILISATION",
       "libelle": "Fertilisation",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
-      "couleur": "#3498db",
-      "opacite": "#8dc1e4",
+      "couleur": "#f98901",
+      "opacite": "#ff9d01",
       "couleur_texte": "#fff"
     },
     {
       "type": "question",
       "id": "BILAN_AZOTE",
       "libelle": "Quel est votre bilan azoté global ?",
-      "unite": "kg N/ha"
+      "unite": "kg N/ha",
+      "notation": {
+        "GTE": {
+          "60": {
+            "score": 0
+          },
+          "40": {
+            "score": 10
+          },
+          "0": {
+            "score": 20
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -545,13 +800,33 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 20
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "UNITE_AZOTE",
       "libelle": "Combien d’unités d’azote chimique avez-vous utilisé sur la campagne ?",
-      "unite": "N/ha"
+      "unite": "N/ha",
+      "notation": {
+        "GTE": {
+          "15": {
+            "score": -5
+          },
+          "0": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "categorie",
@@ -566,7 +841,41 @@ var questionnaire = {
       "type": "question",
       "id": "POURCENTAGE_SAU_IAE",
       "libelle": "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?",
-      "unite": "%"
+      "unite": "%",
+      "notation": {
+        "LTE": {
+          "10": {
+            "score": 1
+          },
+          "20": {
+            "score": 2
+          },
+          "30": {
+            "score": 3
+          },
+          "40": {
+            "score": 4
+          },
+          "50": {
+            "score": 5
+          },
+          "60": {
+            "score": 6
+          },
+          "70": {
+            "score": 7
+          },
+          "80": {
+            "score": 8
+          },
+          "90": {
+            "score": 9
+          },
+          "100": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -582,7 +891,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 1
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -597,21 +916,65 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 0
+          },
+          "NON": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
       "id": "POURCENTAGE_COUVERT_VEGETAL",
       "libelle": "Sur quel pourcentage de vos surfaces conservez vous un couvert végétal ?",
-      "unite": "%"
+      "unite": "%",
+      "notation": {
+        "LTE": {
+          "10": {
+            "score": 1
+          },
+          "20": {
+            "score": 2
+          },
+          "30": {
+            "score": 3
+          },
+          "40": {
+            "score": 4
+          },
+          "50": {
+            "score": 5
+          },
+          "60": {
+            "score": 6
+          },
+          "70": {
+            "score": 7
+          },
+          "80": {
+            "score": 8
+          },
+          "90": {
+            "score": 9
+          },
+          "100": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "categorie",
       "id": "EAU",
       "libelle": "Gestion de l'eau",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
-      "couleur": "#c582af",
-      "opacite": "#debdd3",
+      "couleur": "#3498db",
+      "opacite": "#8dc1e4",
       "couleur_texte": "#fff"
     },
     {
@@ -627,7 +990,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -649,8 +1022,8 @@ var questionnaire = {
       "id": "PLASTIQUE",
       "libelle": "Zéro plastique",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
-      "couleur": "#c582af",
-      "opacite": "#debdd3",
+      "couleur": "#babab8",
+      "opacite": "#d1d1d1",
       "couleur_texte": "#fff"
     },
     {
@@ -666,7 +1039,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -681,7 +1064,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -696,7 +1089,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 5
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -711,7 +1114,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 5
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -726,7 +1139,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -741,7 +1164,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 5
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -756,15 +1189,25 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": 0
+          }
+        }
+      }
     },
     {
       "type": "categorie",
       "id": "RECYCLAGE",
       "libelle": "Recyclage et gestion des déchets",
       "complement_information": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.",
-      "couleur": "#c582af",
-      "opacite": "#debdd3",
+      "couleur": "#2ecc71",
+      "opacite": "#8adbaf",
       "couleur_texte": "#fff"
     },
     {
@@ -788,7 +1231,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "PARTENAIRE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -811,7 +1261,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "PARTENAIRE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -830,7 +1287,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -849,7 +1313,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -872,7 +1343,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "PARTENAIRE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -891,7 +1369,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -910,7 +1395,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -929,7 +1421,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -952,7 +1451,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "VALORISATION": {
+            "score": 5
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -979,7 +1485,17 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "REPRISE": {
+            "score": 10
+          },
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1002,7 +1518,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1021,7 +1544,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1040,7 +1570,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1059,7 +1596,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "CONTENEUR": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1082,7 +1626,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1101,7 +1652,14 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1132,7 +1690,17 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "GARAGISTE": {
+            "score": 10
+          },
+          "COLLECTEUR": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1155,7 +1723,17 @@ var questionnaire = {
           "id": "AUTRE",
           "libelle": "Autre"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "DECHETTERIE": {
+            "score": 10
+          },
+          "DISTRIBUTEUR": {
+            "score": 10
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1170,7 +1748,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": -5
+          }
+        }
+      }
     },
     {
       "type": "question",
@@ -1185,7 +1773,17 @@ var questionnaire = {
           "id": "NON",
           "libelle": "Non"
         }
-      ]
+      ],
+      "notation": {
+        "EQ": {
+          "OUI": {
+            "score": 10
+          },
+          "NON": {
+            "score": -5
+          }
+        }
+      }
     }
   ]
 };
