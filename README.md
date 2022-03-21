@@ -5,6 +5,10 @@ Diagnostic réalisé sur soi-même à partir de formulaires questions / réponse
 
 Logiciel libre sous license AGPL V3
 
+## Librairies requises
+
+Le module `php-yaml`
+
 ## Installation
 
 Récupération des sources :
