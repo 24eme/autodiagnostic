@@ -155,8 +155,7 @@ var questionnaire = {
             "SURFACE_SANS_HERBICIDE": 100,
             "PRODUITS_CMR": 0,
             "INSECTICIDES_NON_AB": 0,
-            "ANTI_BROTRYTIS": 0,
-            "STADE_ANTI_BROTRYTIS": "NC"
+            "ANTI_BROTRYTIS": 0
           }
         },
         {
@@ -168,8 +167,7 @@ var questionnaire = {
             "SURFACE_SANS_HERBICIDE": 100,
             "PRODUITS_CMR": 0,
             "INSECTICIDES_NON_AB": 0,
-            "ANTI_BROTRYTIS": 0,
-            "STADE_ANTI_BROTRYTIS": "NC"
+            "ANTI_BROTRYTIS": 0
           }
         },
         {
@@ -189,8 +187,7 @@ var questionnaire = {
             "SURFACE_SANS_HERBICIDE": 100,
             "PRODUITS_CMR": 0,
             "INSECTICIDES_NON_AB": 0,
-            "ANTI_BROTRYTIS": 0,
-            "STADE_ANTI_BROTRYTIS": "NC"
+            "ANTI_BROTRYTIS": 0
           }
         },
         {
@@ -202,8 +199,7 @@ var questionnaire = {
             "SURFACE_SANS_HERBICIDE": 100,
             "PRODUITS_CMR": 0,
             "INSECTICIDES_NON_AB": 0,
-            "ANTI_BROTRYTIS": 0,
-            "STADE_ANTI_BROTRYTIS": "NC"
+            "ANTI_BROTRYTIS": 0
           }
         }
       ]
@@ -1292,6 +1288,12 @@ var questionnaire = {
         "EQ": {
           "DECHETTERIE": {
             "score": 10
+          },
+          "STOCK": {
+            "score": 0
+          },
+          "AUTRE": {
+            "score": 0
           }
         }
       }
@@ -1348,6 +1350,15 @@ var questionnaire = {
         "EQ": {
           "PARTENAIRE": {
             "score": 10
+          },
+          "DECHETTERIE": {
+            "score": 0
+          },
+          "STOCK": {
+            "score": 0
+          },
+          "AUTRE": {
+            "score": 0
           }
         }
       }
@@ -1374,6 +1385,12 @@ var questionnaire = {
         "EQ": {
           "DECHETTERIE": {
             "score": 10
+          },
+          "STOCK": {
+            "score": 5
+          },
+          "AUTRE": {
+            "score": 0
           }
         }
       }
@@ -1400,6 +1417,12 @@ var questionnaire = {
         "EQ": {
           "DECHETTERIE": {
             "score": 10
+          },
+          "STOCK": {
+            "score": 5
+          },
+          "AUTRE": {
+            "score": 0
           }
         }
       }
@@ -1426,6 +1449,12 @@ var questionnaire = {
         "EQ": {
           "DECHETTERIE": {
             "score": 10
+          },
+          "STOCK": {
+            "score": 5
+          },
+          "AUTRE": {
+            "score": 0
           }
         }
       }
@@ -1455,6 +1484,15 @@ var questionnaire = {
       "notation": {
         "EQ": {
           "VALORISATION": {
+            "score": 5
+          },
+          "BRULAGE": {
+            "score": 5
+          },
+          "BROYAGE": {
+            "score": 5
+          },
+          "AUTRE": {
             "score": 5
           }
         }
@@ -1523,6 +1561,9 @@ var questionnaire = {
         "EQ": {
           "DECHETTERIE": {
             "score": 10
+          },
+          "STOCK": {
+            "score": 10
           }
         }
       }
@@ -1548,6 +1589,9 @@ var questionnaire = {
       "notation": {
         "EQ": {
           "DECHETTERIE": {
+            "score": 10
+          },
+          "STOCK": {
             "score": 10
           }
         }
@@ -1600,6 +1644,9 @@ var questionnaire = {
       "notation": {
         "EQ": {
           "CONTENEUR": {
+            "score": 10
+          },
+          "STOCK": {
             "score": 10
           }
         }
@@ -1694,6 +1741,9 @@ var questionnaire = {
       "notation": {
         "EQ": {
           "GARAGISTE": {
+            "score": 10
+          },
+          "DECHETTERIE": {
             "score": 10
           },
           "COLLECTEUR": {
