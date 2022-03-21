@@ -60,6 +60,9 @@ class Statistiques {
                 $categorieCourante = $question['libelle'];
                 continue;
             }
+            if (is_array($reponses[$question['id']])) {
+                continue;
+            }
             if (!isset($question['notation']) && isset($reponses[$question['id']])) {
                 continue;
             }
