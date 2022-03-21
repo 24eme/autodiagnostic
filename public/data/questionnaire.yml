@@ -22,67 +22,58 @@ questions:
   reponses:
   - id: SANCERRE
     libelle: AOC Sancerre
+    question:
+      id: SURFACE_SANCERRE
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: POUILLY_FUME
     libelle: AOC Pouilly-Fumé
+    question:
+      id: SURFACE_POUILLY_FUME
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: MENETOU_SALON
     libelle: AOC Menetou-Salon
+    question:
+      id: SURFACE_MENETOU_SALON
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: QUINCY
     libelle: AOC Quincy
+    question:
+      id: SURFACE_QUINCY
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: REUILLY
     libelle: AOC Reuilly
+    question:
+      id: SURFACE_REUILLY
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: COT_GIENNOIS
     libelle: AOC Coteaux du Giennois
+    question:
+      id: SURFACE_COT_GIENNOIS
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: CHATEAUMEILLANT
     libelle: AOC Châteaumeillant
+    question:
+      id: SURFACE_CHATEAUMEILLANT
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: COTES_CHARITE
     libelle: IGP Côtes de la Charité
+    question:
+      id: SURFACE_COTES_CHARITE
+      libelle: "Précisez la surface : "
+      unite: ha
   - id: COT_TANNAY
     libelle: IGP Coteaux de Tannay
-
-- type: question
-  id: SURFACE_SANCERRE
-  libelle: Quelle est la surface d'AOC Sancerre ?
-  unite: ha
-
-- type: question
-  id: SURFACE_POUILLY_FUME
-  libelle: Quelle est la surface d'AOC Pouilly-Fumé ?
-  unite: ha
-
-- type: question
-  id: SURFACE_MENETOU_SALON
-  libelle: Quelle est la surface d'AOC Menetou-Salon ?
-  unite: ha
-
-- type: question
-  id: SURFACE_QUINCY
-  libelle: Quelle est la surface d'AOC Quincy ?
-  unite: ha
-
-- type: question
-  id: SURFACE_REUILLY
-  libelle: Quelle est la surface d'AOC Reuilly ?
-  unite: ha
-
-- type: question
-  id: SURFACE_COT_GIENNOIS
-  libelle: Quelle est la surface d'AOC Coteaux du Giennois ?
-  unite: ha
-
-- type: question
-  id: SURFACE_CHATEAUMEILLANT
-  libelle: Quelle est la surface d'AOC Châteaumeillant ?
-  unite: ha
-
-- type: question
-  id: SURFACE_COTES_CHARITE
-  libelle: Quelle est la surface d'IGP Côtes de la Charité ?
-  unite: ha
-
-- type: question
-  id: SURFACE_COT_TANNAY
-  libelle: Quelle est la surface d'IGP Coteaux de Tannay ?
-  unite: ha
+    question:
+      id: SURFACE_COT_TANNAY
+      libelle: "Précisez la surface : "
+      unite: ha
 
 - type: question
   id: VENTE_RECOLTE_RAISIN
