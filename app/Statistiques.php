@@ -4,7 +4,7 @@ class Statistiques {
     const COMPARATEUR_SUP_EGAL = 'GTE';
     const COMPARATEUR_INF_EGAL = 'LTE';
     const COMPARATEUR_EGAL = 'EQ';
-    const DATA_QUESTIONNAIRE = 'data/questionnaire.js';
+    const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
 
     private $config;
     private $reponses;
@@ -15,7 +15,7 @@ class Statistiques {
     private $ptsAmeliorations;
 
     public function __construct($reponses) {
-        $this->config = json_decode(preg_replace('/;$/', '', preg_replace('/^.+{/', '{', file_get_contents(self::DATA_QUESTIONNAIRE))), true);
+        $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
         $this->reponses = $reponses;
         $this->scores = [];
         $this->highScores = [];

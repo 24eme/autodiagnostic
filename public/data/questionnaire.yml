@@ -504,7 +504,7 @@ questions:
   id: ANTI_BROTRYTIS
   libelle: Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?
   notation:
-    GT:
+    GTE:
       '1':
         score: -5
       '0':
@@ -944,6 +944,10 @@ questions:
     EQ:
       'DECHETTERIE':
         score: 10
+      'STOCK':
+        score: 5
+      'AUTRE':
+        score: 0
 
 - type: question
   id: QUOI_EMBALLAGES_INTRANTS
@@ -982,6 +986,12 @@ questions:
     EQ:
       'PARTENAIRE':
         score: 10
+      'DECHETTERIE':
+        score: 8
+      'STOCK':
+        score: 5
+      'AUTRE':
+        score: 0
 
 - type: question
   id: QUOI_POTEAUX_PLASTIQUE
@@ -1000,6 +1010,10 @@ questions:
     EQ:
       'DECHETTERIE':
         score: 10
+      'STOCK':
+        score: 5
+      'AUTRE':
+        score: 0
 
 - type: question
   id: QUOI_AGRAFES
@@ -1018,6 +1032,10 @@ questions:
     EQ:
       'DECHETTERIE':
         score: 10
+      'STOCK':
+        score: 5
+      'AUTRE':
+        score: 0
 
 - type: question
   id: QUOI_MANCHONS
@@ -1035,6 +1053,10 @@ questions:
   notation:
     EQ:
       'DECHETTERIE':
+        score: 10
+      'STOCK':
+        score: 5
+      'AUTRE':
         score: 10
 
 - type: question
@@ -1054,7 +1076,13 @@ questions:
       libelle: "Précisez : "
   notation:
     EQ:
+      'BRULAGE':
+        score: 5
       'VALORISATION':
+        score: 5
+      'BROYAGE':
+        score: 5
+      'AUTRE':
         score: 5
 
 - type: question
@@ -1080,6 +1108,12 @@ questions:
         score: 10
       'DECHETTERIE':
         score: 10
+      'STOCK':
+        score: 10
+      'REUTILISATION':
+        score: 10
+      'AUTRE':
+        score: 10
 
 - type: question
   id: QUOI_CARTONS
@@ -1100,6 +1134,12 @@ questions:
     EQ:
       'DECHETTERIE':
         score: 10
+      'STOCK':
+        score: 10
+      'BRULAGE':
+        score: 10
+      'AUTRE':
+        score: 10
 
 - type: question
   id: QUOI_POTEAUX_METAL
@@ -1117,6 +1157,10 @@ questions:
   notation:
     EQ:
       'DECHETTERIE':
+        score: 10
+      'STOCK':
+        score: 10
+      'AUTRE':
         score: 10
 
 - type: question
@@ -1136,6 +1180,10 @@ questions:
     EQ:
       'DECHETTERIE':
         score: 10
+      'STOCK':
+        score: 10
+      'AUTRE':
+        score: 10
 
 - type: question
   id: QUOI_BOUTEILLES
@@ -1153,6 +1201,10 @@ questions:
   notation:
     EQ:
       'CONTENEUR':
+        score: 10
+      'STOCK':
+        score: 10
+      'AUTRE':
         score: 10
 
 - type: question
@@ -1174,6 +1226,12 @@ questions:
     EQ:
       'DECHETTERIE':
         score: 10
+      'CONTENEUR':
+        score: 10
+      'STOCK':
+        score: 10
+      'AUTRE':
+        score: 10
 
 - type: question
   id: QUOI_TUTEURS
@@ -1191,6 +1249,10 @@ questions:
   notation:
     EQ:
       'DECHETTERIE':
+        score: 10
+      'STOCK':
+        score: 10
+      'AUTRE':
         score: 10
 
 - type: question
@@ -1214,9 +1276,17 @@ questions:
       libelle: "Précisez : "
   notation:
     EQ:
+      'DECHETTERIE':
+        score: 10
       'GARAGISTE':
         score: 10
       'COLLECTEUR':
+        score: 10
+      'STOCK':
+        score: 10
+      'EAUX_USEES':
+        score: 10
+      'AUTRE':
         score: 10
 
 - type: question
@@ -1239,6 +1309,10 @@ questions:
       'DECHETTERIE':
         score: 10
       'DISTRIBUTEUR':
+        score: 10
+      'STOCK':
+        score: 10
+      'AUTRE':
         score: 10
 
 - type: question
