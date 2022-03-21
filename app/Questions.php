@@ -2,7 +2,7 @@
 
 class Questions
 {
-    const DATA_QUESTIONNAIRE = 'data/questionnaire.js';
+    const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
 
     private $questions = [];
     private $categories = [];
@@ -11,7 +11,7 @@ class Questions
 
     public function __construct()
     {
-        $questionnaire = json_decode(preg_replace('/;$/', '', preg_replace('/^.+{/', '{', file_get_contents(self::DATA_QUESTIONNAIRE))), true);
+        $questionnaire = yaml_parse_file(self::DATA_QUESTIONNAIRE);
         $this->questions = $this->extract('question', $questionnaire['questions']);
         $this->categories = $this->extract('categorie', $questionnaire['questions']);
         $this->questionnaire = $this->build($questionnaire['questions']);
