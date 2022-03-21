@@ -12,11 +12,12 @@ questions:
 - type: question
   id: SURFACE_EXPLOITATION
   libelle: Quelle est la surface de votre exploitation ?
+  complement_information: ""
   unite: ha
 
 - type: question
   id: APPELLATIONS
-  libelle: Vous produisez en
+  libelle: "Vous produisez en :"
   multiple: true
   reponses:
   - id: SANCERRE
@@ -111,21 +112,27 @@ questions:
     reponses_automatiques:
       SURFACE_NON_TRAITEE: 100
       DESHERBAGE_CHIMIQUE: NON
-      SURFACE_SANS_HERBICIDE: 100
-      PRODUITS_CMR: 0
+      UTILISATION_CMR: NON
       INSECTICIDES_NON_AB: 0
-      ANTI_BROTRYTIS: 0
-      STADE_ANTI_BROTRYTIS: NC
+      TRAITEMENT_BROTRYTIS: NON
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+      AZOTE_ORGANIQUE: OUI
   - id: BIO
     libelle: AB
     reponses_automatiques:
       SURFACE_NON_TRAITEE: 100
       DESHERBAGE_CHIMIQUE: NON
-      SURFACE_SANS_HERBICIDE: 100
-      PRODUITS_CMR: 0
+      UTILISATION_CMR: NON
       INSECTICIDES_NON_AB: 0
-      ANTI_BROTRYTIS: 0
-      STADE_ANTI_BROTRYTIS: NC
+      TRAITEMENT_BROTRYTIS: NON
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+      AZOTE_ORGANIQUE: OUI
   - id: HVE
     libelle: HVE3
   - id: TERRAVITIS
@@ -135,21 +142,27 @@ questions:
     reponses_automatiques:
       SURFACE_NON_TRAITEE: 100
       DESHERBAGE_CHIMIQUE: NON
-      SURFACE_SANS_HERBICIDE: 100
-      PRODUITS_CMR: 0
+      UTILISATION_CMR: NON
       INSECTICIDES_NON_AB: 0
-      ANTI_BROTRYTIS: 0
-      STADE_ANTI_BROTRYTIS: NC
+      TRAITEMENT_BROTRYTIS: NON
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+      AZOTE_ORGANIQUE: OUI
   - id: BIODYVIN
     libelle: Biodyvin
     reponses_automatiques:
       SURFACE_NON_TRAITEE: 100
       DESHERBAGE_CHIMIQUE: NON
-      SURFACE_SANS_HERBICIDE: 100
-      PRODUITS_CMR: 0
+      UTILISATION_CMR: NON
       INSECTICIDES_NON_AB: 0
-      ANTI_BROTRYTIS: 0
-      STADE_ANTI_BROTRYTIS: NC
+      TRAITEMENT_BROTRYTIS: NON
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+      AZOTE_ORGANIQUE: OUI
 
 - type: question
   id: SELECTION_SANS_CERTIF
@@ -278,6 +291,8 @@ questions:
     libelle: Oui
   - id: NON
     libelle: Non
+    reponses_automatiques:
+      SURFACE_SANS_HERBICIDE: 100
   - id: PENTES
     libelle: Uniquement sur les pentes d'au moins 40% de dénivelé
   notation:
@@ -318,7 +333,7 @@ questions:
 
 - type: question
   id: PASSAGE_OUTILS_HORS_HERBICIDES
-  libelle: Sur ces parcelles sans herbicides, combien de passages d'outils avez-vous fait hors tonte ?
+  libelle: Sur les parcelles sans herbicides, combien de passages d'outils avez-vous fait (hors tonte) ?
 
 - type: question
   id: PASSAGE_OUTILS_HERBICIDES
@@ -341,7 +356,7 @@ questions:
 
 - type: question
   id: DESHERBAGE_SUP_MOITIE_PARCELLES
-  libelle: Désherbez-vous plus de 50% de la surface d'une ou plusieurs de vos parcelles ?
+  libelle: Désherbez-vous chimiquement plus de 50% de la surface d'une ou plusieurs de vos parcelles ?
   reponses:
   - id: OUI
     libelle: Oui
@@ -362,6 +377,23 @@ questions:
     libelle: Oui
   - id: NON
     libelle: Non
+  notation:
+    EQ:
+      OUI:
+        score: -5
+      NON:
+        score: 0
+
+- type: question
+  id: UTILISATION_CMR
+  libelle: Utilisez-vous des produits classés CMR ?
+  reponses:
+  - id: OUI
+    libelle: Oui
+  - id: NON
+    libelle: Non
+    reponses_automatiques:
+      PRODUITS_CMR: 0
   notation:
     EQ:
       OUI:
@@ -418,6 +450,17 @@ questions:
   libelle: Sur une parcelle représentative de votre domaine, combien avez-vous fait de passages contre le mildiou ?
 
 - type: question
+  id: TRAITEMENT_MILDIOU
+  libelle: Avez-vous fait des traitements mildiou supplémentaires sur certaines parcelles ?
+  reponses:
+  - id: OUI
+    libelle: Oui
+  - id: NON
+    libelle: Non
+    reponses_automatiques:
+      SUPPLEMENT_MILDIOU: 0
+
+- type: question
   id: SUPPLEMENT_MILDIOU
   libelle: Combien de traitements mildiou supplémentaires avez-vous fait sur ces parcelles ?
 
@@ -431,6 +474,17 @@ questions:
   libelle: Sur une parcelle représentative de votre domaine, combien avez-vous fait de passages contre l'oïdium ?
 
 - type: question
+  id: TRAITEMENT_OIDIUM
+  libelle: Avez-vous fait des traitements oïdium supplémentaires sur certaines parcelles ?
+  reponses:
+  - id: OUI
+    libelle: Oui
+  - id: NON
+    libelle: Non
+    reponses_automatiques:
+      SUPPLEMENT_OIDIUM: 0
+
+- type: question
   id: SUPPLEMENT_OIDIUM
   libelle: Combien de traitements oïdium supplémentaires avez-vous fait sur ces parcelles ?
 
@@ -442,6 +496,18 @@ questions:
     libelle: Oui
   - id: NON
     libelle: Non
+
+- type: question
+  id: TRAITEMENT_BROTRYTIS
+  libelle: Utilisez-vous des antibotrytis (hors biocontrôle) ?
+  reponses:
+  - id: OUI
+    libelle: Oui
+  - id: NON
+    libelle: Non
+    reponses_automatiques:
+      ANTI_BROTRYTIS: 0
+      STADE_ANTI_BROTRYTIS: NC
 
 - type: question
   id: ANTI_BROTRYTIS
@@ -500,10 +566,10 @@ questions:
     libelle: Oui
   - id: NON
     libelle: Non
+    reponses_automatiques:
+      CURETAGE_SAUVIGNON: 0
   - id: ESSAI
     libelle: Oui en essai
-  - id: AUTRE
-    libelle: Autre
 
 - type: question
   id: CURETAGE_SAUVIGNON
@@ -542,6 +608,8 @@ questions:
   reponses:
   - id: OUI
     libelle: Oui
+    reponses_automatiques:
+      UNITE_AZOTE: 0
   - id: NON
     libelle: Non
   notation:
