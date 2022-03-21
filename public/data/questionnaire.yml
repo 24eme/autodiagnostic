@@ -248,7 +248,7 @@ questions:
 - type: question
   id: IFT_HERBICIDE
   libelle: Quel est votre IFT herbicides ?
-  complement_information: IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'outil suivant
+  complement_information: IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'<a href="data/Calcul IFT Herbicides.ods">outil suivant</a>
   notation:
     GTE:
       '1.08':
@@ -267,7 +267,7 @@ questions:
 - type: question
   id: IFT_HORS_HERBICIDE
   libelle: Quel est votre IFT hors herbicides ?
-  complement_information: IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT
+  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href=\"data/Calcul IFT Hors Herbicides.ods\">outil suivant</a>"
   notation:
     GTE:
       '10.89':
@@ -591,6 +591,7 @@ questions:
 - type: question
   id: BILAN_AZOTE
   libelle: Quel est votre bilan azoté global ?
+  complement_information: Vous pouvez le calculer grâce à l'<a href="data/Bilan azoté.ods">outil suivant</a>
   unite: kg N/ha
   notation:
     GTE:
@@ -644,6 +645,7 @@ questions:
 - type: question
   id: POURCENTAGE_SAU_IAE
   libelle: Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?
+  complement_information: Vous pouvez le calculer grâce à l'<a href="data/IAE Simplifié.ods">outil suivant</a>
   unite: "%"
   notation:
     LTE:
