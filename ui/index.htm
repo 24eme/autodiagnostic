@@ -65,11 +65,21 @@
               {% question.complement_information %}
             </p>
             <div class="list-group my-4" v-if="question.reponses">
-              <label v-for="reponse in question.reponses" class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
-                <input v-if="question.multiple" v-model="reponses[question.id]" v-bind:id="reponse.id" class="form-check-input me-1" type="checkbox" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
-                <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
-                {% reponse.libelle %}
-              </label>
+              <div v-for="reponse in question.reponses">
+                <label class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
+                  <input v-if="question.multiple" v-model="reponses[question.id]" v-bind:id="reponse.id" class="form-check-input me-1" type="checkbox" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
+                  <input v-else-if="reponse.question" v-model="reponses[question.id]" class="form-check-input me-1" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
+                  <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
+                  {% reponse.libelle %}
+                </label>
+                <div v-if="reponse.question && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
+                  <p class="list-group-item list-group-item-action d-flex py-3 input-group">
+                    {% reponse.question.libelle %}&nbsp;
+                    <input v-model="reponses[reponse.question.id]" type="text" class="form-control d-inline" style="width: 75%" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)"/>
+                    <span class="input-group-text" v-show="reponse.question.unite">&nbsp;{% reponse.question.unite %}</span>
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="col-6" v-else>
               <div class="my-4 input-group">
