@@ -750,10 +750,13 @@ questions:
 
 - type: question
   id: ECONOMIE_EAU
-  libelle: Avez-vous un ou plusieurs systèmes permettant une économie d'eau, et le cas échéant, le(s)quel(s) ?
+  libelle: Avez-vous un ou plusieurs systèmes permettant une économie d'eau ?
   reponses:
   - id: OUI
     libelle: Oui
+    question:
+      id: AUTRE_PRECISION
+      libelle: "Précisez :"
   - id: NON
     libelle: Non
 
