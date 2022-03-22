@@ -66,6 +66,28 @@ class Questions
         return $this->found[$id];
     }
 
+    public function getQuestionIcon($id)
+    {
+        $question = $this->find($id);
+
+        $icon = '';
+
+        switch ($this->getQuestionType($id)) {
+            case 'Choix multiple':
+                $icon = 'bi-ui-checks';
+                break;
+            case 'Choix unique':
+                $icon = 'bi-ui-radios';
+                break;
+            case 'Nombre':
+            default:
+                $icon = 'bi-type';
+                break;
+        }
+
+        return $icon;
+    }
+
     public function getQuestionType($id)
     {
         $question = $this->find($id);

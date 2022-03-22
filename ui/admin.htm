@@ -75,52 +75,47 @@
     <repeat group="{{ @questions }}" value="{{ @question }}" counter="{{ @ctr }}">
       <check if="{{ @ctr !== 1 }}">
         <div class="modal fade" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
-          <div class="modal-dialog modal-lg">
+          <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-body">
-                <h6>{{ @question.libelle }}</h6>
+                <h5>
+                  <i class="bi {{ @questionnaire->getQuestionIcon(@question.id) }} me-1"
+                    title="{{ @questionnaire->getQuestionType(@question.id) }}"></i>
+                  {{ @question.libelle }}
+                </h5>
                 <hr style="width: 25%;">
-                <p>
-                  Type de question : {{ @questionnaire->getQuestionType(@question.id) }}
-                  <check if="@questionnaire->getQuestionUnite(@question.id)">(Unité : {{ @questionnaire->getQuestionUnite(@question.id) }})</check>
+                <p class="h-100 p-3 bg-light border position-relative">
+                  {{ @questionnaire->getQuestionAide(@question.id) }}
+                  <span class="position-absolute me-2 end-0 bottom-0 opacity-25 fs-6">Aide</span>
                 </p>
-                <p>Texte d'aide :<textarea class="form-control" placeholder="Texte d'aide" readonly>{{ @questionnaire->getQuestionAide(@question.id) }}</textarea></p>
 
                 <check if="{{ @questionnaire->hasReponses(@question.id) }}">
-                  <div class="border p-2 mb-1">
-                    <p class="mb-0">Réponses : </p>
-                    <div class="row">
+                  <h6 class="mb-0 text-decoration-underline">Réponses : </h6>
+                  <table class="table table-striped">
+                    <thead><tr><th scope="col">Réponse</th><th scope="col">Réponse(s) auto.</th></tr></thead>
+                    <tbody>
                       <repeat group="{{ @questionnaire->getReponses(@question.id) }}" value="{{ @reponse }}">
-                        <div class="col text-center">
-                          {{ @reponse.libelle }}
-                        </div>
+                        <tr>
+                          <td>{{ @reponse.libelle }}</td>
+                          <check if="{{ @questionnaire->hasReponsesAutomatiques(@question.id) }}">
+                            <true>
+                              <td>
+                              <repeat group="{{ @questionnaire->getReponsesAutomatiques(@question.id)[@reponse.libelle] }}" key="{{ @id }}" value="{{ @value }}">
+                                <p>{{ @questionnaire->find(@id)['libelle'] }} : {{ @value }}</p>
+                              </repeat>
+                              </td>
+                            </true>
+                            <false><td>-</td></false>
+                          </check>
+                        </tr>
                       </repeat>
-                    </div>
-                  </div>
+                    </tbody>
+                  </table>
                 </check>
-
-                <div class="border p-2 mb-1">
-                  <p class="mb-0">Réponses automatiques : {{ @questionnaire->hasReponsesAutomatiques(@question.id) ? '<span class="text-success">Oui</span>' : '<span class="text-danger">Non</span>' }}</p>
-                  <check if="@questionnaire->hasReponsesAutomatiques(@question.id)">
-                    <repeat group="@questionnaire->getReponsesAutomatiques(@question.id)" key="{{ @reponse }}" value="{{ @reponses }}">
-                      <div class="row">
-                        <div class="col-2">
-                          {{ @reponse }}
-                        </div>
-                        <div class="col">
-                        <repeat group="{{ @reponses }}" key="{{ @rid }}" value="{{ @valeur }}">
-                          <p class="mb-0">&bull; {{ @questionnaire->find(@rid)["libelle"] }} : {{ @valeur }}</p>
-                        </repeat>
-                        </div>
-                      </div>
-                      <hr>
-                    </repeat>
-                  </check>
-                </div>
 
                 <check if="{{ @questionnaire->hasNotation(@question.id) }}">
                   <div class="mb-1">
-                    <p class="mb-0">Notation :</p>
+                    <h6 class="mb-0 text-decoration-underline">Notation :</h6>
                       <repeat group="{{ @questionnaire->getNotation(@question.id) }}" key="{{ @comparateur }}" value="{{ @notes }}">
                         <p>Si la valeur est <strong>
                           <check if="{{ @comparateur === 'EQ' }}">
