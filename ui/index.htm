@@ -70,7 +70,7 @@
                   <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
                   {% reponse.libelle %}
                 </label>
-                <div v-if="reponse.question && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
+                <div v-if="reponse.question && reponses[question.id] !== undefined && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
                   <p class="list-group-item list-group-item-action d-flex py-3 input-group">
                     {% reponse.question.libelle %}&nbsp;
                     <input v-model="reponses[reponse.question.id]" type="text" class="form-control d-inline" style="width: 75%" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)"/>
