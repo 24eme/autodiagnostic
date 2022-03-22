@@ -210,11 +210,15 @@ questions:
   - id: VOLUCOMPTEUR
     libelle: Volucompteur programmable pour éviter le débordement des cuves
   - id: ANTIGOUTTES
-    libelle: Système anti-gouttes (à la rampe pour la régularité de la pulvérisation)|Panneaux récupérateurs de bouillie
+    libelle: Système anti-gouttes (à la rampe pour la régularité de la pulvérisation)
+  - id: BOUILLIE
+    libelle: Panneaux récupérateurs de bouillie
   - id: PRECISION
     libelle: Matériel de précision permettant de réduire les doses de produits phytosanitaires (traitement face par face)
   - id: RINCAGE
     libelle: Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d’automisation de rinçage des cuves
+  - id: AUCUN
+    libelle: Aucun de ces matériels ou équipements
   notation:
     EQ:
       AMENAGEMENT:
@@ -231,10 +235,14 @@ questions:
         score: 1
       ANTIGOUTTES:
         score: 1
+      BOUILLIE:
+        score: 1
       PRECISION:
         score: 1
       RINCAGE:
         score: 1
+      AUCUN:
+        score: 0
 
 - type: question
   id: IFT_HERBICIDE
@@ -378,6 +386,7 @@ questions:
 - type: question
   id: UTILISATION_CMR
   libelle: Utilisez-vous des produits classés CMR ?
+  complement_information: CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC ou l'étiquette du produit
   reponses:
   - id: OUI
     libelle: Oui
@@ -395,7 +404,6 @@ questions:
 - type: question
   id: PRODUITS_CMR
   libelle: Combien de CMR avez-vous utilisés sur la campagne ?
-  complement_information: CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC ou l'étiquette du produit
   notation:
     GTE:
       '3':
@@ -585,7 +593,7 @@ questions:
 - type: question
   id: BILAN_AZOTE
   libelle: Quel est votre bilan azoté global ?
-  complement_information: Vous pouvez le calculer grâce à l'<a href="data/Bilan azoté.ods">outil suivant</a>
+  complement_information: Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href="data/Bilan azoté.ods">outil suivant</a>
   unite: kg N/ha
   notation:
     GTE:
@@ -663,6 +671,21 @@ questions:
         score: 9
       '100':
         score: 10
+
+- type: question
+  id: METRE_LINEAIRE_HAIE
+  libelle: Combien de mètres linéaires de haie(s) avez-vous sur votre exploitation ?
+  complement_information: "Une haie est une unité linéaire de végétation ligneuse, implantée à plat, sur talus ou sur creux, avec : - présence d’arbustes, et, le cas échéant, présence d’arbres et/ou d’autres ligneux (ronces, genêts, ajoncs…) ; - ou présence d’arbres et autres ligneux (ronces, genêts, ajoncs…). Donc une haie est obligatoirement composée au minimum d’arbustes buissonnants, complétés le cas échéant par d'autres éléments ligneux.La haie ne peut donc pas être formée que d'arbres (c'est un alignement d'arbres) ou que de ronces."
+  unite: m
+
+- type: question
+  id: METRE_LINEAIRE_ARBRE
+  libelle: Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?
+  unite: m
+
+- type: question
+  id: ARBRE_ISOLE
+  libelle: Combien d'arbres isolés avez-vous sur votre exploitation ?
 
 - type: question
   id: POSSESSION_RUCHES
@@ -774,6 +797,7 @@ questions:
 - type: question
   id: POT_PLASTIQUE
   libelle: Achetez-vous encore des plants de vigne en pot en plastique ?
+  complement_information: <img src="img/visuels/POT_PLASTIQUE_1.jpeg" height="150px" /> <img src="img/visuels/POT_PLASTIQUE_2.jpeg" height="150px" />
   reponses:
   - id: OUI
     libelle: Oui
@@ -789,6 +813,7 @@ questions:
 - type: question
   id: MANCHONS_PLASTIQUE
   libelle: Achetez-vous encore des manchons en plastique ?
+  complement_information: <img src="img/visuels/MANCHONS_PLASTIQUE_1.jpg" height="150px" />
   reponses:
   - id: OUI
     libelle: Oui
