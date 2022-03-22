@@ -20,8 +20,17 @@
   </div>
   </check>
 
-  <div class="row g-5">
-    <div id="administration-listing" class="col-sm-6">
+  <div class="g-5 tabs">
+    <ul class="nav nav-pills nav-fill mb-5">
+      <li class="nav-item">
+        <a class="nav-link active" href="#" data-tab="administration-questions">Liste des questions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-tab="administration-listing">Tous les résultats</a>
+      </li>
+    </ul>
+
+    <div id="administration-listing" class="tab">
       <h3 class="display-6 mb-5">Tous les résultats</h3>
       <check if="{{ @reponses }}">
         <true>
@@ -33,7 +42,7 @@
       </check>
     </div>
 
-    <div id="administration-questions" class="col-sm-6">
+    <div id="administration-questions" class="tab active">
       <h3 class="display-6 mb-5">Liste des questions</h3>
       <table class="table">
         <thead>
@@ -151,7 +160,11 @@
 <script>
   const modals = document.getElementById('administration-modals')
   const questions = document.getElementById('administration-questions')
+  const listing = document.getElementById('administration-listing')
   const backdrop = document.getElementById('backdrop')
+
+  const tabs_trigger = document.getElementsByClassName('nav-link') || [];
+  const tabs = [questions, listing]
 
   questions.addEventListener('click', function (e) {
     for (let target = e.target; target && target !== this; target = target.parentNode) {
@@ -159,6 +172,12 @@
           openModal.call(target, e)
         }
     }
+  })
+
+  Array.prototype.forEach.call(tabs_trigger, function (tab) {
+    tab.addEventListener('click', function (e) {
+      displayTab(e.target)
+    })
   })
 
   modals.addEventListener('click', function (e) {
@@ -187,5 +206,19 @@
     modal.classList.remove('show')
     modal.style.display = 'none';
     backdrop.style.display = 'none';
+  }
+
+  function displayTab(trigger) {
+    tabs.forEach(function (t) {
+      t.classList.remove('active')
+    })
+
+    Array.prototype.forEach.call(tabs_trigger, function (t) {
+      t.classList.remove('active')
+    })
+
+    const tab = document.getElementById(trigger.dataset.tab)
+    tab.classList.add('active')
+    trigger.classList.add('active')
   }
 </script>

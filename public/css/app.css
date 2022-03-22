@@ -201,3 +201,11 @@ progress {
   width: intrinsic;
   padding: .25rem .5rem;
 }
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
