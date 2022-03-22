@@ -74,15 +74,16 @@
                   <p class="list-group-item list-group-item-action d-flex py-3 input-group">
                     {% reponse.question.libelle %}&nbsp;
                     <input v-model="reponses[reponse.question.id]" type="text" class="form-control d-inline" style="width: 75%" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)"/>
-                    <span class="input-group-text" v-show="reponse.question.unite">&nbsp;{% reponse.question.unite %}</span>
+                    <span class="input-group-text" v-show="reponse.question.unite" v-html="reponse.question.unite"></span>
                   </p>
                 </div>
               </div>
             </div>
             <div class="col-6" v-else>
               <div class="my-4 input-group">
-                <input v-model="reponses[question.id]" type="number" min=0 :max="(question.unite === '%') ? 100 : null" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
-                <span class="input-group-text" v-show="question.unite">{% question.unite %}</span>
+                <input v-if="question.format && question.format == 'date'" v-model="reponses[question.id]" type="date" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
+                <input v-else v-model="reponses[question.id]" type="number" min=0 :max="(question.unite === '%') ? 100 : null" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
+                <span class="input-group-text" v-show="question.unite" v-html="question.unite"></span>
               </div>
             </div>
             <div class="d-grid d-md-flex justify-content-end my-4">

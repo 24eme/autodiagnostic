@@ -439,10 +439,14 @@ questions:
 - type: question
   id: DATE_PREMIER_MILDIOU
   libelle: Quelle est la date de votre premier traitement mildiou ?
+  format: date
+  unite: <i class="bi bi-calendar-week"></i>
 
 - type: question
   id: DATE_DERNIER_MILDIOU
   libelle: Quelle est la date de votre dernier traitement mildiou ? (hors plantes pas encore en production)
+  format: date
+  unite: <i class="bi bi-calendar-week"></i>
 
 - type: question
   id: PASSAGES_MILDIOU
