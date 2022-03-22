@@ -7,6 +7,7 @@ use phpCAS;
 use Statistiques;
 use Template;
 use Web;
+use Utils\Giilda;
 
 class App
 {
@@ -50,6 +51,14 @@ class App
 
     public function index(Base $f3)
     {
+        $giilda = new Giilda($f3, '00136401');
+
+        $surfaces = [];
+        foreach ($giilda->getAppellations() as $appellation) {
+            $surfaces[$appellation] = $giilda->getSurfaceFor($appellation);
+        }
+
+        $f3->set('surfaces', $surfaces);
         $f3->set('inc', 'index.htm');
     }
 
