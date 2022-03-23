@@ -313,6 +313,11 @@ questions:
     libelle: Non
     reponses_automatiques:
       SURFACE_SANS_HERBICIDE: 100
+      PASSAGE_OUTILS_HORS_HERBICIDES: NC
+      PASSAGE_OUTILS_HERBICIDES: NC
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
   - id: PENTES
     libelle: Uniquement sur les pentes d'au moins 40% de dénivelé
   notation:
