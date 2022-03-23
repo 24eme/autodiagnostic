@@ -77,30 +77,33 @@
         <div class="modal fade" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  <span class="text-muted">{{ @questionnaire->getQuestionCategorie(@question.id) }}</span><br />
+                  1. {{ @question.libelle }}
+                </h5>
+              </div>
               <div class="modal-body">
-                <h3>
-                  <i class="bi {{ @questionnaire->getQuestionIcon(@question.id) }} me-1 bg-secondary bg-opacity-25 px-1"
-                    title="{{ @questionnaire->getQuestionType(@question.id) }}"></i>
-                  {{ @question.libelle }}
-                </h3>
-                <hr style="width: 25%;">
-
-                <h4 class="text-decoration-underline">Informations générales</h4>
+                <h5>Informations générales</h5>
                 <ul>
-                  <li><span class="fw-bold">Catégorie :</span> {{ @questionnaire->getQuestionCategorie(@question.id) }}</li>
                   <li><span class="fw-bold">Unité :</span> {{ @questionnaire->getQuestionUnite(@question.id) }}</li>
-                  <li><span class="fw-bold">Type de question :</span> {{ @questionnaire->getQuestionType(@question.id) }}</li>
-                </ul>
+                  <li>
+                    <span class="fw-bold">Type de question :</span>
+                    <i class="bi {{ @questionnaire->getQuestionIcon(@question.id) }} me-1 bg-secondary bg-opacity-25 px-1"
+                      title="{{ @questionnaire->getQuestionType(@question.id) }}"></i>
 
-                <h4 class="text-decoration-underline">Message d'aide</h4>
+                    {{ @questionnaire->getQuestionType(@question.id) }}
+                  </li>
+                </ul>
+                <h5 class="mt-4">Message d'aide</h5>
                 <p class="h-100 p-3 bg-light border">
                   {{ @questionnaire->getQuestionAide(@question.id) ?? '<span class="fst-italic text-muted">Sans message d\'aide</span>' }}
                 </p>
 
                 <check if="{{ @questionnaire->hasReponses(@question.id) }}">
-                  <h4 class="mb-0 text-decoration-underline">Réponses : </h4>
+                  <h5 class="mt-4">Réponses</h5>
                   <table class="table table-striped table-bordered table-sm">
-                    <thead><tr><th scope="col">Réponse</th><th scope="col">Réponse(s) auto.</th></tr></thead>
+                    <thead><tr><th scope="col">Réponse</th><th scope="col">Préremplissage des réponses</th></tr></thead>
                     <tbody>
                       <repeat group="{{ @questionnaire->getReponses(@question.id) }}" value="{{ @reponse }}">
                         <tr>
@@ -108,9 +111,20 @@
                           <check if="{{ @questionnaire->hasReponsesAutomatiques(@question.id) }}">
                             <true>
                               <td>
-                              <repeat group="{{ @questionnaire->getReponsesAutomatiques(@question.id)[@reponse.libelle] }}" key="{{ @id }}" value="{{ @value }}">
-                                <p class="my-0">{{ @questionnaire->find(@id)['libelle'] }} : {{ @value }}</p>
-                              </repeat>
+                                <table class="table table-sm table-striped small table-bordered table-hover">
+                                  <tr>
+                                    <th>Catégorie</th>
+                                    <th>Question</th>
+                                    <th>Réponse</th>
+                                  </tr>
+                                  <repeat group="{{ @questionnaire->getReponsesAutomatiques(@question.id)[@reponse.libelle] }}" key="{{ @id }}" value="{{ @value }}">
+                                  <tr>
+                                    <td>{{ @questionnaire->getQuestionCategorie(@id) }}</td>
+                                    <td>{{ @questionnaire->find(@id)['libelle'] }}</td>
+                                    <td>{{ @value }}</td>
+                                  </tr>
+                                  </repeat>
+                                </table>
                               </td>
                             </true>
                             <false><td>-</td></false>
