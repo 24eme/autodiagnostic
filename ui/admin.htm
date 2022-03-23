@@ -79,14 +79,22 @@
             <div class="modal-content">
               <div class="modal-body">
                 <h3>
-                  <i class="bi {{ @questionnaire->getQuestionIcon(@question.id) }} me-1"
+                  <i class="bi {{ @questionnaire->getQuestionIcon(@question.id) }} me-1 bg-secondary bg-opacity-25 px-1"
                     title="{{ @questionnaire->getQuestionType(@question.id) }}"></i>
                   {{ @question.libelle }}
                 </h3>
                 <hr style="width: 25%;">
+
+                <h4 class="text-decoration-underline">Informations générales</h4>
+                <ul>
+                  <li><span class="fw-bold">Catégorie :</span> {{ @questionnaire->getQuestionCategorie(@question.id) }}</li>
+                  <li><span class="fw-bold">Unité :</span> {{ @questionnaire->getQuestionUnite(@question.id) }}</li>
+                  <li><span class="fw-bold">Type de question :</span> {{ @questionnaire->getQuestionType(@question.id) }}</li>
+                </ul>
+
                 <h4 class="text-decoration-underline">Message d'aide</h4>
                 <p class="h-100 p-3 bg-light border">
-                  {{ @questionnaire->getQuestionAide(@question.id) }}
+                  {{ @questionnaire->getQuestionAide(@question.id) ?? '<span class="fst-italic text-muted">Sans message d\'aide</span>' }}
                 </p>
 
                 <check if="{{ @questionnaire->hasReponses(@question.id) }}">

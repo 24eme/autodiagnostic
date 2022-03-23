@@ -102,13 +102,33 @@ class Questions
     public function getQuestionUnite($id)
     {
         $question = $this->find($id);
-        return isset($question['unite']) ? $question['unite'] : '';
+        return isset($question['unite']) ? $question['unite'] : 'Sans unité';
     }
 
     public function getQuestionAide($id)
     {
         $question = $this->find($id);
         return $question['complement_information'];
+    }
+
+    public function getQuestionCategorie($id)
+    {
+        $found = null;
+
+        foreach ($this->getQuestionnaire() as $categorie => $questions) {
+            if (array_key_exists($id, $questions) === false) {
+                continue;
+            }
+
+            $found = $categorie;
+            break;
+        }
+
+        if ($found === null) {
+            return 'Non catégorisé';
+        }
+
+        return array_search($found, array_column($this->getCategories(), 'id', 'libelle'));
     }
 
     public function hasReponses($id)
