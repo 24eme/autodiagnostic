@@ -154,6 +154,27 @@ questions:
       DESHERBAGE_SUP_MOITIE_PARCELLES: NON
       DESHERBAGE_CHIMIQUE_VERAISON: NON
       AZOTE_ORGANIQUE: OUI
+  notation:
+    EQ:
+      BIO:
+        bilan_poids: 1
+        bilan_phrase: Je suis certifié AB
+      HVE3:
+        bilan_poids: 1
+        bilan_phrase: Je suis certifié HVE3
+        formule3: 0
+      BIODYVIN:
+        bilan_poids: 1
+        bilan_phrase: Je suis certifié Biodyvin
+        formule3: 0
+      DEMETER:
+        bilan_poids: 1
+        bilan_phrase: Je suis certifié Demeter
+        formule3: 0
+      TERRAVITIS:
+        formule3: 0
+      BIO_CONVERSION:
+        formule3: 0
 
 - type: question
   id: SELECTION_SANS_CERTIF
@@ -298,8 +319,13 @@ questions:
     EQ:
       OUI:
         score: 0
+        bilan_poids: -1
+        bilan_phrase: J’utilise des d’herbicides
+        formule2: 0
       NON:
         score: 2
+        bilan_poids: 1
+        bilan_phrase: Je n’utilise pas d’herbicides
       PENTES:
         score: 2
 
@@ -350,6 +376,7 @@ questions:
     EQ:
       OUI:
         score: 0
+        formule1: 0
       NON:
         score: 5
 
@@ -365,6 +392,7 @@ questions:
     EQ:
       OUI:
         score: 0
+        formule1: 0
       NON:
         score: 5
 
@@ -380,6 +408,7 @@ questions:
     EQ:
       OUI:
         score: -5
+        formule1: 0
       NON:
         score: 0
 
@@ -398,8 +427,14 @@ questions:
     EQ:
       OUI:
         score: -5
+        bilan_poids: -1
+        bilan_phrase: J’utilise des CMR
+        formule1: 0
+        formule2: 0
       NON:
         score: 0
+        bilan_poids: 1
+        bilan_phrase: Je n’utilise pas de CMR
 
 - type: question
   id: PRODUITS_CMR
@@ -422,14 +457,30 @@ questions:
     GTE:
       '3':
         score: 3
+        bilan_poids: -1
+        bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
+        formule1: 0
+      '2':
+        score: 3
+        bilan_poids: -1
+        bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
+        formule1: 0
       '1':
         score: 5
+        bilan_poids: -1
+        bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
       '0':
         score: 10
+        bilan_poids: 1
+        bilan_phrase: Je n’utilise pas d’insecticides (hors traitements obligatoires)
 
 - type: question
   id: INSECTICIDES_AB
   libelle: Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?
+  notation:
+    GTE:
+      '2':
+        formule2: 0
 
 - type: question
   id: SURFACE_RAKS
@@ -511,12 +562,24 @@ questions:
     reponses_automatiques:
       ANTI_BROTRYTIS: 0
       STADE_ANTI_BROTRYTIS: NC
+  notation:
+    EQ:
+      OUI:
+        bilan_poids: -1
+        bilan_phrase: J’utilise des antibotrytis (hors biocontrôle)
+      NON:
+        bilan_poids: 1
+        bilan_phrase: Je n’utilise pas d’antibotrytis (hors biocontrôle)
 
 - type: question
   id: ANTI_BROTRYTIS
   libelle: Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?
   notation:
     GTE:
+      '2':
+        score: -5
+        formule1: 0
+        formule2: 0
       '1':
         score: -5
       '0':
@@ -623,17 +686,23 @@ questions:
     EQ:
       'OUI':
         score: 20
+        bilan_poids: 1
+        bilan_phrase: J’utilise de l’azote 100% organique
       'NON':
         score: 0
+        bilan_poids: -1
+        bilan_phrase: Je n’ai pas une fertilisation à partir d’azote 100% organique exclusivement
+        formule2: 0
 
 - type: question
   id: UNITE_AZOTE
   libelle: Combien d’unités d’azote chimique avez-vous utilisé sur la campagne ?
   unite: N/ha
   notation:
-    GTE:
+    GT:
       '15':
         score: -5
+        formule1: 0
       '0':
         score: 0
 
