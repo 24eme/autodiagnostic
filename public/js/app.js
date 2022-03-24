@@ -91,14 +91,14 @@ const Questionnaire = Vue.createApp({
     gererReponsesAutomatiques: function(question = null) {
       if (question && question.reponses) {
         this.resetReponsesAutomatiques(question);
-        let reponses = this.reponses;
-        let reponse = reponses[question.id];
+        let reponse = this.reponses[question.id];
         if (!reponse) {
           return;
         }
         if (!Array.isArray(reponse)) {
           reponse = [reponse];
         }
+        const self = this;
         reponse.forEach(function(rep){
           let ind = question.reponses.findIndex(r => r.id == rep);
           if (ind >= 0) {
@@ -106,12 +106,12 @@ const Questionnaire = Vue.createApp({
             if (reponse.reponses_automatiques) {
               for(let index in reponse.reponses_automatiques) {
                 let valeur = reponse.reponses_automatiques[index];
-                reponses[index] = valeur;
+                self.reponses[index] = valeur;
+                self.gererReponsesAutomatiques(self.getQuestions()[self.getQuestionIndex(index)]);
               }
             }
           }
         });
-        this.reponses = reponses;
       }
     },
     resetReponsesAutomatiques: function(question) {
@@ -290,4 +290,3 @@ const Questionnaire = Vue.createApp({
 });
 
 Questionnaire.mount('#questionnaire');
-
