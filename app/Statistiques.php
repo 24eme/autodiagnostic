@@ -3,6 +3,8 @@ class Statistiques {
 
     const COMPARATEUR_SUP_EGAL = 'GTE';
     const COMPARATEUR_INF_EGAL = 'LTE';
+    const COMPARATEUR_SUP = 'GT';
+    const COMPARATEUR_INF = 'LT';
     const COMPARATEUR_EGAL = 'EQ';
     const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
 
@@ -115,6 +117,12 @@ class Statistiques {
                 break;
             case self::COMPARATEUR_SUP_EGAL:
                 return ($reponse >= $valeur);
+                break;
+            case self::COMPARATEUR_INF:
+                return ($reponse < $valeur);
+                break;
+            case self::COMPARATEUR_SUP:
+                return ($reponse > $valeur);
                 break;
             case self::COMPARATEUR_EGAL:
                 return ($reponse == $valeur);
