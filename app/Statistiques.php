@@ -90,10 +90,10 @@ class Statistiques {
             $this->scores[$categorieCourante] += $notation['score'];
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
             if ($notation['bilan_poids'] < 0) {
-                $this->ptsAmeliorations[$notation['bilan_poids']*(-1)] = $notation['bilan_phrase'];
+                $this->ptsAmeliorations[] = $notation['bilan_phrase'];
             }
             if ($notation['bilan_poids'] > 0) {
-                $this->ptsForts[$notation['bilan_poids']] = $notation['bilan_phrase'];
+                $this->ptsForts[] = $notation['bilan_phrase'];
             }
             foreach($this->formules as $key => $val) {
                 if ($val && isset($notation[$key]) && !$notation[$key]) {
