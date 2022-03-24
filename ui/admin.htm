@@ -77,10 +77,10 @@
         <div class="modal fade" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header" style="border-top: 10px solid {{ @questionnaire->getCategorieCouleur(@question.id) }}">
                 <h5 class="modal-title">
                   <span class="text-muted">{{ @questionnaire->getQuestionCategorie(@question.id) }}</span><br />
-                  1. {{ @question.libelle }}
+                  {{ @questionnaire->getQuestionPosition(@question.id) }}. {{ @question.libelle }}
                 </h5>
               </div>
               <div class="modal-body">
@@ -136,29 +136,35 @@
                 </check>
 
                 <check if="{{ @questionnaire->hasNotation(@question.id) }}">
-                  <div class="mb-1">
-                    <h6 class="mb-0 text-decoration-underline">Notation :</h6>
+                  <h5 class="mt-4">Notation</h5>
+                  <table class="table">
+                    <thead>
+                      <tr><th>Comparateur</th><th>Réponse</th><th>Score</th><th>Poids</th><th>Remarque</th></tr>
+                    </thead>
+                    <tbody>
                       <repeat group="{{ @questionnaire->getNotation(@question.id) }}" key="{{ @comparateur }}" value="{{ @notes }}">
-                        <p>Si la valeur est <strong>
+                      <repeat group="{{ @notes }}" key="{{ @note }}" value="{{ @points }}">
+                      <tr>
+                        <td>
                           <check if="{{ @comparateur === 'EQ' }}">
-                            égale
+                          =
                           </check>
                           <check if="{{ @comparateur === 'LTE' }}">
-                            inférieure
+                          <
                           </check>
                           <check if="{{ @comparateur === 'GTE' }}">
-                            supérieure
+                          >
                           </check>
-                        </strong> à :
-                        <table class="table table-striped">
-                        <repeat group="{{ @notes }}" key="{{ @note }}" value="{{ @points }}">
-                          <tr><td title="{{ @points.bilan_phrase }}">
-                          {{ @note }} alors, le score est de {{ @points.score }} avec un poids de {{ @points.bilan_poids }}
-                          </td></tr>
-                        </repeat>
-                        </table>
+                        </td>
+                        <td>{{ @note }}</td>
+                        <td>{{ @points.score }}</td>
+                        <td>{{ @points.bilan_poids }}</td>
+                        <td>{{ @points.bilan_phrase }}</td>
+                      </tr>
                       </repeat>
-                  </div>
+                      </repeat>
+                    </tbody>
+                  </table>
                 </check>
               </div>
               <div class="modal-footer">
