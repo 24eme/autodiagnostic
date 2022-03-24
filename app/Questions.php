@@ -131,6 +131,27 @@ class Questions
         return array_search($found, array_column($this->getCategories(), 'id', 'libelle'));
     }
 
+    public function getCategorieCouleur($id)
+    {
+        $found = null;
+
+        foreach ($this->getQuestionnaire() as $categorie => $questions) {
+            if (array_key_exists($id, $questions) === false) {
+                continue;
+            }
+
+            $found = $categorie;
+            break;
+        }
+
+        if ($found === null) {
+            return 'Non catégorisé';
+        }
+
+        $key = array_search($found, array_column($this->getCategories(), 'id'));
+        return $this->getCategories()[$key]['couleur'];
+    }
+
     public function getQuestionPosition($id)
     {
         $found = null;

@@ -77,7 +77,7 @@
         <div class="modal fade" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header" style="border-top: 10px solid {{ @questionnaire->getCategorieCouleur(@question.id) }}">
                 <h5 class="modal-title">
                   <span class="text-muted">{{ @questionnaire->getQuestionCategorie(@question.id) }}</span><br />
                   {{ @questionnaire->getQuestionPosition(@question.id) }}. {{ @question.libelle }}
