@@ -9,6 +9,29 @@
 <div id="resultats-presentation" class="container mb-5">
   <div class="text-center">
     <p class="lead">
+      <check if="{{ @statistiques->isInFormule('formule3') }}">
+        <true>
+          <strong>Bravo, vous entrez dans la formule 3 ! </strong>
+        </true>
+        <false>
+          <check if="{{ @statistiques->isInFormule('formule2') }}">
+            <true>
+              <strong>Bravo, vous entrez dans la formule 2 ! </strong>
+            </true>
+            <false>
+                <check if="{{ @statistiques->isInFormule('formule1') }}">
+                  <true>
+                    <strong>Bravo, vous entrez dans la formule 1 ! </strong>
+                  </true>
+                  <false>
+                  </false>
+                </check>
+            </false>
+          </check>
+        </false>
+      </check>
+    </p>
+    <p class="lead">
        Praesent id purus urna. Morbi sed risus lorem. Etiam ut diam sit amet justo ultricies porttitor eget in est. Mauris dignissim porta orci eget dapibus. Donec tempor, nibh at fermentum pellentesque, elit odio sodales odio, in porttitor nulla ex sed tellus. Vivamus venenatis nec enim id feugiat. Nam sollicitudin sem a leo laoreet pellentesque. In hac habitasse platea dictumst. Suspendisse non condimentum eros, sed auctor purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
     </p>
   </div>

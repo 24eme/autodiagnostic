@@ -3,6 +3,8 @@ class Statistiques {
 
     const COMPARATEUR_SUP_EGAL = 'GTE';
     const COMPARATEUR_INF_EGAL = 'LTE';
+    const COMPARATEUR_SUP = 'GT';
+    const COMPARATEUR_INF = 'LT';
     const COMPARATEUR_EGAL = 'EQ';
     const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
 
@@ -13,6 +15,7 @@ class Statistiques {
     private $highScores;
     private $ptsForts;
     private $ptsAmeliorations;
+    private $formules;
 
     public function __construct($reponses) {
         $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
@@ -21,6 +24,7 @@ class Statistiques {
         $this->highScores = [];
         $this->ptsForts = [];
         $this->ptsAmeliorations = [];
+        $this->formules = ['formule1' => true, 'formule2' => true, 'formule3' => true];
         $this->synthetiserReponses();
     }
 
@@ -38,6 +42,10 @@ class Statistiques {
 
     public function getHighScores() {
         return $this->highScores;
+    }
+
+    public function isInFormule($formule) {
+        return (isset($this->formules[$formule]))? $this->formules[$formule] : false;
     }
 
     public function getPtsForts($limit = null) {
@@ -71,7 +79,7 @@ class Statistiques {
             }
             $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
             if (!$notation) {
-                throw new Exception('Réponse non traitée dans les notations de la question '.$question['id'].' : '.$reponses[$question['id']]);
+                $this->scores[$categorieCourante] = 0;
             }
             if (!isset($this->scores[$categorieCourante])) {
                 $this->scores[$categorieCourante] = 0;
@@ -82,10 +90,15 @@ class Statistiques {
             $this->scores[$categorieCourante] += $notation['score'];
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
             if ($notation['bilan_poids'] < 0) {
-                $this->ptsAmeliorations[$notation['bilan_poids']*(-1)] = $notation['bilan_phrase'];
+                $this->ptsAmeliorations[] = $notation['bilan_phrase'];
             }
             if ($notation['bilan_poids'] > 0) {
-                $this->ptsForts[$notation['bilan_poids']] = $notation['bilan_phrase'];
+                $this->ptsForts[] = $notation['bilan_phrase'];
+            }
+            foreach($this->formules as $key => $val) {
+                if ($val && isset($notation[$key]) && !$notation[$key]) {
+                    $this->formules[$key] = false;
+                }
             }
         }
         krsort($this->ptsAmeliorations);
@@ -115,6 +128,12 @@ class Statistiques {
                 break;
             case self::COMPARATEUR_SUP_EGAL:
                 return ($reponse >= $valeur);
+                break;
+            case self::COMPARATEUR_INF:
+                return ($reponse < $valeur);
+                break;
+            case self::COMPARATEUR_SUP:
+                return ($reponse > $valeur);
                 break;
             case self::COMPARATEUR_EGAL:
                 return ($reponse == $valeur);

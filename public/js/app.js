@@ -254,6 +254,9 @@ const Questionnaire = Vue.createApp({
     getRealReponses: function() {
       let reponses = {};
       Object.keys(this.reponses).forEach(key => {
+        if (key.substr(0,4) == 'DTL_') {
+          return;
+        }
         if (!Array.isArray(this.reponses[key]) || this.reponses[key].length > 0) {
           reponses[key] = this.reponses[key];
         }

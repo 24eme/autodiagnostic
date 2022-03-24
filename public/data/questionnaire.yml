@@ -23,55 +23,55 @@ questions:
   - id: SANCERRE
     libelle: AOC Sancerre
     question:
-      id: SURFACE_SANCERRE
+      id: DTL_SURFACE_SANCERRE
       libelle: "Précisez la surface : "
       unite: ha
   - id: POUILLY_FUME
     libelle: AOC Pouilly-Fumé
     question:
-      id: SURFACE_POUILLY_FUME
+      id: DTL_SURFACE_POUILLY_FUME
       libelle: "Précisez la surface : "
       unite: ha
   - id: MENETOU_SALON
     libelle: AOC Menetou-Salon
     question:
-      id: SURFACE_MENETOU_SALON
+      id: DTL_SURFACE_MENETOU_SALON
       libelle: "Précisez la surface : "
       unite: ha
   - id: QUINCY
     libelle: AOC Quincy
     question:
-      id: SURFACE_QUINCY
+      id: DTL_SURFACE_QUINCY
       libelle: "Précisez la surface : "
       unite: ha
   - id: REUILLY
     libelle: AOC Reuilly
     question:
-      id: SURFACE_REUILLY
+      id: DTL_SURFACE_REUILLY
       libelle: "Précisez la surface : "
       unite: ha
   - id: COT_GIENNOIS
     libelle: AOC Coteaux du Giennois
     question:
-      id: SURFACE_COT_GIENNOIS
+      id: DTL_SURFACE_COT_GIENNOIS
       libelle: "Précisez la surface : "
       unite: ha
   - id: CHATEAUMEILLANT
     libelle: AOC Châteaumeillant
     question:
-      id: SURFACE_CHATEAUMEILLANT
+      id: DTL_SURFACE_CHATEAUMEILLANT
       libelle: "Précisez la surface : "
       unite: ha
   - id: COTES_CHARITE
     libelle: IGP Côtes de la Charité
     question:
-      id: SURFACE_COTES_CHARITE
+      id: DTL_SURFACE_COTES_CHARITE
       libelle: "Précisez la surface : "
       unite: ha
   - id: COT_TANNAY
     libelle: IGP Coteaux de Tannay
     question:
-      id: SURFACE_COT_TANNAY
+      id: DTL_SURFACE_COT_TANNAY
       libelle: "Précisez la surface : "
       unite: ha
 
@@ -327,6 +327,7 @@ questions:
         bilan_poids: -1
         bilan_phrase: J’utilise des d’herbicides
         formule2: 0
+        formule3: 0
       NON:
         score: 2
         bilan_poids: 1
@@ -382,6 +383,8 @@ questions:
       OUI:
         score: 0
         formule1: 0
+        formule2: 0
+        formule3: 0
       NON:
         score: 5
 
@@ -398,6 +401,8 @@ questions:
       OUI:
         score: 0
         formule1: 0
+        formule2: 0
+        formule3: 0
       NON:
         score: 5
 
@@ -414,6 +419,8 @@ questions:
       OUI:
         score: -5
         formule1: 0
+        formule2: 0
+        formule3: 0
       NON:
         score: 0
 
@@ -436,6 +443,7 @@ questions:
         bilan_phrase: J’utilise des CMR
         formule1: 0
         formule2: 0
+        formule3: 0
       NON:
         score: 0
         bilan_poids: 1
@@ -465,11 +473,15 @@ questions:
         bilan_poids: -1
         bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
         formule1: 0
+        formule2: 0
+        formule3: 0
       '2':
         score: 3
         bilan_poids: -1
         bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
         formule1: 0
+        formule2: 0
+        formule3: 0
       '1':
         score: 5
         bilan_poids: -1
@@ -486,6 +498,7 @@ questions:
     GTE:
       '2':
         formule2: 0
+        formule3: 0
 
 - type: question
   id: SURFACE_RAKS
@@ -585,6 +598,7 @@ questions:
         score: -5
         formule1: 0
         formule2: 0
+        formule3: 0
       '1':
         score: -5
       '0':
@@ -603,7 +617,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_STADE_ANTI_BROTRYTIS
       libelle: "Précisez : "
   notation:
     EQ:
@@ -698,6 +712,7 @@ questions:
         bilan_poids: -1
         bilan_phrase: Je n’ai pas une fertilisation à partir d’azote 100% organique exclusivement
         formule2: 0
+        formule3: 0
 
 - type: question
   id: UNITE_AZOTE
@@ -708,6 +723,8 @@ questions:
       '15':
         score: -5
         formule1: 0
+        formule2: 0
+        formule3: 0
       '0':
         score: 0
 
@@ -856,7 +873,7 @@ questions:
   - id: OUI
     libelle: Oui
     question:
-      id: AUTRE_PRECISION
+      id: DTL_ECONOMIE_EAU
       libelle: "Précisez :"
   - id: NON
     libelle: Non
@@ -1003,7 +1020,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_RAKS_USAGES
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1023,7 +1040,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_EMBALLAGES_PHYTO
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1041,7 +1058,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_DECHETTERIE
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1063,7 +1080,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_EMBALLAGES_INTRANTS
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1083,7 +1100,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_EMBALLAGES_OENO
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1107,7 +1124,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_POTEAUX_PLASTIQUE
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1129,7 +1146,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_AGRAFES
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1151,7 +1168,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_MANCHONS
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1175,7 +1192,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_SARMENTS
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1203,7 +1220,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_PALETTES
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1231,7 +1248,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_CARTONS
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1255,7 +1272,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_POTEAUX_METAL
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1277,7 +1294,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_FIL_METAL
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1299,7 +1316,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_BOUTEILLES
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1323,7 +1340,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_VAISSELLE
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1347,7 +1364,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_TUTEURS
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1375,7 +1392,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_HUILE
       libelle: "Précisez : "
   notation:
     EQ:
@@ -1405,7 +1422,7 @@ questions:
   - id: AUTRE
     libelle: Autre
     question:
-      id: AUTRE_PRECISION
+      id: DTL_QUOI_BATTERIES
       libelle: "Précisez : "
   notation:
     EQ:
