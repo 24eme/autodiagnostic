@@ -15,6 +15,7 @@ class Statistiques {
     private $highScores;
     private $ptsForts;
     private $ptsAmeliorations;
+    private $formules;
 
     public function __construct($reponses) {
         $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
@@ -23,6 +24,7 @@ class Statistiques {
         $this->highScores = [];
         $this->ptsForts = [];
         $this->ptsAmeliorations = [];
+        $this->formules = ['formule1' => true, 'formule2' => true, 'formule3' => true];
         $this->synthetiserReponses();
     }
 
@@ -40,6 +42,10 @@ class Statistiques {
 
     public function getHighScores() {
         return $this->highScores;
+    }
+
+    public function isInFormule($formule) {
+        return (isset($this->formules[$formule]))? $this->formules[$formule] : false;
     }
 
     public function getPtsForts($limit = null) {
@@ -88,6 +94,11 @@ class Statistiques {
             }
             if ($notation['bilan_poids'] > 0) {
                 $this->ptsForts[$notation['bilan_poids']] = $notation['bilan_phrase'];
+            }
+            foreach($this->formules as $key => $val) {
+                if ($val && isset($notation[$key]) && !$notation[$key]) {
+                    $this->formules[$key] = false;
+                }
             }
         }
         krsort($this->ptsAmeliorations);
