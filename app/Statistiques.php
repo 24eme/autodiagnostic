@@ -79,7 +79,7 @@ class Statistiques {
             }
             $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
             if (!$notation) {
-                throw new Exception('Réponse non traitée dans les notations de la question '.$question['id'].' : '.$reponses[$question['id']]);
+                $this->scores[$categorieCourante] = 0;
             }
             if (!isset($this->scores[$categorieCourante])) {
                 $this->scores[$categorieCourante] = 0;
