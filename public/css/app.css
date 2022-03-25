@@ -1,3 +1,12 @@
+:root {
+  --app-red: #964320;
+  --app-yellow: #EDA103;
+  --app-dark: #1C2436;
+  --app-light-blue: #65707E;
+  --app-blue: #4B5767;
+  --app-gold: #C29140;
+}
+
 body {
   position:relative;
   overflow-x: hidden;
