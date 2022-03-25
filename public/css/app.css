@@ -18,6 +18,7 @@
 body {
   position:relative;
   overflow-x: hidden;
+  font-family: var(--app-font-family)
 }
 
 .bodyblurize {
