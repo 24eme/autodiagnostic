@@ -40,7 +40,7 @@
 <div id="resultats-content" class="container mb-5">
   <div class="row">
     <div id="resultats-graphs" class="col-sm-6">
-      <h3 class="display-6 bg-info text-light">Votre répartition</h3>
+      <h3 class="display-6 bg-app-blue text-light">Votre répartition</h3>
       <canvas
         id="resultats-radar-chart"
         data-type="radar"
@@ -50,14 +50,14 @@
     </div>
 
     <div id="resultats-points-amelioration" class="col-sm-6">
-      <h3 class="display-6 bg-success text-light"><i class="bi-sun"></i> Vos points forts</h3>
+      <h3 class="display-6 bg-app-gold text-light"><i class="bi-sun"></i> Vos points forts</h3>
       <repeat group="{{ @statistiques->getPtsForts(5) }}" value="{{ @ptFort }}">
         <div class="p-1 d-flex align-items-center">
           <i class="bi-check-circle-fill fs-3 text-success me-3"></i> {{ @ptFort }}
         </div>
       </repeat>
 
-      <h3 class="display-6 mt-4 bg-warning text-light"><i class="bi-cloud-sun"></i> Vos points d'améliorations</h3>
+      <h3 class="display-6 mt-4 bg-app-dark text-light"><i class="bi-cloud-sun"></i> Vos points d'améliorations</h3>
       <repeat group="{{ @statistiques->getPtsAmeliorations(5) }}" value="{{ @ptAmelioration }}">
         <div class="p-1 d-flex align-items-center">
           <i class="bi-circle fs-3 text-warning me-3"></i> {{ @ptAmelioration }}
