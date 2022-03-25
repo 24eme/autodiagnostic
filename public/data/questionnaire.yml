@@ -202,7 +202,7 @@ questions:
   complement_information: "SAU = surface agricole utile = 1 action agricole par an / SAU non traitée = parcelle(s) en AB ou conversion, parcelles n'ayant reçu aucun produit phyto de synthèse en cours de campgane étudiées (hors traitement obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
   unite: "%"
   notation_hve:
-    ration: 1
+    ratio: 1
   notation:
     LTE:
       "10":
@@ -233,7 +233,7 @@ questions:
   complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l’enherbement permanent, confusion sexuelle"
   unite: "%"
   notation_hve:
-    ration: 1
+    ratio: 1
   notation:
     LTE:
       "25":
@@ -305,7 +305,7 @@ questions:
   libelle: "Quel est votre IFT herbicides ?"
   complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.ods'>outil suivant</a>"
   notation_hve:
-    ration: 0.5
+    ratio: 0.5
   notation:
     GTE:
       "1.08":
@@ -326,7 +326,7 @@ questions:
   libelle: "Quel est votre IFT hors herbicides ?"
   complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.ods'>outil suivant</a>"
   notation_hve:
-    ration: 0.5
+    ratio: 0.5
   notation:
     GTE:
       "10.89":
@@ -660,7 +660,7 @@ questions:
   - id: 3_PLUS
     libelle: "3 ou plus"
   notation_hve:
-    ration: 1
+    ratio: 1
   notation:
     EQ:
       "0":
@@ -713,7 +713,7 @@ questions:
   complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.ods'>outil suivant</a>"
   unite: "kg N/ha"
   notation_hve:
-    ration: 1
+    ratio: 1
   notation:
     GTE:
       "60":
@@ -774,7 +774,7 @@ questions:
   complement_information: "Vous pouvez le calculer grâce à l'<a href='data/IAE Simplifié.ods'>outil suivant</a>"
   unite: "%"
   notation_hve:
-    ration: 1
+    ratio: 1
   notation:
     LTE:
       "10":
@@ -813,7 +813,7 @@ questions:
   id: ARBRE_ISOLE
   libelle: "Combien d'arbres isolés avez-vous sur votre exploitation ?"
   notation:
-    RATION: 0.5
+    RATIO: 0.5
 
 - type: question
   id: POSSESSION_RUCHES
@@ -825,7 +825,7 @@ questions:
   - id: NON
     libelle: "Non"
   notation_hve:
-    ration: 1
+    ratio: 1
   notation:
     EQ:
       "OUI":
