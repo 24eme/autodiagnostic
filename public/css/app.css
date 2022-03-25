@@ -208,8 +208,20 @@ progress {
 }
 
 #resultats-title {
-  background-color: #f39c12;
+  background-color: var(--app-red);
   color: #fff;
+}
+
+.bg-app-blue {
+  background-color: var(--app-blue)
+}
+
+.bg-app-gold {
+  background-color: var(--app-gold)
+}
+
+.bg-app-dark {
+  background-color: var(--app-dark)
 }
 
 #resultats-radar-chart {
