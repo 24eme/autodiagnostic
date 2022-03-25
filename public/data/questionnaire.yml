@@ -88,8 +88,8 @@ questions:
   id: CERTIFICATION
   libelle: Certification
   complement_information: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.
-  couleur: "#EDA103"
-  opacite: "#EDA10380"
+  couleur: "#65707E"
+  opacite: "#65707E80"
   couleur_texte: "#fff"
 
 - type: question
@@ -196,8 +196,8 @@ questions:
   id: PROTECTION_VIGNE
   libelle: Protection de la vigne
   complement_information: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit. Pellentesque eu ipsum urna.
-  couleur: "#1C2436"
-  opacite: "#1C243680"
+  couleur: "#C29140"
+  opacite: "#C2914080"
   couleur_texte: "#fff"
 
 - type: question
@@ -672,8 +672,8 @@ questions:
     Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
     ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
     Pellentesque eu ipsum urna.
-  couleur: "#65707E"
-  opacite: "#65707E80"
+  couleur: "#1C2436"
+  opacite: "#1C243680"
   couleur_texte: "#fff"
 
 - type: question
@@ -735,8 +735,8 @@ questions:
     Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
     ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
     Pellentesque eu ipsum urna.
-  couleur: "#4B5767"
-  opacite: "#4B576780"
+  couleur: "#EDA103"
+  opacite: "#EDA10380"
   couleur_texte: "#fff"
 
 - type: question
@@ -847,8 +847,8 @@ questions:
     Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
     ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
     Pellentesque eu ipsum urna.
-  couleur: "#C29140"
-  opacite: "#C2914080"
+  couleur: "#4B5767"
+  opacite: "#4B576780"
   couleur_texte: "#fff"
 
 - type: question
@@ -1003,8 +1003,8 @@ questions:
     Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
     ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
     Pellentesque eu ipsum urna.
-  couleur: "#4B5767"
-  opacite: "#4B576780"
+  couleur: "#65707E"
+  opacite: "#65707E80"
   couleur_texte: "#fff"
 
 - type: question

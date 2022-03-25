@@ -120,75 +120,75 @@ progress {
 }
 
 #CERTIFICATION::-webkit-progress-bar {
-  background-color: var(--app-yellow)80;
-}
-
-#CERTIFICATION::-webkit-progress-value {
-  background-color: var(--app-yellow);
-}
-
-#CERTIFICATION::-moz-progress-bar {
-  background-color: var(--app-yellow);
-}
-
-#PROTECTION_VIGNE::-webkit-progress-bar {
-  background-color: var(--app-dark)80;
-}
-
-#PROTECTION_VIGNE::-webkit-progress-value {
-  background-color: var(--app-dark);
-}
-
-#PROTECTION_VIGNE::-moz-progress-bar {
-  background-color: var(--app-dark);
-}
-
-#FERTILISATION::-webkit-progress-bar {
-  background-color: var(--app-light-blue);
-}
-
-#FERTILISATION::-webkit-progress-value {
   background-color: var(--app-light-blue)80;
 }
 
-#FERTILISATION::-moz-progress-bar {
+#CERTIFICATION::-webkit-progress-value {
   background-color: var(--app-light-blue);
 }
 
-#BIODIVERSITE::-webkit-progress-bar {
-  background-color: var(--app-blue);
+#CERTIFICATION::-moz-progress-bar {
+  background-color: var(--app-light-blue);
 }
 
-#BIODIVERSITE::-webkit-progress-value {
-  background-color: var(--app-blue)80;
-}
-
-#BIODIVERSITE::-moz-progress-bar {
-  background-color: var(--app-blue);
-}
-
-#EAU::-webkit-progress-bar {
-  background-color: var(--app-gold);
-}
-
-#EAU::-webkit-progress-value {
+#PROTECTION_VIGNE::-webkit-progress-bar {
   background-color: var(--app-gold)80;
 }
 
-#EAU::-moz-progress-bar {
+#PROTECTION_VIGNE::-webkit-progress-value {
   background-color: var(--app-gold);
 }
 
-#RECYCLAGE::-webkit-progress-bar {
+#PROTECTION_VIGNE::-moz-progress-bar {
+  background-color: var(--app-gold);
+}
+
+#FERTILISATION::-webkit-progress-bar {
+  background-color: var(--app-dark);
+}
+
+#FERTILISATION::-webkit-progress-value {
+  background-color: var(--app-dark)80;
+}
+
+#FERTILISATION::-moz-progress-bar {
+  background-color: var(--app-dark);
+}
+
+#BIODIVERSITE::-webkit-progress-bar {
+  background-color: var(--app-yellow);
+}
+
+#BIODIVERSITE::-webkit-progress-value {
+  background-color: var(--app-yellow)80;
+}
+
+#BIODIVERSITE::-moz-progress-bar {
+  background-color: var(--app-yellow);
+}
+
+#EAU::-webkit-progress-bar {
   background-color: var(--app-blue);
 }
 
-#RECYCLAGE::-webkit-progress-value {
+#EAU::-webkit-progress-value {
   background-color: var(--app-blue)80;
 }
 
-#RECYCLAGE::-moz-progress-bar {
+#EAU::-moz-progress-bar {
   background-color: var(--app-blue);
+}
+
+#RECYCLAGE::-webkit-progress-bar {
+  background-color: var(--app-light-blue);
+}
+
+#RECYCLAGE::-webkit-progress-value {
+  background-color: var(--app-light-blue)80;
+}
+
+#RECYCLAGE::-moz-progress-bar {
+  background-color: var(--app-light-blue);
 }
 
 #PLASTIQUE::-webkit-progress-bar {
