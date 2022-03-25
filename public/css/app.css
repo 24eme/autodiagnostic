@@ -36,6 +36,10 @@ body {
   border-left: 5px solid;
 }
 
+.question .question-content img {
+  max-height: 200px;
+}
+
 .cursor-help {
   cursor: help;
 }
