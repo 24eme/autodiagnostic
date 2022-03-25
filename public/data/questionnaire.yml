@@ -154,24 +154,20 @@ questions:
   notation:
     EQ:
       "BIO":
-        bilan_poids: 1
-        bilan_phrase: Je suis certifié AB
+        atout: Je suis certifié AB
       "HVE3":
-        bilan_poids: 1
-        bilan_phrase: Je suis certifié HVE3
-        formule3: 0
+        atout: Je suis certifié HVE3
+        formule3: false
       "BIODYVIN":
-        bilan_poids: 1
-        bilan_phrase: Je suis certifié Biodyvin
-        formule3: 0
+        atout: Je suis certifié Biodyvin
+        formule3: false
       "DEMETER":
-        bilan_poids: 1
-        bilan_phrase: Je suis certifié Demeter
-        formule3: 0
+        atout: Je suis certifié Demeter
+        formule3: false
       "TERRAVITIS":
-        formule3: 0
+        formule3: false
       "BIO_CONVERSION":
-        formule3: 0
+        formule3: false
 
 - type: question
   id: SELECTION_SANS_CERTIF
@@ -205,12 +201,49 @@ questions:
   libelle: "Quelle part de mon exploitation représente la surface non traitée ?"
   complement_information: "SAU = surface agricole utile = 1 action agricole par an / SAU non traitée = parcelle(s) en AB ou conversion, parcelles n'ayant reçu aucun produit phyto de synthèse en cours de campgane étudiées (hors traitement obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
   unite: "%"
+  notation_hve:
+    ration: 1
+  notation:
+    LTE:
+      "10":
+        score: 1
+      "20":
+        score: 2
+      "30":
+        score: 3
+      "40":
+        score: 4
+      "50":
+        score: 5
+      "60":
+        score: 6
+      "70":
+        score: 7
+      "80":
+        score: 8
+      "90":
+        score: 9
+      "100":
+        score: 10
+
 
 - type: question
   id: SURFACE_ALTERNATIVE_CHIMIE
   libelle: "Sur quel pourcentage de votre surface utilisez-vous au moins une méthode alternative à la lutte chimique ?"
   complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l’enherbement permanent, confusion sexuelle"
   unite: "%"
+  notation_hve:
+    ration: 1
+  notation:
+    LTE:
+      "25":
+        score: 0
+      "50":
+        score: 1
+      "75":
+        score: 2
+      "100":
+        score: 3
 
 - type: question
   id: MATERIELS
@@ -240,6 +273,8 @@ questions:
     libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d’automisation de rinçage des cuves"
   - id: AUCUN
     libelle: "Aucun de ces matériels ou équipements"
+  notation_hve:
+    max: 2
   notation:
     EQ:
       "AMENAGEMENT":
@@ -288,6 +323,8 @@ questions:
   id: IFT_HORS_HERBICIDE
   libelle: "Quel est votre IFT hors herbicides ?"
   complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.ods'>outil suivant</a>"
+  notation_hve:
+    ration: 0.5
   notation:
     GTE:
       "10.89":
@@ -323,14 +360,12 @@ questions:
     EQ:
       "OUI":
         score: 0
-        bilan_poids: -1
-        bilan_phrase: J’utilise des d’herbicides
-        formule2: 0
-        formule3: 0
+        faiblesse: J’utilise des d’herbicides
+        formule2: false
+        formule3: false
       "NON":
         score: 2
-        bilan_poids: 1
-        bilan_phrase: Je n’utilise pas d’herbicides
+        atout: Je n’utilise pas d’herbicides
       PENTES:
         score: 2
 
@@ -381,9 +416,9 @@ questions:
     EQ:
       "OUI":
         score: 0
-        formule1: 0
-        formule2: 0
-        formule3: 0
+        formule1: false
+        formule2: false
+        formule3: false
       "NON":
         score: 5
 
@@ -399,9 +434,9 @@ questions:
     EQ:
       "OUI":
         score: 0
-        formule1: 0
-        formule2: 0
-        formule3: 0
+        formule1: false
+        formule2: false
+        formule3: false
       "NON":
         score: 5
 
@@ -417,9 +452,9 @@ questions:
     EQ:
       "OUI":
         score: -5
-        formule1: 0
-        formule2: 0
-        formule3: 0
+        formule1: false
+        formule2: false
+        formule3: false
       "NON":
         score: 0
 
@@ -437,16 +472,14 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: -5
-        bilan_poids: -1
-        bilan_phrase: J’utilise des CMR
-        formule1: 0
-        formule2: 0
-        formule3: 0
-      "NON":
         score: 0
-        bilan_poids: 1
-        bilan_phrase: Je n’utilise pas de CMR
+        faiblesse: J’utilise des CMR
+        formule1: false
+        formule2: false
+        formule3: false
+      "NON":
+        score: 10
+        atout: Je n’utilise pas de CMR
 
 - type: question
   id: PRODUITS_CMR
@@ -457,8 +490,6 @@ questions:
         score: -5
       "2":
         score: -2
-      "1":
-        score: 0
       "0":
         score: 1
 
@@ -469,26 +500,16 @@ questions:
     GTE:
       "3":
         score: 3
-        bilan_poids: -1
-        bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
-        formule1: 0
-        formule2: 0
-        formule3: 0
-      "2":
-        score: 3
-        bilan_poids: -1
-        bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
-        formule1: 0
-        formule2: 0
-        formule3: 0
+        faiblesse: J’utilise des insecticides (hors traitements obligatoires)
+        formule1: false
+        formule2: false
+        formule3: false
       "1":
         score: 5
-        bilan_poids: -1
-        bilan_phrase: J’utilise des insecticides (hors traitements obligatoires)
+        faiblesse: J’utilise des insecticides (hors traitements obligatoires)
       "0":
         score: 10
-        bilan_poids: 1
-        bilan_phrase: Je n’utilise pas d’insecticides (hors traitements obligatoires)
+        atout: Je n’utilise pas d’insecticides (hors traitements obligatoires)
 
 - type: question
   id: INSECTICIDES_AB
@@ -496,8 +517,8 @@ questions:
   notation:
     GTE:
       "2":
-        formule2: 0
-        formule3: 0
+        formule2: false
+        formule3: false
 
 - type: question
   id: SURFACE_RAKS
@@ -582,11 +603,11 @@ questions:
   notation:
     EQ:
       "OUI":
-        bilan_poids: -1
-        bilan_phrase: J’utilise des antibotrytis (hors biocontrôle)
+        scrore: 0
+        faiblesse: J’utilise des antibotrytis (hors biocontrôle)
       "NON":
-        bilan_poids: 1
-        bilan_phrase: Je n’utilise pas d’antibotrytis (hors biocontrôle)
+        score: 10
+        atout: Je n’utilise pas d’antibotrytis (hors biocontrôle)
 
 - type: question
   id: ANTI_BROTRYTIS
@@ -595,15 +616,11 @@ questions:
     GTE:
       "2":
         score: -5
-        formule1: 0
-        formule2: 0
-        formule3: 0
-      "1":
-        score: -5
+        formule1: false
+        formule2: false
+        formule3: false
       "0":
         score: 0
-      "-1":
-        score: 10
 
 - type: question
   id: STADE_ANTI_BROTRYTIS
@@ -640,6 +657,18 @@ questions:
     libelle: "2"
   - id: 3_PLUS
     libelle: "3 ou plus"
+  notation_hve:
+    ration: 1
+  notation:
+    EQ:
+      "0":
+        score: 0
+      "1":
+        score: 0
+      "2":
+        score: 1
+      "3_PLUS":
+        score: 2
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
@@ -681,14 +710,14 @@ questions:
   libelle: "Quel est votre bilan azoté global ?"
   complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href="data/Bilan azoté.ods">outil suivant</a>"
   unite: "kg N/ha"
+  notation_hve:
+    ration: 1
   notation:
     GTE:
       "60":
         score: 0
-      "40":
-        score: 10
       "0":
-        score: 20
+        score: 10
 
 - type: question
   id: AZOTE_ORGANIQUE
@@ -705,26 +734,24 @@ questions:
     EQ:
       "OUI":
         score: 20
-        bilan_poids: 1
-        bilan_phrase: J’utilise de l’azote 100% organique
+        atout: J’utilise de l’azote 100% organique
       "NON":
         score: 0
-        bilan_poids: -1
-        bilan_phrase: Je n’ai pas une fertilisation à partir d’azote 100% organique exclusivement
-        formule2: 0
-        formule3: 0
+        faiblesse: Je n’ai pas une fertilisation à partir d’azote 100% organique exclusivement
+        formule2: false
+        formule3: false
 
 - type: question
   id: UNITE_AZOTE
   libelle: "Combien d’unités d’azote chimique avez-vous utilisé sur la campagne ?"
   unite: "N/ha"
   notation:
-    GT:
-      "15":
+    GTE:
+      "16":
         score: -5
-        formule1: 0
-        formule2: 0
-        formule3: 0
+        formule1: false
+        formule2: false
+        formule3: false
       "0":
         score: 0
 
@@ -744,6 +771,8 @@ questions:
   libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
   complement_information: "Vous pouvez le calculer grâce à l'<a href="data/IAE Simplifié.ods">outil suivant</a>"
   unite: "%"
+  notation_hve:
+    ration: 1
   notation:
     LTE:
       "10":
@@ -781,6 +810,8 @@ questions:
 - type: question
   id: ARBRE_ISOLE
   libelle: "Combien d'arbres isolés avez-vous sur votre exploitation ?"
+  notation:
+    RATION: 0.5
 
 - type: question
   id: POSSESSION_RUCHES
@@ -791,6 +822,8 @@ questions:
     libelle: "Oui"
   - id: NON
     libelle: "Non"
+  notation_hve:
+    ration: 1
   notation:
     EQ:
       "OUI":
@@ -900,9 +933,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 10
-      "NON":
         score: 0
+      "NON":
+        score: 10
 
 - type: question
   id: MANCHONS_PLASTIQUE
@@ -916,9 +949,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 10
-      "NON":
         score: 0
+      "NON":
+        score: 10
 
 - type: question
   id: AGRAPHES_PLASTIQUE
@@ -932,9 +965,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 5
-      "NON":
         score: 0
+      "NON":
+        score: 5
 
 - type: question
   id: POTEAUX_PLASTIQUE
@@ -948,9 +981,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 5
-      "NON":
         score: 0
+      "NON":
+        score: 5
 
 - type: question
   id: LIENS_PLASTIQUE
@@ -964,9 +997,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 10
-      "NON":
         score: 0
+      "NON":
+        score: 10
 
 - type: question
   id: MARQUEUR_PLASTIQUE
@@ -980,9 +1013,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 5
-      "NON":
         score: 0
+      "NON":
+        score: 5
 
 - type: question
   id: TUTEURS_PLASTIQUE
@@ -996,9 +1029,9 @@ questions:
   notation:
     EQ:
       "OUI":
-        score: 10
-      "NON":
         score: 0
+      "NON":
+        score: 10
 
 - type: categorie
   id: RECYCLAGE
@@ -1031,6 +1064,12 @@ questions:
     EQ:
       "PARTENAIRE":
         score: 10
+      "DECHETTERIE":
+        score: 0
+      "PARCELLE":
+        score: 0
+      "AUTRE":
+        score: 0
 
 - type: question
   id: QUOI_EMBALLAGES_PHYTO
@@ -1051,6 +1090,12 @@ questions:
     EQ:
       "PARTENAIRE":
         score: 10
+      "DECHETTERIE":
+        score: 0
+      "STOCK":
+        score: 0
+      "AUTRE":
+        score: 0
 
 - type: question
   id: QUOI_FILMS_LIENS_BOUTEILLES
@@ -1091,6 +1136,10 @@ questions:
     EQ:
       "DECHETTERIE":
         score: 10
+      "STOCK":
+        score: 5
+      "AUTRE":
+        score: 0
 
 - type: question
   id: QUOI_EMBALLAGES_OENO
@@ -1112,9 +1161,9 @@ questions:
       "PARTENAIRE":
         score: 10
       "DECHETTERIE":
-        score: 8
+        score: 0
       "STOCK":
-        score: 5
+        score: 0
       "AUTRE":
         score: 0
 
@@ -1136,7 +1185,7 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 5
+        score: 0
       "AUTRE":
         score: 0
 
@@ -1158,7 +1207,7 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 5
+        score: 0
       "AUTRE":
         score: 0
 
@@ -1180,7 +1229,7 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 5
+        score: 0
       "AUTRE":
         score: 0
 
@@ -1203,13 +1252,13 @@ questions:
   notation:
     EQ:
       "BRULAGE":
-        score: 5
+        score: 0
       "VALORISATION":
         score: 5
       "BROYAGE":
         score: 5
       "AUTRE":
-        score: 5
+        score: 0
 
 - type: question
   id: QUOI_PALETTES
@@ -1235,11 +1284,11 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "REUTILISATION":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_CARTONS
@@ -1261,11 +1310,11 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "BRULAGE":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_POTEAUX_METAL
@@ -1286,9 +1335,9 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_FIL_METAL
@@ -1308,9 +1357,9 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_BOUTEILLES
@@ -1330,9 +1379,9 @@ questions:
       "CONTENEUR":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_VAISSELLE
@@ -1354,11 +1403,11 @@ questions:
       "DECHETTERIE":
         score: 10
       "CONTENEUR":
-        score: 10
+        score: 0
       "STOCK":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_TUTEURS
@@ -1378,9 +1427,9 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_HUILE
@@ -1404,17 +1453,17 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
-        score: 10
+        score: 0
       "GARAGISTE":
         score: 10
       "COLLECTEUR":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "EAUX_USEES":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: QUOI_BATTERIES
@@ -1438,9 +1487,9 @@ questions:
       "DISTRIBUTEUR":
         score: 10
       "STOCK":
-        score: 10
+        score: 0
       "AUTRE":
-        score: 10
+        score: 0
 
 - type: question
   id: RAPPEL_EQUIPE_DECHETS
