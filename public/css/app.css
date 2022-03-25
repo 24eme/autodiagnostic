@@ -108,99 +108,99 @@ progress {
 }
 
 #INFORMATIONS::-webkit-progress-bar {
-  background-color: #e6d4bc;
+  background-color: var(--app-red)80;
 }
 
 #INFORMATIONS::-webkit-progress-value {
-  background-color: #d3ba9b;
+  background-color: var(--app-red);
 }
 
 #INFORMATIONS::-moz-progress-bar {
-  background-color: #d3ba9b;
+  background-color: var(--app-red);
 }
 
 #CERTIFICATION::-webkit-progress-bar {
-  background-color: #fd5b5b;
+  background-color: var(--app-yellow)80;
 }
 
 #CERTIFICATION::-webkit-progress-value {
-  background-color: #bb0001;
+  background-color: var(--app-yellow);
 }
 
 #CERTIFICATION::-moz-progress-bar {
-  background-color: #bb0001;
+  background-color: var(--app-yellow);
 }
 
 #PROTECTION_VIGNE::-webkit-progress-bar {
-  background-color: #eec37f;
+  background-color: var(--app-dark)80;
 }
 
 #PROTECTION_VIGNE::-webkit-progress-value {
-  background-color: #f39c12;
+  background-color: var(--app-dark);
 }
 
 #PROTECTION_VIGNE::-moz-progress-bar {
-  background-color: #f39c12;
+  background-color: var(--app-dark);
 }
 
 #FERTILISATION::-webkit-progress-bar {
-  background-color: #ff9d01;
+  background-color: var(--app-light-blue);
 }
 
 #FERTILISATION::-webkit-progress-value {
-  background-color: #f98901;
+  background-color: var(--app-light-blue)80;
 }
 
 #FERTILISATION::-moz-progress-bar {
-  background-color: #f98901;
+  background-color: var(--app-light-blue);
 }
 
 #BIODIVERSITE::-webkit-progress-bar {
-  background-color: #debdd3;
+  background-color: var(--app-blue);
 }
 
 #BIODIVERSITE::-webkit-progress-value {
-  background-color: #c582af;
+  background-color: var(--app-blue)80;
 }
 
 #BIODIVERSITE::-moz-progress-bar {
-  background-color: #c582af;
+  background-color: var(--app-blue);
 }
 
 #EAU::-webkit-progress-bar {
-  background-color: #8dc1e4;
+  background-color: var(--app-gold);
 }
 
 #EAU::-webkit-progress-value {
-  background-color: #3498db;
+  background-color: var(--app-gold)80;
 }
 
 #EAU::-moz-progress-bar {
-  background-color: #3498db;
+  background-color: var(--app-gold);
 }
 
 #RECYCLAGE::-webkit-progress-bar {
-  background-color: #8adbaf;
+  background-color: var(--app-blue);
 }
 
 #RECYCLAGE::-webkit-progress-value {
-  background-color: #2ecc71;
+  background-color: var(--app-blue)80;
 }
 
 #RECYCLAGE::-moz-progress-bar {
-  background-color: #2ecc71;
+  background-color: var(--app-blue);
 }
 
 #PLASTIQUE::-webkit-progress-bar {
-  background-color: #d1d1d1;
+  background-color: var(--app-red);
 }
 
 #PLASTIQUE::-webkit-progress-value {
-  background-color: #babab8;
+  background-color: var(--app-red)80;
 }
 
 #PLASTIQUE::-moz-progress-bar {
-  background-color: #babab8;
+  background-color: var(--app-red);
 }
 
 #resultats-title {
