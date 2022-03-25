@@ -148,11 +148,11 @@ progress {
 }
 
 #FERTILISATION::-webkit-progress-bar {
-  background-color: var(--app-dark);
+  background-color: var(--app-dark)80;
 }
 
 #FERTILISATION::-webkit-progress-value {
-  background-color: var(--app-dark)80;
+  background-color: var(--app-dark);
 }
 
 #FERTILISATION::-moz-progress-bar {
@@ -160,11 +160,11 @@ progress {
 }
 
 #BIODIVERSITE::-webkit-progress-bar {
-  background-color: var(--app-yellow);
+  background-color: var(--app-yellow)80;
 }
 
 #BIODIVERSITE::-webkit-progress-value {
-  background-color: var(--app-yellow)80;
+  background-color: var(--app-yellow);
 }
 
 #BIODIVERSITE::-moz-progress-bar {
@@ -172,11 +172,11 @@ progress {
 }
 
 #EAU::-webkit-progress-bar {
-  background-color: var(--app-blue);
+  background-color: var(--app-blue)80;
 }
 
 #EAU::-webkit-progress-value {
-  background-color: var(--app-blue)80;
+  background-color: var(--app-blue);
 }
 
 #EAU::-moz-progress-bar {
@@ -184,11 +184,11 @@ progress {
 }
 
 #RECYCLAGE::-webkit-progress-bar {
-  background-color: var(--app-light-blue);
+  background-color: var(--app-light-blue)80;
 }
 
 #RECYCLAGE::-webkit-progress-value {
-  background-color: var(--app-light-blue)80;
+  background-color: var(--app-light-blue);
 }
 
 #RECYCLAGE::-moz-progress-bar {
@@ -196,11 +196,11 @@ progress {
 }
 
 #PLASTIQUE::-webkit-progress-bar {
-  background-color: var(--app-red);
+  background-color: var(--app-red)80;
 }
 
 #PLASTIQUE::-webkit-progress-value {
-  background-color: var(--app-red)80;
+  background-color: var(--app-red);
 }
 
 #PLASTIQUE::-moz-progress-bar {
