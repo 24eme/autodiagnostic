@@ -812,8 +812,6 @@ questions:
 - type: question
   id: ARBRE_ISOLE
   libelle: "Combien d'arbres isolés avez-vous sur votre exploitation ?"
-  notation:
-    RATIO: 0.5
 
 - type: question
   id: POSSESSION_RUCHES
