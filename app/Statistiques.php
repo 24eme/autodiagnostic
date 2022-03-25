@@ -89,11 +89,11 @@ class Statistiques {
             }
             $this->scores[$categorieCourante] += $notation['score'];
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
-            if ($notation['bilan_poids'] < 0) {
-                $this->ptsAmeliorations[] = $notation['bilan_phrase'];
+            if (isset($notation['faiblesse'])) {
+                $this->ptsAmeliorations[] = $notation['faiblesse'];
             }
-            if ($notation['bilan_poids'] > 0) {
-                $this->ptsForts[] = $notation['bilan_phrase'];
+            if (isset($notation['atout'])) {
+                $this->ptsForts[] = $notation['atout'];
             }
             foreach($this->formules as $key => $val) {
                 if ($val && isset($notation[$key]) && !$notation[$key]) {

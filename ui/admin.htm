@@ -139,7 +139,7 @@
                   <h5 class="mt-4">Notation</h5>
                   <table class="table">
                     <thead>
-                      <tr><th>Comparateur</th><th>Réponse</th><th>Score</th><th>Poids</th><th>Remarque</th></tr>
+                      <tr><th>Comparateur</th><th>Réponse</th><th>Score</th><th>Points</th></tr>
                     </thead>
                     <tbody>
                       <repeat group="{{ @questionnaire->getNotation(@question.id) }}" key="{{ @comparateur }}" value="{{ @notes }}">
@@ -158,8 +158,14 @@
                         </td>
                         <td>{{ @note }}</td>
                         <td>{{ @points.score }}</td>
-                        <td>{{ @points.bilan_poids }}</td>
-                        <td>{{ @points.bilan_phrase }}</td>
+                        <td>
+                          <check if="{{ @points.atout }}">
+                          Pt fort : {{ @points.atout }}
+                          </check>
+                          <check if="{{ @points.faiblesse }}">
+                          Pt d'amélioration : {{ @points.faiblesse }}
+                          </check>
+                        </td>
                       </tr>
                       </repeat>
                       </repeat>
