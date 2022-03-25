@@ -219,4 +219,9 @@ class Questions
         $question = $this->find($id);
         return $question['notation'];
     }
+
+    public function getQuestionNumeroLigne($id)
+    {
+        return shell_exec("cat -n ".self::DATA_QUESTIONNAIRE."|grep -E 'id: $id$'|cut -d 'i' -f1|sed 's/ //g'");
+    }
 }

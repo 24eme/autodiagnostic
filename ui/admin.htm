@@ -80,7 +80,7 @@
               <div class="modal-header" style="border-top: 10px solid {{ @questionnaire->getCategorieCouleur(@question.id) }}">
                 <h5 class="modal-title">
                   <span class="text-muted">{{ @questionnaire->getQuestionCategorie(@question.id) }}</span><br />
-                  {{ @questionnaire->getQuestionPosition(@question.id) }}. {{ @question.libelle }}
+                  <a target="_blank" href="https://github.com/24eme/autodiagnostic/edit/master/public/data/questionnaire.yml#L{{ @questionnaire->getQuestionNumeroLigne(@question.id) }}" class="me-3"><i class="bi bi-pencil-square"></i></a> {{ @questionnaire->getQuestionPosition(@question.id) }}. {{ @question.libelle }}
                 </h5>
               </div>
               <div class="modal-body">
