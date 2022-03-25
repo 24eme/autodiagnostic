@@ -303,7 +303,9 @@ questions:
 - type: question
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
-  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'<a href="data/Calcul IFT Herbicides.ods">outil suivant</a>"
+  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaire. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.ods'>outil suivant</a>"
+  notation_hve:
+    ration: 0.5
   notation:
     GTE:
       "1.08":
@@ -529,13 +531,13 @@ questions:
   id: DATE_PREMIER_MILDIOU
   libelle: "Quelle est la date de votre premier traitement mildiou ?"
   format: date
-  unite: "<i class="bi bi-calendar-week"></i>"
+  unite: "<i class='bi bi-calendar-week'></i>"
 
 - type: question
   id: DATE_DERNIER_MILDIOU
   libelle: "Quelle est la date de votre dernier traitement mildiou ? (hors plantes pas encore en production)"
   format: date
-  unite: "<i class="bi bi-calendar-week"></i>"
+  unite: "<i class='bi bi-calendar-week'></i>"
 
 - type: question
   id: PASSAGES_MILDIOU
@@ -684,9 +686,9 @@ questions:
   - id: NON
     libelle: "Non"
     reponses_automatiques:
-      CURETAGE_SAUVIG"NON": 0
+      CURETAGE_SAUVIGNON: 0
   - id: ESSAI
-    libelle: "Oui" en essai
+    libelle: "Oui en essai"
 
 - type: question
   id: CURETAGE_SAUVIGNON
@@ -708,7 +710,7 @@ questions:
 - type: question
   id: BILAN_AZOTE
   libelle: "Quel est votre bilan azoté global ?"
-  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href="data/Bilan azoté.ods">outil suivant</a>"
+  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.ods'>outil suivant</a>"
   unite: "kg N/ha"
   notation_hve:
     ration: 1
@@ -722,7 +724,7 @@ questions:
 - type: question
   id: AZOTE_ORGANIQUE
   libelle: "Utilisez-vous exclusivement de l’azote 100% organique ?"
-  complement_information: "Attention, certains engrais organo-minéraux contiennent de l'azote chimique. Se référer à la fiche SICAVAC sur le lien suivant"
+  complement_information: "Attention, certains engrais organo-minéraux contiennent de l'azote chimique. Se référer à la fiche SICAVAC sur le lien suivant : <a href='data/fiche-sicavac-100-azote-organique.pdf' target='_blank'>liste des fertilisants avec 100% d'azote organique</a>"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -769,7 +771,7 @@ questions:
 - type: question
   id: POURCENTAGE_SAU_IAE
   libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
-  complement_information: "Vous pouvez le calculer grâce à l'<a href="data/IAE Simplifié.ods">outil suivant</a>"
+  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/IAE Simplifié.ods'>outil suivant</a>"
   unite: "%"
   notation_hve:
     ration: 1
@@ -1039,7 +1041,7 @@ questions:
   complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
     ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+    Pellentesque eu ipsum urna.<p class='text-center mt-5'><a href='data/guide-tri-recyclage.pdf' target='_blank'><i class='bi bi-file-pdf h1'></i><br />Vous pouvez consulter notre guide de tri et recyclage</p>"
   couleur: "#2ecc71"
   opacite: "#8adbaf"
   couleur_texte: "#fff"
