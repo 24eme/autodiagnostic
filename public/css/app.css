@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('/font/RobotoSlab-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --app-red: #964320;
   --app-yellow: #EDA103;
@@ -5,6 +12,7 @@
   --app-light-blue: #65707E;
   --app-blue: #4B5767;
   --app-gold: #C29140;
+  --app-font-family: 'Roboto Slab', serif, Arial;
 }
 
 body {
