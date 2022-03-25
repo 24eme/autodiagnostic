@@ -231,3 +231,7 @@ progress {
 .tab.active {
   display: block;
 }
+
+#administration-questions i.bi-eye {
+  cursor: pointer;
+}
