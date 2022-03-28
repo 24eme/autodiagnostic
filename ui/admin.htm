@@ -198,7 +198,7 @@
   questions.addEventListener('click', function (e) {
     for (let target = e.target; target && target !== this; target = target.parentNode) {
         if (target.matches('.modal-open')) {
-          openModal.call(target, e)
+          openModal(target.dataset.modal)
         }
     }
   })
@@ -212,13 +212,17 @@
   modals.addEventListener('click', function (e) {
     for (let target = e.target; target && target !== this; target = target.parentNode) {
         if (target.matches('.modal-close')) {
-          closeModal.call(target, e)
+          let parent = target.parentNode
+          while (parent.classList.contains('modal') !== true) {
+            parent = parent.parentNode
+          }
+
+          closeModal(parent.id)
         }
     }
   })
 
-  function openModal(target, event) {
-    const id = target.target.parentNode.dataset.modal
+  function openModal(id) {
     const modal = document.getElementById(id)
     modal.classList.add('show')
     modal.style.display = 'block';
@@ -227,13 +231,8 @@
     history.pushState({}, null, '#'+id)
   }
 
-  function closeModal(target, event) {
-    let parent = target.target.parentNode
-    while (parent.classList.contains('modal') !== true) {
-      parent = parent.parentNode
-    }
-
-    const modal = document.getElementById(parent.id)
+  function closeModal(id) {
+    const modal = document.getElementById(id)
     modal.classList.remove('show')
     modal.style.display = 'none';
     backdrop.style.display = 'none';
