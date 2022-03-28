@@ -253,4 +253,10 @@
     tab.classList.add('active')
     trigger.classList.add('active')
   }
+
+  const url = new URL(window.location)
+
+  if (url.hash && document.getElementById(url.hash.replace('#', ''))) {
+    openModal(url.hash.replace('#', ''))
+  }
 </script>
