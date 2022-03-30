@@ -55,7 +55,7 @@ class Questions
         return $this->questionnaire;
     }
 
-    public function find($id)
+    public function findQuestion($id)
     {
         if (array_key_exists($id, $this->qfound)) {
             return $this->qfound[$id];
@@ -68,7 +68,7 @@ class Questions
 
     public function getQuestionIcon($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
 
         $icon = '';
 
@@ -90,7 +90,7 @@ class Questions
 
     public function getQuestionType($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
 
         if (isset($question['reponses'])) {
             return (isset($question['multiple'])) ? 'Choix multiple' : 'Choix unique';
@@ -101,13 +101,13 @@ class Questions
 
     public function getQuestionUnite($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return isset($question['unite']) ? $question['unite'] : 'Sans unité';
     }
 
     public function getQuestionAide($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return $question['complement_information'];
     }
 
@@ -174,7 +174,7 @@ class Questions
 
     public function hasReponses($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return isset($question['reponses']);
     }
 
@@ -184,13 +184,13 @@ class Questions
             return [];
         }
 
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return $question['reponses'];
     }
 
     public function hasReponsesAutomatiques($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return isset($question['reponses']) && array_column($question['reponses'], 'reponses_automatiques');
     }
 
@@ -200,13 +200,13 @@ class Questions
             return [];
         }
 
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return array_column($question['reponses'], 'reponses_automatiques', 'libelle');
     }
 
     public function hasNotation($id)
     {
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return isset($question['notation']);
     }
 
@@ -216,7 +216,7 @@ class Questions
             return [];
         }
 
-        $question = $this->find($id);
+        $question = $this->findQuestion($id);
         return $question['notation'];
     }
 
