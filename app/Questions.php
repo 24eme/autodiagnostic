@@ -8,6 +8,7 @@ class Questions
     private $categories = [];
     private $questionnaire = [];
     private $qfound = [];
+    private $cfound = [];
 
     public function __construct()
     {
@@ -64,6 +65,33 @@ class Questions
         $key = array_search($id, array_column($this->getQuestions(), 'id'));
         $this->qfound[$id] = $this->getQuestions()[$key];
         return $this->qfound[$id];
+    }
+
+    public function findQuestionCategorie($idquestion)
+    {
+        if (array_key_exists($idquestion, $this->cfound)) {
+            return $this->cfound[$idquestion];
+        }
+
+        $found = null;
+
+        foreach ($this->getQuestionnaire() as $categorie => $questions) {
+            if (array_key_exists($idquestion, $questions) === false) {
+                continue;
+            }
+
+            $found = $categorie;
+            break;
+        }
+
+        if ($found === null) {
+            return $found;
+        }
+
+        $key = array_search($found, array_column($this->getCategories(), 'id'));
+        $this->cfound[$idquestion] = $this->getCategories()[$key];
+
+        return $this->cfound[$idquestion];
     }
 
     public function getQuestionIcon($id)
