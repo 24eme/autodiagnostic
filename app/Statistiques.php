@@ -50,11 +50,11 @@ class Statistiques {
 
     public function getHighestFormule()
     {
-        return $this->formules['formule3']
-            ?  'formule3'
-            : ($this->formules['formule2'])
-                ? 'formule2'
-                : 'formule1';
+        return $this->formules['formule3'] === true
+                ?  'formule3'
+                : ($this->formules['formule2'] === true
+                    ? 'formule2'
+                    : 'formule1');
     }
 
     public function getPtsForts($limit = null) {
