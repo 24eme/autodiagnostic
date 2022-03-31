@@ -120,7 +120,7 @@
                                   <repeat group="{{ @questionnaire->getReponsesAutomatiques(@question.id)[@reponse.libelle] }}" key="{{ @id }}" value="{{ @value }}">
                                   <tr>
                                     <td>{{ @questionnaire->getQuestionCategorie(@id) }}</td>
-                                    <td>{{ @questionnaire->findQuestion(@id)['libelle'] }} <a href="/_admin#modal-{{ @id }}" title="Voir la question"><i class="bi bi-link" aria-hidden="true"></i></a></td>
+                                    <td>{{ @questionnaire->findQuestion(@id)['libelle'] }} <a href="/_admin#modal-{{ @questionnaire->findQuestionCategorie(@id)['id'] }}-{{ @id }}" title="Voir la question"><i class="bi bi-link" aria-hidden="true"></i></a></td>
                                     <td>{{ @value }}</td>
                                   </tr>
                                   </repeat>
