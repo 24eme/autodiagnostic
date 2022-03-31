@@ -11,7 +11,7 @@
   <repeat group="['formule1', 'formule2', 'formule3']" value="{{ @formule }}">
     <div class="col tables-formule">
       <div class="border shadow">
-        <div class="bg-light text-center p-3 border-bottom">
+        <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-success text-white' : 'bg-light' }} text-center p-3 border-bottom">
           <h3>{{ strtoupper(@formule) }}</h3>
           <p class="fs-1">{{ @formule === 'formule1' ? '🙂' : (@formule === 'formule2' ? '😍' : '🤩') }}</p>
           <p>{{ @formule === 'formule1'

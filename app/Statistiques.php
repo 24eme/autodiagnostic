@@ -48,6 +48,15 @@ class Statistiques {
         return (isset($this->formules[$formule]))? $this->formules[$formule] : false;
     }
 
+    public function getHighestFormule()
+    {
+        return $this->formules['formule3']
+            ?  'formule3'
+            : ($this->formules['formule2'])
+                ? 'formule2'
+                : 'formule1';
+    }
+
     public function getPtsForts($limit = null) {
         return ($limit)? array_slice($this->ptsForts, 0, $limit, true) : $this->ptsForts;
     }
