@@ -12,7 +12,12 @@
   --app-light-blue: #65707E;
   --app-blue: #4B5767;
   --app-gold: #C29140;
-  --app-font-family: 'Roboto Slab', serif, Arial;
+  --app-title-font-family: 'Roboto Slab', serif, Arial;
+  --app-font-family: 'Trade Gothic', 'Roboto Slab', serif, Arial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--app-title-font-family)
 }
 
 body {
