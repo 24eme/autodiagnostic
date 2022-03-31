@@ -195,6 +195,8 @@
   const tabs_trigger = document.getElementsByClassName('nav-link') || [];
   const tabs = [questions, listing]
 
+  const opened_modal = document.getElementsByClassName('modal show')
+
   questions.addEventListener('click', function (e) {
     for (let target = e.target; target && target !== this; target = target.parentNode) {
         if (target.matches('.modal-open')) {
@@ -223,6 +225,10 @@
   })
 
   function openModal(id) {
+    Array.prototype.forEach.call(opened_modal, function (m) {
+      closeModal(m.id)
+    })
+
     const modal = document.getElementById(id)
     modal.classList.add('show')
     modal.style.display = 'block';
