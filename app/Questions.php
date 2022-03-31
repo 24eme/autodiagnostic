@@ -141,63 +141,35 @@ class Questions
 
     public function getQuestionCategorie($id)
     {
-        $found = null;
+        $categorie = $this->findQuestionCategorie($id);
 
-        foreach ($this->getQuestionnaire() as $categorie => $questions) {
-            if (array_key_exists($id, $questions) === false) {
-                continue;
-            }
-
-            $found = $categorie;
-            break;
+        if ($categorie === null) {
+            return 'Non catégorisée';
         }
 
-        if ($found === null) {
-            return 'Non catégorisé';
-        }
-
-        return array_search($found, array_column($this->getCategories(), 'id', 'libelle'));
+        return $categorie['libelle'];
     }
 
     public function getCategorieCouleur($id)
     {
-        $found = null;
+        $categorie = $this->findQuestionCategorie($id);
 
-        foreach ($this->getQuestionnaire() as $categorie => $questions) {
-            if (array_key_exists($id, $questions) === false) {
-                continue;
-            }
-
-            $found = $categorie;
-            break;
+        if ($categorie === null) {
+            return '#111111';
         }
 
-        if ($found === null) {
-            return 'Non catégorisé';
-        }
-
-        $key = array_search($found, array_column($this->getCategories(), 'id'));
-        return $this->getCategories()[$key]['couleur'];
+        return $categorie['couleur'];
     }
 
     public function getQuestionPosition($id)
     {
-        $found = null;
+        $categorie = $this->findQuestionCategorie($id);
 
-        foreach ($this->getQuestionnaire() as $categorie => $questions) {
-            if (array_key_exists($id, $questions) === false) {
-                continue;
-            }
-
-            $found = $categorie;
-            break;
+        if ($categorie === null) {
+            return 0;
         }
 
-        if ($found === null) {
-            return '0';
-        }
-
-        return array_search($id, array_keys($this->getQuestionnaire()[$found]));
+        return array_search($id, array_keys($this->getQuestionnaire()[$categorie['id']]));
     }
 
     public function hasReponses($id)
