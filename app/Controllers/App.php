@@ -85,6 +85,11 @@ class App
         $f3->set('inc', 'resultats.htm');
     }
 
+    public function formules(Base $f3)
+    {
+        $f3->set('inc', 'formules.htm');
+    }
+
     public function afterroute()
     {
         echo Template::instance()->render('layout.html');

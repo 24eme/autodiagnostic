@@ -1,0 +1,40 @@
+<div id="formules-title" class="mb-5 bg-app-gold">
+  <div class="p-5">
+    <div class="container-fluid">
+      <h1 class="text-center display-5 fw-bold"><i class="bi bi-columns"></i> Formules</h1>
+    </div>
+  </div>
+</div>
+
+<div id="formules-tables" class="container mb-5">
+  <div class="row align-items-center">
+  <repeat group="['formule1', 'formule2', 'formule3']" value="{{ @formule }}">
+    <div class="col tables-formule">
+      <div class="border shadow">
+        <div class="bg-light text-center p-3 border-bottom">
+          <h3>{{ strtoupper(@formule) }}</h3>
+          <p class="fs-1">{{ @formule === 'formule1' ? '🙂' : (@formule === 'formule2' ? '😍' : '🤩') }}</p>
+          <p>{{ @formule === 'formule1'
+            ? 'Vous êtes sur la bonne voie'
+            : (@formule === 'formule2'
+              ? 'Vous y êtes presque !'
+              : 'Ne relâchez pas vos efforts !')
+          }}</p>
+        </div>
+        <div class="table-content">
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ante quam, dictum quis augue nec, efficitur scelerisque turpis.
+        </div>
+        <div class="table-content">
+          <p class="lead">Éléments validés : </p>
+          <ul class="bg-light list-group list-group-flush text-start">
+            <li class="list-group-item ps-5"><i class="bi bi-check text-success"></i> Foo</li>
+            <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Bar</li>
+            <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Baz</li>
+            <li class="list-group-item ps-5">{{ @formule === 'formule3' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Foobar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </repeat>
+  </div>
+</div>

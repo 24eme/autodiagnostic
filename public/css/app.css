@@ -265,3 +265,8 @@ progress {
 #administration-questions i.bi-eye {
   cursor: pointer;
 }
+
+.tables-formule .table-content {
+  padding: 1rem 0;
+  text-align: center;
+}
