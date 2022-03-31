@@ -218,14 +218,17 @@ progress {
 }
 
 .bg-app-red {
+  color: #FFFFFF;
   background-color: var(--app-red)
 }
 
 .bg-app-blue {
+  color: #FFFFFF;
   background-color: var(--app-blue)
 }
 
 .bg-app-light-blue {
+  color: #FFFFFF;
   background-color: var(--app-light-blue)
 }
 
@@ -235,10 +238,12 @@ progress {
 }
 
 .bg-app-yellow {
+  color: #111111;
   background-color: var(--app-yellow)
 }
 
 .bg-app-dark {
+  color: #FFFFFF;
   background-color: var(--app-dark)
 }
 
