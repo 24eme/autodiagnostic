@@ -234,6 +234,12 @@
     }
   })
 
+  modals.addEventListener('click', function (e) {
+    if (opened_modal.length > 0 && e.target.classList.contains('modal')) {
+      closeAllModal()
+    }
+  })
+
   function openModal(id) {
     closeAllModal()
     const modal = document.getElementById(id)
