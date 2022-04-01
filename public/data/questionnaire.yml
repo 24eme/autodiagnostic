@@ -649,7 +649,7 @@ questions:
 - type: question
   id: CLONES
   libelle: "Quel nombre de clones différents utilisez-vous ?"
-  complement_information: "<img src='img/visuels/CLONES_1.jpg' /> <img src='img/visuels/CLONES_2.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/CLONES_1.jpg' /> <img class='img-fluid' src='img/visuels/CLONES_2.jpg' />"
   reponses:
   - id: 0
     libelle: "0"
@@ -940,7 +940,7 @@ questions:
 - type: question
   id: MANCHONS_PLASTIQUE
   libelle: "Achetez-vous encore des manchons en plastique ?"
-  complement_information: "<img src='img/visuels/MANCHONS_PLASTIQUE_1.jpeg' /> <img src='img/visuels/MANCHONS_PLASTIQUE_2.jpeg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/MANCHONS_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MANCHONS_PLASTIQUE_2.jpeg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -956,7 +956,7 @@ questions:
 - type: question
   id: AGRAPHES_PLASTIQUE
   libelle: Achetez-vous encore des agrafes en plastique ?
-  complement_information: "<img src='img/visuels/AGRAPHES_PLASTIQUE.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/AGRAPHES_PLASTIQUE.jpg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -972,7 +972,7 @@ questions:
 - type: question
   id: POTEAUX_PLASTIQUE
   libelle: "Achetez-vous encore des poteaux en PVC ou Tetrapack ?"
-  complement_information: "<img src='img/visuels/POTEAUX_PLASTIQUE_1.jpg' /> <img src='img/visuels/POTEAUX_PLASTIQUE_2.jpg' /> <img src='img/visuels/POTEAUX_PLASTIQUE_3.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/POTEAUX_PLASTIQUE_1.jpg' /> <img class='img-fluid' src='img/visuels/POTEAUX_PLASTIQUE_2.jpg' /> <img class='img-fluid' src='img/visuels/POTEAUX_PLASTIQUE_3.jpg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -988,7 +988,7 @@ questions:
 - type: question
   id: LIENS_PLASTIQUE
   libelle: "Achetez-vous encore des liens d'accolage en plastique ?"
-  complement_information: "<img src='img/visuels/LIENS_PLASTIQUE_1.jpeg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/LIENS_PLASTIQUE_1.jpeg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1004,7 +1004,7 @@ questions:
 - type: question
   id: MARQUEUR_PLASTIQUE
   libelle: "Utilisez-vous encore des éléments en plastique pour marquer vos poteaux (manchons, bouchons, ...) ?"
-  complement_information: "<img src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img src='img/visuels/MARQUEUR_PLASTIQUE_2.jpg' /> <img src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img src='img/visuels/MARQUEUR_PLASTIQUE_4.jpg' /> <img src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_2.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_4.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1020,7 +1020,7 @@ questions:
 - type: question
   id: TUTEURS_PLASTIQUE
   libelle: "Achetez-vous encore des tuteurs en plastique ?"
-  complement_information: "<img src='img/visuels/TUTEURS_PLASTIQUE_1.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/TUTEURS_PLASTIQUE_1.jpg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1047,7 +1047,7 @@ questions:
 - type: question
   id: QUOI_RAKS_USAGES
   libelle: "Que faites vous des Raks usagés ?"
-  complement_information: "<img src='img/visuels/QUOI_RAKS_USAGES_1.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_RAKS_USAGES_1.jpg' />"
   reponses:
   - id: PARTENAIRE
     libelle: "Je les élimine via mon distributeur partenaire A.DI.VALOR"
@@ -1236,7 +1236,7 @@ questions:
 - type: question
   id: QUOI_SARMENTS
   libelle: "Que faites vous des sarments ?"
-  complement_information: "<img src='img/visuels/QUOI_SARMENTS_1.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_SARMENTS_1.jpg' />"
   reponses:
   - id: BRULAGE
     libelle: "Brûlage"
@@ -1319,7 +1319,7 @@ questions:
 - type: question
   id: QUOI_POTEAUX_METAL
   libelle: "Que faites vous des poteaux en métal ?"
-  complement_information: "<img src='img/visuels/QUOI_POTEAUX_METAL_1.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_POTEAUX_METAL_1.jpg' />"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie ou au recycleur"
