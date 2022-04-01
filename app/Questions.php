@@ -4,6 +4,7 @@ class Questions
 {
     const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
 
+    private $file = [];
     private $questions = [];
     private $categories = [];
     private $questionnaire = [];
@@ -16,6 +17,8 @@ class Questions
         $this->questions = $this->extract('question', $questionnaire['questions']);
         $this->categories = $this->extract('categorie', $questionnaire['questions']);
         $this->questionnaire = $this->build($questionnaire['questions']);
+
+        $this->file = array_map('trim', file(self::DATA_QUESTIONNAIRE));
     }
 
     private function extract($type, array $content)
@@ -222,6 +225,6 @@ class Questions
 
     public function getQuestionNumeroLigne($id)
     {
-        return shell_exec("grep -nE 'id: $id$' ".self::DATA_QUESTIONNAIRE." | cut -d: -f1");
+        return array_search('id: '.$id, $this->file) + 1;
     }
 }
