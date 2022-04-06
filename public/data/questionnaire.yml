@@ -34,10 +34,10 @@ questions:
       id: DTL_SURFACE_POUILLY_FUME
       libelle: "Précisez la surface : "
       unite: "ha"
-  - id: POUILLY-SUR-LOIRE
+  - id: POUILLY_SUR_LOIRE
     libelle: "AOC Pouilly-sur-Loire"
     question:
-      id: DTL_SURFACE_POUILLY-SUR-LOIRE
+      id: DTL_SURFACE_POUILLY_SUR_LOIRE
       libelle: "Précisez la surface : "
       unite: "ha"
   - id: MENETOU_SALON
