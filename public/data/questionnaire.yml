@@ -411,7 +411,7 @@ questions:
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION
-  libelle: "Utilisez vous du désherbage chimique avant l’entrée en production ?"
+  libelle: "Utilisez-vous du désherbage chimique avant l’entrée en production ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -532,13 +532,13 @@ questions:
 
 - type: question
   id: DATE_PREMIER_MILDIOU
-  libelle: "Quelle est la date de votre premier traitement mildiou ?"
+  libelle: "Quelle est la date de votre premier traitement contre le mildiou ?"
   format: date
   unite: "<i class='bi bi-calendar-week'></i>"
 
 - type: question
   id: DATE_DERNIER_MILDIOU
-  libelle: "Quelle est la date de votre dernier traitement mildiou ? (hors plantes pas encore en production)"
+  libelle: "Quelle est la date de votre dernier traitement contre le mildiou ? (hors plantes pas encore en production)"
   format: date
   unite: "<i class='bi bi-calendar-week'></i>"
 
@@ -548,7 +548,7 @@ questions:
 
 - type: question
   id: TRAITEMENT_MILDIOU
-  libelle: "Avez-vous fait des traitements mildiou supplémentaires sur certaines parcelles ?"
+  libelle: "Avez-vous fait des traitements contre le mildiou supplémentaires sur certaines parcelles ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -559,11 +559,12 @@ questions:
 
 - type: question
   id: SUPPLEMENT_MILDIOU
-  libelle: "Combien de traitements mildiou supplémentaires avez-vous fait sur ces parcelles ?"
+  libelle: "Combien de traitements contre le mildiou supplémentaires avez-vous fait sur ces parcelles ?"
 
 - type: question
   id: CUIVRE
   libelle: "En bio ou en conventionnel : quelle quantité de cuivre avez-vous utilisé cette année ?"
+  complement_information: "Calculer la quantité de cuivre métal en kg/ha à partir de la composition du produit utilisé. Pour rappel, la limitation est à 4 kg de cuivre métal/ha/an tous produits confondus en moyenne (28 kg/ha entre 2019 et 2025)."
   unite: "kg"
 
 - type: question
@@ -572,7 +573,7 @@ questions:
 
 - type: question
   id: TRAITEMENT_OIDIUM
-  libelle: "Avez-vous fait des traitements oïdium supplémentaires sur certaines parcelles ?"
+  libelle: "Avez-vous fait des traitements contre l'oïdium supplémentaires sur certaines parcelles ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -583,11 +584,11 @@ questions:
 
 - type: question
   id: SUPPLEMENT_OIDIUM
-  libelle: "Combien de traitements oïdium supplémentaires avez-vous fait sur ces parcelles ?"
+  libelle: "Combien de traitements contre l'oïdium supplémentaires avez-vous fait sur ces parcelles ?"
 
 - type: question
   id: POUDRAGE
-  libelle: "Avez-vous fait des poudrages ?"
+  libelle: "Avez-vous fait des poudrages contre l'oïdium ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -630,6 +631,7 @@ questions:
 - type: question
   id: STADE_ANTI_BROTRYTIS
   libelle: "A quel stade avez-vous réalisé ces applications d'antibotrytis (hors biocontrôle) ?"
+  complement_information: "A : chute des capuchaux floraux. B : fermeture de la grappe. C : début véraison. D : trois semaines avant la récolte."
   reponses:
   - id: A
     libelle: "A"
@@ -652,7 +654,7 @@ questions:
 - type: question
   id: CLONES
   libelle: "Quel nombre de clones différents utilisez-vous ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/CLONES_1.jpg' /> <img class='img-fluid' src='img/visuels/CLONES_2.jpg' />"
+  complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
   reponses:
   - id: 0
     libelle: "0"
@@ -682,7 +684,7 @@ questions:
 
 - type: question
   id: CURETAGE
-  libelle: "Pratiquez vous le curetage sur votre domaine ?"
+  libelle: "Pratiquez-vous le curetage sur votre domaine ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -696,6 +698,7 @@ questions:
 - type: question
   id: CURETAGE_SAUVIGNON
   libelle: "Sur la dernière campagne, quel pourcentage de votre surface en Sauvignon avez-vous cureté ?"
+  complement_information: "Considérer les curetages d'été, automne et hiver pour une campagne considérée"
   unite: "%"
 
 
@@ -836,7 +839,7 @@ questions:
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AUTOMNE
-  libelle: "Pratiquez vous un desherbage chimique ou mécanique à l'automne sur au moins une partie de votre exploitation ?"
+  libelle: "Pratiquez-vous un desherbage chimique ou mécanique à l'automne sur au moins une partie de votre exploitation ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -851,7 +854,8 @@ questions:
 
 - type: question
   id: POURCENTAGE_COUVERT_VEGETAL
-  libelle: "Sur quel pourcentage de vos surfaces conservez vous un couvert végétal ?"
+  libelle: "Sur quel pourcentage de vos surfaces conservez-vous un couvert végétal ?"
+  complement_information: "Compter les surfaces où un couvert végétal est présent au moins 6 mois de l'année sur minimum 50% de la surface."
   unite: "%"
   notation:
     LTE:
@@ -1049,7 +1053,7 @@ questions:
 
 - type: question
   id: QUOI_RAKS_USAGES
-  libelle: "Que faites vous des Raks usagés ?"
+  libelle: "Que faites-vous des Raks usagés ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_RAKS_USAGES_1.jpg' />"
   reponses:
   - id: PARTENAIRE
@@ -1076,7 +1080,7 @@ questions:
 
 - type: question
   id: QUOI_EMBALLAGES_PHYTO
-  libelle: "Que faites vous des emballages vides de produits phytopharmaceutiques ?"
+  libelle: "Que faites-vous des emballages vides de produits phytopharmaceutiques ?"
   reponses:
   - id: PARTENAIRE
     libelle: "Je les élimine via mon distributeur partenaire A.DI.VALOR"
@@ -1102,7 +1106,7 @@ questions:
 
 - type: question
   id: QUOI_FILMS_LIENS_BOUTEILLES
-  libelle: "Que faites vous des films étirables à palettes, des liens à cartons et bouteilles ?"
+  libelle: "Que faites-vous des films étirables à palettes, des liens à cartons et bouteilles ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1124,7 +1128,7 @@ questions:
 
 - type: question
   id: QUOI_EMBALLAGES_INTRANTS
-  libelle: "Que faites vous des emballages vides d'intrants oenologiques : sucre, tartre, levure, Kieselguhr ?"
+  libelle: "Que faites-vous des emballages vides d'intrants oenologiques : sucre, tartre, levure, Kieselguhr ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1146,7 +1150,7 @@ questions:
 
 - type: question
   id: QUOI_EMBALLAGES_OENO
-  libelle: "Que faites vous des emballages vides de produits oenologiques et de produits d'hygiène de cave ?"
+  libelle: "Que faites-vous des emballages vides de produits oenologiques et de produits d'hygiène de cave ?"
   reponses:
   - id: PARTENAIRE
     libelle: "Je les élimine via mon distributeur partenaire A.DI.VALOR"
@@ -1172,7 +1176,7 @@ questions:
 
 - type: question
   id: QUOI_POTEAUX_PLASTIQUE
-  libelle: "Que faites vous des poteaux PVC ou Tetrapack ?"
+  libelle: "Que faites-vous des poteaux PVC ou Tetrapack ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1194,7 +1198,7 @@ questions:
 
 - type: question
   id: QUOI_AGRAFES
-  libelle: "Que faites vous des agrafes en plastique ?"
+  libelle: "Que faites-vous des agrafes en plastique ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1216,7 +1220,7 @@ questions:
 
 - type: question
   id: QUOI_MANCHONS
-  libelle: "Que faites vous des manchons en plastique ?"
+  libelle: "Que faites-vous des manchons en plastique ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1238,7 +1242,7 @@ questions:
 
 - type: question
   id: QUOI_SARMENTS
-  libelle: "Que faites vous des sarments ?"
+  libelle: "Que faites-vous des sarments ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_SARMENTS_1.jpg' />"
   reponses:
   - id: BRULAGE
@@ -1265,7 +1269,7 @@ questions:
 
 - type: question
   id: QUOI_PALETTES
-  libelle: "Que faites vous des palettes ?"
+  libelle: "Que faites-vous des palettes ?"
   reponses:
   - id: REPRISE
     libelle: "Reprise par le fournisseur"
@@ -1295,7 +1299,7 @@ questions:
 
 - type: question
   id: QUOI_CARTONS
-  libelle: "Que faites vous des cartons usagés ou inutilisables ?"
+  libelle: "Que faites-vous des cartons usagés ou inutilisables ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1321,7 +1325,7 @@ questions:
 
 - type: question
   id: QUOI_POTEAUX_METAL
-  libelle: "Que faites vous des poteaux en métal ?"
+  libelle: "Que faites-vous des poteaux en métal ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_POTEAUX_METAL_1.jpg' />"
   reponses:
   - id: DECHETTERIE
@@ -1344,7 +1348,7 @@ questions:
 
 - type: question
   id: QUOI_FIL_METAL
-  libelle: "Que faites vous du fil à vigne en métal ?"
+  libelle: "Que faites-vous du fil à vigne en métal ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie ou au recycleur"
@@ -1366,7 +1370,7 @@ questions:
 
 - type: question
   id: QUOI_BOUTEILLES
-  libelle: "Que faites vous des bouteilles vides usagées ?"
+  libelle: "Que faites-vous des bouteilles vides usagées ?"
   reponses:
   - id: CONTENEUR
     libelle: "Je les dépose en conteneur à verre"
@@ -1388,7 +1392,7 @@ questions:
 
 - type: question
   id: QUOI_VAISSELLE
-  libelle: "Que faites vous des verres de dégustation et autre vaisselle en verre déterioriés ou inutilisables ?"
+  libelle: "Que faites-vous des verres de dégustation et autre vaisselle en verre déterioriés ou inutilisables ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1414,7 +1418,7 @@ questions:
 
 - type: question
   id: QUOI_TUTEURS
-  libelle: "Que faites vous des tuteurs en fibre de verre ?"
+  libelle: "Que faites-vous des tuteurs en fibre de verre ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1436,7 +1440,7 @@ questions:
 
 - type: question
   id: QUOI_HUILE
-  libelle: "Que faites vous des huiles usagées ?"
+  libelle: "Que faites-vous des huiles usagées ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1470,7 +1474,7 @@ questions:
 
 - type: question
   id: QUOI_BATTERIES
-  libelle: "Que faites vous des batteries usagées ?"
+  libelle: "Que faites-vous des batteries usagées ?"
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
