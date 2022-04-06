@@ -19,7 +19,7 @@ questions:
 
 - type: question
   id: APPELLATIONS
-  libelle: "Vous produisez en :"
+  libelle: "Quelle(s) appellation(s) produisez-vous ?"
   multiple: true
   reponses:
   - id: SANCERRE
@@ -34,8 +34,14 @@ questions:
       id: DTL_SURFACE_POUILLY_FUME
       libelle: "Précisez la surface : "
       unite: "ha"
+  - id: POUILLY-SUR-LOIRE
+    libelle: "AOC Pouilly-sur-Loire"
+    question:
+      id: DTL_SURFACE_POUILLY-SUR-LOIRE
+      libelle: "Précisez la surface : "
+      unite: "ha"
   - id: MENETOU_SALON
-    libelle: "AOC Menetou-Salon"
+   libelle: "AOC Menetou-Salon"
     question:
       id: DTL_SURFACE_MENETOU_SALON
       libelle: "Précisez la surface : "
