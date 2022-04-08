@@ -563,7 +563,7 @@ questions:
 
 - type: question
   id: CUIVRE
-  libelle: "En bio ou en conventionnel : quelle quantité de cuivre avez-vous utilisé cette année ?"
+  libelle: "En bio ou en conventionnel : quelle quantité de cuivre avez-vous utilisée cette année ?"
   complement_information: "Calculer la quantité de cuivre métal en kg/ha à partir de la composition du produit utilisé. Pour rappel, la limitation est à 4 kg de cuivre métal/ha/an tous produits confondus en moyenne (28 kg/ha entre 2019 et 2025)."
   unite: "kg"
 
