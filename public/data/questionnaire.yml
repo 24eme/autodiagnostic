@@ -38,7 +38,7 @@ questions:
       libelle: "Précisez la surface : "
       unite: "ha"
   - id: MENETOU_SALON
-   libelle: "AOC Menetou-Salon"
+    libelle: "AOC Menetou-Salon"
     question:
       id: DTL_SURFACE_MENETOU_SALON
       libelle: "Précisez la surface : "
