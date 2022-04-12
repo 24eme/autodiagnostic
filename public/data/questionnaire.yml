@@ -1046,7 +1046,7 @@ questions:
   complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
     ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna.<p class='text-center mt-5'><a href='data/guide-tri-recyclage.pdf' target='_blank'><i class='bi bi-file-pdf h1'></i><br />Vous pouvez consulter notre guide de tri et recyclage</a></p>"
+    Pellentesque eu ipsum urna."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
