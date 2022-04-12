@@ -12,12 +12,18 @@
   --app-light-blue: #65707E;
   --app-blue: #4B5767;
   --app-gold: #C29140;
+  --app-grey: #617080;
   --app-title-font-family: 'Roboto Slab', serif, Arial;
-  --app-font-family: 'Trade Gothic', 'Roboto Slab', serif, Arial;
+  --app-font-family: 'Trade Gothic', Arial;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--app-title-font-family)
+  font-family: var(--app-title-font-family);
+  color: var(--app-dark);
+}
+
+.text-muted {
+  color: var(--app-grey) !important;
 }
 
 body {
@@ -274,4 +280,62 @@ progress {
 .tables-formule .table-content {
   padding: 1rem 0;
   text-align: center;
+}
+
+#header h1 {
+  font-size: 2.25rem !important;
+}
+
+.btn {
+  border-radius: 0;
+  padding: .5rem .75rem
+}
+
+a:hover {
+    color: var(--app-dark);
+    text-decoration: underline;
+}
+
+a {
+    color: var(--app-gold);
+    text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--app-gold);
+  border-color: var(--app-gold);
+}
+.btn-primary:hover {
+  background-color: var(--app-dark);
+  border-color: var(--app-dark);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background-color: var(--app-dark);
+    border-color: var(--app-dark);
+}
+
+.btn-outline-primary,
+.btn-light {
+    color: var(--app-dark);
+    background-color: #fff;
+    border-color: var(--app-dark);
+}
+
+.btn-outline-primary:hover,
+.btn-light:hover {
+    color: #fff;
+    background-color: var(--app-dark);
+    border-color: var(--app-dark);
+}
+
+.list-group-item.active,
+.form-check-input:checked {
+  background-color: var(--app-gold);
+  border-color: var(--app-gold);
+}
+
+.categorie h2 {
+  color: inherit;
 }

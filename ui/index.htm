@@ -4,13 +4,17 @@
     <progress v-for="categorie in categories" v-bind:id="categorie.id" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
   </div>
 
+  <header id="header" class="col-6 pt-2 mx-auto">
+    <h1><a href="/"><img src="img/logo-bivc.png" alt="Logo BIVC" height="185" /></a>Autodiagnostic Développement Durable</h1>
+  </header>
+
   <div class="col-6 mx-auto pb-3">
-    <h1 class="text-center mt-4 mb-5">Autodiagnostic Développement Durable</h1>
 
     <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
 
       <section id="page_home" v-show="indexCourant == -1" class="text-center" key="-1">
-        <p class="mb-5 fs-5">
+
+        <p class="text-muted mb-5 fs-5">
           Afin de vous faire une idée du positionnement de votre exploitation en terme d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.
         </p>
 
@@ -68,12 +72,12 @@
                   <input v-else v-model="reponses[question.id]" class="form-check-input me-1" v-on:click="deplacer(index + 1)" v-bind:name="question.id" type="radio" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
                   {% reponse.libelle %}
                 </label>
-                <div v-if="reponse.question && reponses[question.id] !== undefined && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
-                  <p class="list-group-item list-group-item-action d-flex py-3 input-group">
+                <div class="col-6" v-if="reponse.question && reponses[question.id] !== undefined && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
+                  <div class="py-3 input-group">
                     {% reponse.question.libelle %}&nbsp;
-                    <input v-model="reponses[reponse.question.id]" type="text" class="form-control d-inline" style="width: 75%" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)"/>
+                    <input v-model="reponses[reponse.question.id]" type="text" class="form-control" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)"/>
                     <span class="input-group-text" v-show="reponse.question.unite" v-html="reponse.question.unite"></span>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,7 +102,7 @@
         <div class="my-5 bg-light border rounded">
           <p class="text-center my-5" v-if="hasQuestionsEnAttentesReponses()">
             Vous n'avez pas répondu à l'ensemble du questionnaire.<br />
-            <button type="button" class="btn btn-warning mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Répondre aux questions non repondues</button>
+            <button type="button" class="btn btn-primary mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Répondre aux questions non repondues</button>
           </p>
         </div>
 
@@ -107,11 +111,11 @@
             Vous pouvez vérifier vos réponses avant de valider votre auto-diagnostic, ou confirmer et voir vos résultats.
           </p>
           <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-outline-secondary" v-on:click="passerToutesQuestions()">Vérifier mes réponses</button>
+            <button type="button" class="btn btn btn-outline-primary" v-on:click="passerToutesQuestions()">Vérifier mes réponses</button>
             <a v-if="hasQuestionsEnAttentesReponses()" class="btn btn-primary disabled" aria-disabled="true" href="#">Voir les résultats</a>
             <form name="synthetiserForm" v-if="!hasQuestionsEnAttentesReponses()" action="{{ 'synthetiser' | alias }}" method="post" enctype="multipart/form-data">
               <input class="d-none" type="file" id="jsonReponses" name="jsonReponses" accept=".json,application/json">
-              <button type="button" v-on:click="synthetiser()" class="btn btn-success">Voir les résultats</button>
+              <button type="button" v-on:click="synthetiser()" class="btn btn-primary">Voir les résultats</button>
             </form>
           </div>
         </div>
