@@ -81,12 +81,12 @@ body {
 .slide-enter-active, .slide-leave-active, .slideback-enter-active, .slideback-leave-active {
   position: absolute;
   width: 100%;
-  transition: all 1.5s;
+  transition: all 1.5s ease;
   top: 0;
 }
 
 .slide-enter-active {
-  left: 150%;
+  left: 100%;
   opacity: 0.25;
 }
 
@@ -96,7 +96,7 @@ body {
 }
 
 .slideback-enter-active {
-  left: -150%;
+  left: -100%;
   opacity: 0.25;
 }
 
@@ -106,12 +106,12 @@ body {
 }
 
 .slide-leave-to {
-  left: -150%;
+  left: -100%;
   opacity: 0.25;
 }
 
 .slideback-leave-to {
-  left: 150%;
+  left: 100%;
   opacity: 0.25;
 }
 
