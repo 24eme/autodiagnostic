@@ -339,3 +339,24 @@ a {
 .categorie h2 {
   color: inherit;
 }
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active,
+.form-control:focus
+{
+    outline: none !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    outline-color: none !important;
+    border-color: #ced4da !important;
+}
