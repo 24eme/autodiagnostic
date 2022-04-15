@@ -504,16 +504,16 @@ questions:
   notation:
     GTE:
       "3":
-        score: 3
+        score: -10
         faiblesse: J’utilise des insecticides (hors traitements obligatoires)
         formule1: false
         formule2: false
         formule3: false
       "1":
-        score: 5
+        score: -5
         faiblesse: J’utilise des insecticides (hors traitements obligatoires)
       "0":
-        score: 10
+        score: 0
         atout: Je n’utilise pas d’insecticides (hors traitements obligatoires)
 
 - type: question
@@ -1124,7 +1124,7 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 5
+        score: 0
       "AUTRE":
         score: 0
 
@@ -1147,7 +1147,7 @@ questions:
       "DECHETTERIE":
         score: 10
       "STOCK":
-        score: 5
+        score: 0
       "AUTRE":
         score: 0
 
@@ -1301,7 +1301,7 @@ questions:
       "STOCK":
         score: 0
       "REUTILISATION":
-        score: 0
+        score: 10
       "AUTRE":
         score: 0
 
@@ -1482,7 +1482,7 @@ questions:
       "STOCK":
         score: 0
       "EAUX_USEES":
-        score: 0
+        score: -15
       "AUTRE":
         score: 0
 
