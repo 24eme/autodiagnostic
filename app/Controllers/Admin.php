@@ -4,6 +4,8 @@ namespace Controllers;
 
 use Base;
 use Questions;
+use Reponses\Exporter;
+use Reponses\Reponses;
 use Session;
 use Template;
 
@@ -37,5 +39,16 @@ class Admin
         $f3->set('questionnaire', $questions);
         $f3->set('reponses', $files);
         $f3->set('inc', 'admin.htm');
+    }
+
+    public function export(Base $f3)
+    {
+        $reponses = new Reponses(
+            glob($f3->get('UPLOADS').'*.json')
+        );
+
+        $reponsesExporter = new Exporter($reponses);
+        $reponsesExporter->export();
+        exit;
     }
 }
