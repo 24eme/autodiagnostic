@@ -24,6 +24,10 @@
         data-labels="{{ @statistiques->renderTabKeysScores() }}"
         data-series="{{ @statistiques->renderTabValuesScores() }}">
     </canvas>
+
+      <canvas id="lollipop-graph"
+        data-labels="{{ @statistiques->renderTabKeysScores() }}"
+      ></canvas>
     </div>
 
     <div id="resultats-points-amelioration" class="col-sm-6">
