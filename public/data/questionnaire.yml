@@ -1117,7 +1117,7 @@ questions:
   - id: AUTRE
     libelle: "Autre"
     question:
-      id: DTL_DECHETTERIE
+      id: DTL_QUOI_FILMS_LIENS_BOUTEILLES
       libelle: "Précisez : "
   notation:
     EQ:
