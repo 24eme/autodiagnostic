@@ -5,6 +5,7 @@ namespace Reponses;
 class Reponse
 {
     const PREFIX_COMPLEMENT = 'DTL_';
+    const PREFIX_COMPLEMENT_SURFACE = 'DTL_SURFACE_';
 
     public $id;
     public $decoded = [];
@@ -32,7 +33,7 @@ class Reponse
     public function export()
     {
         foreach ($this->decoded as $id => $rep) {
-            if (strpos($id, self::PREFIX_COMPLEMENT) === 0) {
+            if (strpos($id, self::PREFIX_COMPLEMENT) === 0 && strpos($id, self::PREFIX_COMPLEMENT_SURFACE) === false) {
                 continue;
             }
 
