@@ -1,0 +1,35 @@
+<div class="modal fade show" tabindex="-1" role="dialog" style="display:block;">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header text-center d-block">
+        <h3 class="modal-title">Accès aux formules BIVC</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          Afin de vous apporter l'accompagnement le plus pertinent dans votre engagement vers des techniques agricole environnementalement plus vertueuses, merci de bien vouloir vous identifier.
+        </p>
+        <div class="row row-cols-1 row-cols-md-2 mb-3">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Opérateur BIVC</h4>
+              </div>
+              <div class="card-body">
+                <img src="img/logo-bivc.png" alt="Logo BIVC" />
+                <p>
+                  Vous être un ressortissant du BIVC ?
+                </p>
+                <p>
+                  Identifiez-vous ou créer un compte afin de préremplir certaines informations et faciliter votre autodiagnostic.
+                </p>
+                <a href="{{ 'home' | alias }}?bivcauth=1" type="button" class="w-100 btn btn-lg btn-secondary">S'identifier</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show"></div>
