@@ -5,7 +5,7 @@ namespace Reponses;
 class Reponse
 {
     public $id;
-    public $decoded;
+    public $decoded = [];
     private $raw;
 
     public function __construct($file)
