@@ -30,8 +30,9 @@
       </li>
     </ul>
 
+
     <div id="administration-listing" class="tab">
-      <h3 class="display-6 mb-5">Tous les résultats</h3>
+      <h3 class="display-6 mb-5">Tous les résultats <a href="{{ 'export' | alias }}" class="btn btn-primary float-end"><i class="bi bi-download"></i> Exporter les réponses</a></h3>
       <check if="{{ @reponses }}">
         <true>
           <repeat group="{{ @reponses }}" value="{{ @name }}">
@@ -44,7 +45,6 @@
 
     <div id="administration-questions" class="tab active">
       <h3 class="display-6 mb-5">Liste des questions</h3>
-      <a href="{{ 'export' | alias }}">Exporter les réponses</a>
       <table class="table">
         <thead>
           <tr>
