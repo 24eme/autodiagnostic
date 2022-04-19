@@ -277,6 +277,14 @@ progress {
   cursor: pointer;
 }
 
+.tables-formule {
+  opacity: .5;
+}
+
+.tables-formule.active {
+  opacity: 1;
+}
+
 .tables-formule .table-content {
   padding: 1rem 0;
   text-align: center;

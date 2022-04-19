@@ -9,7 +9,7 @@
 <div id="formules-tables" class="container mb-5">
   <div class="row align-items-center">
   <repeat group="['formule1', 'formule2', 'formule3']" value="{{ @formule }}">
-    <div class="col tables-formule">
+    <div class="col tables-formule{{ (@statistiques->getHighestFormule() === @formule) ? ' active' : '' }}">
       <div class="border shadow">
         <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
           <h3>{{ strtoupper(@formule) }}</h3>
