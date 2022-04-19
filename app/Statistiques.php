@@ -44,10 +44,6 @@ class Statistiques {
         return $this->highScores;
     }
 
-    public function isInFormule($formule) {
-        return (isset($this->formules[$formule]))? $this->formules[$formule] : false;
-    }
-
     public function getHighestFormule()
     {
         return $this->formules['formule3'] === true
