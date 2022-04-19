@@ -87,6 +87,10 @@ class App
 
     public function formules(Base $f3)
     {
+        if (phpCAS::isAuthenticated() === false) {
+            phpCAS::forceAuthentication();
+        }
+
         $statistiques = new Statistiques(file_get_contents($f3->get('UPLOADS').'test.json'));
         $f3->set('statistiques', $statistiques);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
