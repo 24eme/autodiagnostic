@@ -30,7 +30,18 @@ class Reponse
     public function export()
     {
         foreach ($this->decoded as $id => $rep) {
-            yield ['id' => $id, 'reponse' => $rep];
+            $r = $this->hasMultiplesReponses($id) ? implode(',', $rep) : $rep;
+            yield ['id' => $id, 'reponse' => $r];
         }
+    }
+
+    public function hasMultiplesReponses($id)
+    {
+        return is_array($this->decoded[$id]) && ! empty($this->decoded[$id]);
+    }
+
+    public function hasComplementReponse($id)
+    {
+
     }
 }

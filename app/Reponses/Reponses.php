@@ -29,7 +29,7 @@ class Reponses implements \Countable, \IteratorAggregate
                     $this->questions->getQuestionCategorie($line['id']),
                     $line['id'],
                     $this->questions->findQuestion($line['id'])['libelle'],
-                    (is_array($line['reponse'])) ? serialize($line['reponse']) : $line['reponse']
+                    $line['reponse']
                 ];
             }
         }
