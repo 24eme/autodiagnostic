@@ -127,7 +127,7 @@
       <div class="row">
         <div class="col-3">
           <button type="button" z-index="-1" title="Retour au début" class="btn btn-light border me-2" v-on:click="intro()"><span class="bi bi-chevron-double-left"></span></button>
-          <button type="button" z-index="-1" class="btn btn-light border" v-on:click="deplacer(indexCourant - 1, true)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
+          <button type="button" z-index="-1" class="btn btn-light border" v-on:click="deplacer(indexPrecedent, true)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
         </div>
         <div class="col align-self-center text-center">
           <span class="text-muted">Progression : {% getProgress() %}%</span>
