@@ -75,7 +75,7 @@
                 <div class="col-6" v-if="reponse.question && reponses[question.id] !== undefined && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
                   <div class="py-3 input-group">
                     {% reponse.question.libelle %}&nbsp;
-                    <input v-model="reponses[reponse.question.id]" type="text" class="form-control" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)"/>
+                    <input v-model="reponses[reponse.question.id]" type="text" class="form-control" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
                     <span class="input-group-text" v-show="reponse.question.unite" v-html="reponse.question.unite"></span>
                   </div>
                 </div>
@@ -83,8 +83,8 @@
             </div>
             <div class="col-6" v-else>
               <div class="my-4 input-group">
-                <input v-if="question.format && question.format == 'date'" v-model="reponses[question.id]" type="date" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
-                <input v-else v-model="reponses[question.id]" type="number" min=0 :max="(question.unite === '%') ? 100 : null" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)"/>
+                <input v-if="question.format && question.format == 'date'" v-model="reponses[question.id]" type="date" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
+                <input v-else v-model="reponses[question.id]" type="number" min=0 :max="(question.unite === '%') ? 100 : null" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
                 <span class="input-group-text" v-show="question.unite" v-html="question.unite"></span>
               </div>
             </div>
