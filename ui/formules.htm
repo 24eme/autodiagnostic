@@ -1,84 +1,91 @@
-<div id="formules-title" class="mb-5 bg-app-gold">
-  <div class="p-5">
-    <div class="container-fluid">
-      <h1 class="text-center display-5 fw-bold"><i class="bi bi-columns"></i> Formules</h1>
+<check if="@isauthenticated">
+  <false>
+    <include href="accesrestreintmodal.htm" />
+  </false>
+  <true>
+    <div id="formules-title" class="mb-5 bg-app-gold">
+      <div class="p-5">
+        <div class="container-fluid">
+          <h1 class="text-center display-5 fw-bold"><i class="bi bi-columns"></i> Formules</h1>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div id="formules-tables" class="container mb-5">
-  <div class="row align-items-center">
-  <repeat group="['formule1', 'formule2', 'formule3']" value="{{ @formule }}">
-    <div class="col tables-formule{{ (@statistiques->getHighestFormule() === @formule) ? ' active' : '' }}">
-      <div class="border shadow">
-        <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
-          <h3>{{ strtoupper(@formule) }}</h3>
-          <p class="fs-1">{{ @formule === 'formule1' ? '🙂' : (@formule === 'formule2' ? '😍' : '🤩') }}</p>
-          <p>{{ @formule === 'formule1'
-            ? 'Vous êtes sur la bonne voie'
-            : (@formule === 'formule2'
-              ? 'Vous y êtes presque !'
-              : 'Ne relâchez pas vos efforts !')
-          }}</p>
+    <div id="formules-tables" class="container mb-5">
+      <div class="row align-items-center">
+      <repeat group="['formule1', 'formule2', 'formule3']" value="{{ @formule }}">
+        <div class="col tables-formule{{ (@statistiques->getHighestFormule() === @formule) ? ' active' : '' }}">
+          <div class="border shadow">
+            <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
+              <h3>{{ strtoupper(@formule) }}</h3>
+              <p class="fs-1">{{ @formule === 'formule1' ? '🙂' : (@formule === 'formule2' ? '😍' : '🤩') }}</p>
+              <p>{{ @formule === 'formule1'
+                ? 'Vous êtes sur la bonne voie'
+                : (@formule === 'formule2'
+                  ? 'Vous y êtes presque !'
+                  : 'Ne relâchez pas vos efforts !')
+              }}</p>
+            </div>
+            <div class="table-content">
+               <p class="px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ante quam, dictum quis augue nec, efficitur scelerisque turpis.</p>
+            </div>
+            <div class="table-content">
+              <p class="lead">Éléments validés : </p>
+              <ul class="fs-5 bg-light list-group list-group-flush text-start">
+                <li class="list-group-item ps-5"><i class="bi bi-check text-success"></i> HVE3</li>
+                <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 1</li>
+                <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 2</li>
+                <li class="list-group-item ps-5">{{ @formule === 'formule3' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} AB</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="table-content">
-           <p class="px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ante quam, dictum quis augue nec, efficitur scelerisque turpis.</p>
-        </div>
-        <div class="table-content">
-          <p class="lead">Éléments validés : </p>
-          <ul class="fs-5 bg-light list-group list-group-flush text-start">
-            <li class="list-group-item ps-5"><i class="bi bi-check text-success"></i> HVE3</li>
-            <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 1</li>
-            <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 2</li>
-            <li class="list-group-item ps-5">{{ @formule === 'formule3' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} AB</li>
-          </ul>
-        </div>
+      </repeat>
       </div>
     </div>
-  </repeat>
-  </div>
-</div>
 
-<div id="separator" class="text-center"><i class="fs-1 bi bi-chevron-compact-down text-muted"></i></div>
+    <div id="separator" class="text-center"><i class="fs-1 bi bi-chevron-compact-down text-muted"></i></div>
 
-<div id="formules-ressources" class="container mb-5">
-  <h2 class="display-6 text-center">Ressources</h2>
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-    <div class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3 p-1 fs-2">
-        <i class="bi bi-file-earmark-spreadsheet"></i>
-      </div>
-      <div>
-          <h2>Aller plus loin</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Télécharger
-          </a>
+    <div id="formules-ressources" class="container mb-5">
+      <h2 class="display-6 text-center">Ressources</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3 p-1 fs-2">
+            <i class="bi bi-file-earmark-spreadsheet"></i>
+          </div>
+          <div>
+              <h2>Aller plus loin</h2>
+              <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+              <a href="#" class="btn btn-primary">
+                Télécharger
+              </a>
+            </div>
         </div>
-    </div>
-    <div class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3 p-1 fs-2">
-        <i class="bi bi-file-pdf"></i>
-      </div>
-      <div>
-          <h2>Aller plus loin</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Télécharger
-          </a>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3 p-1 fs-2">
+            <i class="bi bi-file-pdf"></i>
+          </div>
+          <div>
+              <h2>Aller plus loin</h2>
+              <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+              <a href="#" class="btn btn-primary">
+                Télécharger
+              </a>
+            </div>
         </div>
-    </div>
-    <div class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3 p-1 fs-2">
-        <i class="bi bi-file-earmark-spreadsheet"></i>
-      </div>
-      <div>
-          <h2>Aller plus loin</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Télécharger
-          </a>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3 p-1 fs-2">
+            <i class="bi bi-file-earmark-spreadsheet"></i>
+          </div>
+          <div>
+              <h2>Aller plus loin</h2>
+              <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+              <a href="#" class="btn btn-primary">
+                Télécharger
+              </a>
+            </div>
         </div>
+      </div>
     </div>
-  </div>
-</div>
+  </true>
+</check>
