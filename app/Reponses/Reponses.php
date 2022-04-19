@@ -29,7 +29,8 @@ class Reponses implements \Countable, \IteratorAggregate
                     $this->questions->getQuestionCategorie($line['id']),
                     $line['id'],
                     $this->questions->findQuestion($line['id'])['libelle'],
-                    $line['reponse']
+                    $line['reponse'],
+                    $line['complement']
                 ];
             }
         }
