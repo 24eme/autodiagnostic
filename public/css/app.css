@@ -309,6 +309,18 @@ a {
     text-decoration: none;
 }
 
+
+.nav-tabs .nav-link {
+    color: var(--app-gold);
+}
+.nav-tabs .nav-link:hover {
+    color: var(--app-dark);
+    text-decoration: none;
+}
+.nav-tabs .nav-link.active {
+    color: var(--app-dark);
+}
+
 .btn-primary {
   background-color: var(--app-gold);
   border-color: var(--app-gold);
@@ -317,6 +329,7 @@ a {
 .btn-primary:focus {
   background-color: var(--app-dark);
   border-color: var(--app-dark);
+  text-decoration: none;
 }
 
 .btn-primary.disabled,
