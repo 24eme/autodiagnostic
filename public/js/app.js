@@ -241,6 +241,9 @@ const Questionnaire = Vue.createApp({
       return categorie.index.indexOf(this.indexCourant) * 100 / categorie.questions;
     },
     calculateCategorieWidth: function (categorie) {
+      if (this.isTermine) {
+        return 100;
+      }
       return Math.ceil((categorie.questions * 100)) / (this.nombreQuestionsTotal - this.categories.length);
     },
     getCategorieCouleur: function (index) {
