@@ -81,6 +81,11 @@ questions:
       unite: "ha"
 
 - type: question
+  id: SURFACE_SAUVIGNON
+  libelle: "Quelle est votre surface en Sauvignon ?"
+  unite: "ha"
+
+- type: question
   id: VENTE_RECOLTE_RAISIN
   libelle: "Vendez-vous l'intégralité de votre récolte en raisin ?"
   reponses:
@@ -156,16 +161,11 @@ questions:
       AZOTE_ORGANIQUE: OUI
   notation:
     EQ:
-      "BIO":
-        atout: Je suis certifié AB
       "HVE3":
-        atout: Je suis certifié HVE3
         formule3: false
       "BIODYVIN":
-        atout: Je suis certifié Biodyvin
         formule3: false
       "DEMETER":
-        atout: Je suis certifié Demeter
         formule3: false
       "TERRAVITIS":
         formule3: false
@@ -334,6 +334,7 @@ questions:
     GTE:
       "10.89":
         score: 0
+        faiblesse: "J'ai un IFT Hors herbicides important"
       "9.53":
         score: 2
       "8.17":
@@ -342,8 +343,10 @@ questions:
         score: 6
       "5.45":
         score: 8
+        atout: "J'ai un IFT Hors herbicides faible"
       "0.00":
         score: 10
+        atout: "J'ai un IFT Hors herbicides faible"
 
 - type: question
   id: DESHERBAGE_CHIMIQUE
@@ -365,12 +368,12 @@ questions:
     EQ:
       "OUI":
         score: 0
-        faiblesse: J’utilise des d’herbicides
+        faiblesse: "J’utilise des herbicides"
         formule2: false
         formule3: false
       "NON":
         score: 2
-        atout: Je n’utilise pas d’herbicides
+        atout: "Je n’utilise pas d’herbicides"
       PENTES:
         score: 2
 
@@ -398,8 +401,10 @@ questions:
         score: 8
       "90":
         score: 9
+        aout: " Je favorise l'enherbement hivernal"
       "100":
         score: 10
+        aout: " Je favorise l'enherbement hivernal"
 
 - type: question
   id: PASSAGE_OUTILS_HORS_HERBICIDES
@@ -478,13 +483,13 @@ questions:
     EQ:
       "OUI":
         score: 0
-        faiblesse: J’utilise des CMR
+        faiblesse: "J’utilise des CMR"
         formule1: false
         formule2: false
         formule3: false
       "NON":
         score: 10
-        atout: Je n’utilise pas de CMR
+        atout: "Je n’utilise pas de CMR"
 
 - type: question
   id: PRODUITS_CMR
@@ -505,25 +510,30 @@ questions:
     GTE:
       "3":
         score: -10
-        faiblesse: J’utilise des insecticides (hors traitements obligatoires)
         formule1: false
         formule2: false
         formule3: false
       "1":
         score: -5
-        faiblesse: J’utilise des insecticides (hors traitements obligatoires)
       "0":
         score: 0
-        atout: Je n’utilise pas d’insecticides (hors traitements obligatoires)
+        atout: "Je n’utilise pas d’insecticides (hors traitements obligatoires)"
 
 - type: question
   id: INSECTICIDES_AB
   libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   notation:
     GTE:
-      "2":
-        formule2: false
-        formule3: false
+      GTE:
+        "3":
+          score: -10
+          formule2: false
+          formule3: false
+        "1":
+          score: -5
+        "0":
+          score: 0
+          atout: "Je n’utilise pas d’insecticides (hors traitements obligatoires)"
 
 - type: question
   id: SURFACE_RAKS
@@ -610,10 +620,10 @@ questions:
     EQ:
       "OUI":
         scrore: 0
-        faiblesse: J’utilise des antibotrytis (hors biocontrôle)
+        faiblesse: "J’utilise des antibotrytis (hors biocontrôle)"
       "NON":
         score: 10
-        atout: Je n’utilise pas d’antibotrytis (hors biocontrôle)
+        atout: "Je n’utilise pas d’antibotrytis (hors biocontrôle)"
 
 - type: question
   id: ANTI_BROTRYTIS
@@ -694,6 +704,12 @@ questions:
       CURETAGE_SAUVIGNON: 0
   - id: ESSAI
     libelle: "Oui en essai"
+  notation:
+    EQ:
+      "OUI":
+        atout: "J'effectue du curetage"
+      "ESSAI":
+        atout: "J'effectue du curetage"
 
 - type: question
   id: CURETAGE_SAUVIGNON
@@ -742,10 +758,10 @@ questions:
     EQ:
       "OUI":
         score: 20
-        atout: J’utilise de l’azote 100% organique
+        atout: "J’utilise exclusivement de l’azote 100% organique"
       "NON":
         score: 0
-        faiblesse: Je n’ai pas une fertilisation à partir d’azote 100% organique exclusivement
+        faiblesse: "J'utilise de l'azote chimique"
         formule2: false
         formule3: false
 
@@ -775,36 +791,6 @@ questions:
   couleur_texte: "#fff"
 
 - type: question
-  id: POURCENTAGE_SAU_IAE
-  libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
-  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/IAE Simplifié.ods'>outil suivant</a>"
-  unite: "%"
-  notation_hve:
-    ratio: 1
-  notation:
-    LTE:
-      "10":
-        score: 1
-      "20":
-        score: 2
-      "30":
-        score: 3
-      "40":
-        score: 4
-      "50":
-        score: 5
-      "60":
-        score: 6
-      "70":
-        score: 7
-      "80":
-        score: 8
-      "90":
-        score: 9
-      "100":
-        score: 10
-
-- type: question
   id: METRE_LINEAIRE_HAIE
   libelle: "Combien de mètres linéaires de haie(s) avez-vous sur votre exploitation ?"
   complement_information: "Une haie est une unité linéaire de végétation ligneuse, implantée à plat, sur talus ou sur creux, avec : - présence d’arbustes, et, le cas échéant, présence d’arbres et/ou d’autres ligneux (ronces, genêts, ajoncs…) ; - ou présence d’arbres et autres ligneux (ronces, genêts, ajoncs…). Donc une haie est obligatoirement composée au minimum d’arbustes buissonnants, complétés le cas échéant par d'autres éléments ligneux.La haie ne peut donc pas être formée que d'arbres (c'est un alignement d'arbres) ou que de ronces."
@@ -818,6 +804,44 @@ questions:
 - type: question
   id: ARBRE_ISOLE
   libelle: "Combien d'arbres isolés avez-vous sur votre exploitation ?"
+
+- type: question
+  id: POURCENTAGE_SAU_IAE
+  libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
+  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/IAE Simplifié.ods'>outil suivant</a>"
+  unite: "%"
+  notation_hve:
+    ratio: 1
+  notation:
+    LTE:
+      "10":
+        score: 1
+        faiblesse: "J'ai peu d'infrastructures agro-écologiques (IAE)"
+      "20":
+        score: 2
+      "30":
+        score: 3
+      "40":
+        score: 4
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "50":
+        score: 5
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "60":
+        score: 6
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "70":
+        score: 7
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "80":
+        score: 8
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "90":
+        score: 9
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "100":
+        score: 10
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
 - type: question
   id: POSSESSION_RUCHES
@@ -849,6 +873,7 @@ questions:
     EQ:
       "OUI":
         score: 0
+        faiblesse: "Je fais du désherbage chimique ou mécanique à l'automne"
       "NON":
         score: 10
 
@@ -903,6 +928,7 @@ questions:
     EQ:
       "OUI":
         score: 10
+        atout: "J'ai un système de récupération d'eau de pluie"
       "NON":
         score: 0
 
@@ -941,6 +967,7 @@ questions:
     EQ:
       "OUI":
         score: 0
+        faiblesse: "J'achète encore des vignes en pot plastique"
       "NON":
         score: 10
 
@@ -1005,6 +1032,7 @@ questions:
     EQ:
       "OUI":
         score: 0
+        faiblesse: "J'achète encore des liens d'accolage en plastique"
       "NON":
         score: 10
 
