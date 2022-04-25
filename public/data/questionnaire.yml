@@ -501,7 +501,7 @@ questions:
       "2":
         score: -2
       "0":
-        score: 1
+        score: -1
 
 - type: question
   id: INSECTICIDES_NON_AB
