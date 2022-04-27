@@ -229,6 +229,10 @@ const Questionnaire = Vue.createApp({
       Object.keys(obj).forEach((k) => obj[k] === "" && delete obj[k]);
     },
     updateCategorieProgress: function (categorie) {
+      if (this.isTermine) {
+        return 100;
+      }
+
       const selfIndex = this.categories.findIndex(cat => cat.name === categorie.name)
       const currentCategorie = this.categories.findIndex(cat => cat.index.includes(this.indexCourant) === true)
 
@@ -243,9 +247,6 @@ const Questionnaire = Vue.createApp({
       return categorie.index.indexOf(this.indexCourant) * 100 / categorie.questions;
     },
     calculateCategorieWidth: function (categorie) {
-      if (this.isTermine) {
-        return 100;
-      }
       return Math.ceil((categorie.questions * 100)) / (this.nombreQuestionsTotal - this.categories.length);
     },
     getCategorieCouleur: function (index) {
