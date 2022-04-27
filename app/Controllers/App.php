@@ -31,6 +31,18 @@ class App
         }
 
         if (phpCAS::isAuthenticated()) {
+            // Si on vient de se logger
+            if (
+                $f3->get('SESSION.user')
+                && $f3->get('SESSION.user') !== phpCAS::getUser()
+                && is_file($this->getFichierName($f3->get('UPLOADS'), $f3->get('SESSION.user')))
+            ) {
+                $f3->rename(
+                    $this->getFichierName($f3->get('UPLOADS'), $f3->get('SESSION.user')),
+                    $this->getFichierName($f3->get('UPLOADS'), phpCAS::getUser())
+                );
+            }
+
             $f3->set('SESSION.user', phpCAS::getUser());
         }
 
@@ -108,14 +120,14 @@ class App
         echo Template::instance()->render('layout.html');
     }
 
+    private function getFichierName(string $path, string $user)
+    {
+        return sprintf('%s/%s-%s.json', $path, $user, date('Y'));
+    }
+
     private function getFichierReponse(string $path, string $user)
     {
-        $filename = sprintf('%s/%s-%s.json',
-            $path,
-            $user,
-            date('Y')
-        );
-
+        $filename = $this->getFichierName($path, $user);
         $file = file_get_contents($filename);
 
         if ($file === false) {
