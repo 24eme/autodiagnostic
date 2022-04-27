@@ -82,9 +82,9 @@ class App
 
     public function resultats(Base $f3)
     {
-        $file = $f3->get('UPLOADS').$f3->get('SESSION.user').'-'.date('Y').'.json';
+        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
 
-        $statistiques = new Statistiques(file_get_contents($file));
+        $statistiques = new Statistiques($file);
         $f3->set('statistiques', $statistiques);
         $f3->set('inc', 'resultats.htm');
     }
@@ -95,7 +95,9 @@ class App
             phpCAS::forceAuthentication();
         }
 
-        $statistiques = new Statistiques(file_get_contents($f3->get('UPLOADS').'test.json'));
+        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+
+        $statistiques = new Statistiques($file);
         $f3->set('statistiques', $statistiques);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
         $f3->set('inc', 'formules.htm');
@@ -104,5 +106,22 @@ class App
     public function afterroute()
     {
         echo Template::instance()->render('layout.html');
+    }
+
+    private function getFichierReponse(string $path, string $user)
+    {
+        $filename = sprintf('%s/%s-%s.json',
+            $path,
+            $user,
+            date('Y')
+        );
+
+        $file = file_get_contents($filename);
+
+        if ($file === false) {
+            throw new \Exception("Erreur dans la lecture du fichier de réponse de l'utilisateur ".$user);
+        }
+
+        return $file;
     }
 }
