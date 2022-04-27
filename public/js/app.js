@@ -209,7 +209,7 @@ const Questionnaire = Vue.createApp({
       this.storeReponses();
     },
     synthetiser: function() {
-      let file = new File([localStorage.getItem('reponses')], "test.json", {type:"application/json"});
+      let file = new File([localStorage.getItem('reponses')], "reponses.json", {type:"application/json"});
       let container = new DataTransfer();
       container.items.add(file);
       document.getElementById("jsonReponses").files = container.files;

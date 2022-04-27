@@ -61,7 +61,9 @@ class App
                 return false;
             }
             return true;
-        }, true, true);
+        }, true, function (string $fileBaseName, string $formFieldName) use ($f3) : string {
+            return $f3->get('SESSION.user').'-'.date('Y').'.json';
+        });
 
         $jsonFile = null;
         foreach ($files as $file => $valid) {
@@ -80,7 +82,9 @@ class App
 
     public function resultats(Base $f3)
     {
-        $statistiques = new Statistiques(file_get_contents($f3->get('UPLOADS').'test.json'));
+        $file = $f3->get('UPLOADS').$f3->get('SESSION.user').'-'.date('Y').'.json';
+
+        $statistiques = new Statistiques(file_get_contents($file));
         $f3->set('statistiques', $statistiques);
         $f3->set('inc', 'resultats.htm');
     }
