@@ -35,7 +35,7 @@ class App
         }
 
         if ($f3->get('GET.visiteur')) {
-            $f3->set('SESSION.user', 'VISITEUR');
+            $f3->set('SESSION.user', 'VISITEUR-'.uniqid());
             $f3->reroute('@home');
         }
 
