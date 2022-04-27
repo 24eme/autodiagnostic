@@ -74,6 +74,7 @@ const Questionnaire = Vue.createApp({
     hashChange: function() {
       const url = new URL(window.location);
       let index = null;
+
       if(!url.hash.replace(/^#/, '')) {
         index = -1;
       } else if(url.hash.replace(/^#/, '') == 'fin') {
@@ -81,7 +82,9 @@ const Questionnaire = Vue.createApp({
       } else {
         index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
-      this.deplacer(index);
+
+      this.indexCourant = index
+      this.deplacer(index, true);
     },
     storeReponses: function(question = null) {
       this.gererReponsesAutomatiques(question);
