@@ -128,6 +128,11 @@ class App
     private function getFichierReponse(string $path, string $user)
     {
         $filename = $this->getFichierName($path, $user);
+
+        if (is_file($filename) === false) {
+            throw new \Exception("Le fichier n'existe pas pour l'utilisateur ".$user);
+        }
+
         $file = file_get_contents($filename);
 
         if ($file === false) {
