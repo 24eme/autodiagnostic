@@ -250,11 +250,17 @@ const Questionnaire = Vue.createApp({
     },
     getCategorieCouleur: function (index) {
       const question = this.questionnaire.questions[index]
-      return (question.categorie_couleur) ? question.categorie_couleur : question.couleur;
+
+      if (typeof question !== "undefined") {
+        return (question.categorie_couleur) ? question.categorie_couleur : question.couleur;
+      }
     },
     getCategorieTexteCouleur: function (index) {
       const question = this.questionnaire.questions[index]
-      return (question.categorie_couleur_texte) ? question.categorie_couleur_texte : question.couleur_texte;
+
+      if (typeof question !== "undefined") {
+        return (question.categorie_couleur_texte) ? question.categorie_couleur_texte : question.couleur_texte;
+      }
     },
     getRealReponses: function() {
       let reponses = {};
