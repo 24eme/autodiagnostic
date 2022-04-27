@@ -20,9 +20,7 @@ const Questionnaire = Vue.createApp({
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L55
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
     this.loadQuestions(file)
-
     window.addEventListener('hashchange', this.hashChange);
-    this.hashChange();
   },
   computed: {
     questionnaireStarted() {
@@ -54,27 +52,28 @@ const Questionnaire = Vue.createApp({
         if (question.type == 'question' && question.multiple === true) {
           this.reponses[question.id] = [];
         }
-
-        if (localStorage.key('reponses')) {
-          this.reponses = JSON.parse(localStorage.getItem('reponses'))
-        }
       }, this);
+
+      if (localStorage.key('reponses')) {
+        this.reponses = JSON.parse(localStorage.getItem('reponses'))
+      }
     },
     loadQuestions: function(file) {
       fetch(file)
         .then(stream => stream.text())
         .then(data => this.questionnaire = jsyaml.load(data))
         .then(() => this.init())
+        .then(() => this.hashChange())
         .catch(function(error) {
           document.body.innerHTML = '';
           document.body.appendChild(
-            document.createTextNode('Error: ' + error.message)
+            document.createTextNode('Error: ' + error.message + '(L' + error.lineNumber + ' C' + error.columnNumber + ')')
           );
         })
     },
     hashChange: function() {
-      var url = new URL(window.location);
-      var index = null;
+      const url = new URL(window.location);
+      let index = null;
       if(!url.hash.replace(/^#/, '')) {
         index = -1;
       } else if(url.hash.replace(/^#/, '') == 'fin') {
