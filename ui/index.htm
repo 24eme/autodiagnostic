@@ -4,12 +4,7 @@
     <progress v-for="categorie in categories" v-bind:id="categorie.id" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
   </div>
 
-  <header id="header" class="text-center mb-3">
-    <a class="d-inline-block" href="/">
-      <img src="img/logo-bivc.png" class="img-fluid" alt="Logo BIVC"/>
-    </a>
-    <h1 class="d-inline-block">Autodiagnostic Développement Durable</h1>
-  </header>
+  <include href="header.htm">
 
   <div class="col-6 mx-auto pb-3">
 
