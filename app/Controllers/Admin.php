@@ -44,7 +44,7 @@ class Admin
     public function export(Base $f3)
     {
         $reponses = new Reponses(
-            glob($f3->get('UPLOADS').'*.json')
+            glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE)
         );
 
         $reponsesExporter = new Exporter($reponses);
