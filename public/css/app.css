@@ -223,6 +223,10 @@ progress {
   color: #fff;
 }
 
+#resultats-title h1 {
+  color: #fff;
+}
+
 .bg-app-red {
   color: #FFFFFF;
   background-color: var(--app-red)
@@ -275,6 +279,10 @@ progress {
 
 #administration-questions i.bi-eye {
   cursor: pointer;
+}
+
+#formules-title h1 {
+  color: #fff;
 }
 
 .tables-formule {
