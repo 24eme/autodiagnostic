@@ -132,12 +132,12 @@ class App
         echo Template::instance()->render('layout.html');
     }
 
-    private function getFichierName(string $path, string $user)
+    private function getFichierName(string $path, ?string $user)
     {
-        return sprintf('%s/%s-%s.json', $path, $user, date('Y'));
+        return sprintf('%s/%s-%s.json', $path, is_null($user) ? '' : $user, date('Y'));
     }
 
-    private function getFichierReponse(string $path, string $user)
+    private function getFichierReponse(string $path, ?string $user)
     {
         $filename = $this->getFichierName($path, $user);
 
