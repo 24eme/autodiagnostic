@@ -64,7 +64,7 @@ class App
     {
         $f3->set('inc', 'index.htm');
 
-        if ($this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'))) {
+        if ($f3->get('SESSION.user') && $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'))) {
             $f3->set('inc', 'alreadydone.htm');
         }
     }
@@ -100,6 +100,10 @@ class App
     {
         $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
 
+        if ($file === false) {
+            $f3->reroute('@home');
+        }
+
         $statistiques = new Statistiques($file);
         $f3->set('statistiques', $statistiques);
         $f3->set('inc', 'resultats.htm');
@@ -112,6 +116,10 @@ class App
         }
 
         $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+
+        if ($file === false) {
+            $f3->reroute('@home');
+        }
 
         $statistiques = new Statistiques($file);
         $f3->set('statistiques', $statistiques);
@@ -134,7 +142,7 @@ class App
         $filename = $this->getFichierName($path, $user);
 
         if (is_file($filename) === false) {
-            throw new \Exception("Le fichier n'existe pas pour l'utilisateur ".$user);
+            return false;
         }
 
         $file = file_get_contents($filename);
