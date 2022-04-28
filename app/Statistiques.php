@@ -32,8 +32,15 @@ class Statistiques {
         return implode(',', array_keys($this->scores));
     }
 
-    public function renderTabValuesScores() {
-        return implode(',', $this->scores);
+    public function renderTabValuesScores($pourcent = true) {
+        if ($pourcent === false) {
+            return implode(',', $this->scores);
+        }
+
+        $highScores = $this->highScores;
+        return implode(',', array_map(function ($categorie, $score) use ($highScores) {
+            return round(($score * 100) / $highScores[$categorie]);
+        }, array_keys($this->scores), array_values($this->scores)));
     }
 
     public function getScores() {
