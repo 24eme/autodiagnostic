@@ -35,18 +35,32 @@
 
     <div id="resultats-points-amelioration" class="col-sm-6">
       <h3 class="display-6 bg-app-gold text-light"><i class="bi-sun"></i> Vos points forts</h3>
-      <repeat group="{{ @statistiques->getPtsForts() }}" value="{{ @ptFort }}">
-        <div class="p-1 d-flex align-items-center">
-          <i class="bi-check-circle-fill fs-3 text-success me-3"></i> {{ @ptFort }}
-        </div>
-      </repeat>
+      <check if="{{ count(@statistiques->getPtsForts()) }}">
+        <true>
+          <repeat group="{{ @statistiques->getPtsForts() }}" value="{{ @ptFort }}">
+            <div class="p-1 d-flex align-items-center">
+              <i class="bi-check-circle-fill fs-3 text-success me-3"></i> {{ @ptFort }}
+            </div>
+          </repeat>
+        </true>
+        <false>
+          Des fiches sont à votre disposition pour améliorer vos pratiques
+        </false>
+      </check>
 
       <h3 class="display-6 mt-4 bg-app-dark text-light"><i class="bi-cloud-sun"></i> Vos points d'améliorations</h3>
-      <repeat group="{{ @statistiques->getPtsAmeliorations() }}" value="{{ @ptAmelioration }}">
-        <div class="p-1 d-flex align-items-center">
-          <i class="bi-circle fs-3 text-warning me-3"></i> {{ @ptAmelioration }}
-        </div>
-      </repeat>
+      <check if="{{ count(@statistiques->getPtsAmeliorations()) }}">
+        <true>
+          <repeat group="{{ @statistiques->getPtsAmeliorations() }}" value="{{ @ptAmelioration }}">
+            <div class="p-1 d-flex align-items-center">
+              <i class="bi-circle fs-3 text-warning me-3"></i> {{ @ptAmelioration }}
+            </div>
+          </repeat>
+        </true>
+        <false>
+          Vos pratiques sont en accord avec notre charte environnementale
+        </false>
+      </check>
 
     </div>
   </div>
