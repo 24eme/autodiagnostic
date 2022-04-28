@@ -24,7 +24,7 @@ class Statistiques {
         $this->highScores = [];
         $this->ptsForts = [];
         $this->ptsAmeliorations = [];
-        $this->formules = ['formule1' => true, 'formule2' => true, 'formule3' => true];
+        $this->formules = ['none' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
         $this->synthetiserReponses();
     }
 
@@ -50,7 +50,9 @@ class Statistiques {
                 ?  'formule3'
                 : ($this->formules['formule2'] === true
                     ? 'formule2'
-                    : 'formule1');
+                    : ($this->formules['formule1'] === true
+                        ? 'formule1'
+                        : 'none'));
     }
 
     public function getPtsForts($limit = null) {
