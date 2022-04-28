@@ -63,6 +63,10 @@ class App
     public function index(Base $f3)
     {
         $f3->set('inc', 'index.htm');
+
+        if ($this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'))) {
+            $f3->set('inc', 'alreadydone.htm');
+        }
     }
 
     public function synthetiser(Base $f3)
