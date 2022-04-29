@@ -51,10 +51,6 @@ class App
             $f3->reroute('@home');
         }
 
-        if ($f3->get('SESSION.user') === null) {
-            $f3->reroute('@home?visiteur=1');
-        }
-
         if (!phpCAS::isAuthenticated() && $f3->get('GET.bivcauth')) {
             phpCAS::forceAuthentication();
         }
@@ -102,6 +98,10 @@ class App
 
     public function resultats(Base $f3)
     {
+        if ($f3->get('SESSION.user') === null) {
+            $f3->reroute('@home');
+        }
+
         $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
 
         if ($file === false) {
