@@ -6,7 +6,7 @@
 
   <include href="header.htm">
 
-  <div class="col-6 mx-auto pb-3">
+  <div class="col-6 mx-auto pb-3 mb-5">
 
     <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
 
@@ -121,8 +121,10 @@
       </section>
 
     </transition-group>
+  </div>
 
-    <div class="fixed-bottom col-6 mx-auto py-1" v-if="indexCourant > -1 && !isTermine">
+  <div class="fixed-bottom py-1 bg-light" v-if="indexCourant > -1 && !isTermine">
+    <div class="col-6 mx-auto">
       <div class="row">
         <div class="col-3">
           <button type="button" z-index="-1" title="Retour au début" class="btn btn-outline-dark border me-2" v-on:click="intro()"><span class="bi bi-chevron-double-left"></span></button>
@@ -139,7 +141,7 @@
     </div>
   </div>
 
-  <div class="position-fixed bottom-0 start-0 p-1 opacity-25">
+  <div class="position-fixed bottom-0 start-0 p-1 opacity-25" style="z-index: 1080">
     <span v-on:click="switchModeQuestions">
       <i v-if="modeQuestionsNonRepondues" class="bi-file cursor-help" title="Mode non répondues"></i>
       <i v-else class="bi-file-text cursor-help" title="Mode vérification"></i>
