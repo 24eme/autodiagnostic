@@ -477,7 +477,7 @@ questions:
 - type: question
   id: UTILISATION_CMR
   libelle: "Utilisez-vous des produits classés CMR ?"
-  complement_information: "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC ou l'étiquette du produit"
+  complement_information: "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC disponible sur <a href='www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -514,6 +514,7 @@ questions:
   id: INSECTICIDES_NON_AB
   libelle: "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
+  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
   notation:
     GTE:
       "3":
@@ -531,6 +532,7 @@ questions:
   id: INSECTICIDES_AB
   libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
+  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
   notation:
     GTE:
       GTE:
@@ -700,7 +702,7 @@ questions:
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
-  libelle: "Combien de pieds avez-vous remplacés sur cette campagne en sauvignon (nombre total) ?"
+  libelle: "Combien de pieds avez-vous remplacés sur cette campagne (nombre total) ?"
   complement_information: "Comptabilisez vos complantations réalisées sur l'automne et le printemps précédant la campagne étudiée."
   unite: pieds
 
@@ -811,7 +813,12 @@ questions:
 - type: question
   id: METRE_LINEAIRE_ARBRE
   libelle: "Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?"
+<<<<<<< HEAD
   unite: "mètres"
+=======
+  complement_information: "Une haie est une association d'arbustes. Des arbres peuvent appartenir à la haie, mais la haie ne doit pas être uniquement composée d'arbres, sinon c'est un alignement d'arbres.<br />Elle est comptabilisée en mètres linéaires.<br />La haie doit réellement participer à la biodiversité de votre parcelle. Si, par exemple, un chemin communal la sépare de votre parcelle, elle ne compte pas comme une IAE pour l'exploitation.<br />Une haie qui sépare deux parcelles exploitées par deux viticulteurs distincts et que chacun entretien peut être comptabilisé pour chaque exploitant."
+  unite: "m"
+>>>>>>> f5033c73b17a1115547f6606549711ab3d028295
 
 - type: question
   id: ARBRE_ISOLE
