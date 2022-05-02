@@ -1008,7 +1008,7 @@ questions:
 
 - type: question
   id: AGRAFES_PLASTIQUE
-  libelle: Achetez-vous encore des agrafes en plastique ?
+  libelle: Achetez-vous encore des agrafes en plastique (y compris biofragmentable) ?
   complement_information: "<img class='img-fluid' src='img/visuels/AGRAPHES_PLASTIQUE.jpg' />"
   reponses:
   - id: OUI
