@@ -549,6 +549,7 @@ questions:
 - type: question
   id: SURFACE_RAKS
   libelle: "Sur quelle surface en ha avez-vous mis en place des Raks ou Puffer cette année ?"
+  complement_information: "Précisez 0 ha si vous n'en utilisez pas"
   unite: "ha"
 
 - type: question
