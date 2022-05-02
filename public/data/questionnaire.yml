@@ -4,7 +4,7 @@ questions:
 - type: categorie
   id: INFORMATIONS
   libelle: Informations générales
-  complement_information: "Utilisez cet outil d'auto diagnostic pour vos surfaces en vigne uniquement et pour&nbsp;la&nbsp;campagne&nbsp;2021.<br /><br />Répondez le plus sincèrement possible, vos résultats seront utilisés à des fins statistiques uniquement. En aucun cas, vos réponses seront transmises à autrui"
+  complement_information: "N'est concernée par ce questionnaire que votre production viticole"
   couleur: "#964320"
   opacite: "#96432080"
   couleur_texte: "#fff"
@@ -83,7 +83,6 @@ questions:
 - type: question
   id: SURFACE_SAUVIGNON
   libelle: "Quelle est votre surface en Sauvignon ?"
-  complement_information: "Cette information est nécessaire pour traiter les données relatives aux maladies du bois"
   unite: "ha"
 
 - type: question
@@ -98,7 +97,10 @@ questions:
 - type: categorie
   id: CERTIFICATION
   libelle: "Certification"
-  complement_information: "Certains d'entre sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
+  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
+    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
+    Pellentesque eu ipsum urna."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
@@ -187,11 +189,16 @@ questions:
     libelle: "Demeter"
   - id: BIODYVIN
     libelle: "Biodyvin"
+  - id: NON_CONCERNE
+    libelle: "Non concerné"
 
 - type: categorie
   id: PROTECTION_VIGNE
   libelle: "Protection de la vigne"
-  complement_information: "Les questions suivantes portent sur vos pratiques en matière d'entretien du sol et de protection du feuillage. Certaines concernent également les maladies du bois."
+  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
+    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
+    Pellentesque eu ipsum urna."
   couleur: "#C29140"
   opacite: "#C2914080"
   couleur_texte: "#fff"
@@ -199,7 +206,7 @@ questions:
 - type: question
   id: SURFACE_NON_TRAITEE
   libelle: "Quelle part de mon exploitation représente la surface agricole utile non traitée ?"
-  complement_information: "SAU = surface agricole utile = surface ayant eu au moins 1 action agricole par an<br /><br />SAU non traitée = parcelle(s) en AB ou conversion, ou parcelles n'ayant reçu aucun produit phyto de synthèse en cours de la campagne étudiée (hors traitements obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
+  complement_information: "SAU = surface agricole utile = surface ayant eu au moins 1 action agricole par an / SAU non traitée = parcelle(s) en AB ou conversion, ou parcelles n'ayant reçu aucun produit phyto de synthèse en cours de la campagne étudiée (hors traitements obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
   unite: "%"
   notation_hve:
     ratio: 1
@@ -304,7 +311,6 @@ questions:
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
   complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
-  unite: IFT
   notation_hve:
     ratio: 0.5
   notation:
@@ -323,40 +329,9 @@ questions:
         score: 10
 
 - type: question
-  id: DESHERBAGE_CHIMIQUE
-  libelle: "Utilisez-vous du désherbage chimique sur votre exploitation ?"
-  reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
-    reponses_automatiques:
-      SURFACE_SANS_HERBICIDE: 100
-      PASSAGE_OUTILS_HERBICIDES: 0
-      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
-      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
-      DESHERBAGE_CHIMIQUE_VERAISON: NON
-      IFT_HORS_HERBICIDE: 0
-  - id: PENTES
-    libelle: "Uniquement sur les pentes d'au moins 40% de dénivelé"
-  notation:
-    EQ:
-      "OUI":
-        score: 0
-        faiblesse: "J’utilise des herbicides"
-        formule2: false
-        formule3: false
-      "NON":
-        score: 2
-        atout: "Je n’utilise pas d’herbicides"
-      PENTES:
-        score: 2
-
-- type: question
   id: IFT_HORS_HERBICIDE
   libelle: "Quel est votre IFT hors herbicides ?"
   complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm'>outil suivant</a>"
-  unite: IFT
   notation_hve:
     ratio: 0.5
   notation:
@@ -376,6 +351,35 @@ questions:
       "0.00":
         score: 10
         atout: "J'ai un IFT Hors herbicides faible"
+
+- type: question
+  id: DESHERBAGE_CHIMIQUE
+  libelle: "Utilisez-vous du désherbage chimique sur votre exploitation ?"
+  reponses:
+  - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
+    reponses_automatiques:
+      SURFACE_SANS_HERBICIDE: 100
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+  - id: PENTES
+    libelle: "Uniquement sur les pentes d'au moins 40% de dénivelé"
+  notation:
+    EQ:
+      "OUI":
+        score: 0
+        faiblesse: "J’utilise des herbicides"
+        formule2: false
+        formule3: false
+      "NON":
+        score: 2
+        atout: "Je n’utilise pas d’herbicides"
+      PENTES:
+        score: 2
 
 - type: question
   id: SURFACE_SANS_HERBICIDE
@@ -409,12 +413,10 @@ questions:
 - type: question
   id: PASSAGE_OUTILS_HORS_HERBICIDES
   libelle: "Sur les parcelles sans herbicides, combien de passages d'outils avez-vous fait (hors tonte) ?"
-  unite: passages
 
 - type: question
   id: PASSAGE_OUTILS_HERBICIDES
   libelle: "Sur les parcelles ayant reçu un ou plusieurs herbicides, combien de passages d'outils avez-vous fait (hors tonte) ?"
-  unite: passages
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION
@@ -496,7 +498,6 @@ questions:
 - type: question
   id: PRODUITS_CMR
   libelle: "Combien de CMR avez-vous utilisés sur la campagne ?"
-  unite: CMR
   notation:
     GTE:
       "3":
@@ -509,8 +510,6 @@ questions:
 - type: question
   id: INSECTICIDES_NON_AB
   libelle: "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
-  unite: "insecticides"
-  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
   notation:
     GTE:
       "3":
@@ -527,8 +526,6 @@ questions:
 - type: question
   id: INSECTICIDES_AB
   libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
-  unite: "insecticides"
-  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
   notation:
     GTE:
       GTE:
@@ -544,8 +541,7 @@ questions:
 
 - type: question
   id: SURFACE_RAKS
-  libelle: "Sur quelle surface en ha avez-vous mis en place des Raks ou Puffer sur la campagne étudiée ?"
-  complement_information: "Précisez 0 ha si vous n'en utilisez pas"
+  libelle: "Sur quelle surface en ha avez-vous mis en place des Raks ou Puffer cette année ?"
   unite: "ha"
 
 - type: question
@@ -588,7 +584,6 @@ questions:
 - type: question
   id: PASSAGE_OIDIUM
   libelle: "Sur une parcelle représentative de votre domaine, combien avez-vous fait de passages contre l'oïdium ?"
-  unite: "passages"
 
 - type: question
   id: TRAITEMENT_OIDIUM
@@ -637,7 +632,6 @@ questions:
 - type: question
   id: ANTI_BROTRYTIS
   libelle: "Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?"
-  unite: "applications"
   notation:
     GTE:
       "2":
@@ -701,7 +695,6 @@ questions:
   id: REMPLACEMENT_SAUVIGNON
   libelle: "Combien de pieds avez-vous remplacés sur cette campagne (nombre total) ?"
   complement_information: "Comptabilisez vos complantations réalisées sur l'automne et le printemps précédant la campagne étudiée."
-  unite: pieds
 
 - type: question
   id: CURETAGE
@@ -805,18 +798,17 @@ questions:
   id: METRE_LINEAIRE_HAIE
   libelle: "Combien de mètres linéaires de haie(s) avez-vous sur votre exploitation ?"
   complement_information: "Une haie est une unité linéaire de végétation ligneuse, implantée à plat, sur talus ou sur creux, avec :<br/> - présence d’arbustes, et, le cas échéant, présence d’arbres et/ou d’autres ligneux (ronces, genêts, ajoncs…) ;<br/> - ou présence d’arbres et autres ligneux (ronces, genêts, ajoncs…).<br/> Donc une haie est obligatoirement composée au minimum d’arbustes buissonnants, complétés le cas échéant par d'autres éléments ligneux. La haie ne peut donc pas être formée que d'arbres (c'est un alignement d'arbres) ou que de ronces."
-  unite: "mètres"
+  unite: "m"
 
 - type: question
   id: METRE_LINEAIRE_ARBRE
   libelle: "Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?"
-  unite: "mètres"
   complement_information: "Une haie est une association d'arbustes. Des arbres peuvent appartenir à la haie, mais la haie ne doit pas être uniquement composée d'arbres, sinon c'est un alignement d'arbres.<br />Elle est comptabilisée en mètres linéaires.<br />La haie doit réellement participer à la biodiversité de votre parcelle. Si, par exemple, un chemin communal la sépare de votre parcelle, elle ne compte pas comme une IAE pour l'exploitation.<br />Une haie qui sépare deux parcelles exploitées par deux viticulteurs distincts et que chacun entretien peut être comptabilisé pour chaque exploitant."
+  unite: "m"
 
 - type: question
   id: ARBRE_ISOLE
   libelle: "Combien d'arbres isolés avez-vous sur votre exploitation ?"
-  unite: "arbres"
 
 - type: question
   id: POURCENTAGE_SAU_IAE
@@ -1001,8 +993,8 @@ questions:
         score: 10
 
 - type: question
-  id: AGRAFES_PLASTIQUE
-  libelle: Achetez-vous encore des agrafes en plastique (y compris biofragmentable) ?
+  id: AGRAPHES_PLASTIQUE
+  libelle: Achetez-vous encore des agrafes en plastique ?
   complement_information: "<img class='img-fluid' src='img/visuels/AGRAPHES_PLASTIQUE.jpg' />"
   reponses:
   - id: OUI
@@ -1273,8 +1265,6 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
-  - id: VIGNE
-    libelle: "Je les laisse dans la vigne"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1287,8 +1277,6 @@ questions:
       "STOCK":
         score: 0
       "MENAGERE":
-        score: -15
-      "VIGNE":
         score: -15
       "AUTRE":
         score: 0
@@ -1324,7 +1312,6 @@ questions:
   id: QUOI_SARMENTS
   libelle: "Que faites-vous des sarments ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_SARMENTS_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
-  multiple: true
   reponses:
   - id: BRULAGE
     libelle: "Brûlage"
