@@ -83,6 +83,7 @@ questions:
 - type: question
   id: SURFACE_SAUVIGNON
   libelle: "Quelle est votre surface en Sauvignon ?"
+  complement_information: "Cette information est nécessaire pour traiter les données relatives aux maladies du bois"
   unite: "ha"
 
 - type: question
@@ -325,6 +326,36 @@ questions:
         score: 10
 
 - type: question
+  id: DESHERBAGE_CHIMIQUE
+  libelle: "Utilisez-vous du désherbage chimique sur votre exploitation ?"
+  reponses:
+  - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
+    reponses_automatiques:
+      SURFACE_SANS_HERBICIDE: 100
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+      IFT_HORS_HERBICIDE: 0
+  - id: PENTES
+    libelle: "Uniquement sur les pentes d'au moins 40% de dénivelé"
+  notation:
+    EQ:
+      "OUI":
+        score: 0
+        faiblesse: "J’utilise des herbicides"
+        formule2: false
+        formule3: false
+      "NON":
+        score: 2
+        atout: "Je n’utilise pas d’herbicides"
+      PENTES:
+        score: 2
+
+- type: question
   id: IFT_HORS_HERBICIDE
   libelle: "Quel est votre IFT hors herbicides ?"
   complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm'>outil suivant</a>"
@@ -348,35 +379,6 @@ questions:
       "0.00":
         score: 10
         atout: "J'ai un IFT Hors herbicides faible"
-
-- type: question
-  id: DESHERBAGE_CHIMIQUE
-  libelle: "Utilisez-vous du désherbage chimique sur votre exploitation ?"
-  reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
-    reponses_automatiques:
-      SURFACE_SANS_HERBICIDE: 100
-      PASSAGE_OUTILS_HERBICIDES: 0
-      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
-      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
-      DESHERBAGE_CHIMIQUE_VERAISON: NON
-  - id: PENTES
-    libelle: "Uniquement sur les pentes d'au moins 40% de dénivelé"
-  notation:
-    EQ:
-      "OUI":
-        score: 0
-        faiblesse: "J’utilise des herbicides"
-        formule2: false
-        formule3: false
-      "NON":
-        score: 2
-        atout: "Je n’utilise pas d’herbicides"
-      PENTES:
-        score: 2
 
 - type: question
   id: SURFACE_SANS_HERBICIDE
