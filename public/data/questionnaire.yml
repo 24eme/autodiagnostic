@@ -970,7 +970,7 @@ questions:
 
 - type: question
   id: POT_PLASTIQUE
-  libelle: "Achetez-vous encore des plants de vigne en pot en plastique ?"
+  libelle: "Achetez-vous encore des pieds de vigne en pot avec protection plastique intégrée ?"
   reponses:
   - id: OUI
     libelle: "Oui"
