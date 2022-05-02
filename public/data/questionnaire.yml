@@ -693,7 +693,7 @@ questions:
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
-  libelle: "Combien de pieds avez-vous remplacés sur cette campagne en sauvignon (nombre total) ?"
+  libelle: "Combien de pieds avez-vous remplacés sur cette campagne (nombre total) ?"
   complement_information: "Comptabilisez vos complantations réalisées sur l'automne et le printemps précédant la campagne étudiée."
 
 - type: question
