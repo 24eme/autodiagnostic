@@ -27,18 +27,13 @@
 
     <div id="formules-tables" class="container mb-5">
       <div class="row align-items-center">
-      <repeat group="['formule1', 'formule2', 'formule3']" value="{{ @formule }}">
+      <repeat group="{{ @statistiques->getFormules() }}" value="{{ @formule }}">
         <div class="col tables-formule{{ (@statistiques->getHighestFormule() === @formule) ? ' active' : '' }}">
           <div class="border shadow">
             <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
               <h3>{{ strtoupper(@formule) }}</h3>
-              <p class="fs-1">{{ @formule === 'formule1' ? '🙂' : (@formule === 'formule2' ? '😍' : '🤩') }}</p>
-              <p>{{ @formule === 'formule1'
-                ? 'Vous êtes sur la bonne voie'
-                : (@formule === 'formule2'
-                  ? 'Vous y êtes presque !'
-                  : 'Ne relâchez pas vos efforts !')
-              }}</p>
+              <p class="fs-1">{{ @statistiques->getFormuleIcone(@formule) }}</p>
+              <p>{{ @statistiques->getFormuleTexte(@formule) }}</p>
             </div>
             <div class="table-content">
                <p class="px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ante quam, dictum quis augue nec, efficitur scelerisque turpis.</p>
