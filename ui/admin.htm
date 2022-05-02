@@ -45,7 +45,7 @@
 
     <div id="administration-questions" class="tab active">
       <h3 class="display-6 mb-5">Liste des questions</h3>
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Categorie</th>
@@ -175,7 +175,7 @@
                 </check>
               </div>
               <div class="modal-footer">
-                <p class="me-auto"><small class="text-muted">ID: {{ @question.id }}</small></p>
+                <p class="me-auto"><small class="text-muted">CATEGORIE : {{ @categorie }}, QUESTION : {{ @question.id }}</small></p>
                 <button type="button" class="btn btn-secondary modal-close">Fermer</button>
               </div>
             </div>
