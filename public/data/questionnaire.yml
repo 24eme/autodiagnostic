@@ -4,7 +4,7 @@ questions:
 - type: categorie
   id: INFORMATIONS
   libelle: Informations générales
-  complement_information: "N'est concernée par ce questionnaire que votre production viticole"
+  complement_information: "Utilisez cet outil d'auto diagnostic pour vos surfaces en vigne uniquement et pour&nbsp;la&nbsp;campagne&nbsp;2021.<br /><br />Répondez le plus sincèrement possible, vos résultats seront utilisés à des fins statistiques uniquement. En aucun cas, vos réponses seront transmises à autrui"
   couleur: "#964320"
   opacite: "#96432080"
   couleur_texte: "#fff"
@@ -98,10 +98,7 @@ questions:
 - type: categorie
   id: CERTIFICATION
   libelle: "Certification"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Certains d'entre sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
@@ -194,10 +191,7 @@ questions:
 - type: categorie
   id: PROTECTION_VIGNE
   libelle: "Protection de la vigne"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Les questions suivantes portent sur vos pratiques en matière d'entretien du sol et de protection du feuillage. Certaines concernent également les maladies du bois."
   couleur: "#C29140"
   opacite: "#C2914080"
   couleur_texte: "#fff"
@@ -205,7 +199,7 @@ questions:
 - type: question
   id: SURFACE_NON_TRAITEE
   libelle: "Quelle part de mon exploitation représente la surface agricole utile non traitée ?"
-  complement_information: "SAU = surface agricole utile = surface ayant eu au moins 1 action agricole par an / SAU non traitée = parcelle(s) en AB ou conversion, ou parcelles n'ayant reçu aucun produit phyto de synthèse en cours de la campagne étudiée (hors traitements obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
+  complement_information: "SAU = surface agricole utile = surface ayant eu au moins 1 action agricole par an<br /><br />SAU non traitée = parcelle(s) en AB ou conversion, ou parcelles n'ayant reçu aucun produit phyto de synthèse en cours de la campagne étudiée (hors traitements obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
   unite: "%"
   notation_hve:
     ratio: 1
