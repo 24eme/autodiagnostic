@@ -26,10 +26,9 @@
 
   <check if="{{ @SESSION.user }}">
     <p class="position-fixed bottom-0 end-0 small text-muted pe-2"><i class="bi bi-person-fill"></i>
-      Connecté en tant que :
       <check if="{{ strpos(@SESSION.user, 'VISITEUR-') === 0 }}">
         <true>{{ @SESSION.user }}</true>
-        <false><a href="https://declaration.vins-centre-loire.com">{{ @SESSION.user }}</a></false>
+        <false>Connecté en tant que : <a href="https://declaration.vins-centre-loire.com">{{ @SESSION.user }}</a></false>
       </check>
     </p>
   </check>
