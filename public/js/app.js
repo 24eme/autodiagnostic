@@ -86,9 +86,12 @@ const Questionnaire = Vue.createApp({
       this.indexCourant = index
       this.deplacer(index, true);
     },
-    storeReponses: function(question = null) {
+    storeReponses: function(question = null, deplacer = false) {
       this.gererReponsesAutomatiques(question);
       localStorage.setItem('reponses', JSON.stringify(this.reponses));
+      if (question && deplacer) {
+        this.deplacer(this.getQuestionIndex(question.id) + 1);
+      }
     },
     gererReponsesAutomatiques: function(question = null) {
       if (question && question.reponses) {
