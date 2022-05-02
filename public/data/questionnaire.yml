@@ -549,6 +549,7 @@ questions:
 - type: question
   id: SURFACE_RAKS
   libelle: "Sur quelle surface en ha avez-vous mis en place des Raks ou Puffer cette année ?"
+  complement_information: "Précisez 0 ha si vous n'en utilisez pas"
   unite: "ha"
 
 - type: question
@@ -1004,7 +1005,7 @@ questions:
         score: 10
 
 - type: question
-  id: AGRAPHES_PLASTIQUE
+  id: AGRAFES_PLASTIQUE
   libelle: Achetez-vous encore des agrafes en plastique ?
   complement_information: "<img class='img-fluid' src='img/visuels/AGRAPHES_PLASTIQUE.jpg' />"
   reponses:
@@ -1276,6 +1277,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: VIGNE
+    libelle: "Je les laisse dans la vigne"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1288,6 +1291,8 @@ questions:
       "STOCK":
         score: 0
       "MENAGERE":
+        score: -15
+      "VIGNE":
         score: -15
       "AUTRE":
         score: 0
@@ -1323,6 +1328,7 @@ questions:
   id: QUOI_SARMENTS
   libelle: "Que faites-vous des sarments ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_SARMENTS_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: BRULAGE
     libelle: "Brûlage"
