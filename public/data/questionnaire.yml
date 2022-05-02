@@ -310,7 +310,7 @@ questions:
 - type: question
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
-  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.ods'>outil suivant</a>"
+  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
   notation_hve:
     ratio: 0.5
   notation:
@@ -331,7 +331,7 @@ questions:
 - type: question
   id: IFT_HORS_HERBICIDE
   libelle: "Quel est votre IFT hors herbicides ?"
-  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.ods'>outil suivant</a>"
+  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm'>outil suivant</a>"
   notation_hve:
     ratio: 0.5
   notation:
@@ -736,7 +736,7 @@ questions:
 - type: question
   id: BILAN_AZOTE
   libelle: "Quel est votre bilan azoté global ?"
-  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.ods'>outil suivant</a>"
+  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.xlsm'>outil suivant</a>"
   unite: "kg N/ha"
   notation_hve:
     ratio: 1
@@ -812,7 +812,7 @@ questions:
 - type: question
   id: POURCENTAGE_SAU_IAE
   libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
-  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/Calcul de la SET.ods'>outil suivant</a>"
+  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/Calcul de la SET.xlsm'>outil suivant</a>"
   unite: "%"
   notation_hve:
     ratio: 1
@@ -1043,7 +1043,7 @@ questions:
 - type: question
   id: MARQUEUR_PLASTIQUE
   libelle: "Utilisez-vous encore des éléments en plastique pour marquer vos poteaux (manchons, bouchons, ...) ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_2.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_4.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
