@@ -25,7 +25,13 @@ class Statistiques {
         $this->highScores = [];
         $this->ptsForts = [];
         $this->ptsAmeliorations = [];
-        $this->formules = ['none' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
+        $this->formules = ['hors formule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
+        $this->infosFormules = [
+            'hors formule' => ['icone' => '🫣', 'texte' => ''],
+            'formule1' => ['icone' => '🙂', 'texte' => 'Vous êtes sur la bonne voie'],
+            'formule2' => ['icone' => '😍', 'texte' => 'Vous y êtes presque !'],
+            'formule3' => ['icone' => '🤩', 'texte' => 'Ne relâchez pas vos efforts !']
+        ];
         $this->synthetiserReponses();
     }
 
@@ -55,6 +61,21 @@ class Statistiques {
         return $this->highScores;
     }
 
+    public function getFormules()
+    {
+        return array_keys($this->formules);
+    }
+
+    public function getFormuleIcone($formule)
+    {
+        return $this->infosFormules[$formule]['icone'];
+    }
+
+    public function getFormuleTexte($formule)
+    {
+        return $this->infosFormules[$formule]['texte'];
+    }
+
     public function getHighestFormule()
     {
         return $this->formules['formule3'] === true
@@ -63,7 +84,7 @@ class Statistiques {
                     ? 'formule2'
                     : ($this->formules['formule1'] === true
                         ? 'formule1'
-                        : 'none'));
+                        : 'hors formule'));
     }
 
     public function getPtsForts($limit = null) {
