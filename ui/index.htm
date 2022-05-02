@@ -58,7 +58,7 @@
         </div>
         <div v-if="question.type === 'question'" class="ps-2 question">
           <div class="question-title">
-            <h2 class="h4 p-3" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'">{% question.categorie %}<strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
+            <h2 class="h4 p-3 pt-1" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-25">{% question.categorie_libelle %}</small><br /><strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
           </div>
           <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
             <p v-if="question.complement_information" class="bg-light p-2 text-muted small" v-html="question.complement_information"></p>

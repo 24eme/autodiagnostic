@@ -42,6 +42,8 @@ const Questionnaire = Vue.createApp({
         if (categorie) {
           question.categorie_couleur = categorie.couleur;
           question.categorie_couleur_texte = categorie.couleur_texte;
+          question.categorie_libelle = categorie.libelle;
+          question.categorie_id = categorie.id;
           question.num = num;
           num++;
 
