@@ -159,8 +159,6 @@ questions:
       INSECTICIDES_NON_AB: 0
       TRAITEMENT_BROTRYTIS: NON
       AZOTE_ORGANIQUE: OUI
-  - id: AUCUNE
-    libelle: "Aucune"
   notation:
     EQ:
       "HVE3":
@@ -189,8 +187,6 @@ questions:
     libelle: "Demeter"
   - id: BIODYVIN
     libelle: "Biodyvin"
-  - id: NON_CONCERNE
-    libelle: "Non concerné"
 
 - type: categorie
   id: PROTECTION_VIGNE

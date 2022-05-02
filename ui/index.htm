@@ -58,7 +58,7 @@
         </div>
         <div v-if="question.type === 'question'" class="ps-2 question">
           <div class="question-title">
-            <h2 class="h4 p-3" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'"><strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
+            <h2 class="h4 p-3" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'">{% question.categorie %}<strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
           </div>
           <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
             <p v-if="question.complement_information" class="bg-light p-2 text-muted small" v-html="question.complement_information"></p>
@@ -87,8 +87,8 @@
               </div>
             </div>
             <div class="d-grid d-md-flex justify-content-between my-4">
-              <!--<button class="btn btn-sm btn-light" v-on:click="nonConcerne(index)">Non concerné</button>-->
-              <button class="btn" v-bind:style="'color: ' + getCategorieTexteCouleur(indexCourant) + '; background-color: ' + getCategorieCouleur(indexCourant) + ';'" v-on:click="deplacer(indexCourant + 1)">Suivant <span class="bi-chevron-compact-right"></span></button>
+              <button class="btn btn-sm text-muted" v-on:click="nonConcerne(index)">Non concerné</button>
+              <button class="btn btn-link d-none" v-bind:style="'color: ' + getCategorieCouleur(indexCourant) + ';'" v-on:click="deplacer(indexCourant + 1)">Suivant <span class="bi-chevron-compact-right"></span></button>
             </div>
           </div>
         </div>
