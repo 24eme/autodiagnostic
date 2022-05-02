@@ -510,6 +510,7 @@ questions:
 - type: question
   id: INSECTICIDES_NON_AB
   libelle: "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
+  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
   notation:
     GTE:
       "3":
@@ -526,6 +527,7 @@ questions:
 - type: question
   id: INSECTICIDES_AB
   libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
+  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
   notation:
     GTE:
       GTE:
