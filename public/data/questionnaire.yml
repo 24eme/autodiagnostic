@@ -199,7 +199,7 @@ questions:
 - type: question
   id: SURFACE_NON_TRAITEE
   libelle: "Quelle part de mon exploitation représente la surface agricole utile non traitée ?"
-  complement_information: "SAU = surface agricole utile = surface ayant eu au moins 1 action agricole par an / SAU non traitée = parcelle(s) en AB ou conversion, ou parcelles n'ayant reçu aucun produit phyto de synthèse en cours de la campagne étudiée (hors traitements obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
+  complement_information: "SAU = surface agricole utile = surface ayant eu au moins 1 action agricole par an<br /><br />SAU non traitée = parcelle(s) en AB ou conversion, ou parcelles n'ayant reçu aucun produit phyto de synthèse en cours de la campagne étudiée (hors traitements obligatoires comme flavescence dorée), prairie permanente paturée ou fauchée, surface non plantée, ..."
   unite: "%"
   notation_hve:
     ratio: 1
