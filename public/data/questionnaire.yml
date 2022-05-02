@@ -522,7 +522,7 @@ questions:
         score: -5
       "0":
         score: 0
-        atout: "Je n’utilise pas d’insecticides (hors traitements obligatoires)"
+        atout: "Je n’utilise pas d’insecticides non autorisés en AB (hors traitements obligatoires)"
 
 - type: question
   id: INSECTICIDES_AB
