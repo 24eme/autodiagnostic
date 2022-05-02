@@ -1276,6 +1276,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: VIGNE
+    libelle: "Je les laisse dans la vigne"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1288,6 +1290,8 @@ questions:
       "STOCK":
         score: 0
       "MENAGERE":
+        score: -15
+      "VIGNE":
         score: -15
       "AUTRE":
         score: 0
