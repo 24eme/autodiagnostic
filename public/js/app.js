@@ -162,6 +162,8 @@ const Questionnaire = Vue.createApp({
 
       if(this.indexPrecedent === null) {
         this.indexPrecedent = index;
+      } else if (index < this.indexCourant) {
+        this.indexPrecedent = index - 1;
       } else {
         this.indexPrecedent = this.indexCourant;
       }

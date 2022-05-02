@@ -347,7 +347,7 @@ a {
 }
 
 .btn-outline-primary,
-.btn-light {
+.btn-outline-dark {
     color: var(--app-dark);
     background-color: #fff;
     border-color: var(--app-dark);
@@ -355,8 +355,8 @@ a {
 
 .btn-outline-primary:hover,
 .btn-outline-primary:focus,
-.btn-light:hover,
-.btn-light:focus {
+.btn-outline-dark:hover,
+.btn-outline-dark:focus {
     color: #fff;
     background-color: var(--app-dark);
     border-color: var(--app-dark);

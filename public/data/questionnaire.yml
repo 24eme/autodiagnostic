@@ -187,6 +187,8 @@ questions:
     libelle: "Demeter"
   - id: BIODYVIN
     libelle: "Biodyvin"
+  - id: NON
+    libelle: "Non"
 
 - type: categorie
   id: PROTECTION_VIGNE
@@ -808,7 +810,7 @@ questions:
 - type: question
   id: POURCENTAGE_SAU_IAE
   libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
-  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/IAE Simplifié.ods'>outil suivant</a>"
+  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/Calcul de la SET.ods'>outil suivant</a>"
   unite: "%"
   notation_hve:
     ratio: 1
@@ -1090,6 +1092,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: PARCELLE
     libelle: "Je les laisse dans la parcelle"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1103,6 +1107,8 @@ questions:
         score: 0
       "PARCELLE":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1117,6 +1123,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1130,6 +1138,8 @@ questions:
         score: 0
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1142,6 +1152,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1153,6 +1165,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1165,6 +1179,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1176,6 +1192,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1190,6 +1208,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1203,6 +1223,8 @@ questions:
         score: 0
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1238,6 +1260,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1249,6 +1273,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1261,6 +1287,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1272,6 +1300,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1415,6 +1445,8 @@ questions:
     libelle: "Je les dépose en conteneur à verre"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1426,6 +1458,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1440,6 +1474,8 @@ questions:
     libelle: "Je les dépose en conteneur à verre"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1453,6 +1489,8 @@ questions:
         score: 0
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1465,6 +1503,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1476,6 +1516,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1494,6 +1536,8 @@ questions:
     libelle: "Je les stocke"
   - id: EAUX_USEES
     libelle: "Je les rejette dans les eaux usées"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1511,6 +1555,8 @@ questions:
         score: 0
       "EAUX_USEES":
         score: -15
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 
@@ -1525,6 +1571,8 @@ questions:
     libelle: "Je les dépose chez mon distributeur"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: MENAGERE
+    libelle: "Je les jette dans les ordures ménagères"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1538,6 +1586,8 @@ questions:
         score: 10
       "STOCK":
         score: 0
+      "MENAGERE":
+        score: -15
       "AUTRE":
         score: 0
 

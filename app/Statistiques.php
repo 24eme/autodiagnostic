@@ -39,6 +39,9 @@ class Statistiques {
 
         $highScores = $this->highScores;
         return implode(',', array_map(function ($categorie, $score) use ($highScores) {
+            if ($highScores[$categorie] === 0) {
+                return 0;
+            }
             return round(($score * 100) / $highScores[$categorie]);
         }, array_keys($this->scores), array_values($this->scores)));
     }
