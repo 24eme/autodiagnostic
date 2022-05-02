@@ -191,10 +191,7 @@ questions:
 - type: categorie
   id: PROTECTION_VIGNE
   libelle: "Protection de la vigne"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Les questions suivantes portent sur vos pratiques en matière d'entretien du sol et de protection du feuillage. Certaines concernent également les maladies du bois."
   couleur: "#C29140"
   opacite: "#C2914080"
   couleur_texte: "#fff"
