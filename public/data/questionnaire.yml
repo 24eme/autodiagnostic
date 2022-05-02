@@ -83,6 +83,7 @@ questions:
 - type: question
   id: SURFACE_SAUVIGNON
   libelle: "Quelle est votre surface en Sauvignon ?"
+  complement_information: "Cette information est nécessaire pour traiter les données relatives aux maladies du bois"
   unite: "ha"
 
 - type: question
