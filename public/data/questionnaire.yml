@@ -573,7 +573,7 @@ questions:
 
 - type: question
   id: SUPPLEMENT_MILDIOU
-  libelle: "Combien de traitements contre le mildiou supplémentaires avez-vous fait sur ces parcelles ?"
+  libelle: "Combien de traitements contre le mildiou avez-vous fait sur ces parcelles ?"
 
 - type: question
   id: CUIVRE
@@ -979,7 +979,7 @@ questions:
 - type: question
   id: MANCHONS_PLASTIQUE
   libelle: "Achetez-vous encore des manchons en plastique ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/MANCHONS_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MANCHONS_PLASTIQUE_2.jpeg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/MANCHONS_PLASTIQUE_2.jpeg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
