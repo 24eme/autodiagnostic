@@ -252,7 +252,7 @@ questions:
 
 - type: question
   id: MATERIELS
-  libelle: "Utilisez vous un ou plusieurs matériels ou équipements de la liste ci-contre permettant de limiter les fuites vers l'environnement au-delà des obligations règlementaires ?"
+  libelle: "Utilisez vous un ou plusieurs matériels ou équipements de la liste ci-dessous permettant de limiter les fuites vers l'environnement au-delà des obligations règlementaires ?"
   complement_information: "Cocher le ou les matériels utilisés sur l'exploitation"
   multiple: true
   reponses:
