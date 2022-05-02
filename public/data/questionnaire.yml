@@ -97,10 +97,7 @@ questions:
 - type: categorie
   id: CERTIFICATION
   libelle: "Certification"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Certains d'entre sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
