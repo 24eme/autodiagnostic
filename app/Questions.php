@@ -164,6 +164,11 @@ class Questions
         return $categorie['couleur'];
     }
 
+    public function getCategoriePosition($id)
+    {
+        return array_search($id, array_column($this->getCategories(), 'id')) + 1;
+    }
+
     public function getQuestionPosition($id)
     {
         $categorie = $this->findQuestionCategorie($id);
