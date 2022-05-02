@@ -803,6 +803,7 @@ questions:
 - type: question
   id: METRE_LINEAIRE_ARBRE
   libelle: "Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?"
+  complement_information: "Une haie est une association d'arbustes. Des arbres peuvent appartenir à la haie, mais la haie ne doit pas être uniquement composée d'arbres, sinon c'est un alignement d'arbres.<br />Elle est comptabilisée en mètres linéaires.<br />La haie doit réellement participer à la biodiversité de votre parcelle. Si, par exemple, un chemin communal la sépare de votre parcelle, elle ne compte pas comme une IAE pour l'exploitation.<br />Une haie qui sépare deux parcelles exploitées par deux viticulteurs distincts et que chacun entretien peut être comptabilisé pour chaque exploitant."
   unite: "m"
 
 - type: question
