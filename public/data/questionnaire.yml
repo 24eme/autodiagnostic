@@ -573,7 +573,7 @@ questions:
 
 - type: question
   id: SUPPLEMENT_MILDIOU
-  libelle: "Combien de traitements contre le mildiou supplémentaires avez-vous fait sur ces parcelles ?"
+  libelle: "Combien de traitements contre le mildiou avez-vous fait sur ces parcelles ?"
 
 - type: question
   id: CUIVRE
