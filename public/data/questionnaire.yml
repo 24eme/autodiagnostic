@@ -1041,7 +1041,7 @@ questions:
 - type: question
   id: MARQUEUR_PLASTIQUE
   libelle: "Utilisez-vous encore des éléments en plastique pour marquer vos poteaux (manchons, bouchons, ...) ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_2.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_4.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
+  complement_information: "<img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
   reponses:
   - id: OUI
     libelle: "Oui"
