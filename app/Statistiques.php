@@ -7,6 +7,7 @@ class Statistiques {
     const COMPARATEUR_INF = 'LT';
     const COMPARATEUR_EGAL = 'EQ';
     const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
+    const NON_CONCERNE = 'NC';
 
     private $config;
     private $reponses;
@@ -94,6 +95,11 @@ class Statistiques {
             if (isset($question['notation']) && !isset($reponses[$question['id']])) {
                 throw new Exception('Une réponse est attendue pour la question : '.$question['id']);
             }
+
+            if ($reponses[$question['id']] === self::NON_CONCERNE) {
+                continue;
+            }
+
             $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
             if (!$notation) {
                 $this->scores[$categorieCourante] = 0;
