@@ -187,6 +187,8 @@ questions:
     libelle: "Demeter"
   - id: BIODYVIN
     libelle: "Biodyvin"
+  - id: AUCUNE
+    libelle: "Non aucune"
 
 - type: categorie
   id: PROTECTION_VIGNE
