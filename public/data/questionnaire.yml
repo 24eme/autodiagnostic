@@ -1352,6 +1352,7 @@ questions:
   id: QUOI_PALETTES
   libelle: "Que faites-vous des palettes ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_PALETTES_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: REPRISE
     libelle: "Reprise par le fournisseur"
