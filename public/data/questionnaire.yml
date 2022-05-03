@@ -563,6 +563,7 @@ questions:
 - type: question
   id: PASSAGES_MILDIOU
   libelle: "Sur une parcelle représentative de votre domaine, combien avez-vous fait de passages contre le mildiou ?"
+  unite: passages
 
 - type: question
   id: TRAITEMENT_MILDIOU
@@ -578,7 +579,7 @@ questions:
 - type: question
   id: SUPPLEMENT_MILDIOU
   libelle: "Combien de traitements contre le mildiou avez-vous fait sur ces parcelles ?"
-
+  unite: traitements
 - type: question
   id: CUIVRE
   libelle: "En bio ou en conventionnel : quelle quantité de cuivre avez-vous utilisée cette année ?"
@@ -604,6 +605,7 @@ questions:
 - type: question
   id: SUPPLEMENT_OIDIUM
   libelle: "Combien de traitements contre l'oïdium supplémentaires avez-vous fait sur ces parcelles ?"
+  unite: "traitements"
 
 - type: question
   id: POUDRAGE
