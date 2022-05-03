@@ -95,14 +95,16 @@
       </section>
 
       <section v-show="isTermine" v-bind:key="nombreQuestionsTotal" class="container-fluid py-5 text-center">
-        <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Bravo !</h1>
-        <p class="fs-4">Vous êtes arrivé à la fin du questionnaire.</p>
 
-        <div class="my-5 bg-light border rounded">
-          <p class="text-center my-5" v-if="hasQuestionsEnAttentesReponses()">
-            Vous n'avez pas répondu à l'ensemble du questionnaire.<br />
-            <button type="button" class="btn btn-primary mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Répondre aux questions non repondues</button>
-          </p>
+        <div v-if="!hasQuestionsEnAttentesReponses()">
+          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Bravo !</h1>
+          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire.</p>
+        </div>
+
+        <div v-if="hasQuestionsEnAttentesReponses()">
+          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Vous y êtes presque !</h1>
+          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire mais vous n'avez pas encore répondu à l'ensemble des questions</p>
+          <button type="button" class="btn btn-primary mt-2" v-on:click="passerQuestionsEnAttentesReponses()">Accèder aux questions sans réponses</button>
         </div>
 
         <div class="col-md-8 mx-auto" v-if="!hasQuestionsEnAttentesReponses()">
