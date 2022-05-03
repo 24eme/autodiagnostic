@@ -98,7 +98,7 @@ questions:
 - type: categorie
   id: CERTIFICATION
   libelle: "Certification"
-  complement_information: "Certains d'entre sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
+  complement_information: "Certains d'entre vous sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
