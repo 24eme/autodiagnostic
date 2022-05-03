@@ -127,10 +127,6 @@ class Statistiques {
 
             $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
 
-            if (!$notation) {
-                $this->scores[$categorieCourante] = 0;
-            }
-
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
 
             $couranteReponses = $reponses[$question['id']];
