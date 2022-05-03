@@ -1,6 +1,6 @@
 <div id="questionnaire">
 
-  <div id="progress-bar" class="progress position-fixed top-0 w-100" style="height: 0.5rem;">
+  <div id="progress-bar" class="progress position-fixed top-0 w-100" style="height: 0.6rem;">
     <progress v-for="categorie in categories" v-bind:id="categorie.id" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
   </div>
 
@@ -51,6 +51,33 @@
         </div>
       </section>
 
+      <section v-show="isTermine" v-bind:key="nombreQuestionsTotal" class="container-fluid py-5 text-center">
+
+        <div v-if="!hasQuestionsEnAttentesReponses()">
+          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Bravo !</h1>
+          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire.</p>
+        </div>
+
+        <div v-if="hasQuestionsEnAttentesReponses()">
+          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Vous y êtes presque !</h1>
+          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire mais vous n'avez pas encore répondu à l'ensemble des questions</p>
+          <button type="button" class="btn btn-primary mt-2" v-on:click="intro(); passerQuestionsEnAttentesReponses();">Accèder aux questions sans réponses</button>
+        </div>
+
+        <div class="col-md-8 mx-auto" v-if="!hasQuestionsEnAttentesReponses()">
+          <p class="text-center lead">
+            Vous pouvez vérifier vos réponses avant de valider votre auto-diagnostic, ou confirmer et voir vos résultats.
+          </p>
+          <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn btn-outline-primary" v-on:click="passerToutesQuestions()">Vérifier mes réponses</button>
+            <form name="synthetiserForm" action="{{ 'synthetiser' | alias }}" method="post" enctype="multipart/form-data">
+              <input class="d-none" type="file" id="jsonReponses" name="jsonReponses" accept=".json,application/json">
+              <button type="button" v-on:click="synthetiser()" class="btn btn-primary">Voir les résultats</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <section v-for="(question, index) in getQuestions()" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
         <div v-if="question.type === 'categorie'" class="p-5 categorie" v-bind:style="'color: ' + question.couleur_texte + '; background-color: ' + question.couleur + ';'" v-on:click="deplacer(index+1)">
           <h2 class="py-5 m-0"><span class="bi-chevron-right">{% question.libelle %}</span></h2>
@@ -58,7 +85,7 @@
         </div>
         <div v-if="question.type === 'question'" class="ps-2 question">
           <div class="question-title">
-            <h2 class="h4 p-3 pt-1" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-50">{% question.categorie_libelle %}</small><br /><strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
+            <h2 class="h4 px-3 pt-1 pb-2" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-50">{% question.categorie_libelle %}</small><br /><strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
           </div>
           <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
             <p v-if="question.complement_information" class="bg-light p-2 text-muted small" v-html="question.complement_information"></p>
@@ -90,33 +117,6 @@
               <button class="btn btn-sm text-muted" v-on:click="nonConcerne(index)">Non concerné</button>
               <button class="btn btn-link d-none" v-bind:style="'color: ' + getCategorieCouleur(indexCourant) + ';'" v-on:click="deplacer(indexCourant + 1)">Suivant <span class="bi-chevron-compact-right"></span></button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section v-show="isTermine" v-bind:key="nombreQuestionsTotal" class="container-fluid py-5 text-center">
-
-        <div v-if="!hasQuestionsEnAttentesReponses()">
-          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Bravo !</h1>
-          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire.</p>
-        </div>
-
-        <div v-if="hasQuestionsEnAttentesReponses()">
-          <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Vous y êtes presque !</h1>
-          <p class="fs-4">Vous êtes arrivé à la fin du questionnaire mais vous n'avez pas encore répondu à l'ensemble des questions</p>
-          <button type="button" class="btn btn-primary mt-2" v-on:click="intro(); passerQuestionsEnAttentesReponses();">Accèder aux questions sans réponses</button>
-        </div>
-
-        <div class="col-md-8 mx-auto" v-if="!hasQuestionsEnAttentesReponses()">
-          <p class="text-center lead">
-            Vous pouvez vérifier vos réponses avant de valider votre auto-diagnostic, ou confirmer et voir vos résultats.
-          </p>
-          <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn btn-outline-primary" v-on:click="passerToutesQuestions()">Vérifier mes réponses</button>
-            <form name="synthetiserForm" action="{{ 'synthetiser' | alias }}" method="post" enctype="multipart/form-data">
-              <input class="d-none" type="file" id="jsonReponses" name="jsonReponses" accept=".json,application/json">
-              <button type="button" v-on:click="synthetiser()" class="btn btn-primary">Voir les résultats</button>
-            </form>
           </div>
         </div>
       </section>

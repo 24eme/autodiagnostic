@@ -98,7 +98,7 @@ questions:
 - type: categorie
   id: CERTIFICATION
   libelle: "Certification"
-  complement_information: "Certains d'entre sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
+  complement_information: "Certains d'entre vous sont déjà engagés dans une certification environnementale. En renseignant cette information dans l'écran suivant, vous répondez automatiquement à plusieurs questions du test."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
@@ -514,7 +514,7 @@ questions:
   id: INSECTICIDES_NON_AB
   libelle: "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
-  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
+  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
     GTE:
       "3":
@@ -532,7 +532,7 @@ questions:
   id: INSECTICIDES_AB
   libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
-  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf ou l'étiquette du produit"
+  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
     GTE:
       GTE:

@@ -1,0 +1,97 @@
+---
+fiches:
+
+- picto: bi-file-pdf
+  titre: "Programme des stages SICAVAC 2021/2022"
+  lien: "data/fiches/Calendrier formations SICAVAC 2021-2022 v2.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Technique d'effeuillage"
+  lien: "data/fiches/effeuillage.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Guide de protection de la vigne 2021"
+  lien: "data/fiches/Fascicule 2021 V4.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Les produits classés CMR"
+  lien: "data/fiches/Fiche-info__produits-CMR.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Actions contre le Black-Rot"
+  lien: "data/fiches/Fiche technique black-rot 2016.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Actions contre l'excoriose"
+  lien: "data/fiches/Fiche technique excoriose 2016.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Le curetage expliqué"
+  lien: "data/fiches/Fiche technique curetage.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Le matériel de curetage"
+  lien: "data/fiches/Fiche technique SICAVAC - Le matériel de curetage.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Le guide de tri et recyclage"
+  lien: "data/fiches/guide-tri-recyclage.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Le materiel de pulverisation"
+  lien: "data/fiches/Le_materiel_de_pulverisation_en_Centre_Loire_et_la_limitation_de_derive.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Liste des fertilisants disponibles"
+  lien: "data/fiches/Les Fertilisants - Offre du marché 2021-2022.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Réussir une plantation"
+  lien: "data/fiches/préparation d'un terrain avant plantation.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Estimation de la qualité des greffés-soudés"
+  lien: "data/fiches/qualité greffes.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Le Regreffage"
+  lien: "data/fiches/Regreffage.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Restauration des ceps atteints de maladies du bois"
+  lien: "data/fiches/restauration des ceps atteints d'esca.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Réussir son composte"
+  lien: "data/fiches/Réussir son compostage.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Réussir une complantation"
+  lien: "data/fiches/réussir une complantation.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Taille des deux premières années"
+  lien: "data/fiches/Taille des premières années.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+
+- picto: bi-file-pdf
+  titre: "Techniques alternatives permettant de réduire l'emploi du phytosanitaires"
+  lien: "data/fiches/Techniques alternatives.pdf"
+  descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."

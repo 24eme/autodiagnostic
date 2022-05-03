@@ -50,10 +50,6 @@ body {
 
 .question .question-title {
   margin-bottom: -40px;
-  width: fit-content;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: intrinsic;
   position: relative;
   z-index: 2;
 }
@@ -391,4 +387,13 @@ label:focus,
     box-shadow: none !important;
     outline-color: none !important;
     border-color: #ced4da !important;
+}
+
+a.nostyle {
+    all: unset;
+    cursor: pointer;
+}
+
+.h4, h4 {
+    font-size: 1.35rem;
 }

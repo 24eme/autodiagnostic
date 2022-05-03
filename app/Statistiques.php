@@ -125,14 +125,13 @@ class Statistiques {
                 continue;
             }
 
-            if (!isset($this->scores[$categorieCourante])) {
+            $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
+
+            if (!$notation) {
                 $this->scores[$categorieCourante] = 0;
             }
-            if (!isset($this->highScores[$categorieCourante])) {
-                $this->highScores[$categorieCourante] = 0;
-            }
+
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
-                var_dump($this->highScores[$categorieCourante]);
 
             $couranteReponses = $reponses[$question['id']];
             if(!is_array($reponses[$question['id']])) {
@@ -156,8 +155,10 @@ class Statistiques {
                 }
             }
         }
+
         krsort($this->ptsAmeliorations);
         krsort($this->ptsForts);
+
         foreach($this->highScores as $key => $value) {
             if($this->highScores[$key] < $this->scores[$key]) {
                 $this->highScores[$key] = $this->scores[$key];
@@ -169,7 +170,7 @@ class Statistiques {
         }
     }
 
-    private function getNotationByReponse($notations, $reponse = null) {
+    public function getNotationByReponse($notations, $reponse = null) {
         $comparateur = key($notations);
         $valeurs = current($notations);
         $highScore = 0;
