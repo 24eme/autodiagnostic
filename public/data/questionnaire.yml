@@ -824,8 +824,8 @@ questions:
 
 - type: question
   id: POURCENTAGE_SAU_IAE
-  libelle: "Quel pourcentage de votre SAU est dédié à des infrastructures agro-écologiques (IAE) sur l’exploitation ?"
-  complement_information: "Vous pouvez le calculer grâce à l'<a href='data/Calcul de la SET.xlsm'>outil suivant</a>"
+  libelle: "Quel pourcentage de votre surface est dédié aux infrastructures agro-écologiques (haies, arbres,...) recensées précédemment ?"
+  complement_information: "Vous pouvez le calculer grâce à <a href='data/Calcul de la SET.xlsm'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
   unite: "%"
   notation_hve:
     ratio: 1
