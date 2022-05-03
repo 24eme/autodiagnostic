@@ -1,6 +1,6 @@
 <div id="questionnaire">
 
-  <div id="progress-bar" class="progress position-fixed top-0 w-100" style="height: 0.5rem;">
+  <div id="progress-bar" class="progress position-fixed top-0 w-100" style="height: 0.6rem;">
     <progress v-for="categorie in categories" v-bind:id="categorie.id" v-bind:style="'width: ' + calculateCategorieWidth(categorie) + '%; background: ' + categorie.opacite" v-bind:value="updateCategorieProgress(categorie)" max="100"></progress>
   </div>
 
