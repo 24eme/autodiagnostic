@@ -580,10 +580,11 @@ questions:
   id: SUPPLEMENT_MILDIOU
   libelle: "Combien de traitements contre le mildiou avez-vous fait sur ces parcelles ?"
   unite: traitements
+
 - type: question
   id: CUIVRE
   libelle: "En bio ou en conventionnel : quelle quantité de cuivre avez-vous utilisée cette année ?"
-  complement_information: "Calculer la quantité de cuivre métal en kg/ha à partir de la composition du produit utilisé. Pour rappel, la limitation est à 4 kg de cuivre métal/ha/an tous produits confondus en moyenne (28 kg/ha entre 2019 et 2025)."
+  complement_information: "Calculer la quantité de cuivre métal en kg/ha à partir de la composition du produit utilisé. Pour rappel, la limitation est à 4 kg de cuivre métal/ha/an tous produits confondus en moyenne (28 kg/ha entre 2019 et 2025). Vous pouvez le calculer grâce à l'<a href='data/Calcul de la dose de cuivre métal utilisée.xlsm'>outil suivant</a>"
   unite: "kg"
 
 - type: question
