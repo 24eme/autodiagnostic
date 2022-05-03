@@ -797,10 +797,7 @@ questions:
 - type: categorie
   id: BIODIVERSITE
   libelle: "Biodiversité"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Beaucoup de pratiques et d’éléments participent au développement ou à la conservation de la biodiversité dans les vignobles. Les questions suivantes visent à les répertorier."
   couleur: "#EDA103"
   opacite: "#EDA10380"
   couleur_texte: "#fff"
