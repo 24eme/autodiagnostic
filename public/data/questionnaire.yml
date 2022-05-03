@@ -1366,7 +1366,7 @@ questions:
   - id: STOCK
     libelle: "Je les stocke"
   - id: REUTILISATION
-    libelle: "Réutilisation"
+    libelle: "Je les réutilise"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1527,6 +1527,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: REUTILISATION
+    libelle: "Je les réutilise"
   - id: AUTRE
     libelle: "Autre"
     question:
