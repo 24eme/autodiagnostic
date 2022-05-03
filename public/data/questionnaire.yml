@@ -737,10 +737,7 @@ questions:
 - type: categorie
   id: FERTILISATION
   libelle: "Fertilisation"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Les prochaines questions portent sur l’utilisation de l'azote dans vos parcelles."
   couleur: "#1C2436"
   opacite: "#1C243680"
   couleur_texte: "#fff"
