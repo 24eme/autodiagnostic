@@ -392,3 +392,8 @@ label:focus,
     outline-color: none !important;
     border-color: #ced4da !important;
 }
+
+a.nostyle {
+    all: unset;
+    cursor: pointer;
+}
