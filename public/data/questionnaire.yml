@@ -1098,6 +1098,7 @@ questions:
   id: QUOI_RAKS_USAGES
   libelle: "Que faites-vous des Raks usagés ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_RAKS_USAGES_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: PARTENAIRE
     libelle: "Je les élimine via mon distributeur partenaire A.DI.VALOR"
@@ -1129,6 +1130,7 @@ questions:
   id: QUOI_EMBALLAGES_PHYTO
   libelle: "Que faites-vous des emballages vides de produits phytopharmaceutiques ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_EMBALLAGES_PHYTO_1.png' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: PARTENAIRE
     libelle: "Je les élimine via mon distributeur partenaire A.DI.VALOR"
@@ -1160,6 +1162,7 @@ questions:
   id: QUOI_FILMS_LIENS_BOUTEILLES
   libelle: "Que faites-vous des films étirables à palettes, des liens à cartons et bouteilles ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1187,6 +1190,7 @@ questions:
   id: QUOI_EMBALLAGES_INTRANTS
   libelle: "Que faites-vous des emballages vides d'intrants oenologiques : sucre, tartre, levure, Kieselguhr ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1214,6 +1218,7 @@ questions:
   id: QUOI_EMBALLAGES_OENO
   libelle: "Que faites-vous des emballages vides de produits oenologiques et de produits d'hygiène de cave ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_EMBALLAGES_OENO_1.png' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: PARTENAIRE
     libelle: "Je les élimine via mon distributeur partenaire A.DI.VALOR"
@@ -1245,6 +1250,7 @@ questions:
   id: QUOI_POTEAUX_PLASTIQUE
   libelle: "Que faites-vous des poteaux PVC ou Tetrapack ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1268,6 +1274,7 @@ questions:
   id: QUOI_AGRAFES
   libelle: "Que faites-vous des agrafes en plastique ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1302,6 +1309,7 @@ questions:
   id: QUOI_MANCHONS
   libelle: "Que faites-vous des manchons en plastique ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1389,6 +1397,7 @@ questions:
   id: QUOI_CARTONS
   libelle: "Que faites-vous des cartons usagés ou inutilisables ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_CARTONS_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1416,6 +1425,7 @@ questions:
   id: QUOI_POTEAUX_METAL
   libelle: "Que faites-vous des poteaux en métal ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_POTEAUX_METAL_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie ou au recycleur"
@@ -1439,6 +1449,7 @@ questions:
   id: QUOI_FIL_METAL
   libelle: "Que faites-vous du fil à vigne en métal ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie ou au recycleur"
@@ -1462,6 +1473,7 @@ questions:
   id: QUOI_BOUTEILLES
   libelle: "Que faites-vous des bouteilles vides usagées ?"
   complement_information: "<img class='img-fluid' src='img/visuels/QUOI_BOUTEILLES_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: CONTENEUR
     libelle: "Je les dépose en conteneur à verre"
@@ -1489,6 +1501,7 @@ questions:
   id: QUOI_VAISSELLE
   libelle: "Que faites-vous des verres de dégustation et autre vaisselle en verre déterioriés ou inutilisables ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1520,6 +1533,7 @@ questions:
   id: QUOI_TUTEURS
   libelle: "Que faites-vous des tuteurs en fibre de verre ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1549,6 +1563,7 @@ questions:
   id: QUOI_HUILE
   libelle: "Que faites-vous des huiles usagées ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
@@ -1588,6 +1603,7 @@ questions:
   id: QUOI_BATTERIES
   libelle: "Que faites-vous des batteries usagées ?"
   complement_information: "Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  multiple: true
   reponses:
   - id: DECHETTERIE
     libelle: "Je les dépose en déchetterie"
