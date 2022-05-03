@@ -113,9 +113,7 @@ class Statistiques {
                 $categorieCourante = $question['libelle'];
                 continue;
             }
-            if (is_array($reponses[$question['id']])) {
-                continue;
-            }
+
             if (!isset($question['notation']) && isset($reponses[$question['id']])) {
                 continue;
             }
@@ -127,30 +125,48 @@ class Statistiques {
                 continue;
             }
 
-            $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
             if (!isset($this->scores[$categorieCourante])) {
                 $this->scores[$categorieCourante] = 0;
             }
             if (!isset($this->highScores[$categorieCourante])) {
                 $this->highScores[$categorieCourante] = 0;
             }
-            $this->scores[$categorieCourante] += $notation['score'];
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
-            if (isset($notation['faiblesse'])) {
-                $this->ptsAmeliorations[] = $notation['faiblesse'];
+                var_dump($this->highScores[$categorieCourante]);
+
+            $couranteReponses = $reponses[$question['id']];
+            if(!is_array($reponses[$question['id']])) {
+                $couranteReponses = array($couranteReponses);
             }
-            if (isset($notation['atout'])) {
-                $this->ptsForts[] = $notation['atout'];
-            }
-            foreach($this->formules as $key => $val) {
-                if ($val && isset($notation[$key]) && !$notation[$key]) {
-                    $this->formules[$key] = false;
+
+            foreach($couranteReponses as $couranteReponse) {
+                $notation = $this->getNotationByReponse($question['notation'], $couranteReponse);
+
+                $this->scores[$categorieCourante] += $notation['score'];
+                if (isset($notation['faiblesse'])) {
+                    $this->ptsAmeliorations[] = $notation['faiblesse'];
+                }
+                if (isset($notation['atout'])) {
+                    $this->ptsForts[] = $notation['atout'];
+                }
+                foreach($this->formules as $key => $val) {
+                    if ($val && isset($notation[$key]) && !$notation[$key]) {
+                        $this->formules[$key] = false;
+                    }
                 }
             }
         }
         krsort($this->ptsAmeliorations);
         krsort($this->ptsForts);
-
+        foreach($this->highScores as $key => $value) {
+            if($this->highScores[$key] < $this->scores[$key]) {
+                $this->highScores[$key] = $this->scores[$key];
+            }
+            if(!$this->highScores[$key]) {
+                unset($this->highScores[$key]);
+                unset($this->scores[$key]);
+            }
+        }
     }
 
     private function getNotationByReponse($notations, $reponse = null) {
