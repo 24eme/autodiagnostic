@@ -144,10 +144,10 @@ class Statistiques {
 
                 $this->scores[$categorieCourante] += $notation['score'];
                 if (isset($notation['faiblesse'])) {
-                    $this->ptsAmeliorations[] = $notation['faiblesse'];
+                    $this->ptsAmeliorations[$notation['faiblesse']] = $notation['faiblesse'];
                 }
                 if (isset($notation['atout'])) {
-                    $this->ptsForts[] = $notation['atout'];
+                    $this->ptsForts[$notation['atout']] = $notation['atout'];
                 }
                 foreach($this->formules as $key => $val) {
                     if ($val && isset($notation[$key]) && !$notation[$key]) {
@@ -156,9 +156,6 @@ class Statistiques {
                 }
             }
         }
-
-        krsort($this->ptsAmeliorations);
-        krsort($this->ptsForts);
 
         foreach($this->highScores as $key => $value) {
             if($this->highScores[$key] < $this->scores[$key]) {
