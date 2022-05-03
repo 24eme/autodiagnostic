@@ -1,0 +1,50 @@
+<div id="administration-title">
+  <div class="p-5">
+    <div class="container-fluid">
+      <h1 class="text-center display-5 fw-bold"><i class="bi bi-question"></i> Réponses</h1>
+    </div>
+  </div>
+</div>
+
+<div id="reponses-liste" class="container">
+  <set total="{{ 0 }}"/>
+  <table class="table table-striped">
+    <repeat group="{{ @questions->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions_categorie }}" counter="{{ @ctr }}">
+      <check if="{{ @ctr !== 1 }}">
+        <tr>
+          <td class="text-end" colspan=3>Total: {{ @total }} <small class="text-muted">pts</small></td>
+        </tr>
+        <set total="{{ 0 }}"/>
+      </check>
+      <repeat group="{{ @questions_categorie }}" value="{{ @question }}">
+        <check if="{{ @question.type === 'categorie' }}">
+        <true>
+          <tr>
+            <td colspan=3 class="text-center" style="background-color: {{ @question.couleur }}; color: {{ @question.couleur_texte }}">{{ @question.libelle }}</td>
+          </tr>
+        </true>
+        <false>
+          <tr>
+            <td title="{{ @question.id }}">{{ @question.libelle }}</td>
+            <td>{{ @reponse->get(@question.id)['reponse'] }} <small class="text-muted">{{ @question.unite }}</small></td>
+            <check if="{{ @question.notation }}">
+            <true>
+              <td>{{ @statistiques->getNotationByReponse(
+                      @question.notation,
+                      @reponse->get(@question.id)['reponse']
+                      )['score'] }} <small class="text-muted">pts</small>
+              </td>
+              <set total="{{ @total += @statistiques->getNotationByReponse(@question.notation, @reponse->get(@question.id)['reponse'])['score'] }}" />
+            </true>
+            <false><td></td></false>
+            </check>
+          </tr>
+        </false>
+        </check>
+      </repeat>
+    </repeat>
+    <tr>
+      <td class="text-end" colspan=3>Total: {{ @total }} <small class="text-muted">pts</small></td>
+    </tr>
+  </table>
+</div>

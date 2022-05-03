@@ -128,35 +128,42 @@ class Statistiques {
             }
 
             $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
+
             if (!$notation) {
                 $this->scores[$categorieCourante] = 0;
             }
+
             if (!isset($this->scores[$categorieCourante])) {
                 $this->scores[$categorieCourante] = 0;
             }
+
             if (!isset($this->highScores[$categorieCourante])) {
                 $this->highScores[$categorieCourante] = 0;
             }
+
             $this->scores[$categorieCourante] += $notation['score'];
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
+
             if (isset($notation['faiblesse'])) {
                 $this->ptsAmeliorations[] = $notation['faiblesse'];
             }
+
             if (isset($notation['atout'])) {
                 $this->ptsForts[] = $notation['atout'];
             }
+
             foreach($this->formules as $key => $val) {
                 if ($val && isset($notation[$key]) && !$notation[$key]) {
                     $this->formules[$key] = false;
                 }
             }
         }
+
         krsort($this->ptsAmeliorations);
         krsort($this->ptsForts);
-
     }
 
-    private function getNotationByReponse($notations, $reponse = null) {
+    public function getNotationByReponse($notations, $reponse = null) {
         $comparateur = key($notations);
         $valeurs = current($notations);
         $highScore = 0;

@@ -52,4 +52,14 @@ class Reponse
     {
         return isset($this->decoded[self::PREFIX_COMPLEMENT.$id]);
     }
+
+    public function get($id)
+    {
+        $reponse = $this->decoded[$id];
+
+        return [
+            'reponse' => $this->hasMultiplesReponses($id) ? implode(',', $reponse) : $reponse,
+            'complement' => $this->hasComplementReponse($id) ? $this->decoded[self::PREFIX_COMPLEMENT.$id] : null
+        ];
+    }
 }

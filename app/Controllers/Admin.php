@@ -5,8 +5,10 @@ namespace Controllers;
 use Base;
 use Questions;
 use Reponses\Exporter;
+use Reponses\Reponse;
 use Reponses\Reponses;
 use Session;
+use Statistiques;
 use Template;
 
 class Admin
@@ -50,5 +52,17 @@ class Admin
         $reponsesExporter = new Exporter($reponses);
         $reponsesExporter->export();
         exit;
+    }
+
+    public function showReponses(Base $f3, $args)
+    {
+        $file = new Reponse($f3->get('UPLOADS').$args['file'].'.json');
+        $statistiques = new Statistiques(file_get_contents($f3->get('UPLOADS').$args['file'].'.json'));
+        $questions = new Questions();
+
+        $f3->set('inc', 'admin_show.htm');
+        $f3->set('statistiques', $statistiques);
+        $f3->set('questions', $questions);
+        $f3->set('reponse', $file);
     }
 }
