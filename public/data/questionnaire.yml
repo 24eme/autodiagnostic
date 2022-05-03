@@ -201,7 +201,7 @@ questions:
 - type: question
   id: SURFACE_NON_TRAITEE
   libelle: "Quel pourcentage de votre surface ne reçoit aucun traitement ?"
-  complement_information: "Sont concernées ici les parcelles exploitées (au moins une opération agricole par an) mais non traitées lors de la campagne étudiée comme les prairies permanente ou les parcelles en attente de replantation."
+  complement_information: "Sont concernées ici les parcelles exploitées (au moins une opération agricole par an) mais non traitées lors de la campagne étudiée comme les prairies permanentes ou les parcelles en attente de replantation."
   unite: "%"
   notation_hve:
     ratio: 1
@@ -305,6 +305,36 @@ questions:
         score: 0
 
 - type: question
+  id: DESHERBAGE_CHIMIQUE
+  libelle: "Utilisez-vous du désherbage chimique sur votre exploitation ?"
+  reponses:
+  - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
+    reponses_automatiques:
+      SURFACE_SANS_HERBICIDE: 100
+      PASSAGE_OUTILS_HERBICIDES: 0
+      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
+      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
+      DESHERBAGE_CHIMIQUE_VERAISON: NON
+      IFT_HERBICIDE: 0
+  - id: PENTES
+    libelle: "Uniquement sur les pentes d'au moins 40% de dénivelé"
+  notation:
+    EQ:
+      "OUI":
+        score: 0
+        faiblesse: "J’utilise des herbicides"
+        formule2: false
+        formule3: false
+      "NON":
+        score: 2
+        atout: "Je n’utilise pas d’herbicides"
+      PENTES:
+        score: 2
+
+- type: question
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
   complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Vous pouvez le calculer à l'aide de l'outil suivant.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
@@ -325,36 +355,6 @@ questions:
         score: 8
       "0.00":
         score: 10
-
-- type: question
-  id: DESHERBAGE_CHIMIQUE
-  libelle: "Utilisez-vous du désherbage chimique sur votre exploitation ?"
-  reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
-    reponses_automatiques:
-      SURFACE_SANS_HERBICIDE: 100
-      PASSAGE_OUTILS_HERBICIDES: 0
-      DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION: NON
-      DESHERBAGE_SUP_MOITIE_PARCELLES: NON
-      DESHERBAGE_CHIMIQUE_VERAISON: NON
-      IFT_HORS_HERBICIDE: 0
-  - id: PENTES
-    libelle: "Uniquement sur les pentes d'au moins 40% de dénivelé"
-  notation:
-    EQ:
-      "OUI":
-        score: 0
-        faiblesse: "J’utilise des herbicides"
-        formule2: false
-        formule3: false
-      "NON":
-        score: 2
-        atout: "Je n’utilise pas d’herbicides"
-      PENTES:
-        score: 2
 
 - type: question
   id: IFT_HORS_HERBICIDE
@@ -477,7 +477,7 @@ questions:
 - type: question
   id: UTILISATION_CMR
   libelle: "Utilisez-vous des produits classés CMR ?"
-  complement_information: "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC disponible sur <a href='www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
+  complement_information: "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -514,7 +514,7 @@ questions:
   id: INSECTICIDES_NON_AB
   libelle: "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
-  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
+  complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
     GTE:
       "3":
@@ -532,7 +532,7 @@ questions:
   id: INSECTICIDES_AB
   libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
-  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
+  complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
     GTE:
       GTE:
@@ -1101,6 +1101,8 @@ questions:
     libelle: "Je les laisse dans la parcelle"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1163,6 +1165,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1191,6 +1195,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1221,6 +1227,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1249,6 +1257,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1312,6 +1322,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1370,6 +1382,8 @@ questions:
     libelle: "Je les stocke"
   - id: REUTILISATION
     libelle: "Je les réutilise"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1426,6 +1440,8 @@ questions:
     libelle: "Je les dépose en déchetterie ou au recycleur"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
