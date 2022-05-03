@@ -397,3 +397,7 @@ a.nostyle {
     all: unset;
     cursor: pointer;
 }
+
+.h4, h4 {
+    font-size: 1.35rem;
+}
