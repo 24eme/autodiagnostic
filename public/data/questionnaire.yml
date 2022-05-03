@@ -1101,6 +1101,8 @@ questions:
     libelle: "Je les laisse dans la parcelle"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1163,6 +1165,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1191,6 +1195,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1221,6 +1227,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1249,6 +1257,8 @@ questions:
     libelle: "Je les dépose en déchetterie"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1312,6 +1322,8 @@ questions:
     libelle: "Je les stocke"
   - id: MENAGERE
     libelle: "Je les jette dans les ordures ménagères"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1370,6 +1382,8 @@ questions:
     libelle: "Je les stocke"
   - id: REUTILISATION
     libelle: "Je les réutilise"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1426,6 +1440,8 @@ questions:
     libelle: "Je les dépose en déchetterie ou au recycleur"
   - id: STOCK
     libelle: "Je les stocke"
+  - id: NON_UTILISE
+    libelle: "Je n'en utilise pas"
   - id: AUTRE
     libelle: "Autre"
     question:
