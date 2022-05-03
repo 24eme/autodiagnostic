@@ -17,6 +17,7 @@ class Statistiques {
     private $ptsForts;
     private $ptsAmeliorations;
     private $formules;
+    private $infosFormules;
 
     public function __construct($reponses) {
         $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
