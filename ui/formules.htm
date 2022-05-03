@@ -31,7 +31,7 @@
         <div class="col tables-formule{{ (@statistiques->getHighestFormule() === @formule) ? ' active' : '' }}">
           <div class="border shadow">
             <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
-              <h3>{{ strtoupper(@formule) }}</h3>
+              <h3>{{ @statistiques->getFormuleTitre(@formule) }}</h3>
               <p class="fs-1">{{ @statistiques->getFormuleIcone(@formule) }}</p>
               <p>{{ @statistiques->getFormuleTexte(@formule) }}</p>
             </div>

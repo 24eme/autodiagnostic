@@ -26,12 +26,12 @@ class Statistiques {
         $this->highScores = [];
         $this->ptsForts = [];
         $this->ptsAmeliorations = [];
-        $this->formules = ['hors formule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
+        $this->formules = ['horsformule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
         $this->infosFormules = [
-            'hors formule' => ['icone' => '🫣', 'texte' => ''],
-            'formule1' => ['icone' => '🙂', 'texte' => 'Vous êtes sur la bonne voie'],
-            'formule2' => ['icone' => '😍', 'texte' => 'Vous y êtes presque !'],
-            'formule3' => ['icone' => '🤩', 'texte' => 'Ne relâchez pas vos efforts !']
+            'horsformule' => ['icone' => '<i class="bi bi-emoji-expressionless"></i>', 'texte' => 'Pas de panique !', 'titre' => 'Hors formule'],
+            'formule1' => ['icone' => '<i class="bi bi-emoji-smile"></i>', 'texte' => 'Vous êtes sur la bonne voie', 'titre' => 'Formule 1'],
+            'formule2' => ['icone' => '<i class="bi bi-emoji-laughing"></i>', 'texte' => 'Vous y êtes presque !', 'titre' => 'Formule 2'],
+            'formule3' => ['icone' => '<i class="bi bi-emoji-heart-eyes"></i>', 'texte' => 'Ne relâchez pas vos efforts !', 'titre' => 'Formule 3']
         ];
         $this->synthetiserReponses();
     }
@@ -77,6 +77,11 @@ class Statistiques {
         return $this->infosFormules[$formule]['texte'];
     }
 
+    public function getFormuleTitre($formule)
+    {
+        return $this->infosFormules[$formule]['titre'];
+    }
+
     public function getHighestFormule()
     {
         return $this->formules['formule3'] === true
@@ -85,7 +90,7 @@ class Statistiques {
                     ? 'formule2'
                     : ($this->formules['formule1'] === true
                         ? 'formule1'
-                        : 'hors formule'));
+                        : 'horsformule'));
     }
 
     public function getPtsForts($limit = null) {
