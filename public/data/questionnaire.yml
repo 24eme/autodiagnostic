@@ -273,6 +273,8 @@ questions:
     libelle: "Matériel de précision permettant de réduire les doses de produits phytosanitaires (traitement face par face)"
   - id: RINCAGE
     libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d’automisation de rinçage des cuves"
+  - id: PRESTATAIRE
+    libelle: "Je fais appel à un prestataire de service"
   - id: AUCUN
     libelle: "Aucun de ces matériels ou équipements"
   notation_hve:
