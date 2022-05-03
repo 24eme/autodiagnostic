@@ -1280,6 +1280,8 @@ questions:
     libelle: "Je les jette dans les ordures ménagères"
   - id: VIGNE
     libelle: "Je les laisse dans la vigne"
+  - id: REUTILISATION
+    libelle: "Je les réutilise"
   - id: AUTRE
     libelle: "Autre"
     question:
