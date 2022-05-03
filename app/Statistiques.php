@@ -100,6 +100,11 @@ class Statistiques {
         return json_encode(json_decode($this->reponses), JSON_PRETTY_PRINT);
     }
 
+    public function isCertified($certif)
+    {
+        return in_array($certif, json_decode($this->reponses)->{'SELECTION_CERTIF'});
+    }
+
     private function synthetiserReponses() {
         $reponses = json_decode($this->reponses, true);
         $categorieCourante = "";
