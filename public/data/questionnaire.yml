@@ -307,7 +307,7 @@ questions:
 - type: question
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
-  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
+  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Vous pouvez le calculer à l'aide de l'outil suivant.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
   unite: IFT
   notation_hve:
     ratio: 0.5
@@ -359,7 +359,7 @@ questions:
 - type: question
   id: IFT_HORS_HERBICIDE
   libelle: "Quel est votre IFT hors herbicides ?"
-  complement_information: "IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Cet indicateur permet d'évaluer la réduction de l'utilisation de produits phytosanitaires. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de Biocontrôle n'entrent pas dans le calcul de l'IFT. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm'>outil suivant</a>"
+  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm'>outil suivant</a>"
   unite: IFT
   notation_hve:
     ratio: 0.5
@@ -797,7 +797,7 @@ questions:
 - type: categorie
   id: BIODIVERSITE
   libelle: "Biodiversité"
-  complement_information: "Beaucoup de pratiques et d’éléments participent au développement ou à la conservation de la biodiversité dans les vignobles. Les questions suivantes visent à les répertorier."
+  complement_information: "Beaucoup de pratiques et d’éléments participent au développement ou à la conservation de la biodiversité dans les vignobles. Les questions suivantes visent à les répertorier.<br />Pour cela vous pouvez-vous aider du site <a href='https://www.geoportail.gouv.fr/' href='target=_blank'>geoportail.gouv.fr</a> qui permet de faire des mesures sur une photographie aérienne. "
   couleur: "#EDA103"
   opacite: "#EDA10380"
   couleur_texte: "#fff"
@@ -805,14 +805,14 @@ questions:
 - type: question
   id: METRE_LINEAIRE_HAIE
   libelle: "Combien de mètres linéaires de haie(s) avez-vous sur votre exploitation ?"
-  complement_information: "Une haie est une unité linéaire de végétation ligneuse, implantée à plat, sur talus ou sur creux, avec :<br/> - présence d’arbustes, et, le cas échéant, présence d’arbres et/ou d’autres ligneux (ronces, genêts, ajoncs…) ;<br/> - ou présence d’arbres et autres ligneux (ronces, genêts, ajoncs…).<br/> Donc une haie est obligatoirement composée au minimum d’arbustes buissonnants, complétés le cas échéant par d'autres éléments ligneux. La haie ne peut donc pas être formée que d'arbres (c'est un alignement d'arbres) ou que de ronces."
+  complement_information: "Une haie est une association d'arbustes. Des arbres peuvent appartenir à la haie, mais la haie ne doit pas être uniquement composée d'arbres, sinon c'est un alignement d'arbres.<br />Elle est comptabilisée en mètres linéaires.<br />La haie doit réellement participer à la biodiversité de votre parcelle. Si, par exemple, un chemin communal la sépare de votre parcelle, elle ne compte pas comme une IAE pour l'exploitation.<br />Une haie qui sépare deux parcelles exploitées par deux viticulteurs distincts et que chacun entretien peut être comptabilisé pour chaque exploitant."
   unite: "mètres"
 
 - type: question
   id: METRE_LINEAIRE_ARBRE
   libelle: "Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?"
   unite: "mètres"
-  complement_information: "Une haie est une association d'arbustes. Des arbres peuvent appartenir à la haie, mais la haie ne doit pas être uniquement composée d'arbres, sinon c'est un alignement d'arbres.<br />Elle est comptabilisée en mètres linéaires.<br />La haie doit réellement participer à la biodiversité de votre parcelle. Si, par exemple, un chemin communal la sépare de votre parcelle, elle ne compte pas comme une IAE pour l'exploitation.<br />Une haie qui sépare deux parcelles exploitées par deux viticulteurs distincts et que chacun entretien peut être comptabilisé pour chaque exploitant."
+  complement_information: "Un alignement d'arbres est composé d'une ou deux rangées d'arbres de haut-jet plantés en ligne.<br />Il est comptabilisé en mètres linéaires à partir de deux arbres.<br />Il ne doit pas être confondu avec les arbres en groupe ou les bosquets ou encore les vergers."
 
 - type: question
   id: ARBRE_ISOLE
@@ -922,10 +922,7 @@ questions:
 - type: categorie
   id: EAU
   libelle: "Gestion de l'eau"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "La gestion de l’eau est un enjeu majeur des futures années. L’empreinte EAU, à l’instar de l’empreinte carbone, intègre petit à petit les certifications environnementales.<br />Le nombre de questions sur cette thématique est limité mais est amené à augmenter au gré des évolutions techniques."
   couleur: "#4B5767"
   opacite: "#4B576780"
   couleur_texte: "#fff"
@@ -961,10 +958,7 @@ questions:
 - type: categorie
   id: PLASTIQUE
   libelle: "Zéro plastique"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Les vignerons du Centre-Loire se sont donnés comme objectif de supprimer progressivement les produits en plastique issu de la pétrochimie dans les vignes. Les prochaines questions visent à évaluer leur utilisation."
   couleur: "#964320"
   opacite: "#96432080"
   couleur_texte: "#fff"
