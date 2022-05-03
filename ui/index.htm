@@ -12,8 +12,8 @@
 
       <section id="page_home" v-show="indexCourant == -1" class="text-center" key="-1">
 
-        <p class="text-muted mb-5 fs-5">
-          Afin de vous faire une idée du positionnement de votre exploitation en terme d'environnement et de développement durable dans le vignoble, le BIVC met à disposition cet outil d'autodiagnostic vous permettant de vous évaluer sur ces questions environnementales.
+        <p class="text-muted mb-5">
+          Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br /><br />Les pratiques viticoles sont évaluées à travers une charte développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br /><br />Un outil d’auto diagnostic a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules. Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées.<br /><br />La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire.
         </p>
 
         <div id="startup-content" v-if="questionnaireStarted">
@@ -38,12 +38,11 @@
         <div v-else id="startup-content">
           <div class="text-center">
             <div class="mb-5 alert alert-primary d-flex align-items-center" role="alert">
-              <div class="border-end">
+              <div class="border-end p-1">
                 <i class="fs-2 bi-info-circle-fill"></i>
               </div>
               <div>
-                En répondant à ce questionnaire, vous acceptez l'utilisation de vos données par le BIVC à des fins de traitement statistiques collectives
-                (<a href="#" class="alert-link">Charte environnementale Centre Loire</a>).
+                En répondant à ce questionnaire, vous acceptez l'utilisation de vos données par le BIVC à des fins de traitement statistiques collectives.
               </div>
             </div>
             <button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
