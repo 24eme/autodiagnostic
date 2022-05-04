@@ -572,6 +572,7 @@ questions:
 - type: question
   id: TRAITEMENT_MILDIOU
   libelle: "Avez-vous fait des traitements contre le mildiou supplémentaires sur certaines parcelles ?"
+  complement_information: Ne pas prendre en compte les jeunes vignes mais uniquement les vignes en production.
   reponses:
   - id: OUI
     libelle: "Oui"
