@@ -477,7 +477,7 @@ questions:
 - type: question
   id: UTILISATION_CMR
   libelle: "Utilisez-vous des produits classés CMR ?"
-  complement_information: "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
+  complement_information: "CMR = produit cancérigène, mutagène et/ou reprotoxique. Se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a>,  à l'étiquette du produit  ou à la liste suivante : « <a href='/data/fiches/Liste_2021_des_produits_CMR.pdf'>Liste 2021 des produits CMR</a> »"
   reponses:
   - id: OUI
     libelle: "Oui"
