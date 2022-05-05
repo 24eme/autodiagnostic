@@ -1080,10 +1080,7 @@ questions:
 - type: categorie
   id: RECYCLAGE
   libelle: "Recyclage et gestion des déchets"
-  complement_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean dapibus varius ligula vitae fermentum. Etiam ac dolor tempus, vestibulum
-    ante eget, mollis urna. Fusce sit amet velit cursus turpis fringilla blandit.
-    Pellentesque eu ipsum urna."
+  complement_information: "Les questions suivantes portent sur votre gestion des déchets et vos pratiques de recyclage. L’objectif de la charte développement durable Centre-Loire est de diminuer le volume de déchets générés par la filière et recycler dès lors que c’est possible."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
