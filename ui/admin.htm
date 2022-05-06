@@ -36,7 +36,11 @@
       <check if="{{ @reponses }}">
         <true>
           <repeat group="{{ @reponses }}" value="{{ @name }}">
-          <p class="border-bottom">{{ @name }} <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="float-end">Voir les réponses</a></p>
+          <p class="border-bottom">
+            {{ @name }}
+            <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Voir les réponses</a>
+            <a href="{{ 'export', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Exporter les réponses</a>
+          </p>
           </repeat>
         </true>
         <false><p class="lead text-center"><i class="bi-folder-x"></i> Aucun résultat</p></false>

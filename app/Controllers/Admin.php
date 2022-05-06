@@ -4,7 +4,8 @@ namespace Controllers;
 
 use Base;
 use Questions;
-use Reponses\Exporter;
+use Reponses\Exporter\ReponseExporter;
+use Reponses\Exporter\ReponsesExporter;
 use Reponses\Reponse;
 use Reponses\Reponses;
 use Session;
@@ -49,8 +50,17 @@ class Admin
             glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE)
         );
 
-        $reponsesExporter = new Exporter($reponses);
+        $reponsesExporter = new ReponsesExporter($reponses);
         $reponsesExporter->export();
+        exit;
+    }
+
+    public function export(Base $f3, $args)
+    {
+        $reponse = new Reponse($f3->get('UPLOADS').$args['file'].'.json');
+
+        $reponseExporter = new ReponseExporter($reponse);
+        $reponseExporter->export();
         exit;
     }
 

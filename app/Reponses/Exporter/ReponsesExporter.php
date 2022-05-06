@@ -1,11 +1,12 @@
 <?php
 
-namespace Reponses;
+namespace Reponses\Exporter;
 
+use Reponses\Exporter\AbstractExporter;
 use Reponses\Reponses;
 use Reponses\Reponse;
 
-class Exporter
+class ReponsesExporter extends AbstractExporter
 {
     private $reponses;
     private $headers = ['operateur', 'categorie', 'id question', 'question', 'reponse', 'complement reponse'];
@@ -18,8 +19,7 @@ class Exporter
 
     public function export()
     {
-        header('Content-type: text/csv');
-        header("Content-disposition: attachment; filename = global.csv");
+        $this->setHeaders('text/csv', 'global.csv');
 
         $out = fopen('php://output', 'w');
         fputcsv($out, $this->headers, $this->separator);
