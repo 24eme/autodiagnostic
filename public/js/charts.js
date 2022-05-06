@@ -17,8 +17,8 @@ const radarChart = new Chart(
               label: 'Moyenne vignoble',
               data: [8,3,1],
               fill: true,
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgb(54, 162, 235)',
+              backgroundColor: 'rgba(75, 87, 103, 0.2)',
+              borderColor: 'rgb(75, 87, 103)',
           }
         ]
       }
