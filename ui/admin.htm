@@ -32,7 +32,7 @@
 
 
     <div id="administration-listing" class="tab">
-      <h3 class="display-6 mb-5">Tous les résultats <a href="{{ 'export' | alias }}" class="btn btn-primary float-end"><i class="bi bi-download"></i> Exporter les réponses</a></h3>
+      <h3 class="display-6 mb-5">Tous les résultats <a href="{{ 'exportGlobal' | alias }}" class="btn btn-primary float-end"><i class="bi bi-download"></i> Exporter les réponses</a></h3>
       <check if="{{ @reponses }}">
         <true>
           <repeat group="{{ @reponses }}" value="{{ @name }}">

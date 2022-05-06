@@ -43,7 +43,7 @@ class Admin
         $f3->set('inc', 'admin.htm');
     }
 
-    public function export(Base $f3)
+    public function exportGlobal(Base $f3)
     {
         $reponses = new Reponses(
             glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE)
