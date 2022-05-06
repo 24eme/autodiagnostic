@@ -20,7 +20,7 @@ class ReponseExporter extends AbstractExporter
     public function export()
     {
         $questions = new Questions();
-        $this->setHeaders('text/csv', $this->reponse->id);
+        $this->setHeaders('text/csv', $this->reponse->id.'.csv');
 
         $out = fopen('php://output', 'w');
         fputcsv($out, $this->headers, $this->separator);
