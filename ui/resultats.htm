@@ -29,7 +29,7 @@
     </div>
 
     <div id="resultats-points-amelioration" class="col-sm-6">
-      <h3 class="display-6 bg-app-gold text-light"><i class="bi-sun"></i> Vos points forts</h3>
+      <h3 class="display-6 bg-success text-light"><i class="bi-sun"></i> Vos points forts</h3>
       <check if="{{ count(@statistiques->getPtsForts()) }}">
         <true>
           <repeat group="{{ @statistiques->getPtsForts() }}" value="{{ @ptFort }}">
@@ -45,7 +45,7 @@
         </false>
       </check>
 
-      <h3 class="display-6 mt-4 bg-app-dark text-light"><i class="bi-cloud-sun"></i> Vos points d'améliorations</h3>
+      <h3 class="display-6 mt-4 bg-warning text-light"><i class="bi-cloud-sun"></i> Vos points d'améliorations</h3>
       <check if="{{ count(@statistiques->getPtsAmeliorations()) }}">
         <true>
           <repeat group="{{ @statistiques->getPtsAmeliorations() }}" value="{{ @ptAmelioration }}">
