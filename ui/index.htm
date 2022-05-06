@@ -12,10 +12,6 @@
 
       <section id="page_home" v-show="indexCourant == -1" class="text-center" key="-1">
 
-        <p class="text-muted mb-5">
-          Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br /><br />Les pratiques viticoles sont évaluées à travers une charte développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br /><br />Un outil d’auto diagnostic a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules. Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées.<br /><br />La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire.
-        </p>
-
         <div id="startup-content" v-if="questionnaireStarted">
           <div class="mb-5 p-2 bg-light border rounded">
             <p class="text-center m-0">
@@ -36,6 +32,10 @@
           </div>
         </div>
         <div v-else id="startup-content">
+          <p class="text-muted mb-5">
+            Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br /><br />Les pratiques viticoles sont évaluées à travers une charte développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br /><br />Un outil d’auto diagnostic a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules. Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées.<br /><br />La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire.
+          </p>
+
           <div class="text-center">
             <div class="mb-5 alert alert-primary d-flex align-items-center" role="alert">
               <div class="border-end p-1">
