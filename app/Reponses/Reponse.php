@@ -14,6 +14,11 @@ class Reponse
     public function __construct($file)
     {
         $this->id = basename($file, '.json');
+
+        if (is_file($file) === false) {
+            throw new \InvalidArgumentException("Le fichier n'existe pas");
+        }
+
         $this->raw = file_get_contents($file);
 
         $decoded = json_decode($this->raw);

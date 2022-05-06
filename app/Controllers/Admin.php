@@ -57,7 +57,13 @@ class Admin
 
     public function export(Base $f3, $args)
     {
-        $reponse = new Reponse($f3->get('UPLOADS').$args['file'].'.json');
+        $file = $f3->get('UPLOADS').$args['file'].'.json';
+
+        if (is_file($file) === false) {
+            $f3->error(404);
+        }
+
+        $reponse = new Reponse($file);
 
         $reponseExporter = new ReponseExporter($reponse);
         $reponseExporter->export();
@@ -66,7 +72,13 @@ class Admin
 
     public function showReponses(Base $f3, $args)
     {
-        $file = new Reponse($f3->get('UPLOADS').$args['file'].'.json');
+        $file = $f3->get('UPLOADS').$args['file'].'.json';
+
+        if (is_file($file) === false) {
+            $f3->error(404);
+        }
+
+        $file = new Reponse($file);
         $statistiques = new Statistiques(file_get_contents($f3->get('UPLOADS').$args['file'].'.json'));
         $questions = new Questions();
 
