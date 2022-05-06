@@ -8,16 +8,14 @@
         <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
 
           <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card mb-4 rounded-3 shadow-sm h-100">
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">Opérateur BIVC</h4>
               </div>
-              <div class="card-body">
-                <img src="img/logo-bivc.png" alt="Logo BIVC" />
+              <div class="card-body d-flex flex-column justify-content-between">
+                <img src="img/logo-bivc.png" alt="Logo BIVC" class="w-25 mx-auto"/>
                 <p>
-                  Vous être un ressortissant du BIVC ?
-                </p>
-                <p>
+                  Vous être un ressortissant du BIVC ?<br/><br/>
                   Identifiez-vous ou créer un compte afin de préremplir certaines informations et faciliter votre autodiagnostic.
                 </p>
                 <a href="{{ 'home' | alias }}?bivcauth=1" type="button" class="w-100 btn btn-lg btn-secondary">S'identifier</a>
@@ -26,16 +24,14 @@
           </div>
 
           <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card mb-4 rounded-3 shadow-sm h-100">
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">Visiteur</h4>
               </div>
-              <div class="card-body">
-                <img src="img/invite.png" alt="Invité" />
+              <div class="card-body d-flex flex-column justify-content-between">
+                <img src="img/invite.png" alt="Invité" class="w-25 mx-auto"/>
                 <p>
-                  Vous n'êtes pas ressortissant du BIVC ?
-                </p>
-                <p>
+                  Vous n'êtes pas ressortissant du BIVC ?<br/><br/>
                   Découvrez notre autodiagnostic dans sa version allégée.
                 </p>
                 <a href="{{ 'home' | alias }}?visiteur=1" type="button" class="w-100 btn btn-lg btn-outline-secondary">Visiter</a>
