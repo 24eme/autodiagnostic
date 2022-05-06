@@ -87,4 +87,17 @@ class Admin
         $f3->set('questions', $questions);
         $f3->set('reponse', $file);
     }
+
+    public function deleteReponse(Base $f3, $args)
+    {
+        $file = $f3->get('UPLOADS').$args['file'].'.json';
+
+        if (is_file($file) === false) {
+            $f3->error(404);
+        }
+
+        unlink($file);
+
+        $f3->reroute('@admin');
+    }
 }
