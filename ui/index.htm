@@ -79,7 +79,7 @@
 
       <section v-for="(question, index) in getQuestions()" v-show="indexCourant == index" v-bind:key="index" v-bind:id="'question_' + question.id">
         <div v-if="question.type === 'categorie'" class="p-5 categorie" v-bind:style="'color: ' + question.couleur_texte + '; background-color: ' + question.couleur + ';'" v-on:click="deplacer(index+1)">
-          <h2 class="py-5 m-0"><span class="bi-chevron-right">{% question.libelle %}</span></h2>
+          <h2 class="py-5 m-0 text-center text-uppercase"><span class="bi-chevron-right">{% question.libelle %}</span></h2>
           <p class="pb-5 m-0" v-html="question.complement_information"></p>
         </div>
         <div v-if="question.type === 'question'" class="ps-2 question">
