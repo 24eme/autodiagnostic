@@ -10,8 +10,8 @@ const radarChart = new Chart(
               label: 'Mon score',
               data: canvas.getAttribute('data-series').split(","),
               fill: true,
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
-              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(194, 145, 64, 0.2)',
+              borderColor: 'rgb(194, 145, 64)',
           },
           {
               label: 'Moyenne vignoble',
