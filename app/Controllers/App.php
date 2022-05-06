@@ -72,6 +72,8 @@ class App
     public function synthetiser(Base $f3)
     {
         $web = Web::instance();
+
+        // Destination : $f3->get('UPLOADS')
         $files = $web->receive(function ($file, $formFieldName) {
             if ($file['type'] !== 'application/json') {
                 return false;

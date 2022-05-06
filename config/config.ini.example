@@ -2,7 +2,7 @@
 AUTOLOAD=../app/
 UI=../ui/
 LOGS=../var/log/
-UPLOADS=assets/
+UPLOADS=../storage/uploads/
 CACHE=true
 FICHES_FILE=../config/fiches.yml
 
