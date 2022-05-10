@@ -131,7 +131,7 @@
       <div class="col-6 mx-auto">
         <div class="row">
           <div class="col-3 col-">
-            <button type="button" z-index="-1" class="btn btn-outline-dark border" v-on:click="deplacer(indexPrecedent, true)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
+            <button type="button" z-index="-1" class="btn btn-outline-dark border" v-on:click="deplacer(indexCourant - 1, false)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
           </div>
           <div class="col align-self-center text-center">
             <span class="text-muted">{% getProgress() %}% réalisé</span>

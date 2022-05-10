@@ -137,7 +137,7 @@ const Questionnaire = Vue.createApp({
     getQuestionIndex: function(id) {
       return this.getQuestions().findIndex(q => q.id == id);
     },
-    deplacer: function(index, force = false) {
+    deplacer: function(index, skip = true) {
       if(index < 0) {
         this.intro();
         return;
@@ -148,7 +148,7 @@ const Questionnaire = Vue.createApp({
         return;
       }
 
-      if (!force && this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
+      if (skip && this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
         const question = this.questionnaire.questions[index];
 
         // On check si c'est une categorie et que toutes les questions sont répondues
@@ -164,8 +164,6 @@ const Questionnaire = Vue.createApp({
 
       if(this.indexPrecedent === null) {
         this.indexPrecedent = index;
-      } else if (index < this.indexCourant) {
-        this.indexPrecedent = index - 1;
       } else {
         this.indexPrecedent = this.indexCourant;
       }
