@@ -15,7 +15,7 @@ const radarChart = new Chart(
           },
           {
               label: 'Moyenne vignoble',
-              data: [8,3,1],
+              data: canvas.getAttribute("data-moyenne").split(','),
               fill: true,
               backgroundColor: 'rgba(75, 87, 103, 0.2)',
               borderColor: 'rgb(75, 87, 103)',

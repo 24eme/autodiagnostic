@@ -24,7 +24,8 @@
         id="resultats-radar-chart"
         data-type="radar"
         data-labels="{{ @statistiques->renderTabKeysScores() }}"
-        data-series="{{ @statistiques->renderTabValuesScores() }}">
+        data-series="{{ @statistiques->renderTabValuesScores() }}"
+        data-moyenne="{{ implode(',', @statistiques->calculMoyenneVignoble()) }}">
       </canvas>
     </div>
 

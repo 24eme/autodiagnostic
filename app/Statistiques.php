@@ -210,4 +210,29 @@ class Statistiques {
                 break;
         }
     }
+
+    public function calculMoyenneVignoble()
+    {
+        $all = [];
+        $nb_categorie = 0;
+
+        $f3 = Base::instance();
+        foreach (glob($f3->get('UPLOADS').'*.json', GLOB_BRACE) as $file) {
+            $stat = new Statistiques(file_get_contents($file));
+            $all[] = $stat->scoresEnPourcent();
+            $nb_categorie = count(current($all));
+            unset($stat);
+        }
+
+        $avg = [];
+
+        for ($i = 0; $i < $nb_categorie; $i++) {
+            $col = array_column($all, $i);
+            $avg[] = round(
+                array_sum($col) / count($col)
+            );
+        }
+
+        return $avg;
+    }
 }
