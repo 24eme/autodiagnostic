@@ -12,7 +12,7 @@ const Questionnaire = Vue.createApp({
       indexPrecedent: null,
       isTermine: false,
       reponses: {},
-      modeQuestionsNonRepondues: true,
+      modeQuestionsNonRepondues: false,
       nombreQuestionsTotal: 0
     }
   },
@@ -137,7 +137,7 @@ const Questionnaire = Vue.createApp({
     getQuestionIndex: function(id) {
       return this.getQuestions().findIndex(q => q.id == id);
     },
-    deplacer: function(index, skip = true) {
+    deplacer: function(index) {
       if(index < 0) {
         this.intro();
         return;
@@ -148,7 +148,7 @@ const Questionnaire = Vue.createApp({
         return;
       }
 
-      if (skip && this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
+      if (this.modeQuestionsNonRepondues && index < this.nombreQuestionsTotal) {
         const question = this.questionnaire.questions[index];
 
         // On check si c'est une categorie et que toutes les questions sont répondues
@@ -225,7 +225,7 @@ const Questionnaire = Vue.createApp({
     reset: function() {
       localStorage.clear();
       this.reponses = {}
-      this.modeQuestionsNonRepondues = true;
+      this.modeQuestionsNonRepondues = false;
       this.intro();
       var url = new URL(window.location);
       document.location = url.href.replace(/#.*/, '#');
