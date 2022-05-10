@@ -45,13 +45,7 @@ class Statistiques {
             return implode(',', $this->scores);
         }
 
-        $highScores = $this->highScores;
-        return implode(',', array_map(function ($categorie, $score) use ($highScores) {
-            if ($highScores[$categorie] === 0) {
-                return 0;
-            }
-            return round(($score * 100) / $highScores[$categorie]);
-        }, array_keys($this->scores), array_values($this->scores)));
+        return implode(',', $this->scoresEnPourcent());
     }
 
     public function getScores() {
@@ -60,6 +54,17 @@ class Statistiques {
 
     public function getHighScores() {
         return $this->highScores;
+    }
+
+    private function scoresEnPourcent()
+    {
+        $highScores = $this->highScores;
+        return array_map(function ($categorie, $score) use ($highScores) {
+            if ($highScores[$categorie] === 0) {
+                return 0;
+            }
+            return round(($score * 100) / $highScores[$categorie]);
+        }, array_keys($this->scores), array_values($this->scores));
     }
 
     public function getFormules()
