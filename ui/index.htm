@@ -10,7 +10,7 @@
 
     <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
 
-      <section id="page_home" v-show="indexCourant == -1" class="text-center d-flex justify-content-center align-items-center" key="-1" style="height: 60vh;">
+      <section id="page_home" v-if="indexCourant === -1" class="text-center d-flex justify-content-center align-items-center" key="-1" style="height: 60vh;">
 
         <div id="startup-content" v-if="questionnaireStarted">
           <div class="mb-5 p-2 bg-light border rounded">
