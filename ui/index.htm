@@ -20,7 +20,7 @@
           </div>
           <div class="col-md-10 mx-auto">
             <div class="d-grid gap-2">
-              <button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses()">Continuer le questionnaire</button>
+              <button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses(); this.modeQuestionsNonRepondues = false;">Continuer le questionnaire</button>
             </div>
             <button type="button" class="btn btn-sm p-1 text-muted mt-2" v-on:click="reset">
               <small><i class="bi bi-trash"></i> Recommencer le questionnaire</small>
