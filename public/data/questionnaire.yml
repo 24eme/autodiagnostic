@@ -337,7 +337,7 @@ questions:
 - type: question
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
-  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. Vous pouvez le calculer à l'aide de l'outil suivant.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
+  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
   unite: IFT
   notation_hve:
     ratio: 0.5
