@@ -309,4 +309,5 @@ const Questionnaire = Vue.createApp({
   }
 });
 
+Questionnaire.use(Maska)
 Questionnaire.mount('#questionnaire');
