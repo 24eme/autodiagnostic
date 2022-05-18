@@ -305,6 +305,26 @@ const Questionnaire = Vue.createApp({
     },
     switchModeQuestions: function () {
       this.modeQuestionsNonRepondues = ! this.modeQuestionsNonRepondues;
+    },
+    formatNumber: function (value) {
+      if (isNaN(Number(value))) {
+        return;
+      }
+
+      if (Number.parseInt(value) === Number(value)) {
+        value = Number(value);
+        return value;
+      }
+
+      if (value.toString().split('.')[1].length <= 2) {
+        value = Number(value).toFixed(2)
+        return value;
+      }
+
+      if (value.toString().split('.')[1].length <= 4 || value.toString().split('.')[1].length > 4) {
+        value = Number(value).toFixed(4)
+        return value;
+      }
     }
   }
 });

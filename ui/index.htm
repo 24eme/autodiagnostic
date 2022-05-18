@@ -95,7 +95,14 @@
                 <div class="col-6" v-if="reponse.question && reponses[question.id] !== undefined && (reponses[question.id] == reponse.id || (reponses[question.id].length && reponses[question.id].includes(reponse.id)))">
                   <div class="py-3 input-group">
                     {% reponse.question.libelle %}&nbsp;
-                    <input v-model="reponses[reponse.question.id]" type="text" class="form-control" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
+                    <input v-if="reponse.question.unite"
+                          :value="reponses[reponse.question.id]"
+                          v-bind:name="reponse.question.id"
+                          @change="reponses[reponse.question.id] = formatNumber($event.target.value); storeReponses(question)"
+                          v-maska="'#*.####'"
+                          class="form-control"
+                    />
+                    <input v-else v-model="reponses[reponse.question.id]" type="text" class="form-control" v-bind:name="reponse.question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
                     <span class="input-group-text" v-show="reponse.question.unite" v-html="reponse.question.unite"></span>
                   </div>
                 </div>
@@ -103,8 +110,17 @@
             </div>
             <div class="col-6" v-else>
               <div class="my-4 input-group">
-                <input v-bind:id="'input_' + question.id" v-if="question.format && question.format == 'date'" v-model="reponses[question.id]" type="date" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
-                <input v-bind:id="'input_' + question.id" v-else v-model="reponses[question.id]" min=0 :max="(question.unite === '%') ? 100 : null" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)" v-maska="'#*'"/>
+                <input v-if="question.format && question.format == 'date'" v-bind:id="'input_' + question.id" v-model="reponses[question.id]" type="date" class="form-control" v-bind:name="question.id" v-on:change="storeReponses(question)" v-on:keyup.enter="deplacer(index + 1)"/>
+                <input v-else
+                      :value="reponses[question.id]"
+                      v-bind:id="'input_' + question.id"
+                      v-bind:name="question.id"
+                      @keyup.enter="deplacer(index + 1)"
+                      @change="reponses[question.id] = formatNumber($event.target.value); storeReponses(question)"
+                      v-maska="'#*.####'"
+                      min=0 :max="(question.unite === '%') ? 100 : null"
+                      class="form-control"
+                />
                 <label v-bind:for="'input_' + question.id" class="input-group-text" v-show="question.unite" v-html="question.unite"></label>
               </div>
             </div>
