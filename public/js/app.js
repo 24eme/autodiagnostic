@@ -194,6 +194,10 @@ const Questionnaire = Vue.createApp({
       this.storeReponses()
       this.deplacer(index + 1)
     },
+    isNonConcerne: function (index) {
+      const q = this.getQuestions()[index]
+      return this.reponses[q.id] === "NC"
+    },
     updatePageInfos: function (hash, title) {
       let libelle = (title)? 'Autodiagnostic - ' + title : 'Autodiagnostic';
       document.title = libelle;
