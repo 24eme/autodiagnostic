@@ -72,6 +72,8 @@ class App
     public function synthetiser(Base $f3)
     {
         $web = Web::instance();
+        $user = $f3->get('SESSION.user');
+        $uniqid = substr(bin2hex(random_bytes(13)), 0, 13);
 
         // Destination : $f3->get('UPLOADS')
         $files = $web->receive(function ($file, $formFieldName) {
@@ -79,8 +81,12 @@ class App
                 return false;
             }
             return true;
-        }, true, function (string $fileBaseName, string $formFieldName) use ($f3) : string {
-            return $f3->get('SESSION.user').'-'.date('Y').'.json';
+        }, true, function (string $fileBaseName, string $formFieldName) use ($user, $uniqid) : string {
+            return implode('-', [
+                $user,
+                date('Y'),
+                $uniqid
+            ]).'.json';
         });
 
         $jsonFile = null;
@@ -95,16 +101,21 @@ class App
             $f3->error(415, 'Type de fichier non supportés');
         }
 
-        $f3->reroute('@results');
+        $f3->reroute(
+            sprintf('@resultats(@user=%s,@year=%s,@uniqid=%s)',
+                $user, date('Y'), $uniqid
+            )
+        );
     }
 
-    public function resultats(Base $f3)
+    public function resultats(Base $f3, array $args)
     {
         if ($f3->get('SESSION.user') === null) {
             $f3->reroute('@home');
         }
 
-        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+        $f3->scrub($args['uniqid']);
+        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'), $args['uniqid']);
 
         if ($file === false) {
             $f3->reroute('@home');
@@ -115,13 +126,13 @@ class App
         $f3->set('inc', 'resultats.htm');
     }
 
-    public function formules(Base $f3)
+    public function formules(Base $f3, array $args)
     {
         if (phpCAS::isAuthenticated() === false) {
             phpCAS::forceAuthentication();
         }
 
-        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'), $args['uniqid']);
 
         $fiches = yaml_parse_file($f3->get('FICHES_FILE'));
 
@@ -141,14 +152,14 @@ class App
         echo Template::instance()->render('layout.html');
     }
 
-    private function getFichierName(string $path, string $user)
+    private function getFichierName(string $path, string $user, string $uniqid)
     {
-        return sprintf('%s/%s-%s.json', $path, $user, date('Y'));
+        return sprintf('%s/%s-%s-%s.json', $path, $user, date('Y'), $uniqid);
     }
 
-    private function getFichierReponse(string $path, string $user)
+    private function getFichierReponse(string $path, string $user, string $uniqid)
     {
-        $filename = $this->getFichierName($path, $user);
+        $filename = $this->getFichierName($path, $user, $uniqid);
 
         if (is_file($filename) === false) {
             return false;
