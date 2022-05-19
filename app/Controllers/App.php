@@ -81,18 +81,18 @@ class App
         $user = $f3->get('SESSION.user');
         $uniqid = substr(bin2hex(random_bytes(13)), 0, 13);
 
+        $generatedFilename = implode('-', [
+            $user, date('Y'), $uniqid
+        ]) . '.json';
+
         // Destination : $f3->get('UPLOADS')
         $files = $web->receive(function ($file, $formFieldName) {
             if ($file['type'] !== 'application/json') {
                 return false;
             }
             return true;
-        }, true, function (string $fileBaseName, string $formFieldName) use ($user, $uniqid) : string {
-            return implode('-', [
-                $user,
-                date('Y'),
-                $uniqid
-            ]).'.json';
+        }, true, function (string $fileBaseName, string $formFieldName) use ($generatedFilename) : string {
+            return $generatedFilename;
         });
 
         $jsonFile = null;
@@ -103,13 +103,15 @@ class App
             $jsonFile = $file;
         }
 
-        if (!$jsonFile) {
+        if ($jsonFile === null) {
             $f3->error(415, 'Type de fichier non supportés');
+            exit;
         }
 
+        $md5 = md5_file($jsonFile);
         $f3->reroute(
-            sprintf('@resultats(@user=%s,@year=%s,@uniqid=%s)',
-                $user, date('Y'), $uniqid
+            sprintf('@resultats(@file=%s,@md5=%s)',
+                $generatedFilename, $md5
             )
         );
     }
