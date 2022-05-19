@@ -141,12 +141,12 @@ class App
     public function formules(Base $f3, array $args)
     {
         if (phpCAS::isAuthenticated() === false) {
-            phpCAS::forceAuthentication();
+            //phpCAS::forceAuthentication();
         }
 
         $file = Reponse::getFichier(Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user')));
 
-        if ($file === false || count($file) > 0) {
+        if ($file === false || count($file) === 0) {
             $f3->reroute('@home');
         }
 
