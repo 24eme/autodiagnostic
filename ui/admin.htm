@@ -35,13 +35,14 @@
       <h3 class="display-6 mb-5">Tous les résultats <a href="{{ 'exportGlobal' | alias }}" class="btn btn-primary float-end"><i class="bi bi-download"></i> Exporter les réponses</a></h3>
       <check if="{{ @reponses }}">
         <true>
-          <repeat group="{{ @reponses }}" value="{{ @name }}">
+          <repeat group="{{ @reponses }}" value="{{ @name }}" counter="{{ @ctr }}">
           <p class="border-bottom">
             {{ @name }}
             <a href="{{ 'delete', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1" onclick="return confirm('Êtes vous sûr de vouloir supprimer le fichier')">
               Supprimer la réponse
             </a>
             <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Voir les réponses</a>
+            <a href="{{ 'resultats', 'file='.basename(@name, ".json").',md5='.@md5s[@ctr - 1] | alias }}" class="float-end mx-1">Voir la page résultats</a>
             <a href="{{ 'export', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Exporter les réponses</a>
           </p>
           </repeat>

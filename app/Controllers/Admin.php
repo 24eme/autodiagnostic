@@ -35,12 +35,14 @@ class Admin
             $files = [];
         }
 
+        $md5s = array_map('md5_file', $files);
         $files = array_map('basename', $files);
 
         $questions = new Questions();
 
         $f3->set('questionnaire', $questions);
         $f3->set('reponses', $files);
+        $f3->set('md5s', $md5s);
         $f3->set('inc', 'admin.htm');
     }
 
