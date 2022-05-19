@@ -40,6 +40,29 @@ class Reponse
         return sprintf('%s/%s-%s-*.json', $path, $user, date('Y'));
     }
 
+    public static function getFichierNameWithAuth(string $path, string $md5)
+    {
+        $file = self::getFichier($path);
+
+        if ($file === false || count($file) === 0) {
+            return false;
+        }
+
+        $file = current($file);
+
+        if (md5_file($file) !== $md5) {
+            return false;
+        }
+
+        $file = file_get_contents($file);
+
+        if ($file === false) {
+            throw new \Exception("Erreur dans la lecture du fichier de réponse de l'utilisateur");
+        }
+
+        return $file;
+    }
+
     public static function getFichier(string $path)
     {
         return glob($path);

@@ -122,8 +122,12 @@ class App
             $f3->reroute('@home');
         }
 
-        $f3->scrub($args['uniqid']);
-        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'), $args['uniqid']);
+        $f3->scrub($args['file']);
+        $f3->scrub($args['md5']);
+        $file = Reponse::getFichierNameWithAuth(
+            $f3->get('UPLOADS').$args['file'].'.json',
+            $args['md5']
+        );
 
         if ($file === false) {
             $f3->reroute('@home');
