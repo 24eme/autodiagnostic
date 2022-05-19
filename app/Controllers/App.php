@@ -71,6 +71,8 @@ class App
 
             if ($files !== false && count($files) > 0) {
                 $f3->set('inc', 'alreadydone.htm');
+                $f3->set('file', basename(current($files), '.json'));
+                $f3->set('md5', md5_file(current($files)));
             }
         }
     }
