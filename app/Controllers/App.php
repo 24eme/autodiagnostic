@@ -111,7 +111,7 @@ class App
         $md5 = md5_file($jsonFile);
         $f3->reroute(
             sprintf('@resultats(@file=%s,@md5=%s)',
-                $generatedFilename, $md5
+                basename($generatedFilename, '.json'), $md5
             )
         );
     }
