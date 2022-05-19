@@ -68,6 +68,20 @@ class Reponse
         return glob($path);
     }
 
+    public static function rename(string $path, string $olduser, string $newuser)
+    {
+        $file = self::getFichier($path);
+
+        if ($file === false || count($file) === 0 || is_file(current($file)) === false) {
+            return false;
+        }
+
+        $filename = current($file);
+        $new = str_replace($olduser, $newuser, $filename);
+
+        rename($filename, $new);
+    }
+
     public function export()
     {
         foreach ($this->decoded as $id => $rep) {

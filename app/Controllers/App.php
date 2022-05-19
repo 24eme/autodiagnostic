@@ -36,11 +36,11 @@ class App
             if (
                 $f3->get('SESSION.user')
                 && $f3->get('SESSION.user') !== phpCAS::getUser()
-                && is_file($this->getFichierName($f3->get('UPLOADS'), $f3->get('SESSION.user')))
             ) {
-                rename(
-                    $this->getFichierName($f3->get('UPLOADS'), $f3->get('SESSION.user')),
-                    $this->getFichierName($f3->get('UPLOADS'), phpCAS::getUser())
+                Reponse::rename(
+                    Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user')),
+                    $f3->get('SESSION.user'),
+                    phpCAS::getUser()
                 );
             }
 
