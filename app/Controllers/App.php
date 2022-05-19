@@ -144,13 +144,19 @@ class App
             phpCAS::forceAuthentication();
         }
 
-        $file = $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'), $args['uniqid']);
+        $file = Reponse::getFichier(Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user')));
 
-        $fiches = yaml_parse_file($f3->get('FICHES_FILE'));
+        if ($file === false || count($file) > 0) {
+            $f3->reroute('@home');
+        }
+
+        $file = file_get_contents(current($file));
 
         if ($file === false) {
             $f3->reroute('@home');
         }
+
+        $fiches = yaml_parse_file($f3->get('FICHES_FILE'));
 
         $statistiques = new Statistiques($file);
         $f3->set('statistiques', $statistiques);
