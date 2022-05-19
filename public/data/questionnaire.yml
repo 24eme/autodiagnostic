@@ -337,7 +337,7 @@ questions:
 - type: question
   id: IFT_HERBICIDE
   libelle: "Quel est votre IFT herbicides ?"
-  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm'>outil suivant</a>"
+  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm' class='link-icon'>outil suivant</a>"
   unite: IFT
   notation_hve:
     ratio: 0.5
@@ -359,7 +359,7 @@ questions:
 - type: question
   id: IFT_HORS_HERBICIDE
   libelle: "Quel est votre IFT hors herbicides ?"
-  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm'>outil suivant</a>"
+  complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm' class='link-icon'>outil suivant</a>"
   unite: IFT
   notation_hve:
     ratio: 0.5
@@ -589,7 +589,7 @@ questions:
 - type: question
   id: CUIVRE
   libelle: "En bio ou en conventionnel : quelle quantité de cuivre avez-vous utilisée cette année ?"
-  complement_information: "Calculer la quantité de cuivre métal en kg/ha à partir de la composition du produit utilisé. Pour rappel, la limitation est à 4 kg de cuivre métal/ha/an tous produits confondus en moyenne (28 kg/ha entre 2019 et 2025). Vous pouvez le calculer grâce à l'<a href='data/Calcul de la dose de cuivre métal utilisée.xlsm'>outil suivant</a>"
+  complement_information: "Calculer la quantité de cuivre métal en kg/ha à partir de la composition du produit utilisé. Pour rappel, la limitation est à 4 kg de cuivre métal/ha/an tous produits confondus en moyenne (28 kg/ha entre 2019 et 2025). Vous pouvez le calculer grâce à l'<a href='data/Calcul de la dose de cuivre métal utilisée.xlsm' class='link-icon'>outil suivant</a>"
   unite: "kg"
 
 - type: question
@@ -748,7 +748,7 @@ questions:
 - type: question
   id: BILAN_AZOTE
   libelle: "Quel est votre bilan azoté global ?"
-  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.xlsm'>outil suivant</a>"
+  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.xlsm' class='link-icon'>outil suivant</a>"
   unite: "kg N/ha"
   notation_hve:
     ratio: 1
@@ -823,7 +823,7 @@ questions:
 - type: question
   id: POURCENTAGE_SAU_IAE
   libelle: "Quel pourcentage de votre surface est dédié aux infrastructures agro-écologiques (haies, arbres,...) recensées précédemment ?"
-  complement_information: "Vous pouvez le calculer grâce à <a href='data/Calcul de la SET.xlsm'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
+  complement_information: "Vous pouvez le calculer grâce à <a href='data/Calcul de la SET.xlsm' class='link-icon'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
   unite: "%"
   notation_hve:
     ratio: 1

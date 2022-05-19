@@ -65,6 +65,16 @@ body {
   max-height: 200px;
 }
 
+a.link-icon::after {
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  content: "\F346";
+  display: inline-block;
+  margin-left: 0.3rem;
+}
+
 .cursor-help {
   cursor: help;
 }
