@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Base;
 use phpCAS;
+use Reponses\Reponse;
 use Statistiques;
 use Template;
 use Web;
@@ -64,8 +65,13 @@ class App
     {
         $f3->set('inc', 'index.htm');
 
-        if ($f3->get('SESSION.user') && $this->getFichierReponse($f3->get('UPLOADS'), $f3->get('SESSION.user'))) {
-            $f3->set('inc', 'alreadydone.htm');
+        if ($f3->get('SESSION.user')) {
+            $filename = Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+            $files = Reponse::getFichier($filename);
+
+            if ($files !== false && count($files) > 0) {
+                $f3->set('inc', 'alreadydone.htm');
+            }
         }
     }
 

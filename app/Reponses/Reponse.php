@@ -35,6 +35,16 @@ class Reponse
         }
     }
 
+    public static function getFichierNameByUser(string $path, string $user)
+    {
+        return sprintf('%s/%s-%s-*.json', $path, $user, date('Y'));
+    }
+
+    public static function getFichier(string $path)
+    {
+        return glob($path);
+    }
+
     public function export()
     {
         foreach ($this->decoded as $id => $rep) {
