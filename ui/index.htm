@@ -20,7 +20,10 @@
           </div>
           <div class="col-md-10 mx-auto">
             <div class="d-grid gap-2">
-              <button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses(); this.modeQuestionsNonRepondues = false;">Continuer le questionnaire</button>
+              <check if="{{ @SESSION.user }}">
+                <true><button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses(); this.modeQuestionsNonRepondues = false;">Continuer le questionnaire</button></true>
+                <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">S'authentifier</a></false>
+              </check>
             </div>
             <button type="button" class="btn btn-sm p-1 text-muted mt-2" v-on:click="reset">
               <small><i class="bi bi-trash"></i> Recommencer le questionnaire</small>
@@ -41,7 +44,11 @@
                 En répondant à ce questionnaire, vous acceptez l'utilisation de vos données par le BIVC à des fins de traitement statistiques collectives.
               </div>
             </div>
-            <button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button>
+
+            <check if="{{ @SESSION.user }}">
+              <true><button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button></true>
+              <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">S'authentifier</a></false>
+            </check>
           </div>
         </div>
       </section>

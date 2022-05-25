@@ -15,15 +15,7 @@
   </head>
   <body style="overflow-y: scroll;">
 
-  <check if="@SESSION.user">
-    <false>
-      <include href="authmodal.htm" />
-      <div class="bodyblurize"></div>
-    </false>
-    <true>
-        <include href="{{ @inc }}" />
-    </true>
-  </check>
+  <include href="{{ @inc }}" />
 
   <check if="{{ @SESSION.user }}">
     <p class="position-fixed bottom-0 end-0 small text-muted pe-2"><i class="bi bi-person-fill"></i>

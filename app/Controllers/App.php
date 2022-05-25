@@ -77,6 +77,16 @@ class App
         }
     }
 
+    public function auth(Base $f3)
+    {
+        if ($f3->get('SESSION.user')) {
+            $service = ($f3->get('GET.service')) ?: '@home';
+            $f3->reroute($service);
+        }
+
+        $f3->set('inc', 'authmodal.htm');
+    }
+
     public function synthetiser(Base $f3)
     {
         $web = Web::instance();
