@@ -7,3 +7,4 @@ storage/uploads/*
 config/config.ini
 public/tmp
 db/*
+bin/config.inc
