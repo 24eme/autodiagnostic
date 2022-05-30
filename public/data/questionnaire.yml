@@ -983,7 +983,7 @@ questions:
 - type: question
   id: MANCHONS_PLASTIQUE
   libelle: "Achetez-vous encore des manchons en plastique ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/MANCHONS_PLASTIQUE_2.jpeg' />"
+  complement_information: "<div class='text-center'><img src='img/visuels/MANCHONS_PLASTIQUE_1.jpeg' /></div>"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -999,7 +999,7 @@ questions:
 - type: question
   id: AGRAFES_PLASTIQUE
   libelle: Achetez-vous encore des agrafes en plastique (y compris biofragmentable) ?
-  complement_information: "<img class='img-fluid' src='img/visuels/AGRAPHES_PLASTIQUE.jpg' />"
+  complement_information: "<div class='text-center'><img src='img/visuels/AGRAPHES_PLASTIQUE.jpg' /></div>"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1015,7 +1015,7 @@ questions:
 - type: question
   id: POTEAUX_PLASTIQUE
   libelle: "Achetez-vous encore des poteaux en PVC ou Tetrapack ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/POTEAUX_PLASTIQUE_1.jpg' /> <img class='img-fluid' src='img/visuels/POTEAUX_PLASTIQUE_2.jpg' /> <img class='img-fluid' src='img/visuels/POTEAUX_PLASTIQUE_3.jpg' />"
+  complement_information: "<div class='text-center'><img src='img/visuels/POTEAUX_PLASTIQUE_1.jpg' /><img src='img/visuels/POTEAUX_PLASTIQUE_2.jpg' /><img src='img/visuels/POTEAUX_PLASTIQUE_3.jpg' /></div>"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1031,7 +1031,7 @@ questions:
 - type: question
   id: LIENS_PLASTIQUE
   libelle: "Achetez-vous encore des ficelles d'accolage en plastique ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/LIENS_PLASTIQUE_1.jpeg' />"
+  complement_information: "<div class='text-center'><img src='img/visuels/LIENS_PLASTIQUE_1.jpeg' /></div>"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1048,7 +1048,7 @@ questions:
 - type: question
   id: MARQUEUR_PLASTIQUE
   libelle: "Utilisez-vous encore des éléments en plastique pour marquer vos poteaux (manchons, bouchons, ...) ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img class='img-fluid' src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' />"
+  complement_information: "<div class='text-center'><img src='img/visuels/MARQUEUR_PLASTIQUE_1.jpeg' /> <img src='img/visuels/MARQUEUR_PLASTIQUE_3.jpg' /> <img src='img/visuels/MARQUEUR_PLASTIQUE_5.jpg' /></div"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1064,7 +1064,7 @@ questions:
 - type: question
   id: TUTEURS_PLASTIQUE
   libelle: "Achetez-vous encore des tuteurs en plastique ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/TUTEURS_PLASTIQUE_1.jpg' />"
+  complement_information: "<div class='text-center'><img src='img/visuels/TUTEURS_PLASTIQUE_1.jpg' /></div>"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1088,7 +1088,7 @@ questions:
 - type: question
   id: QUOI_RAKS_USAGES
   libelle: "Que faites-vous des Raks usagés ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_RAKS_USAGES_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_RAKS_USAGES_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: PARTENAIRE
@@ -1122,7 +1122,7 @@ questions:
 - type: question
   id: QUOI_EMBALLAGES_PHYTO
   libelle: "Que faites-vous des emballages vides de produits phytopharmaceutiques ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_EMBALLAGES_PHYTO_1.png' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_EMBALLAGES_PHYTO_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: PARTENAIRE
@@ -1214,7 +1214,7 @@ questions:
 - type: question
   id: QUOI_EMBALLAGES_OENO
   libelle: "Que faites-vous des emballages vides de produits oenologiques et de produits d'hygiène de cave ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_EMBALLAGES_OENO_1.png' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_EMBALLAGES_OENO_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: PARTENAIRE
@@ -1340,7 +1340,7 @@ questions:
 - type: question
   id: QUOI_SARMENTS
   libelle: "Que faites-vous des sarments ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_SARMENTS_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_SARMENTS_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: BRULAGE
@@ -1368,7 +1368,7 @@ questions:
 - type: question
   id: QUOI_PALETTES
   libelle: "Que faites-vous des palettes ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_PALETTES_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_PALETTES_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: REPRISE
@@ -1402,7 +1402,7 @@ questions:
 - type: question
   id: QUOI_CARTONS
   libelle: "Que faites-vous des cartons usagés ou inutilisables ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_CARTONS_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_CARTONS_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: DECHETTERIE
@@ -1430,7 +1430,7 @@ questions:
 - type: question
   id: QUOI_POTEAUX_METAL
   libelle: "Que faites-vous des poteaux en métal ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_POTEAUX_METAL_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_POTEAUX_METAL_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: DECHETTERIE
@@ -1480,7 +1480,7 @@ questions:
 - type: question
   id: QUOI_BOUTEILLES
   libelle: "Que faites-vous des bouteilles vides usagées ?"
-  complement_information: "<img class='img-fluid' src='img/visuels/QUOI_BOUTEILLES_1.jpg' /><br /><br />Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
+  complement_information: "<div class='text-center'><img src='img/visuels/QUOI_BOUTEILLES_1.jpg' /></div>Pour plus d'informations, se référer au : <a href='data/guide-tri-recyclage.pdf' target='_blank'>guide de tri et recyclage</a>"
   multiple: true
   reponses:
   - id: CONTENEUR
