@@ -91,8 +91,8 @@
           </div>
           <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
             <p v-if="question.complement_information" class="bg-light p-2 text-muted small mb-0 bloc-aide" v-html="question.complement_information"></p>
-            <div class="list-group my-4" v-if="question.reponses">
-              <p v-if="question.multiple" style="margin-top: -1rem;" class="small mb-2 p-2 rounded text-muted bg-light"><i class="bi bi-ui-checks"></i> Plusieurs réponses possibles</p>
+            <div class="list-group my-3" v-if="question.reponses">
+              <p v-if="question.multiple" class="small mb-0 p-1 ps-2 text-muted border bg-light rounded-top"><i class="bi bi-ui-checks ps-2 pe-2"></i> Plusieurs réponses possibles</p>
               <div v-for="reponse in question.reponses">
                 <label class="list-group-item list-group-item-action py-3" v-bind:class="{ active: reponses[question.id] == reponse.id }" role="button">
                   <input v-if="question.multiple" v-model="reponses[question.id]" v-bind:id="reponse.id" class="form-check-input me-1" type="checkbox" v-bind:value="reponse.id" v-on:change="storeReponses(question)">
