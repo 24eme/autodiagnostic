@@ -172,6 +172,7 @@ class Statistiques {
     }
 
     public function getNotationByReponse($notations, $reponse = null) {
+        if (!$notations) return null;
         $comparateur = key($notations);
         $valeurs = current($notations);
         $highScore = 0;
