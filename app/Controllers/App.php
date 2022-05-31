@@ -168,9 +168,9 @@ class App
             $f3->reroute('@home');
         }
 
-        $fiches = yaml_parse_file($f3->get('FICHES_FILE'));
-
         $statistiques = new Statistiques($file);
+        $fiches = $statistiques->organiseFichesByFaiblesses(yaml_parse_file($f3->get('FICHES_FILE')));
+
         $f3->set('statistiques', $statistiques);
         $f3->set('fiches', $fiches);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);

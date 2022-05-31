@@ -5,6 +5,7 @@ fiches:
   titre: "Programme des stages SICAVAC 2021/2022"
   lien: "data/fiches/Calendrier formations SICAVAC 2021-2022 v2.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'utilise des herbicides", "J'ai un IFT Hors herbicides important", "J'utilise des CMR", "J'utilise des antibotrytis (hors biocontrôle)", "J'ai peu d'infrastructures agro-écologiques (IAE)", "Je fais du désherbage chimique ou mécanique à l'automne", "J'utilise de l'azote chimique", "J'achète encore des vignes en pot plastique", "J'achète encore des ficelles d'accolage en plastique"]
 
 - picto: bi-file-pdf
   titre: "Technique d'effeuillage"
@@ -15,21 +16,25 @@ fiches:
   titre: "Guide de protection de la vigne 2021"
   lien: "data/fiches/Fascicule 2021 V4.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'utilise des herbicides", "J'ai un IFT Hors herbicides important", "Je fais du désherbage chimique ou mécanique à l'automne"]
 
 - picto: bi-file-pdf
   titre: "Les produits classés CMR"
   lien: "data/fiches/Fiche-info__produits-CMR.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'utilise des CMR"]
 
 - picto: bi-file-pdf
   titre: "Actions contre le Black-Rot"
   lien: "data/fiches/Fiche technique black-rot 2016.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'utilise des antibotrytis (hors biocontrôle)"]
 
 - picto: bi-file-pdf
   titre: "Actions contre l'excoriose"
   lien: "data/fiches/Fiche technique excoriose 2016.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'utilise des antibotrytis (hors biocontrôle)"]
 
 - picto: bi-file-pdf
   titre: "Le curetage expliqué"
@@ -45,6 +50,7 @@ fiches:
   titre: "Le guide de tri et recyclage"
   lien: "data/fiches/guide-tri-recyclage.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'achète encore des vignes en pot plastique", "J'achète encore des ficelles d'accolage en plastique"]
 
 - picto: bi-file-pdf
   titre: "Le materiel de pulverisation"
@@ -95,3 +101,4 @@ fiches:
   titre: "Techniques alternatives permettant de réduire l'emploi du phytosanitaires"
   lien: "data/fiches/Techniques alternatives.pdf"
   descriptif: "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words."
+  faiblesses: ["J'utilise des herbicides", "J'ai un IFT Hors herbicides important", "Je fais du désherbage chimique ou mécanique à l'automne"]
