@@ -35,15 +35,11 @@ class Reponse
         }
     }
 
-    public static function getFichierNameWithAuth(string $path, string $md5)
+    public static function getFichierNameWithAuth(string $file, string $md5)
     {
-        $file = self::getFichier($path);
-
-        if ($file === false || count($file) === 0) {
+        if (!is_file($file)) {
             return false;
         }
-
-        $file = current($file);
 
         if (md5_file($file) !== $md5) {
             return false;
