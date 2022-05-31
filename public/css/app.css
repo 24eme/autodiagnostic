@@ -386,6 +386,10 @@ a {
   color: inherit;
 }
 
+.question-content .list-group div:not(:last-child) label.list-group-item {
+  border-bottom: none;
+}
+
 textarea:hover,
 input:hover,
 textarea:active,
