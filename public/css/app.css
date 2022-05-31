@@ -61,8 +61,14 @@ body {
   border-left: 5px solid;
 }
 
-.question .question-content img {
-  max-height: 200px;
+.question .question-content .bloc-aide img {
+  object-fit: cover;
+  height: 200px;
+  max-width: 600px;
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid var(--bs-border-color);
+  border-radius: .375rem;
 }
 
 a.link-icon::after {

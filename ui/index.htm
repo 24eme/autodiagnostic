@@ -90,7 +90,7 @@
             <h2 class="h4 px-3 pt-1 pb-2" v-bind:style="'color: ' + question.categorie_couleur_texte + '; background-color: ' +  question.categorie_couleur + ';'"><small class="opacity-50">{% question.categorie_libelle %}</small><br /><strong class="opacity-75">{% question.num + 1  %}.</strong> {% question.libelle %}</h2>
           </div>
           <div class="question-content" v-bind:style="'border-left-color: ' +  question.categorie_couleur + ';'">
-            <p v-if="question.complement_information" class="bg-light p-2 text-muted small mb-0" v-html="question.complement_information"></p>
+            <p v-if="question.complement_information" class="bg-light p-2 text-muted small mb-0 bloc-aide" v-html="question.complement_information"></p>
             <div class="list-group my-4" v-if="question.reponses">
               <p v-if="question.multiple" class="small fst-italic mb-0 text-muted px-3"><i class="bi bi-info-circle ms-1 pe-1"></i> Vous pouvez cocher plusieurs choix</p>
               <div v-for="reponse in question.reponses">
