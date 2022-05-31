@@ -232,7 +232,7 @@ questions:
 - type: question
   id: SURFACE_ALTERNATIVE_CHIMIE
   libelle: "Sur quel pourcentage de votre surface utilisez-vous au moins une méthode alternative à la lutte chimique ?"
-  complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l’enherbement permanent, confusion sexuelle"
+  complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle"
   unite: "%"
   notation_hve:
     ratio: 1
@@ -254,15 +254,15 @@ questions:
   multiple: true
   reponses:
   - id: AMENAGEMENT
-    libelle: "Aménagement de l’aire de remplissage et de lavage étanche avec système de récupération de débordements accidentels"
+    libelle: "Aménagement de l'aire de remplissage et de lavage étanche avec système de récupération de débordements accidentels"
   - id: POTENCE
-    libelle: "Potence, réserve d’eau surélevée"
+    libelle: "Potence, réserve d'eau surélevée"
   - id: RETENTION
     libelle: "Plateau de stockage avec bac de rétention pour le local phytosanitaire"
   - id: PAILLASSE
-    libelle: "Aménagement d’une paillasse ou plate-forme stable pour préparer les bouillies, matériel de pesée et outils de dosage"
+    libelle: "Aménagement d'une paillasse ou plate-forme stable pour préparer les bouillies, matériel de pesée et outils de dosage"
   - id: COLLECTE
-    libelle: "Réserves de collecte des eaux de pluie et réseau correspondant (équipements à l’échelle des bâtiments de l’exploitation)"
+    libelle: "Réserves de collecte des eaux de pluie et réseau correspondant (équipements à l'échelle des bâtiments de l'exploitation)"
   - id: VOLUCOMPTEUR
     libelle: "Volucompteur programmable pour éviter le débordement des cuves"
   - id: ANTIGOUTTES
@@ -272,7 +272,7 @@ questions:
   - id: PRECISION
     libelle: "Matériel de précision permettant de réduire les doses de produits phytosanitaires (traitement face par face)"
   - id: RINCAGE
-    libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d’automisation de rinçage des cuves"
+    libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d'automisation de rinçage des cuves"
   - id: PRESTATAIRE
     libelle: "Je fais appel à un prestataire de service"
   - id: AUCUN
@@ -325,12 +325,12 @@ questions:
     EQ:
       "OUI":
         score: 0
-        faiblesse: "J’utilise des herbicides"
+        faiblesse: "J'utilise des herbicides"
         formule2: false
         formule3: false
       "NON":
         score: 2
-        atout: "Je n’utilise pas d’herbicides"
+        atout: "Je n'utilise pas d'herbicides"
       PENTES:
         score: 2
 
@@ -422,7 +422,7 @@ questions:
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION
-  libelle: "Utilisez-vous du désherbage chimique avant l’entrée en production ?"
+  libelle: "Utilisez-vous du désherbage chimique avant l'entrée en production ?"
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -489,13 +489,13 @@ questions:
     EQ:
       "OUI":
         score: 0
-        faiblesse: "J’utilise des CMR"
+        faiblesse: "J'utilise des CMR"
         formule1: false
         formule2: false
         formule3: false
       "NON":
         score: 10
-        atout: "Je n’utilise pas de CMR"
+        atout: "Je n'utilise pas de CMR"
 
 - type: question
   id: PRODUITS_CMR
@@ -512,7 +512,7 @@ questions:
 
 - type: question
   id: INSECTICIDES_NON_AB
-  libelle: "Combien d’insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
+  libelle: "Combien d'insecticides non autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
   complement_information: "Pour identifier les insecticides non autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
@@ -526,11 +526,11 @@ questions:
         score: -5
       "0":
         score: 0
-        atout: "Je n’utilise pas d’insecticides non autorisés en AB (hors traitements obligatoires)"
+        atout: "Je n'utilise pas d'insecticides non autorisés en AB (hors traitements obligatoires)"
 
 - type: question
   id: INSECTICIDES_AB
-  libelle: "Combien d’insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
+  libelle: "Combien d'insecticides autorisés en AB avez-vous utilisés sur la campagne, hors traitements obligatoires ?"
   unite: "insecticides"
   complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
@@ -544,7 +544,7 @@ questions:
           score: -5
         "0":
           score: 0
-          atout: "Je n’utilise pas d’insecticides (hors traitements obligatoires)"
+          atout: "Je n'utilise pas d'insecticides (hors traitements obligatoires)"
 
 - type: question
   id: SURFACE_RAKS
@@ -637,14 +637,14 @@ questions:
     EQ:
       "OUI":
         scrore: 0
-        faiblesse: "J’utilise des antibotrytis (hors biocontrôle)"
+        faiblesse: "J'utilise des antibotrytis (hors biocontrôle)"
       "NON":
         score: 10
-        atout: "Je n’utilise pas d’antibotrytis (hors biocontrôle)"
+        atout: "Je n'utilise pas d'antibotrytis (hors biocontrôle)"
 
 - type: question
   id: ANTI_BROTRYTIS
-  libelle: "Combien d’applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?"
+  libelle: "Combien d'applications d'antibotrytis (hors biocontrôle) avez vous réalisées sur la campagne ?"
   unite: "applications"
   notation:
     GTE:
@@ -740,7 +740,7 @@ questions:
 - type: categorie
   id: FERTILISATION
   libelle: "Fertilisation"
-  complement_information: "Les prochaines questions portent sur l’utilisation de l'azote dans vos parcelles."
+  complement_information: "Les prochaines questions portent sur l'utilisation de l'azote dans vos parcelles."
   couleur: "#1C2436"
   opacite: "#1C243680"
   couleur_texte: "#fff"
@@ -761,7 +761,7 @@ questions:
 
 - type: question
   id: AZOTE_ORGANIQUE
-  libelle: "Utilisez-vous exclusivement de l’azote 100% organique ?"
+  libelle: "Utilisez-vous exclusivement de l'azote 100% organique ?"
   complement_information: "Attention, certains engrais organo-minéraux contiennent de l'azote chimique. Se référer à la fiche SICAVAC sur le lien suivant : <a href='data/fiche-sicavac-100-azote-organique.pdf' target='_blank'>liste des fertilisants avec 100% d'azote organique</a>"
   reponses:
   - id: OUI
@@ -774,7 +774,7 @@ questions:
     EQ:
       "OUI":
         score: 20
-        atout: "J’utilise exclusivement de l’azote 100% organique"
+        atout: "J'utilise exclusivement de l'azote 100% organique"
       "NON":
         score: 0
         faiblesse: "J'utilise de l'azote chimique"
@@ -783,7 +783,7 @@ questions:
 
 - type: question
   id: UNITE_AZOTE
-  libelle: "Combien d’unités d’azote chimique avez-vous utilisé sur la campagne ?"
+  libelle: "Combien d'unités d'azote chimique avez-vous utilisé sur la campagne ?"
   unite: "N/ha"
   notation:
     GTE:
@@ -798,7 +798,7 @@ questions:
 - type: categorie
   id: BIODIVERSITE
   libelle: "Biodiversité"
-  complement_information: "Beaucoup de pratiques et d’éléments participent au développement ou à la conservation de la biodiversité dans les vignobles. Les questions suivantes visent à les répertorier.<br />Pour cela vous pouvez-vous aider du site <a href='https://www.geoportail.gouv.fr/' href='target=_blank'>geoportail.gouv.fr</a> qui permet de faire des mesures sur une photographie aérienne. "
+  complement_information: "Beaucoup de pratiques et d'éléments participent au développement ou à la conservation de la biodiversité dans les vignobles. Les questions suivantes visent à les répertorier.<br />Pour cela vous pouvez-vous aider du site <a href='https://www.geoportail.gouv.fr/' href='target=_blank'>geoportail.gouv.fr</a> qui permet de faire des mesures sur une photographie aérienne. "
   couleur: "#EDA103"
   opacite: "#EDA10380"
   couleur_texte: "#fff"
@@ -860,7 +860,7 @@ questions:
 
 - type: question
   id: POSSESSION_RUCHES
-  libelle: "Disposez-vous d’une ou plusieurs ruches dont vous êtes propriétaire ?"
+  libelle: "Disposez-vous d'une ou plusieurs ruches dont vous êtes propriétaire ?"
   complement_information: "La ou les ruches doivent être sédentaires et en bon état de fonctionnement."
   reponses:
   - id: OUI
@@ -923,7 +923,7 @@ questions:
 - type: categorie
   id: EAU
   libelle: "Gestion de l'eau"
-  complement_information: "La gestion de l’eau est un enjeu majeur des futures années. L’empreinte EAU, à l’instar de l’empreinte carbone, intègre petit à petit les certifications environnementales.<br />Le nombre de questions sur cette thématique est limité mais est amené à augmenter au gré des évolutions techniques."
+  complement_information: "La gestion de l'eau est un enjeu majeur des futures années. L'empreinte EAU, à l'instar de l'empreinte carbone, intègre petit à petit les certifications environnementales.<br />Le nombre de questions sur cette thématique est limité mais est amené à augmenter au gré des évolutions techniques."
   couleur: "#4B5767"
   opacite: "#4B576780"
   couleur_texte: "#fff"
@@ -1080,7 +1080,7 @@ questions:
 - type: categorie
   id: RECYCLAGE
   libelle: "Recyclage et gestion des déchets"
-  complement_information: "Les questions suivantes portent sur votre gestion des déchets et vos pratiques de recyclage. L’objectif de la charte développement durable Centre-Loire est de diminuer le volume de déchets générés par la filière et recycler dès lors que c’est possible."
+  complement_information: "Les questions suivantes portent sur votre gestion des déchets et vos pratiques de recyclage. L'objectif de la charte développement durable Centre-Loire est de diminuer le volume de déchets générés par la filière et recycler dès lors que c'est possible."
   couleur: "#65707E"
   opacite: "#65707E80"
   couleur_texte: "#fff"
