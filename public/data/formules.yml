@@ -2,18 +2,28 @@ horsformule:
   icone: 'bi-emoji-expressionless'
   texte: 'Pas de panique !'
   titre: 'Hors formule'
+  description: |
+    Toutes les formules de la charte développement durable du Centre-Loire s'appuient sur les critères du label HVE3 et sur des critères spécifiques au Centre-Loire, notamment en matière de biodiversité et de gestion des déchets.
+    Au moins une de vos pratiques ne répond pas à ces exigences. Les fiches techniques ci-dessous vous permettront d'étudier des solutions pour améliorer votre impact sur l'environnement.
 
 formule1:
   icone: 'bi-emoji-smile'
   texte: 'Vous êtes sur la bonne voie'
   titre: 'Formule 1'
+  description: |
+    Si vous n'êtes pas encore certifié HVE3, vous pourriez prétendre à cette certification.
+    Vos pratiques sont favorables au développement durable mais vous pouvez aller plus loin. Les fiches techniques ci-dessous peuvent vous y aider.
 
 formule2:
   icone: 'bi-emoji-laughing'
   texte: 'Vous y êtes presque !'
   titre: 'Formule 2'
+  description: |
+    Vos pratiques présentent un réel intérêt pour l'environnement. Quelques points peuvent être améliorés. Que ce soit en matière de protection de la vigne, de fertilisation ou de biodiversité, vous en apprendrez plus en consultant les fiches techniques ci-dessous.
 
 formule3:
   icone: 'bi-emoji-heart-eyes'
   texte: 'Ne relâchez pas vos efforts !'
   titre: 'Formule 3'
+  description: |
+    Vous répondez aux critères les plus exigeants de la charte développement durable du Centre-Loire. Mais vous êtes-vous questionné sur la gestion de l'eau ou bien le bilan carbone de votre exploitation ?
