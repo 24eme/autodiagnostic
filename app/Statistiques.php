@@ -83,6 +83,11 @@ class Statistiques {
         return $this->infosFormules[$formule]['titre'];
     }
 
+    public function getFormuleDescription($formule)
+    {
+        return $this->infosFormules[$formule]['description'];
+    }
+
     public function getHighestFormule()
     {
         return $this->formules['formule3'] === true

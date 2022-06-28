@@ -3,7 +3,7 @@ horsformule:
   texte: 'Pas de panique !'
   titre: 'Hors formule'
   description: |
-    Toutes les formules de la charte développement durable du Centre-Loire s'appuient sur les critères du label HVE3 et sur des critères spécifiques au Centre-Loire, notamment en matière de biodiversité et de gestion des déchets.
+    Toutes les formules de la charte développement durable du Centre-Loire s'appuient sur les critères du label HVE3 et sur des critères spécifiques au Centre-Loire, notamment en matière de biodiversité et de gestion des déchets.<br/>
     Au moins une de vos pratiques ne répond pas à ces exigences. Les fiches techniques ci-dessous vous permettront d'étudier des solutions pour améliorer votre impact sur l'environnement.
 
 formule1:
@@ -11,7 +11,7 @@ formule1:
   texte: 'Vous êtes sur la bonne voie'
   titre: 'Formule 1'
   description: |
-    Si vous n'êtes pas encore certifié HVE3, vous pourriez prétendre à cette certification.
+    Si vous n'êtes pas encore certifié HVE3, vous pourriez prétendre à cette certification.<br/>
     Vos pratiques sont favorables au développement durable mais vous pouvez aller plus loin. Les fiches techniques ci-dessous peuvent vous y aider.
 
 formule2:
