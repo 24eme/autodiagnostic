@@ -27,6 +27,14 @@ class Admin
         echo Template::instance()->render('layout.html');
     }
 
+    public function config(Base $f3)
+    {
+        $questions = new Questions();
+        $f3->set('questionnaire', $questions);
+        $f3->set('inc', 'admin.htm');
+        $f3->set('sub', 'config.htm');
+    }
+
     public function index(Base $f3)
     {
         $files = glob($f3->get('UPLOADS').'*.json');
@@ -38,12 +46,10 @@ class Admin
         $md5s = array_map('md5_file', $files);
         $files = array_map('basename', $files);
 
-        $questions = new Questions();
-
-        $f3->set('questionnaire', $questions);
         $f3->set('reponses', $files);
         $f3->set('md5s', $md5s);
         $f3->set('inc', 'admin.htm');
+        $f3->set('sub', 'files.htm');
     }
 
     public function exportGlobal(Base $f3)

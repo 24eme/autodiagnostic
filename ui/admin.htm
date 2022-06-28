@@ -23,187 +23,23 @@
   <div class="g-5 tabs">
     <ul class="nav nav-tabs nav-fill mb-5">
       <li class="nav-item">
-        <a class="nav-link active" href="#" data-tab="administration-questions">Liste des questions</a>
+        <a class="nav-link{{ (@sub === 'config.htm') ? ' active' : '' }}" href="{{ 'config' | alias }}">Liste des questions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" data-tab="administration-listing">Tous les résultats</a>
+        <a class="nav-link{{ (@sub === 'files.htm') ? ' active' : '' }}" href="{{ 'admin' | alias }}">Tous les résultats</a>
       </li>
     </ul>
 
+    <include href="{{ @sub }}" />
 
-    <div id="administration-listing" class="tab">
-      <h3 class="display-6 mb-5">Tous les résultats <a href="{{ 'exportGlobal' | alias }}" class="btn btn-primary float-end"><i class="bi bi-download"></i> Exporter les réponses</a></h3>
-      <check if="{{ @reponses }}">
-        <true>
-          <repeat group="{{ @reponses }}" value="{{ @name }}" counter="{{ @ctr }}">
-          <p class="border-bottom">
-            {{ @name }}
-            <a href="{{ 'delete', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1" onclick="return confirm('Êtes vous sûr de vouloir supprimer le fichier')">
-              Supprimer la réponse
-            </a>
-            <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Voir les réponses</a>
-            <a href="{{ 'resultats', 'file='.basename(@name, ".json").',md5='.@md5s[@ctr - 1] | alias }}" class="float-end mx-1">Voir la page résultats</a>
-            <a href="{{ 'export', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Exporter les réponses</a>
-          </p>
-          </repeat>
-        </true>
-        <false><p class="lead text-center"><i class="bi-folder-x"></i> Aucun résultat</p></false>
-      </check>
-    </div>
-
-    <div id="administration-questions" class="tab active">
-      <h3 class="display-6 mb-5">Liste des questions</h3>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Categorie</th>
-            <th>Question</th>
-          </tr>
-        </thead>
-        <tbody>
-          <repeat group="{{ @questionnaire->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions }}">
-            <repeat group="{{ @questions }}" value="{{ @question }}" counter="{{ @ctr }}">
-              <tr>
-                <check if="{{ @ctr === 1 }}">
-                  <true>
-                    <th scope="row" rowspan="{{ count(@questions) }}">{{@questionnaire->getCategoriePosition(@categorie) }}. {{ @questions[@categorie].libelle }}</th>
-                  </true>
-                  <false><td>{{@questionnaire->getQuestionPosition(@question.id) }}. {{ @question.libelle }}<span class="float-end modal-open" title="Plus d'info sur la question" data-modal="modal-{{ @categorie }}-{{ @question.id }}"><i class="bi-eye"></i></span></td></false>
-                </check>
-              </tr>
-            </repeat>
-          </repeat>
-        </tbody>
-      </table>
-    </div>
   </div>
 </div>
 
-<div id="administration-modals">
-  <repeat group="{{ @questionnaire->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions }}">
-    <repeat group="{{ @questions }}" value="{{ @question }}" counter="{{ @ctr }}">
-      <check if="{{ @ctr !== 1 }}">
-        <div class="modal fade" tabindex="-1" id="modal-{{ @categorie }}-{{ @question.id }}">
-          <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-              <div class="modal-header" style="border-top: 10px solid {{ @questionnaire->getCategorieCouleur(@question.id) }}">
-                <h5 class="modal-title">
-                  <span class="text-muted">{{@questionnaire->getCategoriePosition(@categorie) }}. {{ @questionnaire->getQuestionCategorie(@question.id) }}</span><br />
-                  <a target="_blank" href="https://github.com/24eme/autodiagnostic/edit/master/public/data/questionnaire.yml#L{{ trim(@questionnaire->getQuestionNumeroLigne(@question.id)) }}" class="me-3"><i class="bi bi-pencil-square"></i></a> {{ @questionnaire->getQuestionPosition(@question.id) }}. {{ @question.libelle }}
-                </h5>
-              </div>
-              <div class="modal-body">
-                <h5>Informations générales</h5>
-                <ul>
-                  <li><span class="fw-bold">Unité :</span> {{ @questionnaire->getQuestionUnite(@question.id) }}</li>
-                  <li>
-                    <span class="fw-bold">Type de question :</span>
-                    <i class="bi {{ @questionnaire->getQuestionIcon(@question.id) }} me-1 bg-secondary bg-opacity-25 px-1"
-                      title="{{ @questionnaire->getQuestionType(@question.id) }}"></i>
-
-                    {{ @questionnaire->getQuestionType(@question.id) }}
-                  </li>
-                </ul>
-                <h5 class="mt-4">Message d'aide</h5>
-                <p class="h-100 p-3 bg-light border">
-                  {{ @questionnaire->getQuestionAide(@question.id) ?? '<span class="fst-italic text-muted">Sans message d\'aide</span>' }}
-                </p>
-
-                <check if="{{ @questionnaire->hasReponses(@question.id) }}">
-                  <h5 class="mt-4">Réponses</h5>
-                  <table class="table table-striped table-bordered table-sm">
-                    <thead><tr><th scope="col">Réponse</th><th scope="col">Préremplissage des réponses</th></tr></thead>
-                    <tbody>
-                      <repeat group="{{ @questionnaire->getReponses(@question.id) }}" value="{{ @reponse }}">
-                        <tr>
-                          <td>{{ @reponse.libelle }}</td>
-                          <check if="{{ @questionnaire->hasReponsesAutomatiques(@question.id) }}">
-                            <true>
-                              <td>
-                                <table class="table table-sm table-striped small table-bordered table-hover">
-                                  <tr>
-                                    <th>Catégorie</th>
-                                    <th>Question</th>
-                                    <th>Réponse</th>
-                                  </tr>
-                                  <repeat group="{{ @questionnaire->getReponsesAutomatiques(@question.id)[@reponse.libelle] }}" key="{{ @id }}" value="{{ @value }}">
-                                  <tr>
-                                    <td>{{ @questionnaire->getQuestionCategorie(@id) }}</td>
-                                    <td>{{ @questionnaire->findQuestion(@id)['libelle'] }} <span data-modal="modal-{{ @questionnaire->findQuestionCategorie(@id)['id'] }}-{{ @id }}" role="button" class="modal-open" title="Voir la question"><i class="bi bi-link" aria-hidden="true"></i></a></td>
-                                    <td>{{ @value }}</td>
-                                  </tr>
-                                  </repeat>
-                                </table>
-                              </td>
-                            </true>
-                            <false><td>-</td></false>
-                          </check>
-                        </tr>
-                      </repeat>
-                    </tbody>
-                  </table>
-                </check>
-
-                <check if="{{ @questionnaire->hasNotation(@question.id) }}">
-                  <h5 class="mt-4">Notation</h5>
-                  <table class="table">
-                    <thead>
-                      <tr><th>Comparateur</th><th>Réponse</th><th>Score</th><th>Points</th></tr>
-                    </thead>
-                    <tbody>
-                      <repeat group="{{ @questionnaire->getNotation(@question.id) }}" key="{{ @comparateur }}" value="{{ @notes }}">
-                      <repeat group="{{ @notes }}" key="{{ @note }}" value="{{ @points }}">
-                      <tr>
-                        <td>
-                          <check if="{{ @comparateur === 'EQ' }}">
-                          =
-                          </check>
-                          <check if="{{ @comparateur === 'LTE' }}">
-                          <
-                          </check>
-                          <check if="{{ @comparateur === 'GTE' }}">
-                          >
-                          </check>
-                        </td>
-                        <td>{{ @note }}</td>
-                        <td>{{ @points.score }}</td>
-                        <td>
-                          <check if="{{ @points.atout }}">
-                          Pt fort : {{ @points.atout }}
-                          </check>
-                          <check if="{{ @points.faiblesse }}">
-                          Pt d'amélioration : {{ @points.faiblesse }}
-                          </check>
-                        </td>
-                      </tr>
-                      </repeat>
-                      </repeat>
-                    </tbody>
-                  </table>
-                </check>
-              </div>
-              <div class="modal-footer">
-                <p class="me-auto"><small class="text-muted">CATEGORIE : {{ @categorie }}, QUESTION : {{ @question.id }}</small></p>
-                <button type="button" class="btn btn-secondary modal-close">Fermer</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </check>
-    </repeat>
-  </repeat>
-</div>
-<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
-
+<check if="{{ @sub === 'config.htm' }}">
 <script>
   const modals = document.getElementById('administration-modals')
   const questions = document.getElementById('administration-questions')
-  const listing = document.getElementById('administration-listing')
   const backdrop = document.getElementById('backdrop')
-
-  const tabs_trigger = document.getElementsByClassName('nav-link') || [];
-  const tabs = [questions, listing]
-
   const opened_modal = document.getElementsByClassName('modal show')
 
   questions.addEventListener('click', function (e) {
@@ -212,12 +48,6 @@
           openModal(target.dataset.modal)
         }
     }
-  })
-
-  Array.prototype.forEach.call(tabs_trigger, function (tab) {
-    tab.addEventListener('click', function (e) {
-      displayTab(e.target)
-    })
   })
 
   modals.addEventListener('click', function (e) {
@@ -274,23 +104,10 @@
     })
   }
 
-  function displayTab(trigger) {
-    tabs.forEach(function (t) {
-      t.classList.remove('active')
-    })
-
-    Array.prototype.forEach.call(tabs_trigger, function (t) {
-      t.classList.remove('active')
-    })
-
-    const tab = document.getElementById(trigger.dataset.tab)
-    tab.classList.add('active')
-    trigger.classList.add('active')
-  }
-
   const url = new URL(window.location)
 
   if (url.hash && document.getElementById(url.hash.replace('#', ''))) {
     openModal(url.hash.replace('#', ''))
   }
 </script>
+</check>
