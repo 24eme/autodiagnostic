@@ -8,7 +8,7 @@
     <div id="formules-title" class="mb-5 bg-app-yellow">
       <div class="p-5">
         <div class="container-fluid">
-          <h1 class="text-center display-5 fw-bold">Formules</h1>
+          <h1 class="text-center display-5 fw-bold"><i class="bi bi-card-checklist"></i> Votre formule</h1>
         </div>
       </div>
     </div>
@@ -43,10 +43,37 @@
 
     <div id="separator" class="text-center"><i class="fs-1 bi bi-chevron-compact-down text-muted"></i></div>
 
-    <div id="formules-ressources" class="container mb-5 col-7">
-      <h2 class="display-6 text-center"><i class="bi bi-file-pdf"></i>Ressources utiles</h2>
+    <div class="container mb-5 col-7">
+      <h2 class="display-6 text-center bg-warning text-light py-1"><i class="bi bi-graph-up-arrow"></i> Améliorer vos pratiques</h2>
+      <div class="row mt-5">
+        <repeat group="{{ @fiches['ameliorations'] }}" key="{{ @faiblesse }}" value="{{ @ameliorationFiches }}">
+          <div class="p-1 d-flex align-items-center">
+            <i class="bi-circle fs-3 text-warning me-3"></i> {{ @faiblesse }}
+          </div>
+          <div class="offset-1 col-11">
+          <table class="table table-sm table-borderless align-middle table-striped table-hover">
+          <repeat group="{{ @ameliorationFiches }}" value="{{ @fiche }}">
+            <tr>
+              <td>
+                  <p class="h5"><a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a></p>
+              </td>
+              <td align="right">
+                  <a target="_blank" href="{{ @fiche['lien'] }}" class="btn btn-sm btn-primary">
+                    <i class="bi bi-download"></i> Télécharger
+                  </a>
+              </td>
+            </tr>
+          </repeat>
+        </table>
+        </div>
+        </repeat>
+      </div>
+    </div>
+
+    <div class="container mb-5 col-7">
+      <h2 class="display-6 text-center"><i class="bi bi-file-pdf"></i> Autres ressources utiles</h2>
       <div class="table-responsive mt-5">
-        <table class="table table-borderless align-middle table-striped table-hover">
+        <table class="table table-sm table-borderless align-middle table-striped table-hover">
         <repeat group="{{ @fiches['fiches'] }}" value="{{ @fiche }}">
           <tr>
             <td>

@@ -135,8 +135,6 @@ class Statistiques {
                 continue;
             }
 
-            $notation = $this->getNotationByReponse($question['notation'], $reponses[$question['id']]);
-
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
 
             $couranteReponses = $reponses[$question['id']];
@@ -174,6 +172,7 @@ class Statistiques {
     }
 
     public function getNotationByReponse($notations, $reponse = null) {
+        if (!$notations) return null;
         $comparateur = key($notations);
         $valeurs = current($notations);
         $highScore = 0;
@@ -234,5 +233,22 @@ class Statistiques {
         }
 
         return $avg;
+    }
+
+    public function organiseFichesByFaiblesses($fiches) {
+        $fiches['ameliorations'] = array();
+        $toUnset = array();
+        foreach($this->ptsAmeliorations as $faiblesse) {
+            foreach($fiches['fiches'] as $k => $fiche) {
+                if (isset($fiche['faiblesses']) && in_array($faiblesse, $fiche['faiblesses'])) {
+                    $fiches['ameliorations'][$faiblesse][] = $fiche;
+                    $toUnset[] = $k;
+                }
+            }
+        }
+        foreach($toUnset as $k) {
+            unset($fiches['fiches'][$k]);
+        }
+        return $fiches;
     }
 }

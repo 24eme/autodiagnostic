@@ -37,11 +37,7 @@ class App
                 $f3->get('SESSION.user')
                 && $f3->get('SESSION.user') !== phpCAS::getUser()
             ) {
-                Reponse::rename(
-                    Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user')),
-                    $f3->get('SESSION.user'),
-                    phpCAS::getUser()
-                );
+                Reponse::rename($f3->get('UPLOADS'), $f3->get('SESSION.user'), phpCAS::getUser());
             }
 
             $f3->set('SESSION.user', phpCAS::getUser());
@@ -49,6 +45,11 @@ class App
 
         if ($f3->get('GET.visiteur')) {
             $f3->set('SESSION.user', 'VISITEUR-'.uniqid());
+            $f3->reroute('@home');
+        }
+
+        if ($f3->get('GET.cvi') && !Reponse::getFichier($f3->get('UPLOADS'), $f3->get('GET.cvi'))) {
+            $f3->set('SESSION.user', $f3->get('GET.cvi'));
             $f3->reroute('@home');
         }
 
@@ -66,8 +67,7 @@ class App
         $f3->set('inc', 'index.htm');
 
         if ($f3->get('SESSION.user')) {
-            $filename = Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user'));
-            $files = Reponse::getFichier($filename);
+            $files = Reponse::getFichier($f3->get('UPLOADS'), $f3->get('SESSION.user'));
 
             if ($files !== false && count($files) > 0) {
                 $f3->set('inc', 'alreadydone.htm');
@@ -156,7 +156,7 @@ class App
             phpCAS::forceAuthentication();
         }
 
-        $file = Reponse::getFichier(Reponse::getFichierNameByUser($f3->get('UPLOADS'), $f3->get('SESSION.user')));
+        $file = Reponse::getFichier($f3->get('UPLOADS'), $f3->get('SESSION.user'));
 
         if ($file === false || count($file) === 0) {
             $f3->reroute('@home');
@@ -168,9 +168,9 @@ class App
             $f3->reroute('@home');
         }
 
-        $fiches = yaml_parse_file($f3->get('FICHES_FILE'));
-
         $statistiques = new Statistiques($file);
+        $fiches = $statistiques->organiseFichesByFaiblesses(yaml_parse_file($f3->get('FICHES_FILE')));
+
         $f3->set('statistiques', $statistiques);
         $f3->set('fiches', $fiches);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
@@ -182,25 +182,4 @@ class App
         echo Template::instance()->render('layout.html');
     }
 
-    private function getFichierName(string $path, string $user, string $uniqid)
-    {
-        return sprintf('%s/%s-%s-%s.json', $path, $user, date('Y'), $uniqid);
-    }
-
-    private function getFichierReponse(string $path, string $user, string $uniqid)
-    {
-        $filename = $this->getFichierName($path, $user, $uniqid);
-
-        if (is_file($filename) === false) {
-            return false;
-        }
-
-        $file = file_get_contents($filename);
-
-        if ($file === false) {
-            throw new \Exception("Erreur dans la lecture du fichier de réponse de l'utilisateur ".$user);
-        }
-
-        return $file;
-    }
 }

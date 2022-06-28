@@ -35,20 +35,11 @@ class Reponse
         }
     }
 
-    public static function getFichierNameByUser(string $path, string $user)
+    public static function getFichierNameWithAuth(string $file, string $md5)
     {
-        return sprintf('%s/%s-%s-*.json', $path, $user, date('Y'));
-    }
-
-    public static function getFichierNameWithAuth(string $path, string $md5)
-    {
-        $file = self::getFichier($path);
-
-        if ($file === false || count($file) === 0) {
+        if (!is_file($file)) {
             return false;
         }
-
-        $file = current($file);
 
         if (md5_file($file) !== $md5) {
             return false;
@@ -63,14 +54,14 @@ class Reponse
         return $file;
     }
 
-    public static function getFichier(string $path)
+    public static function getFichier(string $path, string $user)
     {
-        return glob($path);
+        return glob(sprintf('%s/%s-%s-*.json', $path, $user, date('Y')));
     }
 
     public static function rename(string $path, string $olduser, string $newuser)
     {
-        $file = self::getFichier($path);
+        $file = self::getFichier($path, $olduser);
 
         if ($file === false || count($file) === 0 || is_file(current($file)) === false) {
             return false;
