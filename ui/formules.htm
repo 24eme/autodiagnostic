@@ -14,10 +14,10 @@
     </div>
 
     <div id="formules-tables" class="container mb-5">
-      <div class="row align-items-center">
+      <div class="row align-items-stretch">
       <repeat group="{{ @statistiques->getFormules() }}" value="{{ @formule }}">
         <div class="col tables-formule{{ (@statistiques->getHighestFormule() === @formule) ? ' active' : '' }}">
-          <div class="border shadow">
+          <div class="border shadow tables-layout">
             <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
               <h3>{{ @statistiques->getFormuleTitre(@formule) }}</h3>
               <p class="fs-1"><i class="bi {{ @statistiques->getFormuleIcone(@formule) }}"></i></p>

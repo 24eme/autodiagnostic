@@ -299,10 +299,17 @@ progress {
 
 .tables-formule {
   opacity: .5;
+  display: flex;
 }
 
 .tables-formule.active {
   opacity: 1;
+}
+
+.tables-formule .tables-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .tables-formule .table-content {
