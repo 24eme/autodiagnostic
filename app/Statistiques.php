@@ -7,6 +7,7 @@ class Statistiques {
     const COMPARATEUR_INF = 'LT';
     const COMPARATEUR_EGAL = 'EQ';
     const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
+    const DATA_FORMULES = 'data/formules.yml';
     const NON_CONCERNE = 'NC';
 
     private $config;
@@ -27,12 +28,7 @@ class Statistiques {
         $this->ptsForts = [];
         $this->ptsAmeliorations = [];
         $this->formules = ['horsformule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
-        $this->infosFormules = [
-            'horsformule' => ['icone' => '<i class="bi bi-emoji-expressionless"></i>', 'texte' => 'Pas de panique !', 'titre' => 'Hors formule'],
-            'formule1' => ['icone' => '<i class="bi bi-emoji-smile"></i>', 'texte' => 'Vous êtes sur la bonne voie', 'titre' => 'Formule 1'],
-            'formule2' => ['icone' => '<i class="bi bi-emoji-laughing"></i>', 'texte' => 'Vous y êtes presque !', 'titre' => 'Formule 2'],
-            'formule3' => ['icone' => '<i class="bi bi-emoji-heart-eyes"></i>', 'texte' => 'Ne relâchez pas vos efforts !', 'titre' => 'Formule 3']
-        ];
+        $this->infosFormules = yaml_parse_file(self::DATA_FORMULES);
         $this->synthetiserReponses();
     }
 

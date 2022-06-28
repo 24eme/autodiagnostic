@@ -20,7 +20,7 @@
           <div class="border shadow">
             <div class="{{ (@statistiques->getHighestFormule() === @formule) ? 'bg-app-yellow' : 'bg-light' }} text-center p-3 border-bottom">
               <h3>{{ @statistiques->getFormuleTitre(@formule) }}</h3>
-              <p class="fs-1">{{ @statistiques->getFormuleIcone(@formule) }}</p>
+              <p class="fs-1"><i class="bi {{ @statistiques->getFormuleIcone(@formule) }}"></i></p>
               <p>{{ @statistiques->getFormuleTexte(@formule) }}</p>
             </div>
             <div class="table-content">

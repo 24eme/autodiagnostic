@@ -1,0 +1,19 @@
+horsformule:
+  icone: 'bi-emoji-expressionless'
+  texte: 'Pas de panique !'
+  titre: 'Hors formule'
+
+formule1:
+  icone: 'bi-emoji-smile'
+  texte: 'Vous êtes sur la bonne voie'
+  titre: 'Formule 1'
+
+formule2:
+  icone: 'bi-emoji-laughing'
+  texte: 'Vous y êtes presque !'
+  titre: 'Formule 2'
+
+formule3:
+  icone: 'bi-emoji-heart-eyes'
+  texte: 'Ne relâchez pas vos efforts !'
+  titre: 'Formule 3'
