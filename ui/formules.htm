@@ -31,7 +31,7 @@
               <ul class="fs-5 bg-light list-group list-group-flush text-start">
                 <li class="list-group-item ps-5"><i class="bi {{ @statistiques->isCertified('HVE') ? 'bi-check text-success' : 'bi bi-x text-secondary' }}"></i> HVE3</li>
                 <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 1 <i class="bi bi-question-circle cursor-help" title="Texte explicatif de l'échelon ? Modal ?"></i></li>
-                <li class="list-group-item ps-5">{{ @formule !== 'formule1' ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 2 <i class="bi bi-question-circle cursor-help" title="Texte explicatif de l'échelon ? Modal ?"></i></li>
+                <li class="list-group-item ps-5">{{ @statistiques->isEchelon2() ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 2 <i class="bi bi-question-circle cursor-help" title="Texte explicatif de l'échelon ? Modal ?"></i></li>
                 <li class="list-group-item ps-5"><i class="bi {{ @statistiques->isCertified('BIO') ? 'bi-check text-success' : 'bi bi-x text-secondary' }}"></i> AB</li>
               </ul>
             </div>

@@ -116,9 +116,14 @@ class Statistiques {
         return in_array($certif, explode(',', $this->reponses->get('SELECTION_CERTIF')['reponse']));
     }
 
-    public function isCertified($certif)
+    public function isEchelon2()
     {
-        return in_array($certif, json_decode($this->reponses)->{'SELECTION_CERTIF'});
+        return $this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'] === 'NON'
+            && $this->reponses->get("ANTI_BROTRYTIS")['reponse'] <= 1
+            && $this->reponses->get("INSECTICIDES_AB")['reponse'] <= 2
+            && $this->reponses->get("INSECTICIDES_NON_AB")['reponse'] === 0
+            && $this->reponses->get("PRODUITS_CMR")['reponse'] === 0
+            && $this->reponses->get("AZOTE_ORGANIQUE")['reponse'] === 'OUI';
     }
 
     private function synthetiserReponses()
