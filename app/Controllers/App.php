@@ -175,6 +175,8 @@ class App
         $f3->set('fiches', $fiches);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
         $f3->set('inc', 'formules.htm');
+        $f3->set('file', basename(current($file), '.json'));
+        $f3->set('md5', md5_file(current($file)));
     }
 
     public function afterroute()
