@@ -116,6 +116,22 @@ class Statistiques {
         return in_array($certif, explode(',', $this->reponses->get('SELECTION_CERTIF')['reponse']));
     }
 
+    public function isEchelon1()
+    {
+        return (
+                $this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'] === 'NON'
+                || (
+                    $this->reponses->get("DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION")['reponse'] === 'NON'
+                    && $this->reponses->get("DESHERBAGE_SUP_MOITIE_PARCELLES")['reponse'] === 'NON'
+                    && $this->reponses->get("DESHERBAGE_CHIMIQUE_VERAISON")['reponse'] === 'NON'
+                )
+            )
+            && $this->reponses->get("ANTI_BROTRYTIS")['reponse'] <= 1
+            && $this->reponses->get("INSECTICIDES_AB")['reponse'] + $this->reponses->get("INSECTICIDES_NON_AB")['reponse'] <= 2
+            && $this->reponses->get("PRODUITS_CMR")['reponse'] === 0
+            && $this->reponses->get("UNITE_AZOTE")['reponse'] <= 15;
+    }
+
     public function isEchelon2()
     {
         return $this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'] === 'NON'
