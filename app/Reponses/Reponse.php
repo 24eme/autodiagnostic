@@ -98,6 +98,10 @@ class Reponse
 
     public function get($id)
     {
+        if (array_key_exists($id, $this->decoded) === false) {
+            return null;
+        }
+
         $reponse = $this->decoded[$id];
 
         return [

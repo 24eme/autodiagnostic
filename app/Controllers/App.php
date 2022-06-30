@@ -136,14 +136,14 @@ class App
 
         $f3->scrub($args['file']);
         $f3->scrub($args['md5']);
-        $file = Reponse::getFichierNameWithAuth(
-            $f3->get('UPLOADS').$args['file'].'.json',
-            $args['md5']
-        );
 
-        if ($file === false) {
+        $filename = $f3->get('UPLOADS').$args['file'].'.json';
+
+        if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             $f3->reroute('@home');
         }
+
+        $file = new Reponse($filename);
 
         $statistiques = new Statistiques($file);
         $f3->set('statistiques', $statistiques);

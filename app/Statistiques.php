@@ -1,4 +1,7 @@
 <?php
+
+use Reponses\Reponse;
+
 class Statistiques {
 
     const COMPARATEUR_SUP_EGAL = 'GTE';
@@ -11,7 +14,7 @@ class Statistiques {
     const NON_CONCERNE = 'NC';
 
     private $config;
-    private $reponses;
+    private Reponse $reponses;
 
     private $scores;
     private $highScores;
@@ -20,7 +23,7 @@ class Statistiques {
     private $formules;
     private $infosFormules;
 
-    public function __construct($reponses) {
+    public function __construct(Reponse $reponses) {
         $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
         $this->reponses = $reponses;
         $this->scores = [];
@@ -29,6 +32,7 @@ class Statistiques {
         $this->ptsAmeliorations = [];
         $this->formules = ['horsformule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
         $this->infosFormules = yaml_parse_file(self::DATA_FORMULES);
+
         $this->synthetiserReponses();
     }
 
@@ -107,8 +111,9 @@ class Statistiques {
         return ($limit)? array_slice($this->ptsAmeliorations, 0, $limit, true) : $this->ptsAmeliorations;
     }
 
-    public function getReponses() {
-        return json_encode(json_decode($this->reponses), JSON_PRETTY_PRINT);
+    public function isCertified($certif)
+    {
+        return in_array($certif, $this->reponses->get('SELECTION_CERTIF')['reponse']);
     }
 
     public function isCertified($certif)
@@ -116,30 +121,35 @@ class Statistiques {
         return in_array($certif, json_decode($this->reponses)->{'SELECTION_CERTIF'});
     }
 
-    private function synthetiserReponses() {
-        $reponses = json_decode($this->reponses, true);
+    private function synthetiserReponses()
+    {
         $categorieCourante = "";
+
         foreach($this->config['questions'] as $question) {
             if ($question['type'] == 'categorie') {
                 $categorieCourante = $question['libelle'];
                 continue;
             }
 
-            if (!isset($question['notation']) && isset($reponses[$question['id']])) {
+            if (!isset($question['notation'])) {
                 continue;
             }
-            if (isset($question['notation']) && !isset($reponses[$question['id']])) {
-                throw new Exception('Une réponse est attendue pour la question : '.$question['id']);
+
+            $reponse = $this->reponses->get($question['id']);
+
+            if (isset($question['notation']) && null === $reponse) {
+                throw new \Exception('Une réponse est attendue pour la question : '.$question['id']);
             }
 
-            if ($reponses[$question['id']] === self::NON_CONCERNE) {
+            if ($reponse['reponse'] === self::NON_CONCERNE) {
                 continue;
             }
 
             $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
 
-            $couranteReponses = $reponses[$question['id']];
-            if(!is_array($reponses[$question['id']])) {
+            $couranteReponses = $reponse['reponse'];
+
+            if(is_array($couranteReponses) === false) {
                 $couranteReponses = array($couranteReponses);
             }
 
@@ -218,7 +228,7 @@ class Statistiques {
 
         $f3 = Base::instance();
         foreach (glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
-            $stat = new Statistiques(file_get_contents($file));
+            $stat = new Statistiques(new Reponse($file));
             $all[] = $stat->scoresEnPourcent();
             $nb_categorie = count(current($all));
             unset($stat);
