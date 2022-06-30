@@ -113,7 +113,7 @@ class Statistiques {
 
     public function isCertified($certif)
     {
-        return in_array($certif, $this->reponses->get('SELECTION_CERTIF')['reponse']);
+        return in_array($certif, explode(',', $this->reponses->get('SELECTION_CERTIF')['reponse']));
     }
 
     public function isCertified($certif)

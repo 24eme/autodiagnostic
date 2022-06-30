@@ -162,13 +162,13 @@ class App
             $f3->reroute('@home');
         }
 
-        $file = file_get_contents(current($file));
+        $filecontent = file_get_contents(current($file));
 
-        if ($file === false) {
+        if ($filecontent === false) {
             $f3->reroute('@home');
         }
 
-        $statistiques = new Statistiques($file);
+        $statistiques = new Statistiques(new Reponse(current($file)));
         $fiches = $statistiques->organiseFichesByFaiblesses(yaml_parse_file($f3->get('FICHES_FILE')));
 
         $f3->set('statistiques', $statistiques);
