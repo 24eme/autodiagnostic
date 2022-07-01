@@ -142,6 +142,28 @@ class Statistiques {
             && $this->reponses->get("AZOTE_ORGANIQUE")['reponse'] === 'OUI';
     }
 
+    public function explainEchelon($echelon)
+    {
+        switch ($echelon) {
+        case 1:
+            return "Désherbage chimique: ".$this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'].' (doit être NON)'.PHP_EOL
+                . "ou Désherbage chimique avant prod: ".$this->reponses->get("DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION")['reponse'].' (doit être NON)'.PHP_EOL
+                . "    Désherbage > 50% parcelles: ".$this->reponses->get("DESHERBAGE_SUP_MOITIE_PARCELLES")['reponse'].' (doit être NON)'.PHP_EOL
+                . "    Désherbage chimique veraison - février: ".$this->reponses->get("DESHERBAGE_CHIMIQUE_VERAISON")['reponse'].' (doit être NON)'.PHP_EOL
+            . "Antibrotytis: ".$this->reponses->get("ANTI_BROTRYTIS")['reponse'].' (doit être <= 1)'.PHP_EOL
+            . "Insecticide AB + Non AB: ".($this->reponses->get("INSECTICIDES_AB")['reponse'] + $this->reponses->get("INSECTICIDES_NON_AB")['reponse']).' (doit être <= 2)'.PHP_EOL
+            . "CMR: ".$this->reponses->get("PRODUITS_CMR")['reponse'].' (doit être 0)'.PHP_EOL
+            . "Azote: ".$this->reponses->get("UNITE_AZOTE")['reponse'].' (doit être <= 15)'.PHP_EOL;
+        case 2:
+            return "Désherbage chimique: ".$this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'].' (doit être NON)'.PHP_EOL
+            . "Antibrotytis: ".$this->reponses->get("ANTI_BROTRYTIS")['reponse'].' (doit être <= 1)'.PHP_EOL
+            . "Insecticide AB: ".$this->reponses->get("INSECTICIDES_AB")['reponse'].' (doit être <= 2)'.PHP_EOL
+            . "Insecticide non AB: ".$this->reponses->get("INSECTICIDES_NON_AB")['reponse'].' (doit être 0)'.PHP_EOL
+            . "CMR: ".$this->reponses->get("PRODUITS_CMR")['reponse'].' (doit être 0)'.PHP_EOL
+            . "Azote organique: ".$this->reponses->get("AZOTE_ORGANIQUE")['reponse'].' (doit être OUI)'.PHP_EOL;
+        }
+    }
+
     private function synthetiserReponses()
     {
         $categorieCourante = "";
