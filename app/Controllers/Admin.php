@@ -87,7 +87,7 @@ class Admin
         }
 
         $file = new Reponse($file);
-        $statistiques = new Statistiques(file_get_contents($f3->get('UPLOADS').$args['file'].'.json'));
+        $statistiques = new Statistiques($file);
         $questions = new Questions();
 
         $f3->set('inc', 'admin_show.htm');
