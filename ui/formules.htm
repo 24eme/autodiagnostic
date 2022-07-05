@@ -32,14 +32,17 @@
             <div class="table-content">
               <p class="px-3">{{ @statistiques->getFormuleDescription(@formule) }}</p>
             </div>
-            <div class="table-content">
-              <p class="lead">Éléments validés : </p>
+            <div class="table-content" style="height: 265px;">
+              <check if="{{ @statistiques->getElementsAValider(@formule) }}">
+              <p class="lead">Éléments à valider : </p>
               <ul class="fs-5 bg-light list-group list-group-flush text-start">
-                <li class="list-group-item ps-5"><i class="bi {{ @statistiques->isCertified('HVE') ? 'bi-check text-success' : 'bi bi-x text-secondary' }}"></i> HVE3</li>
-                <li class="list-group-item ps-5">{{ @statistiques->isEchelon1() ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 1 <check if="{{ @statistiques->getHighestFormule() === @formule }}"><i class="bi bi-question-circle cursor-help" title="{{ @statistiques->explainEchelon(1) }}"></i></check></li>
-                <li class="list-group-item ps-5">{{ @statistiques->isEchelon2() ? '<i class="bi bi-check text-success"></i>' : '<i class="bi bi-x text-secondary"></i>' }} Échelon 2 <check if="{{ @statistiques->getHighestFormule() === @formule }}"><i class="bi bi-question-circle cursor-help" title="{{ @statistiques->explainEchelon(2) }}"></i></check></li>
-                <li class="list-group-item ps-5"><i class="bi {{ @statistiques->isCertified('BIO') ? 'bi-check text-success' : 'bi bi-x text-secondary' }}"></i> AB</li>
+                <repeat group="{{ @statistiques->getElementsAValider(@formule) }}" value="{{ @element }}">
+                  <li class="list-group-item ps-5">
+                    <i class="bi {{ (@element['function']) ? 'bi-check text-success' : 'bi bi-x text-secondary' }}"></i> {{ @element['name'] }}
+                  </li>
+                </repeat>
               </ul>
+              </check>
             </div>
           </div>
         </div>
