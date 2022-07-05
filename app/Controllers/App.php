@@ -52,7 +52,20 @@ class App
             $f3->reroute('@home');
         }
 
-        if ($f3->get('GET.cvi') && !Reponse::getFichier($f3->get('UPLOADS'), $f3->get('GET.cvi'))) {
+        if ($f3->get('GET.cvi')) {
+            $api_url = 'https://declaration.vins-centre-loire.com/viticonnect/check/%login%/%epoch%/%md5%';
+            $secret =  $f3->get('VITICONNECT_API_SECRET');
+            $epoch = time();
+            $api_url = str_replace('%epoch%', $epoch, $api_url);
+            $api_url = str_replace('%login%', $f3->get('GET.cvi'), $api_url);
+            $api_url = str_replace('%md5%', md5($secret."/".$f3->get('GET.cvi')."/".$epoch), $api_url);
+            $res = @file_get_contents($api_url);
+            if ($res) {
+                $f3->set('GET.bivcauth', 1);
+            }
+        }
+
+        if (!$f3->get('GET.bivcauth') && $f3->get('GET.cvi') && !Reponse::getFichier($f3->get('UPLOADS'), $f3->get('GET.cvi'))) {
             $f3->set('SESSION.user', $f3->get('GET.cvi'));
             $f3->reroute('@home');
         }
