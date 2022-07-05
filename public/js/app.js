@@ -316,7 +316,7 @@ const Questionnaire = Vue.createApp({
       }
 
       if (Number.parseInt(value) === Number(value)) {
-        value = Number(value);
+        value = Number(value).toFixed(2);
         return value;
       }
 
