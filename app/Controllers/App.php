@@ -32,15 +32,19 @@ class App
         }
 
         if (phpCAS::isAuthenticated()) {
+            $casAuth = phpCAS::getAttribute('viticonnect_entities_all_cvi');
+            if (! $casAuth) $casAuth = phpCAS::getAttribute('viticonnect_entities_all_siret');
+            if (! $casAuth) $casAuth = phpCAS::getUser();
+
             // Si on vient de se logger
             if (
                 $f3->get('SESSION.user')
-                && $f3->get('SESSION.user') !== phpCAS::getUser()
+                && $f3->get('SESSION.user') !== $casAuth
             ) {
-                Reponse::rename($f3->get('UPLOADS'), $f3->get('SESSION.user'), phpCAS::getUser());
+                Reponse::rename($f3->get('UPLOADS'), $f3->get('SESSION.user'), $casAuth);
             }
 
-            $f3->set('SESSION.user', phpCAS::getUser());
+            $f3->set('SESSION.user', $casAuth);
         }
 
         if ($f3->get('GET.visiteur')) {
