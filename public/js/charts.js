@@ -3,6 +3,14 @@ const canvas = document.getElementById('resultats-radar-chart');
 const radarChart = new Chart(
   canvas,
   {
+      'options': {
+        'scale': {
+          'ticks': {
+            'min': 0,
+            'max': 100
+          }
+        }
+      },
       'type': canvas.getAttribute('data-type'),
       'data': {
           labels: canvas.getAttribute('data-labels').split(","),
