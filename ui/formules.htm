@@ -94,19 +94,13 @@
       </div>
     </div>
 
-    <div class="container mb-5 col-7">
-      <h2 class="display-6 text-center"><i class="bi bi-file-pdf"></i> Autres ressources utiles</h2>
+    <div class="container mb-5 col-6">
       <div class="table-responsive mt-5">
         <table class="table table-sm table-borderless align-middle table-striped table-hover">
         <repeat group="{{ @fiches['fiches'] }}" value="{{ @fiche }}">
           <tr>
             <td>
-                <p class="h5"><a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a></p>
-            </td>
-            <td align="right">
-                <a target="_blank" href="{{ @fiche['lien'] }}" class="btn btn-sm btn-primary">
-                  <i class="bi bi-download"></i> Télécharger
-                </a>
+                <p><i class="bi bi-file-arrow-down"></i> <a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a></p>
             </td>
           </tr>
         </repeat>
