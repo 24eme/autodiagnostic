@@ -19,7 +19,7 @@
 </div>
 
 <div id="resultats-content" class="container mb-5">
-  <div class="row">
+  <div class="row mb-3">
     <div id="resultats-graphs" class="col-sm-6">
       <h3 class="display-6 bg-app-blue text-light">Votre répartition</h3>
       <canvas
@@ -65,6 +65,12 @@
       </check>
 
     </div>
+  </div>
+
+  <div class="text-center">
+    <h6>Je sauvegarde mes résultats</h6>
+    <a class="col-offset-3 col-3 btn border" href="mailto:?subject=Page de résultat&body=Voici la page de résultat de mon autodiagnostic:%0D%0A{{ @SCHEME }}://{{ @HOST }}{{ @URI }}">Par mail</a>
+    <a class="col-3 btn border" href="{{ @URI }}">En copiant ce lien</a>
   </div>
 </div>
 
