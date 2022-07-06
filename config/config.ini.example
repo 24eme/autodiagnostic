@@ -4,7 +4,6 @@ UI=../ui/
 LOGS=../var/log/
 UPLOADS=../storage/uploads/
 CACHE=true
-FICHES_FILE=../config/fiches.yml
 
 DEBUG=3 ; Supprimer pour prod
 ONERROR="CMS->error"

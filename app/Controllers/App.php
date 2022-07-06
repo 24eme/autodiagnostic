@@ -160,40 +160,33 @@ class App
             $f3->reroute('@home');
         }
 
-        $file = new Reponse($filename);
-
-        $statistiques = new Statistiques($file);
+        $statistiques = new Statistiques(new Reponse($filename));
         $f3->set('statistiques', $statistiques);
         $f3->set('inc', 'resultats.htm');
+        $f3->set('file', $args['file']);
+        $f3->set('md5', $args['md5']);
     }
 
     public function formules(Base $f3, array $args)
     {
-        if (phpCAS::isAuthenticated() === false) {
-            phpCAS::forceAuthentication();
-        }
+        $f3->scrub($args['file']);
+        $f3->scrub($args['md5']);
 
-        $file = Reponse::getFichier($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+        $filename = $f3->get('UPLOADS').$args['file'].'.json';
 
-        if ($file === false || count($file) === 0) {
+        if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             $f3->reroute('@home');
         }
 
-        $filecontent = file_get_contents(current($file));
-
-        if ($filecontent === false) {
-            $f3->reroute('@home');
-        }
-
-        $statistiques = new Statistiques(new Reponse(current($file)));
-        $fiches = $statistiques->organiseFichesByFaiblesses(yaml_parse_file($f3->get('FICHES_FILE')));
+        $statistiques = new Statistiques(new Reponse($filename));
+        $fiches = $statistiques->organiseFichesByFaiblesses(yaml_parse_file($f3->get('ROOT').'/../config/fiches.yml'));
 
         $f3->set('statistiques', $statistiques);
         $f3->set('fiches', $fiches);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
         $f3->set('inc', 'formules.htm');
-        $f3->set('file', basename(current($file), '.json'));
-        $f3->set('md5', md5_file(current($file)));
+        $f3->set('file', $args['file']);
+        $f3->set('md5', $args['md5']);
     }
 
     public function afterroute()
