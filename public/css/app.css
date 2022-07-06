@@ -393,6 +393,16 @@ a {
   color: inherit;
 }
 
+.categorie a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.categorie a:hover {
+  color: #fff8;
+  text-decoration: underline;
+}
+
 .question-content .list-group div:not(:last-child) label.list-group-item {
   border-bottom: none;
 }
