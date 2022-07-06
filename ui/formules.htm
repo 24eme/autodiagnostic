@@ -58,28 +58,28 @@
       </div>
     </div>
 
-    <div class="container mb-5 col-7">
-      <h2 class="display-6 text-center bg-warning text-light py-1"><i class="bi bi-graph-up-arrow"></i> Améliorer vos pratiques</h2>
-      <div class="row mt-5">
-        <repeat group="{{ @fiches['ameliorations'] }}" key="{{ @faiblesse }}" value="{{ @ameliorationFiches }}">
-          <div class="p-1 d-flex align-items-center">
-            <i class="bi-circle fs-3 text-warning me-3"></i> {{ @faiblesse }}
+    <div id="" class="container mb-5">
+      <div class="row align-items-stretch">
+      <repeat group="{{ @fiches['ameliorations'] }}" key="{{ @faiblesse }}" value="{{ @ameliorationFiches }}">
+        <div class="col tables-formule active">
+          <div class="border shadow tables-layout">
+            <div class="bg-app-yellow text-center p-3 border-bottom">
+              <p class="fs-1"><i class="bi bi-cloud-sun"></i></p>
+              <p> {{ @faiblesse }}</p>
+            </div>
+            <div class="table-content">
+              <p class="px-3 mb-0">Documents utiles : </p>
+            </div>
+            <div class="table-content" style="min-height: 265px;">
+              <ul class="fs-5 bg-light list-group list-group-flush text-start">
+                <repeat group="{{ @ameliorationFiches }}" value="{{ @fiche }}">
+                  <li class="list-group-item ps-5">
+                    <i class="bi bi-file-arrow-down"></i> <a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a>
+                  </li>
+                </repeat>
+              </ul>
+            </div>
           </div>
-          <div class="offset-1 col-11">
-          <table class="table table-sm table-borderless align-middle table-striped table-hover">
-          <repeat group="{{ @ameliorationFiches }}" value="{{ @fiche }}">
-            <tr>
-              <td>
-                  <p class="h5"><a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a></p>
-              </td>
-              <td align="right">
-                  <a target="_blank" href="{{ @fiche['lien'] }}" class="btn btn-sm btn-primary">
-                    <i class="bi bi-download"></i> Télécharger
-                  </a>
-              </td>
-            </tr>
-          </repeat>
-        </table>
         </div>
       </repeat>
       </div>
