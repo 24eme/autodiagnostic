@@ -151,10 +151,6 @@ class App
 
     public function resultats(Base $f3, array $args)
     {
-        if ($f3->get('SESSION.user') === null) {
-            $f3->reroute('@home');
-        }
-
         $f3->scrub($args['file']);
         $f3->scrub($args['md5']);
 
