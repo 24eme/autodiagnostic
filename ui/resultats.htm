@@ -2,8 +2,9 @@
 
 <div id="resultats-title" class="mb-5">
   <div class="p-5">
-    <div class="container-fluid">
-      <h1 class="text-center display-5 fw-bold"><i class="bi-award"></i> Vos résultats</h1>
+    <div class="container-fluid text-center">
+      <h1 class="text-center d-inline-block display-5 fw-bold"><a class="text-white" href=""><i class="bi-award"></i> Vos résultats</a></h1>
+      <h1 class="text-center opacity-25 d-inline-block display-5 fw-bold ms-5"><a class="text-white" href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}"><i class="bi bi-card-checklist"></i> Votre formule</a></h1>
     </div>
   </div>
 </div>
@@ -83,7 +84,7 @@
       <p>En aucun cas, elles ne seront utilisées individuellement. Vous avez la garantie qu’elles ne seront pas transmises.</p>
       <div class="row g-3 m-auto">
         <div class="col-auto">
-          <a href="{{ 'formules' | alias }}" class="btn btn-primary mb-3">Je m'engage *</a>
+          <a href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}" class="btn btn-primary mb-3">Je m'engage *</a>
           <p class="small text-muted fst-italic opacity-75">* Vous serez redirigé vers une page de connexion si vous n'êtes pas authentifié</p>
         </div>
       </div>
