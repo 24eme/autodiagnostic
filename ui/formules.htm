@@ -30,14 +30,21 @@
             </div>
             <div class="table-content" style="height: 265px;">
               <check if="{{ @statistiques->getElementsAValider(@formule) }}">
-              <p class="lead">Éléments à valider : </p>
-              <ul class="fs-5 bg-light list-group list-group-flush text-start">
-                <repeat group="{{ @statistiques->getElementsAValider(@formule) }}" value="{{ @element }}">
-                  <li class="list-group-item ps-5">
-                    <i class="bi {{ (@element['function']) ? 'bi-check-circle-fill text-success' : 'bi bi-x text-secondary' }}"></i> {{ @element['name'] }}
-                  </li>
-                </repeat>
-              </ul>
+              <true>
+                <p class="lead">Éléments à valider : </p>
+                <ul class="fs-5 bg-light list-group list-group-flush text-start">
+                  <repeat group="{{ @statistiques->getElementsAValider(@formule) }}" value="{{ @element }}">
+                    <li class="list-group-item ps-5">
+                      <i class="bi {{ (@element['function']) ? 'bi-check-circle-fill text-success' : 'bi bi-x text-secondary' }}"></i> {{ @element['name'] }}
+                    </li>
+                  </repeat>
+                </ul>
+              </true>
+              <false>
+                <div class="d-flex flex-column justify-content-end h-100">
+                  <a class="fs-5" href="#points-ameliorations"><i class="bi bi-arrow-return-right"></i> Aller aux points d'améliorations</a>
+                </div>
+              </false>
               </check>
             </div>
           </div>
@@ -49,7 +56,7 @@
     <div id="formules-title" class="mb-5 bg-warning">
       <div class="p-5">
         <div class="container-fluid">
-          <h1 class="text-center display-5 fw-bold"><i class="bi bi-graph-up-arrow"></i> Améliorer vos pratiques</h1>
+          <h1 id="points-ameliorations" class="text-center display-5 fw-bold"><i class="bi bi-graph-up-arrow"></i> Améliorer vos pratiques</h1>
         </div>
       </div>
     </div>
