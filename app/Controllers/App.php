@@ -5,6 +5,7 @@ namespace Controllers;
 use Base;
 use phpCAS;
 use Reponses\Reponse;
+use SMTP;
 use Statistiques;
 use Template;
 use Web;
@@ -187,6 +188,21 @@ class App
         $f3->set('inc', 'formules.htm');
         $f3->set('file', $args['file']);
         $f3->set('md5', $args['md5']);
+    }
+
+    public function envoiMail(Base $f3, array $args)
+    {
+        $f3->set('file', $f3->clean($f3->get('POST.file')));
+        $f3->set('md5', $f3->clean($f3->get('POST.md5')));
+        $emailTo = $f3->clean($f3->get('POST.email'));
+
+        $smtp = new SMTP($f3->get('SMTP_HOST'), $f3->get('SMTP_PORT'));
+        $smtp->set('From', 'localhost');
+        $smtp->set('To', $emailTo);
+        $smtp->set('Subject', 'Résultats de mon autodiagnostic');
+        $smtp->send(Template::instance()->render('emails/envoiResultats.txt'));
+
+        $f3->reroute('@resultats', ['file' => $f3->get('file'), 'md5' => $f3->get('md5')]);
     }
 
     public function afterroute()

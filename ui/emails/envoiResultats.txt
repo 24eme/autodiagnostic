@@ -1,0 +1,4 @@
+Voici le lien vers les résultats de mon autodiagnostic :
+
+{{ @SCHEME }}://{{ @HOST }}{{ 'resultats', '@file='.@file.',@md5='.@md5 | alias }}
+

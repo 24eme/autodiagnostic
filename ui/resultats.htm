@@ -89,10 +89,12 @@
   <div class="py-4 bg-light">
     <h5 class="text-center mb-5"><i class="bi bi-download"></i> Je sauvegarde mes données</h5>
     <div class="d-flex align-items-center justify-content-evenly px-3">
-      <form class="row align-items-center d-inline-block" method="post" action="">
+      <form class="row align-items-center d-inline-block" method="post" action="{{ 'envoiMail' | alias }}">
         <div class="input-group">
-          <input class="form-control font-monospace" id="input-export-mail" type="email" value="" placeholder="mon@email.com">
-          <button class="btn btn-primary" type="button">Les recevoir par mail</button>
+          <input class="form-control font-monospace" id="input-export-mail" name="email" type="email" value="" placeholder="mon@email.com">
+          <button class="btn btn-primary" type="submit">Les recevoir par mail</button>
+          <input type="hidden" name="file" value="{{ @file }}">
+          <input type="hidden" name="md5" value="{{ @md5 }}">
         </div>
       </form>
 
