@@ -170,14 +170,14 @@ class Statistiques {
 
         switch ($formule) {
         case 'formule3':
-            $elements[] = ['name' => 'AB', 'fonction' => $this->isCertified('AB')];
+            $elements[] = ['name' => 'Niveau AB', 'fonction' => $this->isCertified('AB')];
             // no break
         case 'formule2':
             $elements[] = ['name' => 'Échelon 2', 'function' => $this->isEchelon2()];
             // no break
         case 'formule1':
             $elements[] = ['name' => 'Échelon 1', 'function' => $this->isEchelon1()];
-            $elements[] = ['name' => 'HVE3', 'function' => $this->isCertified('HVE')];
+            $elements[] = ['name' => 'Niveau HVE3', 'function' => $this->isCertified('HVE')];
             // no break
         case 'horsformule':
             break;
