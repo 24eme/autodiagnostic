@@ -20,17 +20,6 @@
 
 <div id="resultats-content" class="container mb-5">
   <div class="row mb-3">
-    <div id="resultats-graphs" class="col-sm-6">
-      <h3 class="display-6 bg-app-blue text-light">Votre répartition</h3>
-      <canvas
-        id="resultats-radar-chart"
-        data-type="radar"
-        data-labels="{{ @statistiques->renderTabKeysScores() }}"
-        data-series="{{ @statistiques->renderTabValuesScores() }}"
-        data-moyenne="{{ implode(',', @statistiques->calculMoyenneVignoble()) }}">
-      </canvas>
-    </div>
-
     <div id="resultats-points-amelioration" class="col-sm-6">
       <h3 class="display-6 bg-success text-light"><i class="bi-sun"></i> Vos points forts</h3>
       <check if="{{ count(@statistiques->getPtsForts()) }}">
@@ -65,6 +54,18 @@
       </check>
 
     </div>
+
+    <div id="resultats-graphs" class="col-sm-6 pagebreak">
+      <h3 class="display-6 bg-app-blue text-light">Votre répartition</h3>
+      <canvas
+        id="resultats-radar-chart"
+        data-type="radar"
+        data-labels="{{ @statistiques->renderTabKeysScores() }}"
+        data-series="{{ @statistiques->renderTabValuesScores() }}"
+        data-moyenne="{{ implode(',', @statistiques->calculMoyenneVignoble()) }}">
+      </canvas>
+    </div>
+
   </div>
 </div>
 
