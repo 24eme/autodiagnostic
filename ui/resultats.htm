@@ -59,6 +59,7 @@
       <h3 class="display-6 bg-app-blue text-light">Votre répartition</h3>
       <canvas
         id="resultats-radar-chart"
+        class="py-3"
         data-type="radar"
         data-labels="{{ @statistiques->renderTabKeysScores() }}"
         data-series="{{ @statistiques->renderTabValuesScores() }}"
