@@ -9,6 +9,9 @@ const radarChart = new Chart(
             'min': 0,
             'max': 100
           }
+        },
+        'plugins': {
+          'legend': {'position': 'bottom'}
         }
       },
       'type': canvas.getAttribute('data-type'),
