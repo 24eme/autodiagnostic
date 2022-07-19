@@ -61,52 +61,42 @@
       </div>
     </div>
 
-    <div id="" class="container mb-5">
-      <div class="row align-items-stretch">
+    <div id="formules-fiches-faiblesses" class="container mb-5">
       <repeat group="{{ @fiches['ameliorations'] }}" key="{{ @faiblesse }}" value="{{ @ameliorationFiches }}">
-        <div class="col tables-formule active">
-          <div class="border shadow tables-layout">
-            <div class="bg-app-yellow text-center p-3 border-bottom">
-              <p class="fs-1"><i class="bi bi-cloud-sun"></i></p>
-              <p> {{ @faiblesse }}</p>
-            </div>
-            <div class="table-content">
-              <p class="px-3 mb-0">Documents utiles : </p>
-            </div>
-            <div class="table-content" style="min-height: 265px;">
-              <ul class="fs-5 bg-light list-group list-group-flush text-start">
-                <repeat group="{{ @ameliorationFiches }}" value="{{ @fiche }}">
-                  <li class="list-group-item ps-5">
-                    <i class="bi bi-file-arrow-down"></i> <a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a>
-                  </li>
-                </repeat>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <table class="table table-striped mb-4">
+          <thead>
+            <tr><th class="fs-5 bg-warning text-white"><i class="bi bi-cloud-sun"></i> {{ @faiblesse }}</th></tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <repeat group="{{ @ameliorationFiches }}" value="{{ @fiche }}">
+              <tr>
+                <td>
+                  <a href="{{ @fiche['lien'] }}" target="_blank" class="nostyle">
+                    <i class="bi bi-file-earmark-text"></i> {{ @fiche['titre'] }}
+                  </a>
+                </td>
+              </tr>
+            </repeat>
+          </tbody>
+        </table>
       </repeat>
-      </div>
-    </div>
 
+      <hr class="w-50 mx-auto my-5">
 
-    <div id="formules-title" class="mb-5 bg-warning">
-      <div class="p-5">
-        <div class="container-fluid">
-          <h1 class="text-center display-5 fw-bold"><i class="bi bi-file-pdf"></i> Autres ressources utiles</h1>
-        </div>
-      </div>
-    </div>
-
-    <div class="container mb-5 col-6">
-      <div class="table-responsive mt-5">
-        <table class="table table-sm table-borderless align-middle table-striped table-hover">
-        <repeat group="{{ @fiches['fiches'] }}" value="{{ @fiche }}">
+      <table class="table table-striped mb-4">
+        <thead>
+          <tr><th class="fs-5">Autres ressources utiles</th></tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <repeat group="{{ @fiches['fiches'] }}" value="{{ @fiche }}">
           <tr>
             <td>
-                <p><i class="bi bi-file-arrow-down"></i> <a target="_blank" href="{{ @fiche['lien'] }}" class="nostyle">{{ @fiche['titre'] }}</a></p>
+              <a href="{{ @fiche['lien'] }}" target="_blank" class="nostyle">
+                <i class="bi bi-file-earmark-text"></i> {{ @fiche['titre'] }}
+              </a>
             </td>
           </tr>
-        </repeat>
-        </table>
-      </div>
+          </repeat>
+        </tbody>
+      </table>
     </div>

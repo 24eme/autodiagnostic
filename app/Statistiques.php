@@ -311,20 +311,24 @@ class Statistiques {
         return $avg;
     }
 
-    public function organiseFichesByFaiblesses($fiches) {
-        $fiches['ameliorations'] = array();
-        $toUnset = array();
+    public function organiseFichesByFaiblesses(array $fiches) {
+        $faiblesses = [];
+        $toUnset = [];
+
         foreach($this->ptsAmeliorations as $faiblesse) {
             foreach($fiches['fiches'] as $k => $fiche) {
                 if (isset($fiche['faiblesses']) && in_array($faiblesse, $fiche['faiblesses'])) {
-                    $fiches['ameliorations'][$faiblesse][] = $fiche;
+                    $faiblesses[$faiblesse][] = $fiche;
                     $toUnset[] = $k;
                 }
             }
         }
+
         foreach($toUnset as $k) {
             unset($fiches['fiches'][$k]);
         }
+
+        $fiches['ameliorations'] = $faiblesses;
         return $fiches;
     }
 }
