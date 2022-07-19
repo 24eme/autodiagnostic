@@ -180,10 +180,11 @@ class App
         }
 
         $statistiques = new Statistiques(new Reponse($filename));
-        $fiches = $statistiques->organiseFichesByFaiblesses(yaml_parse_file($f3->get('ROOT').'/../config/fiches.yml'));
+        $fiches = yaml_parse_file($f3->get('ROOT').'/../config/fiches.yml');
+        $fichesByFaiblesses = $statistiques->organiseFichesByFaiblesses($fiches);
 
         $f3->set('statistiques', $statistiques);
-        $f3->set('fiches', $fiches);
+        $f3->set('fichesByFaiblesses', $fichesByFaiblesses);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
         $f3->set('inc', 'formules.htm');
         $f3->set('file', $args['file']);

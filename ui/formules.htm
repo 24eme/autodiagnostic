@@ -62,23 +62,25 @@
     </div>
 
     <div id="formules-fiches-faiblesses" class="container mb-5">
-      <repeat group="{{ @fiches['ameliorations'] }}" key="{{ @faiblesse }}" value="{{ @ameliorationFiches }}">
-        <table class="table table-striped mb-4">
-          <thead>
-            <tr><th class="fs-5 bg-warning text-white"><i class="bi bi-cloud-sun"></i> {{ @faiblesse }}</th></tr>
-          </thead>
-          <tbody class="table-group-divider">
-            <repeat group="{{ @ameliorationFiches }}" value="{{ @fiche }}">
-              <tr>
-                <td>
-                  <a href="{{ @fiche['lien'] }}" target="_blank" class="nostyle">
-                    <i class="bi bi-file-earmark-text"></i> {{ @fiche['titre'] }}
-                  </a>
-                </td>
-              </tr>
-            </repeat>
-          </tbody>
-        </table>
+      <repeat group="{{ @fichesByFaiblesses }}" key="{{ @faiblesse }}" value="{{ @fiches }}">
+        <check if="{{ @faiblesse !== 'autres' }}">
+          <table class="table table-striped mb-4">
+            <thead>
+              <tr><th class="fs-5 bg-warning text-white"><i class="bi bi-cloud-sun"></i> {{ @faiblesse }}</th></tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <repeat group="{{ @fiches }}" value="{{ @fiche }}">
+                <tr>
+                  <td>
+                    <a href="{{ @fiche['lien'] }}" target="_blank" class="nostyle">
+                      <i class="bi bi-file-earmark-text"></i> {{ @fiche['titre'] }}
+                    </a>
+                  </td>
+                </tr>
+              </repeat>
+            </tbody>
+          </table>
+        </check>
       </repeat>
 
       <hr class="w-50 mx-auto my-5">
@@ -88,7 +90,7 @@
           <tr><th class="fs-5">Autres ressources utiles</th></tr>
         </thead>
         <tbody class="table-group-divider">
-          <repeat group="{{ @fiches['fiches'] }}" value="{{ @fiche }}">
+          <repeat group="{{ @fichesByFaiblesses['autres'] }}" value="{{ @fiche }}">
           <tr>
             <td>
               <a href="{{ @fiche['lien'] }}" target="_blank" class="nostyle">

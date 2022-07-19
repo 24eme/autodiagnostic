@@ -313,22 +313,23 @@ class Statistiques {
 
     public function organiseFichesByFaiblesses(array $fiches) {
         $faiblesses = [];
-        $toUnset = [];
+        $exclude = [];
 
         foreach($this->ptsAmeliorations as $faiblesse) {
             foreach($fiches['fiches'] as $k => $fiche) {
                 if (isset($fiche['faiblesses']) && in_array($faiblesse, $fiche['faiblesses'])) {
                     $faiblesses[$faiblesse][] = $fiche;
-                    $toUnset[] = $k;
+                    $exclude[] = $k;
                 }
             }
         }
 
-        foreach($toUnset as $k) {
-            unset($fiches['fiches'][$k]);
+        foreach ($fiches['fiches'] as $k => $fiche) {
+            if (in_array($k, $exclude) === false) {
+                $faiblesses['autres'][] = $fiche;
+            }
         }
 
-        $fiches['ameliorations'] = $faiblesses;
-        return $fiches;
+        return $faiblesses;
     }
 }
