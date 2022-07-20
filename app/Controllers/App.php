@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Base;
+use Exigences;
 use phpCAS;
 use Reponses\Reponse;
 use SMTP;
@@ -190,11 +191,16 @@ class App
             $f3->reroute('@home');
         }
 
-        $statistiques = new Statistiques(new Reponse($filename));
+        $reponse = new Reponse($filename);
+
+        $statistiques = new Statistiques($reponse);
+        $exigences = new Exigences($reponse);
+
         $fiches = yaml_parse_file($f3->get('ROOT').'/../config/fiches.yml');
         $fichesByFaiblesses = $statistiques->organiseFichesByFaiblesses($fiches);
 
         $f3->set('statistiques', $statistiques);
+        $f3->set('exigences', $exigences);
         $f3->set('fichesByFaiblesses', $fichesByFaiblesses);
         $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
         $f3->set('inc', 'formules.htm');

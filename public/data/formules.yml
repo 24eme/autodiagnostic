@@ -4,6 +4,7 @@ horsformule:
   titre: 'Hors formule'
   description: |
     Au moins une de vos pratiques ne répond pas aux exigences de la charte Centre Loire. Les fiches techniques ci-dessous vous permettront d'étudier des solutions pour améliorer votre impact sur l'environnement.
+  exigences: []
 
 formule1:
   icone: 'bi-emoji-smile'
@@ -12,6 +13,9 @@ formule1:
   description: |
     Si vous n'êtes pas encore certifié HVE3, vous pourriez prétendre à cette certification.<br/>
     Vos pratiques sont favorables au développement durable mais vous pouvez aller plus loin. Les fiches techniques ci-dessous peuvent vous y aider.
+  exigences:
+    - hve3
+    - echelon1
 
 formule2:
   icone: 'bi-emoji-laughing'
@@ -19,6 +23,10 @@ formule2:
   titre: 'Formule 2'
   description: |
     Vos pratiques présentent un réel intérêt pour l'environnement. Quelques points peuvent être améliorés. Que ce soit en matière de protection de la vigne, de fertilisation ou de biodiversité, vous en apprendrez plus en consultant les fiches techniques ci-dessous.
+  exigences:
+    - hve3
+    - echelon1
+    - echelon2
 
 formule3:
   icone: 'bi-emoji-heart-eyes'
@@ -26,3 +34,8 @@ formule3:
   titre: 'Formule 3'
   description: |
     Vous répondez aux critères les plus exigeants de la charte développement durable du Centre-Loire. Mais vous êtes-vous questionné sur la gestion de l'eau ou bien le bilan carbone de votre exploitation ?
+  exigences:
+    - hve3
+    - echelon1
+    - echelon2
+    - ab

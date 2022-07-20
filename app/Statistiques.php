@@ -166,24 +166,7 @@ class Statistiques {
 
     public function getElementsAValider($formule)
     {
-        $elements = [];
-
-        switch ($formule) {
-        case 'formule3':
-            $elements[] = ['name' => 'Niveau AB', 'fonction' => $this->isCertified('AB')];
-            // no break
-        case 'formule2':
-            $elements[] = ['name' => 'Échelon 2', 'function' => $this->isEchelon2()];
-            // no break
-        case 'formule1':
-            $elements[] = ['name' => 'Échelon 1', 'function' => $this->isEchelon1()];
-            $elements[] = ['name' => 'Niveau HVE3', 'function' => $this->isCertified('HVE')];
-            // no break
-        case 'horsformule':
-            break;
-        }
-
-        return array_reverse($elements);
+        return $this->infosFormules[$formule]['exigences'];
     }
 
     private function synthetiserReponses()
