@@ -109,6 +109,17 @@ class App
         $f3->set('inc', 'authmodal.htm');
     }
 
+    public function logout(Base $f3)
+    {
+        $f3->clear('SESSION.user');
+
+        if (phpCAS::isAuthenticated()) {
+            phpCAS::logout();
+        }
+
+        $f3->reroute('@auth');
+    }
+
     public function synthetiser(Base $f3)
     {
         $web = Web::instance();
