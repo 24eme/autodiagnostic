@@ -34,6 +34,25 @@ class Exigences
         $satisfied = true;
 
         foreach ($exigenceDetail['formule'] as $cle => $requis) {
+            if (is_array($requis)) {
+                $xor = false;
+
+                foreach ($requis as $id => $rep) {
+                    if (is_array($rep)) {
+                        $and = true;
+                        foreach ($rep as $id_and => $rep_and) {
+                            $and = $and && ($this->reponses->get($id_and)['reponse'] === $rep_and);
+                        }
+
+                        $xor = $xor || $and;
+                    } else {
+                        $xor = $xor || ($this->reponses->get($id)['reponse'] === $rep);
+                    }
+                }
+
+                continue;
+            }
+
             if (strpos($cle, '+') !== false) {
                 $cles = explode('+', $cle);
                 $reponse = 0;
