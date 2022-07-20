@@ -30,11 +30,20 @@ class Exigences
             return false;
         }
 
-        $exigence = $this->exigences[$exigence];
+        $exigenceDetail = $this->exigences[$exigence];
         $satisfied = true;
 
-        foreach ($exigence['formule'] as $cle => $requis) {
-            $reponse = $this->reponses->get($cle)['reponse'];
+        foreach ($exigenceDetail['formule'] as $cle => $requis) {
+            if (strpos($cle, '+') !== false) {
+                $cles = explode('+', $cle);
+                $reponse = 0;
+
+                foreach ($cles as $c) {
+                    $reponse += $this->reponses->get($c)['reponse'];
+                }
+            } else {
+                $reponse = $this->reponses->get($cle)['reponse'];
+            }
 
             if ($requis === 0 && $reponse === 0) {
                 continue;
