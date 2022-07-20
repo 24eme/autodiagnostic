@@ -167,17 +167,45 @@ class App
         $f3->scrub($args['file']);
         $f3->scrub($args['md5']);
 
-        $filename = $f3->get('UPLOADS').$args['file'].'.json';
+        $engage = true;
+
+        $filename = $f3->get('UPLOADS').'/engages/'.$args['file'].'.json';
 
         if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
-            $f3->reroute('@home');
+            $engage = false;
+            $filename = $f3->get('UPLOADS').$args['file'].'.json';
+
+            if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
+                $f3->reroute('@home');
+            }
         }
 
         $statistiques = new Statistiques(new Reponse($filename));
         $f3->set('statistiques', $statistiques);
+        $f3->set('engage', $engage);
         $f3->set('inc', 'resultats.htm');
         $f3->set('file', $args['file']);
         $f3->set('md5', $args['md5']);
+    }
+
+    public function engagement(Base $f3)
+    {
+        if ($f3->exists('POST.file') === false || $f3->exists('POST.md5') === false) {
+            $f3->reroute('@home');
+        }
+
+        $file = $f3->clean($f3->get('POST.file'));
+        $md5 = $f3->clean($f3->get('POST.md5'));
+
+        $filename = $f3->get('UPLOADS').$file.'.json';
+
+        if (Reponse::getFichierNameWithAuth($filename, $md5) === false) {
+            $f3->reroute(sprintf('@resultats(@file=%s,@md5=%s)', $file, $md5));
+        }
+
+        rename($filename, $f3->get('UPLOADS').'/engages/'.$file.'.json');
+
+        $f3->reroute(sprintf('@formules(@file=%s,@md5=%s)', $file, $md5));
     }
 
     public function formules(Base $f3, array $args)
@@ -185,7 +213,7 @@ class App
         $f3->scrub($args['file']);
         $f3->scrub($args['md5']);
 
-        $filename = $f3->get('UPLOADS').$args['file'].'.json';
+        $filename = $f3->get('UPLOADS').'/engages/'.$args['file'].'.json';
 
         if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             $f3->reroute('@home');

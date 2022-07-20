@@ -79,7 +79,11 @@
       <p>En aucun cas, elles ne seront utilisées individuellement. Vous avez la garantie qu’elles ne seront pas transmises à des tiers.</p>
       <div class="row g-3 m-auto text-center">
         <div class="col-auto">
-          <a href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}" class="btn btn-primary mb-3">Je m'engage *</a>
+          <form method="post" action="{{ 'engagement' | alias }}">
+            <input type="submit" class="btn btn-primary mb-3" value="Je m'engage *">
+            <input type="hidden" name="file" value="{{ @file }}">
+            <input type="hidden" name="md5" value="{{ @md5 }}">
+          </form>
           <p class="small text-muted fst-italic opacity-75">* Vous serez redirigé vers une page de connexion si vous n'êtes pas authentifié</p>
         </div>
       </div>
