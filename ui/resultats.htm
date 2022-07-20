@@ -4,7 +4,9 @@
   <div class="p-5">
     <div class="container-fluid text-center">
       <h1 class="text-center d-inline-block display-5 fw-bold"><a class="text-white" href=""><i class="bi-award"></i> Vos résultats</a></h1>
-      <h1 class="text-center opacity-25 d-inline-block display-5 fw-bold ms-5"><a class="text-white" href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}"><i class="bi bi-card-checklist"></i> Votre formule</a></h1>
+      <check if="{{ @engage }}">
+        <h1 class="text-center opacity-25 d-inline-block display-5 fw-bold ms-5"><a class="text-white" href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}"><i class="bi bi-card-checklist"></i> Votre formule</a></h1>
+      </check>
     </div>
   </div>
 </div>
