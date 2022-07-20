@@ -8,6 +8,7 @@ class Exigences
 
     private $reponses;
     private $exigences;
+    private $explain = [];
 
     public function __construct(Reponse $reponses)
     {
@@ -47,10 +48,19 @@ class Exigences
                 continue;
             }
 
+            $this->explain[$exigence][$cle] = [
+                'requis' => $requis,
+                'reponse' => $reponse
+            ];
+
             $satisfied = false;
-            break;
         }
 
         return $satisfied;
+    }
+
+    public function explain($exigence)
+    {
+        return $this->explain[$exigence];
     }
 }
