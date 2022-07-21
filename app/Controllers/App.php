@@ -13,6 +13,15 @@ use Web;
 
 class App
 {
+    private static $storage;
+    private static $storage_engage;
+
+    public function __construct(Base $f3)
+    {
+        self::$storage = $f3->get('UPLOADS');
+        self::$storage_engage = $f3->get('UPLOADS').'engages/';
+    }
+
     public function beforeroute(Base $f3)
     {
         require_once(__DIR__.'/../../vendor/CAS-1.3.8/CAS.php');
@@ -90,12 +99,12 @@ class App
         $f3->set('inc', 'index.htm');
 
         if ($f3->get('SESSION.user')) {
-            $files = Reponse::getFichier($f3->get('UPLOADS'), $f3->get('SESSION.user'));
+            $file = $this->findReponse($f3->get('SESSION.user'));
 
-            if ($files !== false && count($files) > 0) {
+            if ($file !== false) {
                 $f3->set('inc', 'alreadydone.htm');
-                $f3->set('file', basename(current($files), '.json'));
-                $f3->set('md5', md5_file(current($files)));
+                $f3->set('file', basename($file, '.json'));
+                $f3->set('md5', md5_file($file));
             }
         }
     }
@@ -256,4 +265,18 @@ class App
         echo Template::instance()->render('layout.html');
     }
 
+    private function findReponse(string $user)
+    {
+        $files = Reponse::getFichier(self::$storage_engage, $user);
+
+        if ($files === false || count($files) === 0) {
+            $files = Reponse::getFichier(self::$storage, $user);
+
+            if ($files === false || count($files) === 0) {
+                return false;
+            }
+        }
+
+        return current($files);
+    }
 }
