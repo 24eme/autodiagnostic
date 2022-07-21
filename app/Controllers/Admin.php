@@ -57,6 +57,10 @@ class Admin
 
         $files = array_merge($files, $files_engages);
 
+        usort($files, function ($a, $b) {
+            return filemtime($b) - filemtime($a);
+        });
+
         $md5s = array_map('md5_file', $files);
         $files = array_map('basename', $files);
         $engages = array_map('basename', $files_engages);
