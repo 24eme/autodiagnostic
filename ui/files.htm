@@ -4,6 +4,10 @@
     <true>
       <repeat group="{{ @reponses }}" value="{{ @name }}" counter="{{ @ctr }}">
       <p class="border-bottom">
+        <check if="{{ in_array(@name, @engages) }}">
+          <i class="bi bi-patch-check-fill"></i>
+          <i class="bi bi-bar-chart-line-fill"></i>
+        </check>
         {{ @name }}
         <a href="{{ 'delete', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1" onclick="return confirm('Êtes vous sûr de vouloir supprimer le fichier')">
           Supprimer la réponse

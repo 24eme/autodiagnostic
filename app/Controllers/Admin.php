@@ -14,6 +14,15 @@ use Template;
 
 class Admin
 {
+    private static $storage;
+    private static $storage_engage;
+
+    public function __construct(Base $f3)
+    {
+        self::$storage = $f3->get('UPLOADS');
+        self::$storage_engage = $f3->get('UPLOADS').'engages/';
+    }
+
     public function beforeroute(Base $f3)
     {
         new Session();
@@ -37,16 +46,23 @@ class Admin
 
     public function index(Base $f3)
     {
-        $files = glob($f3->get('UPLOADS').'*.json');
-        if ($files === false) {
+        $files = glob(self::$storage.'*.json');
+        $files_engages = glob(self::$storage_engage.'*.json');
+
+        if ($files === false || $files_engages === false) {
             $f3->set('SESSION.flash', 'Une erreur est survenue dans la récupération des réponses');
             $files = [];
+            $files_engages = [];
         }
+
+        $files = array_merge($files, $files_engages);
 
         $md5s = array_map('md5_file', $files);
         $files = array_map('basename', $files);
+        $engages = array_map('basename', $files_engages);
 
         $f3->set('reponses', $files);
+        $f3->set('engages', $engages);
         $f3->set('md5s', $md5s);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'files.htm');
