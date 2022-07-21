@@ -61,11 +61,8 @@ class Admin
             return filemtime($b) - filemtime($a);
         });
 
-        $md5s = array_map('md5_file', $files);
-
         $f3->set('reponses', $files);
         $f3->set('engages', $files_engages);
-        $f3->set('md5s', $md5s);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'files.htm');
     }

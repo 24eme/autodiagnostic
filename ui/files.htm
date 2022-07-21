@@ -15,7 +15,7 @@
           Supprimer la réponse
         </a>
         <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Voir les réponses</a>
-        <a href="{{ 'resultats', 'file='.basename(@name, ".json").',md5='.@md5s[@ctr - 1] | alias }}" class="float-end mx-1">Voir la page résultats</a>
+        <a href="{{ 'resultats', 'file='.basename(@name, ".json").',md5='.md5_file(@name) | alias }}" class="float-end mx-1">Voir la page résultats</a>
         <a href="{{ 'export', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Exporter les réponses</a>
       </p>
       </repeat>
