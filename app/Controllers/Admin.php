@@ -70,7 +70,7 @@ class Admin
     public function exportGlobal(Base $f3)
     {
         $reponses = new Reponses(
-            glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE)
+            glob(self::$storage_engage.'[!{VISITEUR}]*.json', GLOB_BRACE)
         );
 
         $reponsesExporter = new ReponsesExporter($reponses);
