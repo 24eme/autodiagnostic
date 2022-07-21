@@ -80,11 +80,7 @@ class Admin
 
     public function export(Base $f3, $args)
     {
-        $file = $f3->get('UPLOADS').$args['file'].'.json';
-
-        if (is_file($file) === false) {
-            $f3->error(404);
-        }
+        $file = $this->findFile($args['file']);
 
         $reponse = new Reponse($file);
 
@@ -95,11 +91,7 @@ class Admin
 
     public function showReponses(Base $f3, $args)
     {
-        $file = $f3->get('UPLOADS').$args['file'].'.json';
-
-        if (is_file($file) === false) {
-            $f3->error(404);
-        }
+        $file = $this->findFile($args['file']);
 
         $file = new Reponse($file);
         $statistiques = new Statistiques($file);
@@ -113,14 +105,25 @@ class Admin
 
     public function deleteReponse(Base $f3, $args)
     {
-        $file = $f3->get('UPLOADS').$args['file'].'.json';
-
-        if (is_file($file) === false) {
-            $f3->error(404);
-        }
+        $file = $this->findFile($args['file']);
 
         unlink($file);
 
         $f3->reroute('@admin');
+    }
+
+    private function findFile(string $filename)
+    {
+        $file = self::$storage_engage.$filename.'.json';
+
+        if (is_file($file) === false) {
+            $file = self::$storage.$filename.'.json';
+
+            if (is_file($file) === false) {
+                Base::instance()->error(404);
+            }
+        }
+
+        return $file;
     }
 }
