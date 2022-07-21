@@ -116,54 +116,6 @@ class Statistiques {
         return in_array($certif, explode(',', $this->reponses->get('SELECTION_CERTIF')['reponse']));
     }
 
-    public function isEchelon1()
-    {
-        return (
-                $this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'] === 'NON'
-                || (
-                    $this->reponses->get("DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION")['reponse'] === 'NON'
-                    && $this->reponses->get("DESHERBAGE_SUP_MOITIE_PARCELLES")['reponse'] === 'NON'
-                    && $this->reponses->get("DESHERBAGE_CHIMIQUE_VERAISON")['reponse'] === 'NON'
-                )
-            )
-            && $this->reponses->get("ANTI_BROTRYTIS")['reponse'] <= 1
-            && $this->reponses->get("INSECTICIDES_AB")['reponse'] + $this->reponses->get("INSECTICIDES_NON_AB")['reponse'] <= 2
-            && $this->reponses->get("PRODUITS_CMR")['reponse'] === 0
-            && $this->reponses->get("UNITE_AZOTE")['reponse'] <= 15;
-    }
-
-    public function isEchelon2()
-    {
-        return $this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'] === 'NON'
-            && $this->reponses->get("ANTI_BROTRYTIS")['reponse'] <= 1
-            && $this->reponses->get("INSECTICIDES_AB")['reponse'] <= 2
-            && $this->reponses->get("INSECTICIDES_NON_AB")['reponse'] === 0
-            && $this->reponses->get("PRODUITS_CMR")['reponse'] === 0
-            && $this->reponses->get("AZOTE_ORGANIQUE")['reponse'] === 'OUI';
-    }
-
-    public function explainEchelon($echelon)
-    {
-        switch ($echelon) {
-        case 1:
-            return "Désherbage chimique: ".$this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'].' (doit être NON)'.PHP_EOL
-                . "ou Désherbage chimique avant prod: ".$this->reponses->get("DESHERBAGE_CHIMIQUE_AVANT_PRODUCTION")['reponse'].' (doit être NON)'.PHP_EOL
-                . "    Désherbage > 50% parcelles: ".$this->reponses->get("DESHERBAGE_SUP_MOITIE_PARCELLES")['reponse'].' (doit être NON)'.PHP_EOL
-                . "    Désherbage chimique veraison - février: ".$this->reponses->get("DESHERBAGE_CHIMIQUE_VERAISON")['reponse'].' (doit être NON)'.PHP_EOL
-            . "Antibrotytis: ".$this->reponses->get("ANTI_BROTRYTIS")['reponse'].' (doit être <= 1)'.PHP_EOL
-            . "Insecticide AB + Non AB: ".($this->reponses->get("INSECTICIDES_AB")['reponse'] + $this->reponses->get("INSECTICIDES_NON_AB")['reponse']).' (doit être <= 2)'.PHP_EOL
-            . "CMR: ".$this->reponses->get("PRODUITS_CMR")['reponse'].' (doit être 0)'.PHP_EOL
-            . "Azote: ".$this->reponses->get("UNITE_AZOTE")['reponse'].' (doit être <= 15)'.PHP_EOL;
-        case 2:
-            return "Désherbage chimique: ".$this->reponses->get("DESHERBAGE_CHIMIQUE")['reponse'].' (doit être NON)'.PHP_EOL
-            . "Antibrotytis: ".$this->reponses->get("ANTI_BROTRYTIS")['reponse'].' (doit être <= 1)'.PHP_EOL
-            . "Insecticide AB: ".$this->reponses->get("INSECTICIDES_AB")['reponse'].' (doit être <= 2)'.PHP_EOL
-            . "Insecticide non AB: ".$this->reponses->get("INSECTICIDES_NON_AB")['reponse'].' (doit être 0)'.PHP_EOL
-            . "CMR: ".$this->reponses->get("PRODUITS_CMR")['reponse'].' (doit être 0)'.PHP_EOL
-            . "Azote organique: ".$this->reponses->get("AZOTE_ORGANIQUE")['reponse'].' (doit être OUI)'.PHP_EOL;
-        }
-    }
-
     public function getElementsAValider($formule)
     {
         return $this->infosFormules[$formule]['exigences'];
