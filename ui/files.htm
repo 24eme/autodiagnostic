@@ -27,12 +27,12 @@
               {{ sprintf("%s <br/><span class='text-muted'>%s</span>", strtok(basename(@name), '-'), basename(@name)) }}
             </td>
             <td>
-              <a href="{{ 'delete', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1" onclick="return confirm('Êtes vous sûr de vouloir supprimer le fichier')">
-                Supprimer la réponse
+              <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="btn btn-outline-primary mx-1"><i class="bi bi-question"></i><br/>Détails</a>
+              <a href="{{ 'resultats', 'file='.basename(@name, ".json").',md5='.md5_file(@name) | alias }}" class="btn btn-outline-primary mx-1"><i class="bi bi-award"></i><br/>Résultats</a>
+              <a href="{{ 'export', 'file='.basename(@name, ".json") | alias }}" class="btn btn-outline-secondary mx-1"><i class="bi bi-download"></i><br/>Export</a>
+              <a href="{{ 'delete', 'file='.basename(@name, ".json") | alias }}" class="btn btn-outline-danger mx-1" onclick="return confirm('Êtes vous sûr de vouloir supprimer le fichier')">
+                <i class="bi bi-trash"></i><br/>Supprimer
               </a>
-              <a href="{{ 'showResults', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Voir les réponses</a>
-              <a href="{{ 'resultats', 'file='.basename(@name, ".json").',md5='.md5_file(@name) | alias }}" class="float-end mx-1">Voir la page résultats</a>
-              <a href="{{ 'export', 'file='.basename(@name, ".json") | alias }}" class="float-end mx-1">Exporter les réponses</a>
             </td>
           </tr>
           </repeat>
