@@ -62,11 +62,9 @@ class Admin
         });
 
         $md5s = array_map('md5_file', $files);
-        $files = array_map('basename', $files);
-        $engages = array_map('basename', $files_engages);
 
         $f3->set('reponses', $files);
-        $f3->set('engages', $engages);
+        $f3->set('engages', $files_engages);
         $f3->set('md5s', $md5s);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'files.htm');
