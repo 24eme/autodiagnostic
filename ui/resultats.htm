@@ -72,7 +72,8 @@
   </div>
 </div>
 
-<check if="{{ @engage === false }}">
+<check if="{{ @engage }}">
+<false>
 <div id="resultats-cta" class="container d-print-none">
   <div class="py-4 bg-light">
     <h3 class="display-5 text-center mb-5"><img src="/img/main-bivc.png" height="63px" style="vertical-align: bottom"/> Je m'engage !</h3>
@@ -93,6 +94,24 @@
     </div>
   </div>
 </div>
+</false>
+<true>
+  <div id="resultats-cta" class="container d-print-none">
+    <div class="py-4 bg-light">
+      <h3 class="display-5 text-center mb-5">Ma formule</h3>
+      <div class="d-grid justify-content-center px-3">
+        <p class="lead">
+          Retrouvez des informations complémentaires sur vos résultats sur la page des formules.
+        </p>
+        <div class="col-auto text-center">
+          <a class="btn btn-primary" href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}">
+            Y aller
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</true>
 </check>
 
 <div id="retour" class="py-4 d-print-none">
