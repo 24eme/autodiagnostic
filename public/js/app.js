@@ -247,7 +247,13 @@ const Questionnaire = Vue.createApp({
       document.location = url.href.replace(/#.*/, '#');
     },
     clean: function (obj) {
-      Object.keys(obj).forEach((k) => obj[k] === "" && delete obj[k]);
+      Object.keys(obj).forEach(function (k) {
+        if (obj[k] === "") delete obj[k];
+        if (Array.isArray(obj[k]) && obj[k].length > 1 && obj[k].includes('NC')) {
+          const key = obj[k].findIndex(el => el === 'NC')
+          obj[k].splice(key, 1)
+        }
+      });
     },
     updateCategorieProgress: function (categorie) {
       if (this.isTermine) {
