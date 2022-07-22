@@ -189,14 +189,21 @@ const Questionnaire = Vue.createApp({
       }, this)
     },
     nonConcerne: function (index) {
-      const q = this.getQuestions()[index]
-      this.reponses[q.id] = "NC"
+      const q = this.getQuestions()[index];
+
+      (Array.isArray(this.reponses[q.id]))
+        ? this.reponses[q.id] = ["NC"]
+        : this.reponses[q.id] = "NC"
+
       this.storeReponses()
       this.deplacer(index + 1)
     },
     isNonConcerne: function (index) {
-      const q = this.getQuestions()[index]
-      return this.reponses[q.id] === "NC"
+      const q = this.getQuestions()[index];
+
+      return (Array.isArray(this.reponses[q.id]))
+        ? this.reponses[q.id] === ["NC"]
+        : this.reponses[q.id] === "NC"
     },
     updatePageInfos: function (hash, title) {
       let libelle = (title)? 'Autodiagnostic - ' + title : 'Autodiagnostic';
