@@ -6,7 +6,7 @@
     <p class="mb-4">Vous pouvez retrouver vos réponses sur la page des résultats ou retrouver les documents liés à votre formule sur la page des formules</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <a href="{{ 'resultats', '@file='.@file.',@md5='.@md5 | alias }}" class="btn btn-primary px-4 gap-3">Résultats</a>
-      <a href="{{ 'formules' | alias }}?force=1" class="btn btn-outline-secondary px-4">Formules</a>
+      <a href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}?force=1" class="btn btn-outline-secondary px-4">Formules</a>
     </div>
   </div>
 
