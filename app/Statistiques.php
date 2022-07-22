@@ -141,7 +141,9 @@ class Statistiques {
                 throw new \Exception('Une réponse est attendue pour la question : '.$question['id']);
             }
 
-            if ($reponse['reponse'] === self::NON_CONCERNE) {
+            if ($reponse['reponse'] === self::NON_CONCERNE
+                || is_array($reponse['reponse']) && $reponse['reponse'] === [self::NON_CONCERNE]
+            ) {
                 continue;
             }
 

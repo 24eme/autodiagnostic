@@ -200,10 +200,15 @@ const Questionnaire = Vue.createApp({
     },
     isNonConcerne: function (index) {
       const q = this.getQuestions()[index];
+      const r = Vue.toRaw(this.reponses[q.id])
 
-      return (Array.isArray(this.reponses[q.id]))
-        ? this.reponses[q.id] === ["NC"]
-        : this.reponses[q.id] === "NC"
+      const equals = (a, b) =>
+        a.length === b.length &&
+        a.every((v, i) => v === b[i]);
+
+      return (Array.isArray(r))
+        ? equals(r, ["NC"])
+        : r === "NC"
     },
     updatePageInfos: function (hash, title) {
       let libelle = (title)? 'Autodiagnostic - ' + title : 'Autodiagnostic';
