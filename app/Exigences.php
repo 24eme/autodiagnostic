@@ -33,53 +33,33 @@ class Exigences
         $exigenceDetail = $this->exigences[$exigence];
         $satisfied = true;
 
-        foreach ($exigenceDetail['formule'] as $cle => $requis) {
-            if (is_array($requis)) {
-                $xor = false;
-
-                foreach ($requis as $id => $rep) {
-                    if (is_array($rep)) {
-                        $and = true;
-                        foreach ($rep as $id_and => $rep_and) {
-                            $and = $and && ($this->reponses->get($id_and)['reponse'] === $rep_and);
-                        }
-
-                        $xor = $xor || $and;
-                    } else {
-                        $xor = $xor || ($this->reponses->get($id)['reponse'] === $rep);
-                    }
-                }
-
-                continue;
-            }
-
-            if (strpos($cle, '+') !== false) {
-                $cles = explode('+', $cle);
-                $reponse = 0;
-
-                foreach ($cles as $c) {
-                    $reponse += $this->reponses->get($c)['reponse'];
-                }
+        foreach ($exigenceDetail['formule'] as $formule) {
+            if (isset($formule['func']) === true) {
+                $reponse = $formule['func'];
+                $value = eval('return '.$formule['func'].';');
+                $success = call_user_func($value, $this->reponses);
             } else {
-                $reponse = $this->reponses->get($cle)['reponse'];
+                $reponse = $this->reponses->get($formule['qid']);
+
+                if ($reponse === null) {
+                    throw new LogicException('La réponse '.$formule['qid'].' n\'existe pas.');
+                }
+
+                $reponse = $reponse['reponse'];
+                $value = $formule['value'];
+
+                $success = Statistiques::isNotationSatisfaite($reponse, $formule['op'], $value);
             }
 
-            if ($requis === 0 && $reponse === 0) {
-                continue;
-            }
-
-            if (is_numeric($requis) && $reponse <= $requis) {
-                continue;
-            }
-
-            if (is_string($requis) && $reponse === $requis) {
-                continue;
-            }
-
-            $this->explain[$exigence][$cle] = [
-                'requis' => $requis,
-                'reponse' => $reponse
+            $this->explain[$exigence][$formule['qid']] = [
+                'reponse' => $reponse,
+                'requis' => $formule['value'],
+                'success' => $success
             ];
+
+            if ($success === true) {
+                continue;
+            }
 
             $satisfied = false;
         }

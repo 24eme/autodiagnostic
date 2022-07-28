@@ -2,8 +2,8 @@
 
 use Reponses\Reponse;
 
-class Statistiques {
-
+class Statistiques
+{
     const COMPARATEUR_SUP_EGAL = 'GTE';
     const COMPARATEUR_INF_EGAL = 'LTE';
     const COMPARATEUR_SUP = 'GT';
@@ -203,22 +203,22 @@ class Statistiques {
     public static function isNotationSatisfaite($reponse, $comparateur, $valeur) {
         switch ($comparateur) {
             case self::COMPARATEUR_INF_EGAL:
-                return ($reponse <= $valeur);
+                return $reponse <= $valeur;
                 break;
             case self::COMPARATEUR_SUP_EGAL:
-                return ($reponse >= $valeur);
+                return $reponse >= $valeur;
                 break;
             case self::COMPARATEUR_INF:
-                return ($reponse < $valeur);
+                return $reponse < $valeur;
                 break;
             case self::COMPARATEUR_SUP:
-                return ($reponse > $valeur);
+                return $reponse > $valeur;
                 break;
             case self::COMPARATEUR_EGAL:
-                return ($reponse == $valeur);
+                return $reponse === $valeur;
                 break;
             default:
-                throw new Exception('Comparateur non connu : '.$comparateur);
+                throw new \Exception('Comparateur non connu : '.$comparateur);
                 break;
         }
     }
