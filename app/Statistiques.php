@@ -190,7 +190,7 @@ class Statistiques {
         $valeurs = current($notations);
         $highScore = 0;
         foreach($valeurs as $valeur => $notation) {
-            if ($reponse !== null && $this->isNotationSatisfaite($reponse, $comparateur, $valeur)) {
+            if ($reponse !== null && self::isNotationSatisfaite($reponse, $comparateur, $valeur)) {
                 return $notation;
             }
             if ($reponse === null && $notation['score'] > $highScore) {
@@ -200,7 +200,7 @@ class Statistiques {
         return ($reponse === null)? $highScore : null;
     }
 
-    private function isNotationSatisfaite($reponse, $comparateur, $valeur) {
+    public static function isNotationSatisfaite($reponse, $comparateur, $valeur) {
         switch ($comparateur) {
             case self::COMPARATEUR_INF_EGAL:
                 return ($reponse <= $valeur);
