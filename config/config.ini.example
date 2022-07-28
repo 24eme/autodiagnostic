@@ -4,6 +4,7 @@ UI=../ui/
 LOGS=../var/log/
 UPLOADS=../storage/uploads/
 CACHE=true
+FICHES_FILE=../config/fiches.yml
 
 DEBUG=3 ; Supprimer pour prod
 ONERROR="CMS->error"
@@ -32,7 +33,5 @@ CAS_AVANCEE_CLIENT_LIFETIME=0
 
 VITICONNECT_API_SECRET="SECRET"
 
-# Déprécié
-;COUCHDBHOST=
-;COUCHDBPORT=
-;COUCHDBBASE=
+SMTP_HOST=smtp.ho.st
+SMTP_PORT=25
