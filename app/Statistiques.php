@@ -14,7 +14,7 @@ class Statistiques
     const NON_CONCERNE = 'NC';
 
     private $config;
-    private Reponse $reponses;
+    private $reponses;
 
     private $scores;
     private $highScores;
