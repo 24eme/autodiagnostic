@@ -381,10 +381,10 @@ questions:
         score: 8
       "90":
         score: 9
-        aout: " Je favorise l'enherbement hivernal"
+        atout: " Je favorise l'enherbement hivernal"
       "100":
         score: 10
-        aout: " Je favorise l'enherbement hivernal"
+        atout: " Je favorise l'enherbement hivernal"
 
 - type: question
   id: PASSAGE_OUTILS_HORS_HERBICIDES
