@@ -62,6 +62,7 @@
     </div>
 
     <div id="formules-fiches-faiblesses" class="container mb-5">
+      <h4>Vous trouverez ci dessous des fiches en lien avec vos points d'améliorations.</h4>
       <repeat group="{{ @fichesByFaiblesses }}" key="{{ @faiblesse }}" value="{{ @fiches }}">
         <check if="{{ @faiblesse !== 'autres' }}">
           <table class="table table-striped mb-4">
@@ -83,7 +84,7 @@
         </check>
       </repeat>
 
-      <hr class="w-50 mx-auto my-5">
+      <h4 class="mt-5">À toutes fins utiles, vous trouverez ci dessous d'autres fiches pouvant vous servir.</h4>
 
       <table class="table table-striped mb-4">
         <thead>
