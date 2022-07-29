@@ -1,19 +1,20 @@
 <?php
 
 use Reponses\Reponse;
+use Statistiques;
 
 class Exigences
 {
     const DATA_EXIGENCES = 'data/exigences.yml';
 
-    private $reponses;
+    private $statistiques;
     private $exigences;
     private $explain = [];
 
-    public function __construct(Reponse $reponses)
+    public function __construct(Statistiques $statistiques)
     {
         $this->exigences = yaml_parse_file(self::DATA_EXIGENCES);
-        $this->reponses = $reponses;
+        $this->statistiques = $statistiques;
     }
 
     public function name($exigence) {
@@ -31,19 +32,21 @@ class Exigences
         }
 
         $exigenceDetail = $this->exigences[$exigence];
+        $reponses = $this->statistiques->getReponses();
         $satisfied = true;
 
         foreach ($exigenceDetail['formule'] as $formule) {
-            if ($formule['op'] === 'SCORE') {
-                continue;
-            }
-
             if (isset($formule['func']) === true) {
                 $reponse = $formule['func'];
                 $value = eval('return '.$formule['func'].';');
-                $success = call_user_func($value, $this->reponses);
+                $success = call_user_func($value, $reponses);
+            } elseif ($formule['op'] === 'SCORE') {
+                $reponse = $this->statistiques->getScores()[$formule['cat']];
+                $value = $formule['score'];
+
+                $success = $reponse >= $value;
             } else {
-                $reponse = $this->reponses->get($formule['qid']);
+                $reponse = $reponses->get($formule['qid']);
 
                 if ($reponse === null) {
                     throw new LogicException('La réponse '.$formule['qid'].' n\'existe pas.');
