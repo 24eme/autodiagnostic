@@ -10,6 +10,14 @@ const radarChart = new Chart(
             'max': 100
           }
         },
+        'scales': {
+          'r': {
+            'beginAtZero': true,
+            'pointLabels': {
+              'font': {'size': 14}
+            }
+          }
+        },
         'plugins': {
           'legend': {'position': 'bottom'}
         }
