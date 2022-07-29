@@ -34,6 +34,10 @@ class Exigences
         $satisfied = true;
 
         foreach ($exigenceDetail['formule'] as $formule) {
+            if ($formule['op'] === 'SCORE') {
+                continue;
+            }
+
             if (isset($formule['func']) === true) {
                 $reponse = $formule['func'];
                 $value = eval('return '.$formule['func'].';');
