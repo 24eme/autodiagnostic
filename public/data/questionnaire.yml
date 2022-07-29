@@ -203,8 +203,6 @@ questions:
   libelle: "Quel pourcentage de votre surface ne reçoit aucun traitement ?"
   complement_information: "Sont concernées ici les parcelles exploitées (au moins une opération agricole par an) mais non traitées lors de la campagne étudiée comme les prairies permanentes ou les parcelles en attente de replantation."
   unite: "%"
-  notation_hve:
-    ratio: 1
   notation:
     LTE:
       "10":
@@ -277,8 +275,7 @@ questions:
     libelle: "Je fais appel à un prestataire de service"
   - id: AUCUN
     libelle: "Aucun de ces matériels ou équipements"
-  notation_hve:
-    max: 2
+  notation_methode: 'SUM'
   notation:
     EQ:
       "AMENAGEMENT":
@@ -1106,6 +1103,7 @@ questions:
     question:
       id: DTL_QUOI_RAKS_USAGES
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "PARTENAIRE":
@@ -1138,6 +1136,7 @@ questions:
     question:
       id: DTL_QUOI_EMBALLAGES_PHYTO
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "PARTENAIRE":
@@ -1170,6 +1169,7 @@ questions:
     question:
       id: DTL_QUOI_FILMS_LIENS_BOUTEILLES
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1200,6 +1200,7 @@ questions:
     question:
       id: DTL_QUOI_EMBALLAGES_INTRANTS
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1232,6 +1233,7 @@ questions:
     question:
       id: DTL_QUOI_EMBALLAGES_OENO
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "PARTENAIRE":
@@ -1262,6 +1264,7 @@ questions:
     question:
       id: DTL_QUOI_POTEAUX_PLASTIQUE
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1294,6 +1297,7 @@ questions:
     question:
       id: DTL_QUOI_AGRAFES
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1326,6 +1330,7 @@ questions:
     question:
       id: DTL_QUOI_MANCHONS
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1354,6 +1359,7 @@ questions:
     question:
       id: DTL_QUOI_SARMENTS
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "BRULAGE":
@@ -1386,6 +1392,7 @@ questions:
     question:
       id: DTL_QUOI_PALETTES
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "REPRISE":
@@ -1416,6 +1423,7 @@ questions:
     question:
       id: DTL_QUOI_CARTONS
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1444,6 +1452,7 @@ questions:
     question:
       id: DTL_QUOI_POTEAUX_METAL
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1468,6 +1477,7 @@ questions:
     question:
       id: DTL_QUOI_FIL_METAL
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1494,6 +1504,7 @@ questions:
     question:
       id: DTL_QUOI_BOUTEILLES
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "CONTENEUR":
@@ -1524,6 +1535,7 @@ questions:
     question:
       id: DTL_QUOI_VAISSELLE
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1558,6 +1570,7 @@ questions:
     question:
       id: DTL_QUOI_TUTEURS
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1592,6 +1605,7 @@ questions:
     question:
       id: DTL_QUOI_HUILE
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":
@@ -1628,6 +1642,7 @@ questions:
     question:
       id: DTL_QUOI_BATTERIES
       libelle: "Précisez : "
+  notation_methode: 'MIN'
   notation:
     EQ:
       "DECHETTERIE":

@@ -9,6 +9,9 @@ class Statistiques
     const COMPARATEUR_SUP = 'GT';
     const COMPARATEUR_INF = 'LT';
     const COMPARATEUR_EGAL = 'EQ';
+    const NOTATION_METHODE_SUM = 'SUM';
+    const NOTATION_METHODE_MIN = 'MIN';
+    const NOTATION_METHODE_MAX = 'MAX';
     const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
     const DATA_FORMULES = 'data/formules.yml';
     const NON_CONCERNE = 'NC';
@@ -131,73 +134,72 @@ class Statistiques
                 continue;
             }
 
-            if (!isset($question['notation'])) {
-                continue;
-            }
+            $notation = $this->getNotation($question);
 
-            $reponse = $this->reponses->get($question['id']);
+            $this->highScores[$categorieCourante] += $notation['highScore'];
+            $this->scores[$categorieCourante] += $notation['score'];
+            $this->ptsForts = array_merge($this->ptsForts, $notation['atouts']);
+            $this->ptsAmeliorations = array_merge($this->ptsAmeliorations, $notation['faiblesses']);
+        }
+    }
 
-            if (isset($question['notation']) && null === $reponse) {
-                throw new \Exception('Une réponse est attendue pour la question : '.$question['id']);
-            }
+    public function getNotation($question) {
+        $notation = array('score' => 0, 'faiblesses' => array(), 'atouts' => array(), 'highScore' => 0);
 
-            if ($reponse['reponse'] === self::NON_CONCERNE
-                || is_array($reponse['reponse']) && $reponse['reponse'] === [self::NON_CONCERNE]
-            ) {
-                continue;
-            }
+        if(!isset($question['notation'])) {
 
-            $this->highScores[$categorieCourante] += $this->getNotationByReponse($question['notation']);
+            return $notation;
+        }
 
-            $couranteReponses = $reponse['reponse'];
+        if (isset($question['notation']) && null === $this->reponses->get($question['id'])) {
+            throw new \Exception('Une réponse est attendue pour la question : '.$question['id']);
+        }
 
-            if(is_array($couranteReponses) === false) {
-                $couranteReponses = array($couranteReponses);
-            }
+        $configNotation = $question['notation'];
 
-            foreach($couranteReponses as $couranteReponse) {
-                $notation = $this->getNotationByReponse($question['notation'], $couranteReponse);
+        $reponses = $this->reponses->get($question['id'])['reponse'];
+        if(is_array($reponses) === false) {
+            $reponses = array($reponses);
+        }
 
-                $this->scores[$categorieCourante] += $notation['score'];
-                if (isset($notation['faiblesse'])) {
-                    $this->ptsAmeliorations[$notation['faiblesse']] = $notation['faiblesse'];
+        $notationMethode = self::NOTATION_METHODE_MAX;
+
+        if(isset($question['notation_methode']) && $question['notation_methode']) {
+            $notationMethode = $question['notation_methode'];
+        }
+
+        foreach($configNotation as $comparateur => $valeurs) {
+            foreach($valeurs as $valeur => $configScore) {
+                if($notationMethode == self::NOTATION_METHODE_SUM) {
+                    $notation['highScore'] += $configScore['score'];
+                } elseif($configScore['score'] > $notation['highScore']) {
+                    $notation['highScore'] = $configScore['score'];
                 }
-                if (isset($notation['atout'])) {
-                    $this->ptsForts[$notation['atout']] = $notation['atout'];
+                if(in_array(self::NON_CONCERNE, $reponses)) {
+                    continue;
                 }
-                foreach($this->formules as $key => $val) {
-                    if ($val && isset($notation[$key]) && !$notation[$key]) {
-                        $this->formules[$key] = false;
+                foreach($reponses as $reponse) {
+                    if ($reponse === null || !self::isNotationSatisfaite($reponse, $comparateur, $valeur)) {
+                        continue;
+                    }
+
+                    if($notationMethode == self::NOTATION_METHODE_MIN && $configScore['score'] < $notation['score']) {
+                        $notation['score'] = $configScore['score'];
+                    } else {
+                        $notation['score'] += $configScore['score'];
+                    }
+
+                    if (isset($configScore['faiblesse'])) {
+                        $notation['faiblesses'][$configScore['faiblesse']] = $configScore['faiblesse'];
+                    }
+                    if (isset($configScore['atout'])) {
+                        $notation['atouts'][$configScore['atout']] = $configScore['atout'];
                     }
                 }
             }
         }
 
-        foreach($this->highScores as $key => $value) {
-            if($this->highScores[$key] < $this->scores[$key]) {
-                $this->highScores[$key] = $this->scores[$key];
-            }
-            if(!$this->highScores[$key]) {
-                unset($this->highScores[$key]);
-                unset($this->scores[$key]);
-            }
-        }
-    }
-
-    public function getNotationByReponse($notations, $reponse = null) {
-        if (!$notations) return null;
-        $comparateur = key($notations);
-        $valeurs = current($notations);
-        $highScore = 0;
-        foreach($valeurs as $valeur => $notation) {
-            if ($reponse !== null && self::isNotationSatisfaite($reponse, $comparateur, $valeur)) {
-                return $notation;
-            }
-            if ($reponse === null && $notation['score'] > $highScore) {
-                $highScore = $notation['score'];
-            }
-        }
-        return ($reponse === null)? $highScore : null;
+        return $notation;
     }
 
     public static function isNotationSatisfaite($reponse, $comparateur, $valeur) {
