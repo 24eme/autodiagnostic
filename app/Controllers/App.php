@@ -178,11 +178,11 @@ class App
 
         $engage = true;
 
-        $filename = $f3->get('UPLOADS').'/engages/'.$args['file'].'.json';
+        $filename = self::$storage_engage.$args['file'].'.json';
 
         if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             $engage = false;
-            $filename = $f3->get('UPLOADS').$args['file'].'.json';
+            $filename = self::$storage.$args['file'].'.json';
 
             if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
                 $f3->reroute('@home');
@@ -206,13 +206,13 @@ class App
         $file = $f3->clean($f3->get('POST.file'));
         $md5 = $f3->clean($f3->get('POST.md5'));
 
-        $filename = $f3->get('UPLOADS').$file.'.json';
+        $filename = self::$storage.$file.'.json';
 
         if (Reponse::getFichierNameWithAuth($filename, $md5) === false) {
             $f3->reroute(sprintf('@resultats(@file=%s,@md5=%s)', $file, $md5));
         }
 
-        rename($filename, $f3->get('UPLOADS').'/engages/'.$file.'.json');
+        rename($filename, self::$storage_engage.$file.'.json');
 
         $f3->reroute(sprintf('@formules(@file=%s,@md5=%s)', $file, $md5));
     }
@@ -222,7 +222,7 @@ class App
         $f3->scrub($args['file']);
         $f3->scrub($args['md5']);
 
-        $filename = $f3->get('UPLOADS').'/engages/'.$args['file'].'.json';
+        $filename = self::$storage_engage.$args['file'].'.json';
 
         if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             $f3->reroute('@home');
