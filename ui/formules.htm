@@ -62,6 +62,7 @@
     </div>
 
     <div id="formules-fiches-faiblesses" class="container mb-5">
+      <h4>Vous trouverez ci dessous des fiches en lien avec vos points d'améliorations.</h4>
       <repeat group="{{ @fichesByFaiblesses }}" key="{{ @faiblesse }}" value="{{ @fiches }}">
         <check if="{{ @faiblesse !== 'autres' }}">
           <table class="table table-striped mb-4">
@@ -83,7 +84,7 @@
         </check>
       </repeat>
 
-      <hr class="w-50 mx-auto my-5">
+      <h4 class="mt-5">À toutes fins utiles, vous trouverez ci dessous d'autres fiches pouvant vous servir.</h4>
 
       <table class="table table-striped mb-4">
         <thead>
@@ -105,25 +106,34 @@
 
     <div id="resultats-export" class="container d-print-none my-5">
       <div class="py-4 bg-light">
-        <h5 class="text-center mb-5"><i class="bi bi-download"></i> Je sauvegarde mes données</h5>
+        <h5 class="text-center mb-5"><i class="bi bi-download"></i> Conserver mes réponses</h5>
         <div class="d-flex align-items-center justify-content-evenly px-3">
-          <form class="row align-items-center d-inline-block" method="post" action="{{ 'envoiMail' | alias }}">
-            <div class="input-group">
-              <input class="form-control font-monospace" id="input-export-mail" name="email" type="email" value="" placeholder="mon@email.com">
-              <button class="btn btn-primary" type="submit">Les recevoir par mail</button>
-              <input type="hidden" name="file" value="{{ @file }}">
-              <input type="hidden" name="md5" value="{{ @md5 }}">
-            </div>
-          </form>
+          <div>
+            <h5>Par mail</h5>
+            <form class="row align-items-center d-inline-block" method="post" action="{{ 'envoiMail' | alias }}">
+              <div class="input-group">
+                <input class="form-control font-monospace" id="input-export-mail" name="email" type="email" value="" placeholder="mon@email.com">
+                <button class="btn btn-primary" type="submit">Les recevoir par mail</button>
+                <input type="hidden" name="file" value="{{ @file }}">
+                <input type="hidden" name="md5" value="{{ @md5 }}">
+              </div>
+            </form>
+          </div>
 
-          <a href="{{ 'export', '@file='.@file | alias }}" class="btn btn-sm border">
-            <i class="bi bi-download"></i> Au format tableur
-          </a>
+          <div>
+            <h5>Format tableur</h5>
+            <a href="{{ 'export', '@file='.@file | alias }}" class="btn btn-sm border">
+              <i class="bi bi-download"></i> Au format tableur
+            </a>
+          </div>
 
-          <div class="d-inline-block">
-            <div class="input-group">
-              <input class="form-control font-monospace" id="link-export" readonly type="text" value="{{ @SCHEME }}://{{ @HOST }}{{ @URI }}">
-              <span title="Copier le lien" class="input-group-text button-clipboard" data-input="link-export"><i class="bi bi-clipboard"></i></span>
+          <div>
+            <h5>Partage d'url</h5>
+            <div class="d-inline-block">
+              <div class="input-group">
+                <input class="form-control font-monospace" id="link-export" readonly type="text" value="{{ @SCHEME }}://{{ @HOST }}{{ @URI }}">
+                <span title="Copier le lien" class="input-group-text button-clipboard" data-input="link-export"><i class="bi bi-clipboard"></i></span>
+              </div>
             </div>
           </div>
 
@@ -131,3 +141,18 @@
       </div>
     </div>
 
+    <div id="formules-cta" class="container d-print-none mb-3">
+      <div class="py-4 bg-light">
+        <h3 class="display-5 text-center mb-5">Mes résultats</h3>
+        <div class="d-grid justify-content-center px-3">
+          <p class="lead">
+            Retrouvez les informations de vos résultats sur la page dédiée.
+          </p>
+          <div class="col-auto text-center">
+            <a class="btn bg-app-red text-white" href="{{ 'resultats', '@file='.@file.',@md5='.@md5 | alias }}">
+              Voir mes résultats
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
