@@ -3,13 +3,13 @@ hve3:
   formule:
     - op: SCORE
       score: 10
-      cat: FERTILISATION
+      cat: Fertilisation
     - op: SCORE
       score: 10
-      cat: BIODIVERSITE
+      cat: Biodiversité
     - op: SCORE
       score: 10
-      cat: RECYCLAGE
+      cat: Recyclage et gestion des déchets
 
 echelon1:
   name: "Échelon 1"

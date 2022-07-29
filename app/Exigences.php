@@ -36,14 +36,15 @@ class Exigences
         $satisfied = true;
 
         foreach ($exigenceDetail['formule'] as $formule) {
-            if ($formule['op'] === 'SCORE') {
-                continue;
-            }
-
             if (isset($formule['func']) === true) {
                 $reponse = $formule['func'];
                 $value = eval('return '.$formule['func'].';');
                 $success = call_user_func($value, $reponses);
+            } elseif ($formule['op'] === 'SCORE') {
+                $reponse = $this->statistiques->getScores()[$formule['cat']];
+                $value = $formule['score'];
+
+                $success = $reponse >= $value;
             } else {
                 $reponse = $reponses->get($formule['qid']);
 
