@@ -162,13 +162,9 @@ class Statistiques
 
         $configNotation = $question['notation'];
 
-        $reponses = $this->reponses->get($question['id'])['reponse'];
-        if(is_array($reponses) === false) {
-            $reponses = array($reponses);
-        }
+        $reponses = explode(',', $this->reponses->get($question['id'])['reponse']);
 
         $notationMethode = self::NOTATION_METHODE_MAX;
-
         if(isset($question['notation_methode']) && $question['notation_methode']) {
             $notationMethode = $question['notation_methode'];
         }
@@ -190,8 +186,10 @@ class Statistiques
 
                     if($notationMethode == self::NOTATION_METHODE_MIN && $configScore['score'] < $notation['score']) {
                         $notation['score'] = $configScore['score'];
-                    } else {
+                    } elseif($notationMethode == self::NOTATION_METHODE_SUM) {
                         $notation['score'] += $configScore['score'];
+                    } elseif($notationMethode == self::NOTATION_METHODE_MAX && $configScore['score'] > $notation['score']) {
+                        $notation['score'] = $configScore['score'];
                     }
 
                     if (isset($configScore['faiblesse'])) {

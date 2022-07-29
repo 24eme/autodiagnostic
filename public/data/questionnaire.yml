@@ -159,18 +159,6 @@ questions:
       AZOTE_ORGANIQUE: OUI
   - id: AUCUNE
     libelle: "Aucune"
-  notation:
-    EQ:
-      "HVE3":
-        formule3: false
-      "BIODYVIN":
-        formule3: false
-      "DEMETER":
-        formule3: false
-      "TERRAVITIS":
-        formule3: false
-      "BIO_CONVERSION":
-        formule3: false
 
 - type: question
   id: SELECTION_SANS_CERTIF
@@ -226,14 +214,11 @@ questions:
       "100":
         score: 10
 
-
 - type: question
   id: SURFACE_ALTERNATIVE_CHIMIE
   libelle: "Sur quel pourcentage de votre surface utilisez-vous au moins une méthode alternative à la lutte chimique ?"
   complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle"
   unite: "%"
-  notation_hve:
-    ratio: 1
   notation:
     LTE:
       "25":
@@ -323,8 +308,6 @@ questions:
       "OUI":
         score: 0
         faiblesse: "J'utilise des herbicides"
-        formule2: false
-        formule3: false
       "NON":
         score: 2
         atout: "Je n'utilise pas d'herbicides"
@@ -336,8 +319,6 @@ questions:
   libelle: "Quel est votre IFT herbicides ?"
   complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne.<br />Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Herbicides.xlsm' class='link-icon'>outil suivant</a>"
   unite: IFT
-  notation_hve:
-    ratio: 0.5
   notation:
     GTE:
       "1.08":
@@ -358,8 +339,6 @@ questions:
   libelle: "Quel est votre IFT hors herbicides ?"
   complement_information: "L'IFT (Indice de Fréquence de Traitement) comptabilise le nombre de doses de référence appliquées par hectare sur une campagne. L'IFT Hors Herbicides correspond à la somme des IFT Fongicides, Insecticides-acaricides et Autre. Les produits de biocontrôle ne doivent pas être comptabilisés comme c'est le cas pour HVE. Vous pouvez le calculer à l'aide de l'<a href='data/Calcul IFT Hors Herbicides.xlsm' class='link-icon'>outil suivant</a>"
   unite: IFT
-  notation_hve:
-    ratio: 0.5
   notation:
     GTE:
       "10.89":
@@ -402,10 +381,10 @@ questions:
         score: 8
       "90":
         score: 9
-        aout: " Je favorise l'enherbement hivernal"
+        atout: " Je favorise l'enherbement hivernal"
       "100":
         score: 10
-        aout: " Je favorise l'enherbement hivernal"
+        atout: " Je favorise l'enherbement hivernal"
 
 - type: question
   id: PASSAGE_OUTILS_HORS_HERBICIDES
@@ -429,9 +408,6 @@ questions:
     EQ:
       "OUI":
         score: 0
-        formule1: false
-        formule2: false
-        formule3: false
       "NON":
         score: 5
 
@@ -447,9 +423,6 @@ questions:
     EQ:
       "OUI":
         score: 0
-        formule1: false
-        formule2: false
-        formule3: false
       "NON":
         score: 5
 
@@ -465,9 +438,6 @@ questions:
     EQ:
       "OUI":
         score: -5
-        formule1: false
-        formule2: false
-        formule3: false
       "NON":
         score: 0
 
@@ -487,9 +457,6 @@ questions:
       "OUI":
         score: 0
         faiblesse: "J'utilise des CMR"
-        formule1: false
-        formule2: false
-        formule3: false
       "NON":
         score: 10
         atout: "Je n'utilise pas de CMR"
@@ -516,9 +483,6 @@ questions:
     GTE:
       "3":
         score: -10
-        formule1: false
-        formule2: false
-        formule3: false
       "1":
         score: -5
       "0":
@@ -535,8 +499,6 @@ questions:
       GTE:
         "3":
           score: -10
-          formule2: false
-          formule3: false
         "1":
           score: -5
         "0":
@@ -647,9 +609,6 @@ questions:
     GTE:
       "2":
         score: -5
-        formule1: false
-        formule2: false
-        formule3: false
       "0":
         score: 0
 
@@ -689,8 +648,6 @@ questions:
     libelle: "2"
   - id: 3_PLUS
     libelle: "3 ou plus"
-  notation_hve:
-    ratio: 1
   notation:
     EQ:
       "0":
@@ -747,8 +704,6 @@ questions:
   libelle: "Quel est votre bilan azoté global ?"
   complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.xlsm' class='link-icon'>outil suivant</a>"
   unite: "kg N/ha"
-  notation_hve:
-    ratio: 1
   notation:
     GTE:
       "60":
@@ -775,8 +730,6 @@ questions:
       "NON":
         score: 0
         faiblesse: "J'utilise de l'azote chimique"
-        formule2: false
-        formule3: false
 
 - type: question
   id: UNITE_AZOTE
@@ -786,9 +739,6 @@ questions:
     GTE:
       "16":
         score: -5
-        formule1: false
-        formule2: false
-        formule3: false
       "0":
         score: 0
 
@@ -822,8 +772,6 @@ questions:
   libelle: "Quel pourcentage de votre surface est dédié aux infrastructures agro-écologiques (haies, arbres,...) recensées précédemment ?"
   complement_information: "Vous pouvez le calculer grâce à <a href='data/Calcul de la SET.xlsm' class='link-icon'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
   unite: "%"
-  notation_hve:
-    ratio: 1
   notation:
     LTE:
       "10":
@@ -864,8 +812,6 @@ questions:
     libelle: "Oui"
   - id: NON
     libelle: "Non"
-  notation_hve:
-    ratio: 1
   notation:
     EQ:
       "OUI":

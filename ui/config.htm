@@ -90,7 +90,7 @@
                 </check>
 
                 <check if="{{ @questionnaire->hasNotation(@question.id) }}">
-                  <h5 class="mt-4">Notation</h5>
+                  <h5 class="mt-4">Notation <check if="{{ @question.notation_methode }}"><small class="text-muted fs-6">(Méthode de calcul:  {{ @question.notation_methode }})</small></check></h5>
                   <table class="table">
                     <thead>
                       <tr><th>Comparateur</th><th>Réponse</th><th>Score</th><th>Points</th></tr>
