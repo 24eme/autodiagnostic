@@ -7,21 +7,11 @@
 </div>
 
 <div id="reponses-liste" class="container">
-  <set total="0" total_cat="0"/>
   <table class="table table-striped">
-    <repeat group="{{ @questions->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions_categorie }}" counter="{{ @ctr }}">
-      <check if="{{ @ctr !== 1 }}">
-        <tr>
-          <th colspan="2">Total</th>
-          <th class="text-end pe-0">{{ @total }}&nbsp;<small>pts</small></th>
-          <th class="text-end text-muted">/&nbsp;{{ @total_cat }}&nbsp;<small>pts</small></th>
-        </tr>
-        <set total="0" total_cat="0"/>
-      </check>
+    <repeat group="{{ @questions->getQuestionnaire() }}" key="{{ @categorie }}" value="{{ @questions_categorie }}">
       <repeat group="{{ @questions_categorie }}" value="{{ @question }}">
         <check if="{{ @question.type === 'categorie' }}">
         <true>
-          <set total_cat="{{ @statistiques->getHighScores()[@questions->getQuestionCategorie(@categorie)] ?: 0 }}" />
           <tr>
             <th colspan=4 class="text-start" style="background-color: {{ @question.couleur }}; color: {{ @question.couleur_texte }}">{{ @question.libelle }}</td>
           </th>
@@ -35,7 +25,6 @@
               <td class="text-end pe-0">{{ @statistiques->getNotation(@question)['score'] }}&nbsp;<small>pts</small>
               </td>
               <td class="text-end text-muted">/&nbsp;{{ @statistiques->getNotation(@question)['highScore'] }}&nbsp;<small>pts</small></td>
-              <set total="{{ @total += @statistiques->getNotation(@question)['score'] }}" />
             </true>
             <false><td></td><td></td></false>
             </check>
@@ -43,11 +32,11 @@
         </false>
         </check>
       </repeat>
+      <tr>
+        <th colspan="2">Total</th>
+        <th class="text-end pe-0">{{ @statistiques->getScores()[@questions->getQuestionCategorie(@categorie)] }}&nbsp;<small>pts</small></th>
+        <th class="text-end text-muted">/&nbsp;{{ @statistiques->getHighScores()[@questions->getQuestionCategorie(@categorie)] }}&nbsp;<small>pts</small></th>
+      </tr>
     </repeat>
-    <tr>
-      <th colspan="2">Total</th>
-      <th class="text-end pe-0">{{ @total }}&nbsp;<small>pts</small></th>
-      <th class="text-end text-muted">/&nbsp;{{ @total_cat }}&nbsp;<small>pts</small></th>
-    </tr>
   </table>
 </div>
