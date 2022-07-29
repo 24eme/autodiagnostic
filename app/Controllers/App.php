@@ -231,7 +231,7 @@ class App
         $reponse = new Reponse($filename);
 
         $statistiques = new Statistiques($reponse);
-        $exigences = new Exigences($reponse);
+        $exigences = new Exigences($statistiques);
 
         $fiches = yaml_parse_file($f3->get('ROOT').'/../config/fiches.yml');
         $fichesByFaiblesses = $statistiques->organiseFichesByFaiblesses($fiches);

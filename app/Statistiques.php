@@ -59,6 +59,11 @@ class Statistiques
         return $this->highScores;
     }
 
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
+
     private function scoresEnPourcent()
     {
         $highScores = $this->highScores;
