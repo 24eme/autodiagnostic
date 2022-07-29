@@ -149,7 +149,7 @@ class Statistiques
     }
 
     public function getNotation($question) {
-        $notation = array('score' => 0, 'faiblesses' => array(), 'atouts' => array(), 'highScore' => 0);
+        $notation = array('score' => null, 'faiblesses' => array(), 'atouts' => array(), 'highScore' => 0);
 
         if(!isset($question['notation'])) {
 
@@ -184,6 +184,10 @@ class Statistiques
                         continue;
                     }
 
+                    if(is_null($notation['score']) && $notationMethode != self::NOTATION_METHODE_SUM) {
+                        $notation['score'] = $configScore['score'];
+                    }
+
                     if($notationMethode == self::NOTATION_METHODE_MIN && $configScore['score'] < $notation['score']) {
                         $notation['score'] = $configScore['score'];
                     } elseif($notationMethode == self::NOTATION_METHODE_SUM) {
@@ -200,6 +204,10 @@ class Statistiques
                     }
                 }
             }
+        }
+
+        if(is_null($notation['score'])) {
+            $notation['score'] = 0;
         }
 
         return $notation;
