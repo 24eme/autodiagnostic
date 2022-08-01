@@ -24,7 +24,6 @@ class App
 
     public function beforeroute(Base $f3)
     {
-        require_once(__DIR__.'/../../vendor/CAS-1.3.8/CAS.php');
         phpCAS::setVerbose(false);
         if ($f3->get('DEBUG')) {
             phpCAS::setDebug();
