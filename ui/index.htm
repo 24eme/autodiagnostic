@@ -20,7 +20,7 @@
           </div>
           <div class="col-md-10 mx-auto">
             <div class="d-grid gap-2">
-              <check if="{{ @SESSION.user }}">
+              <check if="{{ @SESSION.auth.user }}">
                 <true><button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses(); this.modeQuestionsNonRepondues = false;">Continuer le questionnaire</button></true>
                 <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">S'authentifier</a></false>
               </check>

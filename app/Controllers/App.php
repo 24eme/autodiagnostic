@@ -95,7 +95,7 @@ class App
         }
 
         $web = Web::instance();
-        $user = $f3->get('SESSION.user');
+        $user = $this->auth->getUser();
         $uniqid = substr(bin2hex(random_bytes(13)), 0, 13);
 
         $generatedFilename = implode('-', [
