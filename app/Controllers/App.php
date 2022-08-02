@@ -205,7 +205,7 @@ class App
         $f3->set('statistiques', $statistiques);
         $f3->set('exigences', $exigences);
         $f3->set('fichesByFaiblesses', $fichesByFaiblesses);
-        $f3->set('isauthenticated', phpCAS::isAuthenticated()||$f3->get('GET.force')==1);
+        $f3->set('isauthenticated', $this->auth->isAuthenticated()||$f3->get('GET.force')==1);
         $f3->set('inc', 'formules.htm');
         $f3->set('file', $args['file']);
         $f3->set('md5', $args['md5']);
