@@ -90,6 +90,10 @@ class App
 
     public function synthetiser(Base $f3)
     {
+        if ($this->isAuthorized() === false) {
+            $f3->reroute('@auth');
+        }
+
         $web = Web::instance();
         $user = $f3->get('SESSION.user');
         $uniqid = substr(bin2hex(random_bytes(13)), 0, 13);
@@ -157,6 +161,10 @@ class App
 
     public function engagement(Base $f3)
     {
+        if ($this->isAuthorized([Visiteur::getAuthType()]) === false) {
+            $f3->reroute('@auth');
+        }
+
         if ($f3->exists('POST.file') === false || $f3->exists('POST.md5') === false) {
             $f3->reroute('@home');
         }
@@ -236,5 +244,11 @@ class App
         }
 
         return current($files);
+    }
+
+    private function isAuthorized(array $unauthorized = [])
+    {
+        return $this->auth->isAuthenticated() &&
+               in_array($this->auth->getAuthType(), $unauthorized) === false;
     }
 }
