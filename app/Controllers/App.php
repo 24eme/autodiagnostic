@@ -63,7 +63,12 @@ class App
     {
         if ($f3->get('GET.visiteur') || $f3->get('GET.cvi') || $f3->get('GET.bivcauth')) {
             if ($f3->get('GET.visiteur')) { $type = new Visiteur(); }
-            elseif ($f3->get('GET.cvi')) { $type = new CVI($f3->get('GET.cvi')); }
+            elseif ($f3->get('GET.cvi')) {
+                $type = new CVI($f3);
+                if ($type->isViticonnectPossible()) {
+                    $f3->reroute('@auth?bivcauth=1');
+                }
+            }
             elseif ($f3->get('GET.bivcauth')) { $type = new BIVC($f3); }
             else { throw new \LogicException('Méthode non reconnue'); }
 
