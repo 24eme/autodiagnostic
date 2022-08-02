@@ -20,7 +20,7 @@ class Auth
         $res = $type->auth();
 
         if ($res) {
-            $this->store(['type' => $type->getAuthType, 'user' => $type->getUser()]);
+            $this->store(['type' => $type->getAuthType(), 'user' => $type->getUser()]);
         }
 
         return $res;
