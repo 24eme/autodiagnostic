@@ -1,7 +1,8 @@
 <div id="administration-title">
   <div class="p-5">
-    <div class="container-fluid">
-      <h1 class="text-center display-5 fw-bold"><i class="bi bi-question"></i> Réponses</h1>
+    <div class="container text-center position-relative">
+      <a href="{{ 'admin' | alias }}" class="position-absolute top-0 start-0"><i class="bi bi-chevron-left"></i> Retour à la liste</a>
+      <h1 class=" display-5 fw-bold"><i class="bi bi-card-list"></i> Réponses</h1>
     </div>
   </div>
 </div>
@@ -18,7 +19,7 @@
         </true>
         <false>
           <tr>
-            <td title="{{ @question.id }}">{{ @questions->getQuestionPosition(@question.id) }}. {{ @question.libelle }} <a href="/_config#modal-{{ @categorie }}-{{ @question.id }}" class="text-dark"><i class="bi-eye"></i></a></td>
+            <td title="{{ @question.id }}">{{ @questions->getQuestionPosition(@question.id) }}. {{ @question.libelle }} <a href="{{ 'config' | alias }}#modal-{{ @categorie }}-{{ @question.id }}" class="text-dark"><i class="bi-eye"></i></a></td>
             <td>{{ @reponse->get(@question.id)['reponse'] }} <small class="text-muted">{{ @question.unite }}</small></td>
             <check if="{{ @question.notation }}">
             <true>
