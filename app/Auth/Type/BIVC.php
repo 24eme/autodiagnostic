@@ -36,7 +36,7 @@ class BIVC
         phpCAS::setFixedServiceURL($f3->get('urlbase'));
     }
 
-    public function getAuthType()
+    public static function getAuthType()
     {
         return self::AUTH_TYPE;
     }

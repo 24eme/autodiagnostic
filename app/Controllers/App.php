@@ -37,7 +37,7 @@ class App
             $bivc = new BIVC($f3);
 
             $this->auth->store([
-                'type' => $bivc->getAuthType(),
+                'type' => BIVC::getAuthType(),
                 'user' => $bivc->getUser()
             ]);
         }

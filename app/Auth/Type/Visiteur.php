@@ -12,7 +12,7 @@ class Visiteur
 
     public function __construct() {}
 
-    public function getAuthType()
+    public static function getAuthType()
     {
         return self::AUTH_TYPE;
     }

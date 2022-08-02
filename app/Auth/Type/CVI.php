@@ -14,7 +14,7 @@ class CVI
         $this->user = $cvi;
     }
 
-    public function getAuthType()
+    public static function getAuthType()
     {
         return self::AUTH_TYPE;
     }
