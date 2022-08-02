@@ -54,6 +54,7 @@ class App
                 $f3->set('inc', 'alreadydone.htm');
                 $f3->set('file', basename($file, '.json'));
                 $f3->set('md5', md5_file($file));
+                $f3->set('showLinks', $this->auth->getAuthType() !== CVI::getAuthType());
             }
         }
     }
