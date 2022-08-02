@@ -2,6 +2,10 @@
 
 namespace Controllers;
 
+use Auth\Auth;
+use Auth\Type\BIVC;
+use Auth\Type\CVI;
+use Auth\Type\Visiteur;
 use Base;
 use Exigences;
 use phpCAS;
@@ -15,6 +19,7 @@ class App
 {
     private static $storage;
     private static $storage_engage;
+    private $auth;
 
     public function __construct(Base $f3)
     {
@@ -24,72 +29,17 @@ class App
 
     public function beforeroute(Base $f3)
     {
-        phpCAS::setVerbose(false);
-        if ($f3->get('DEBUG')) {
-            phpCAS::setDebug();
-            phpCAS::setVerbose(true);
-        }
+        $this->auth = new Auth();
 
-        phpCAS::client(
-            CAS_VERSION_2_0,
-            $f3->get('CAS_HOST'),
-            $f3->get('CAS_PORT'),
-            $f3->get('CAS_CONTEXT')
-        );
+        if ($this->auth->isAuthenticated() === false
+            && ($f3->exists('GET.ticket') || isset($_SESSION["phpCAS"]["user"]))
+        ) {
+            $bivc = new BIVC($f3);
 
-        if ($f3->get('DEBUG')) {
-            phpCAS::setNoCasServerValidation();
-        }
-
-        if (phpCAS::isAuthenticated()) {
-            $casAuth = phpCAS::getAttribute('viticonnect_entities_all_cvi');
-            if (! $casAuth) $casAuth = phpCAS::getAttribute('viticonnect_entities_all_siret');
-            if (! $casAuth) $casAuth = phpCAS::getUser();
-
-            // Si on vient de se logger
-            if (
-                $f3->get('SESSION.user')
-                && $f3->get('SESSION.user') !== $casAuth
-            ) {
-                Reponse::rename($f3->get('UPLOADS'), $f3->get('SESSION.user'), $casAuth);
-            }
-
-            $f3->set('SESSION.user', $casAuth);
-        }
-
-        if ($f3->get('GET.visiteur')) {
-            $f3->set('SESSION.user', 'VISITEUR-'.uniqid());
-            $f3->reroute('@home');
-        }
-
-        if ($f3->get('GET.cvi')) {
-            $cvi = $f3->get('GET.cvi');
-            if (!preg_match('/^[0-9A-Za-z]{10}$/', $cvi)) {
-                $f3->reroute('@auth');
-            }
-            $api_url = 'https://declaration.vins-centre-loire.com/viticonnect/check/%login%/%epoch%/%md5%';
-            $secret =  $f3->get('VITICONNECT_API_SECRET');
-            $epoch = time();
-            $api_url = str_replace('%epoch%', $epoch, $api_url);
-            $api_url = str_replace('%login%', $cvi, $api_url);
-            $api_url = str_replace('%md5%', md5($secret."/".$cvi."/".$epoch), $api_url);
-            $res = @file_get_contents($api_url);
-            if ($res) {
-                $f3->set('GET.bivcauth', 1);
-            }
-        }
-
-        if (!$f3->get('GET.bivcauth') && $f3->get('GET.cvi') && !Reponse::getFichier($f3->get('UPLOADS'), $f3->get('GET.cvi'))) {
-            $f3->set('SESSION.user', $f3->get('GET.cvi'));
-            $f3->reroute('@home');
-        }
-
-        if (!phpCAS::isAuthenticated() && $f3->get('GET.bivcauth')) {
-            phpCAS::forceAuthentication();
-        }
-
-        if (phpCAS::isAuthenticated() && $f3->get('GET.bivcauth')) {
-            $f3->reroute('@home');
+            $this->auth->store([
+                'type' => $bivc->getAuthType(),
+                'user' => $bivc->getUser()
+            ]);
         }
     }
 
@@ -97,8 +47,8 @@ class App
     {
         $f3->set('inc', 'index.htm');
 
-        if ($f3->get('SESSION.user')) {
-            $file = $this->findReponse($f3->get('SESSION.user'));
+        if ($this->auth->isAuthenticated()) {
+            $file = $this->findReponse($this->auth->getUser());
 
             if ($file !== false) {
                 $f3->set('inc', 'alreadydone.htm');
@@ -110,17 +60,26 @@ class App
 
     public function auth(Base $f3)
     {
-        if ($f3->get('SESSION.user')) {
+        if ($f3->get('GET.visiteur') || $f3->get('GET.cvi') || $f3->get('GET.bivcauth')) {
+            if ($f3->get('GET.visiteur')) { $type = new Visiteur(); }
+            elseif ($f3->get('GET.cvi')) { $type = new CVI($f3->get('GET.cvi')); }
+            elseif ($f3->get('GET.bivcauth')) { $type = new BIVC($f3); }
+            else { throw new \LogicException('Méthode non reconnue'); }
+
+            $this->auth->authenticate($type);
+        } else {
+            $f3->set('inc', 'authmodal.htm');
+        }
+
+        if ($this->auth->isAuthenticated()) {
             $service = ($f3->get('GET.service')) ?: '@home';
             $f3->reroute($service);
         }
-
-        $f3->set('inc', 'authmodal.htm');
     }
 
     public function logout(Base $f3)
     {
-        $f3->clear('SESSION.user');
+        $f3->clear('SESSION');
 
         if (phpCAS::isAuthenticated()) {
             phpCAS::logout();

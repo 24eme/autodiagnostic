@@ -45,7 +45,7 @@
               </div>
             </div>
 
-            <check if="{{ @SESSION.user }}">
+            <check if="{{ @SESSION.auth.user }}">
               <true><button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button></true>
               <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">Démarrer l'autodiagnostic</a></false>
             </check>

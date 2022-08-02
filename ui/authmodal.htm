@@ -18,7 +18,7 @@
                   Vous être un ressortissant du BIVC ?<br/><br/>
                   Identifiez-vous afin de compléter votre autodiagnostic.
                 </p>
-                <a href="{{ 'home' | alias }}?bivcauth=1" type="button" class="w-100 btn btn-lg btn-secondary">S'identifier</a>
+                <a href="{{ 'auth' | alias }}?bivcauth=1" type="button" class="w-100 btn btn-lg btn-secondary">S'identifier</a>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
                   Indiquer votre CVI pour compléter votre autodiagnostic.
                 </p>
 
-                <button id="btn_saisir_cvi" href="{{ 'home' | alias }}?visiteur=1" type="button" class="w-100 btn btn-lg btn-outline-secondary">Saisir mon CVI</button>
+                <button id="btn_saisir_cvi" href="{{ 'auth' | alias }}?visiteur=1" type="button" class="w-100 btn btn-lg btn-outline-secondary">Saisir mon CVI</button>
                 <form method="GET" id="form_cvi" class="d-none">
                   <div class="input-group">
                     <input name="cvi" type="text" maxlength="10" minlength="10" required="required" placeholder="Saisissez votre CVI" class="form-control form-control-lg" />
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="text-center">
-        <a class="text-dark small" href="{{ 'home' | alias }}?visiteur=1">Pas ressortissant du BIVC ? Tester en tant que <i class="bi bi-person"></i> visiteur</a>
+        <a class="text-dark small" href="{{ 'auth' | alias }}?visiteur=1">Pas ressortissant du BIVC ? Tester en tant que <i class="bi bi-person"></i> visiteur</a>
         </div>
       </div>
     </div>
