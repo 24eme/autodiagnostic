@@ -10,12 +10,14 @@ class BIVC
     const AUTH_TYPE = 'BIVC';
     private $_debug = false;
     private $user = null;
+    private $f3;
 
     public function __construct(Base $f3)
     {
         require_once(__DIR__.'/../../../vendor/CAS-1.3.8/CAS.php');
         phpCAS::setVerbose(false);
         $this->_debug = $f3->get('DEBUG');
+        $this->f3 = $f3;
 
         if ($this->_debug) {
             phpCAS::setDebug();
@@ -67,5 +69,10 @@ class BIVC
     public function auth()
     {
         return phpCAS::forceAuthentication();
+    }
+
+    public function logout()
+    {
+        phpCAS::logoutWithRedirectService($this->f3->get('urlbase'));
     }
 }

@@ -49,6 +49,7 @@ class Auth
 
     public function logout()
     {
+        unset($_SESSION['phpCAS']);
         unset($_SESSION['auth']);
     }
 }

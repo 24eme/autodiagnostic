@@ -79,13 +79,13 @@ class App
 
     public function logout(Base $f3)
     {
-        $f3->clear('SESSION');
+        $this->auth->logout();
 
-        if (phpCAS::isAuthenticated()) {
-            phpCAS::logout();
+        if ($this->auth->getAuthType() === BIVC::getAuthType()) {
+            (new BIVC($f3))->logout();
         }
 
-        $f3->reroute('@auth');
+        $f3->reroute('@home');
     }
 
     public function synthetiser(Base $f3)
