@@ -73,14 +73,14 @@ class App
             else { throw new \LogicException('Méthode non reconnue'); }
 
             $this->auth->authenticate($type);
-        } else {
-            $f3->set('inc', 'authmodal.htm');
+
+            if ($this->auth->isAuthenticated()) {
+                $service = ($f3->get('GET.service')) ?: '@home';
+                $f3->reroute($service);
+            }
         }
 
-        if ($this->auth->isAuthenticated()) {
-            $service = ($f3->get('GET.service')) ?: '@home';
-            $f3->reroute($service);
-        }
+        $f3->set('inc', 'authmodal.htm');
     }
 
     public function logout(Base $f3)
