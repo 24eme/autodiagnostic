@@ -35,10 +35,11 @@
                   Indiquer votre CVI pour compléter votre autodiagnostic.
                 </p>
 
-                <button id="btn_saisir_cvi" href="{{ 'auth' | alias }}?visiteur=1" type="button" class="w-100 btn btn-lg btn-outline-secondary">Saisir mon CVI</button>
+                <button id="btn_saisir_cvi" type="button" class="w-100 btn btn-lg btn-outline-secondary">Saisir mon CVI</button>
                 <form method="GET" id="form_cvi" class="d-none">
                   <div class="input-group">
                     <input name="cvi" type="text" maxlength="10" minlength="10" required="required" placeholder="Saisissez votre CVI" class="form-control form-control-lg" />
+                    <input type="hidden" name="service" value="{{ @GET.service }}"/>
                     <button class="btn btn-lg btn-secondary" type="submit">Valider</button>
                   </div>
                 </form>

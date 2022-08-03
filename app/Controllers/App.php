@@ -167,12 +167,14 @@ class App
 
     public function engagement(Base $f3)
     {
-        if ($this->isAuthorized([Visiteur::getAuthType()]) === false) {
-            $f3->reroute('@auth');
-        }
-
         if ($f3->exists('POST.file') === false || $f3->exists('POST.md5') === false) {
             $f3->reroute('@home');
+        }
+
+        if ($this->isAuthorized([Visiteur::getAuthType()]) === false) {
+            $service = $f3->alias('resultats', ['file' => $f3->get('POST.file'), 'md5' => $f3->get('POST.md5')]);
+            $service = urlencode($service);
+            $f3->reroute(['auth', null, 'service='.$service]);
         }
 
         $file = $f3->clean($f3->get('POST.file'));
