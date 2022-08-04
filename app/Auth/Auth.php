@@ -20,6 +20,7 @@ class Auth
         $res = $type->auth();
 
         if ($res) {
+            $this->store['olduser'] = $this->getUser();
             $this->store(['type' => $type::getAuthType(), 'user' => $type->getUser()]);
         }
 
@@ -45,6 +46,11 @@ class Auth
     public function getAuthType()
     {
         return $this->store['type'];
+    }
+
+    public function getOldUser()
+    {
+        return isset($this->store['olduser']) ? $this->store['olduser'] : null;
     }
 
     public function logout()

@@ -31,15 +31,18 @@ class App
     {
         $this->auth = new Auth();
 
-        if ($this->auth->isAuthenticated() === false
-            && ($f3->exists('GET.ticket') || isset($_SESSION["phpCAS"]["user"]))
-        ) {
+        if ($f3->exists('GET.ticket') || isset($_SESSION["phpCAS"]["user"])) {
             $bivc = new BIVC($f3);
 
             $this->auth->store([
                 'type' => BIVC::getAuthType(),
                 'user' => $bivc->getUser()
             ]);
+
+            // Renommage du fichier
+            if (($olduser = $this->auth->getOldUser()) && strpos($olduser, 'VISITEUR') === 0) {
+                Reponse::rename(self::$storage, $olduser, $this->auth->getUser());
+            }
         }
     }
 
@@ -72,10 +75,17 @@ class App
             elseif ($f3->get('GET.bivcauth')) { $type = new BIVC($f3); }
             else { throw new \LogicException('Méthode non reconnue'); }
 
+            $service = ($f3->get('GET.service')) ?: '@home';
+
             $this->auth->authenticate($type);
 
+            // Renommage du fichier
+            if (($olduser = $this->auth->getOldUser()) && strpos($olduser, 'VISITEUR') === 0) {
+                Reponse::rename(self::$storage, $olduser, $this->auth->getUser());
+                $service = str_replace($olduser, $this->auth->getUser(), $service);
+            }
+
             if ($this->auth->isAuthenticated()) {
-                $service = ($f3->get('GET.service')) ?: '@home';
                 $f3->reroute($service);
             }
         }
@@ -171,14 +181,19 @@ class App
             $f3->reroute('@home');
         }
 
+        $file = $f3->clean($f3->get('POST.file'));
+        $md5 = $f3->clean($f3->get('POST.md5'));
+
+        if ($this->auth->isAuthenticated() === false) {
+            $user = explode('-', $file);
+            $this->auth->store(['user' => $user[0].'-'.$user[1], 'type' => 'Visiteur']);
+        }
+
         if ($this->isAuthorized([Visiteur::getAuthType()]) === false) {
             $service = $f3->alias('resultats', ['file' => $f3->get('POST.file'), 'md5' => $f3->get('POST.md5')]);
             $service = urlencode($service);
             $f3->reroute(['auth', null, 'service='.$service]);
         }
-
-        $file = $f3->clean($f3->get('POST.file'));
-        $md5 = $f3->clean($f3->get('POST.md5'));
 
         $filename = self::$storage.$file.'.json';
 
