@@ -88,11 +88,16 @@
       <div class="row g-3 m-auto text-center">
         <div class="col-auto">
           <form method="post" action="{{ 'engagement' | alias }}">
-            <input type="submit" class="btn bg-app-yellow text-white mb-3" value="Je m'engage *">
+            <check if="{{ @auth->getAuthType() === Auth\Type\Visiteur::getAuthType() }}">
+              <true><input type="submit" class="btn bg-app-yellow text-white mb-3" value="Je m'engage *"></true>
+              <false><input type="submit" class="btn bg-app-yellow text-white mb-3" value="Je m'engage"></false>
+            </check>
             <input type="hidden" name="file" value="{{ @file }}">
             <input type="hidden" name="md5" value="{{ @md5 }}">
           </form>
-          <p class="small text-muted fst-italic opacity-75">* Vous serez redirigé vers une page de connexion si vous n'êtes pas authentifié</p>
+          <check if="{{ @auth->getAuthType() === Auth\Type\Visiteur::getAuthType() }}">
+            <p class="small text-muted fst-italic opacity-75">* Vous serez redirigé vers une page de connexion si vous n'êtes pas authentifié</p>
+          </check>
         </div>
       </div>
     </div>

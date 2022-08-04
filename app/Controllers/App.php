@@ -236,6 +236,7 @@ class App
 
     public function afterroute()
     {
+        $f3->set('auth', $this->auth);
         echo Template::instance()->render('layout.html');
     }
 
