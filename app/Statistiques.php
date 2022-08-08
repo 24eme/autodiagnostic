@@ -25,13 +25,15 @@ class Statistiques
 
     private $ptsForts = [];
     private $ptsAmeliorations = [];
-    private $formules = ['horsformule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
+    private $formules = [];
     private $infosFormules;
 
     public function __construct(Reponse $reponses) {
         $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
         $this->infosFormules = yaml_parse_file(self::DATA_FORMULES);
         $this->reponses = $reponses;
+
+        $this->formules = array_fill_keys(array_keys($this->infosFormules), true);
 
         $this->synthetiserReponses();
     }
@@ -119,6 +121,20 @@ class Statistiques
 
     public function getHighestFormule()
     {
+        $exigences = new Exigences($this);
+
+        foreach ($this->getFormules() as $formule) {
+            $aValider = $this->getElementsAValider($formule);
+
+            foreach ($aValider as $exigence) {
+                if ($exigences->is($exigence) === false) {
+                    $this->formules[$formule] = false;
+                }
+            }
+        }
+
+        unset($exigences);
+
         return $this->formules['formule3'] === true
                 ?  'formule3'
                 : ($this->formules['formule2'] === true
