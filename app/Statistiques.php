@@ -21,6 +21,8 @@ class Statistiques
 
     private $scores;
     private $highScores;
+    private $blacklist_categories_charts = ['Informations générales', 'Certification'];
+
     private $ptsForts;
     private $ptsAmeliorations;
     private $formules;
@@ -40,23 +42,43 @@ class Statistiques
     }
 
     public function renderTabKeysScores() {
-        return implode(',', array_keys($this->scores));
+        return implode(',', array_keys($this->getScores(true)));
     }
 
     public function renderTabValuesScores($pourcent = true) {
         if ($pourcent === false) {
-            return implode(',', $this->scores);
+            return implode(',', $this->getScores(true));
         }
 
-        return implode(',', $this->scoresEnPourcent());
+        return implode(',', $this->scoresEnPourcent(true));
     }
 
-    public function getScores() {
+    public function getScores($blacklist = false) {
+        if ($blacklist === true) {
+            return $this->blacklist($this->scores);
+        }
+
         return $this->scores;
     }
 
-    public function getHighScores() {
+    public function getHighScores($blacklist = false) {
+        if ($blacklist === true) {
+            return $this->blacklist($this->highScores);
+        }
+
         return $this->highScores;
+    }
+
+    private function blacklist($scores)
+    {
+            $filtered = [];
+            foreach ($scores as $categorie => $score) {
+                if (in_array($categorie, $this->blacklist_categories_charts) === false) {
+                    $filtered[$categorie] = $score;
+                }
+            }
+
+            return $filtered;
     }
 
     public function getReponses()
@@ -64,15 +86,15 @@ class Statistiques
         return $this->reponses;
     }
 
-    private function scoresEnPourcent()
+    private function scoresEnPourcent($blacklist = false)
     {
-        $highScores = $this->highScores;
+        $highScores = $this->getHighScores($blacklist);
         return array_map(function ($categorie, $score) use ($highScores) {
             if ($highScores[$categorie] === 0) {
                 return 0;
             }
             return round(($score * 100) / $highScores[$categorie]);
-        }, array_keys($this->scores), array_values($this->scores));
+        }, array_keys($this->getScores($blacklist)), array_values($this->getScores($blacklist)));
     }
 
     public function getFormules()
@@ -244,7 +266,7 @@ class Statistiques
         $f3 = Base::instance();
         foreach (glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
             $stat = new Statistiques(new Reponse($file));
-            $all[] = $stat->scoresEnPourcent();
+            $all[] = $stat->scoresEnPourcent(true);
             $nb_categorie = count(current($all));
             unset($stat);
         }
