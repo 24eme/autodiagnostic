@@ -246,7 +246,7 @@ class App
         $smtp->set('Subject', 'Résultats de mon autodiagnostic');
         $smtp->send(Template::instance()->render('emails/envoiResultats.txt'));
 
-        $f3->reroute('@resultats', ['file' => $f3->get('file'), 'md5' => $f3->get('md5')]);
+        $f3->reroute('@resultats(@file='.$f3->get('file').',@md5='.$f3->get('md5').')');
     }
 
     public function afterroute(Base $f3)
