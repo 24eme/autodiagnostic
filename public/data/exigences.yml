@@ -3,13 +3,13 @@ hve3:
   formule:
     - op: SCORE
       score: 10
+      cat: Protection de la vigne
+    - op: SCORE
+      score: 10
       cat: Fertilisation
     - op: SCORE
       score: 10
       cat: Biodiversité
-    - op: SCORE
-      score: 10
-      cat: Recyclage et gestion des déchets
 
 echelon1:
   name: "Échelon 1"
