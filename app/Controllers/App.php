@@ -241,7 +241,7 @@ class App
         $emailTo = $f3->clean($f3->get('POST.email'));
 
         $smtp = new SMTP($f3->get('SMTP_HOST'), $f3->get('SMTP_PORT'));
-        $smtp->set('From', 'localhost');
+        $smtp->set('From', $f3->get('SMTP_FROM'));
         $smtp->set('To', $emailTo);
         $smtp->set('Subject', 'Résultats de mon autodiagnostic');
         $smtp->send(Template::instance()->render('emails/envoiResultats.txt'));
