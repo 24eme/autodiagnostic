@@ -16,6 +16,7 @@ echelon1:
   formule:
     -
       op: FUNC
+      qid: DESHERBAGE_CHIMIQUE
       func:
         'function ($r) {
           return $r->get("DESHERBAGE_CHIMIQUE")["reponse"] === "NON"
@@ -31,9 +32,10 @@ echelon1:
       value: 1
     -
       op: FUNC
+      qid: INSECTICIDES_AB+INSECTICIDES_NON_AB
       func:
         'function ($r) {
-          return $r->get("INSECTICIDES_AB")["reponse"] + $r->get("INSECTICIDES_NON_AB")["reponse"] === 2;
+          return ($r->get("INSECTICIDES_AB")["reponse"] + $r->get("INSECTICIDES_NON_AB")["reponse"]) <= 2;
         }'
     -
       op: EQ
