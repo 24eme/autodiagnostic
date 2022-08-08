@@ -18,7 +18,7 @@
   <include href="{{ @inc }}" />
 
   <check if="{{ @SESSION.auth.user }}">
-    <p class="position-fixed bottom-0 end-0 small text-muted pe-2"><i class="bi bi-person-fill"></i>
+    <p class="position-fixed bottom-0 end-0 small text-muted pe-2" style="z-index: 1030;"><i class="bi bi-person-fill"></i>
       <check if="{{ strpos(@SESSION.auth.user, 'VISITEUR-') === 0 }}">
         <true>{{ @SESSION.auth.user }}</true>
         <false>Connecté en tant que : <a href="https://declaration.vins-centre-loire.com">{{ @SESSION.auth.user }}</a></false>
