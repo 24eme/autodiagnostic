@@ -19,24 +19,19 @@ class Statistiques
     private $config;
     private $reponses;
 
-    private $scores;
-    private $highScores;
+    private $scores = [];
+    private $highScores = [];
     private $blacklist_categories_charts = ['Informations générales', 'Certification'];
 
-    private $ptsForts;
-    private $ptsAmeliorations;
-    private $formules;
+    private $ptsForts = [];
+    private $ptsAmeliorations = [];
+    private $formules = ['horsformule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
     private $infosFormules;
 
     public function __construct(Reponse $reponses) {
         $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
-        $this->reponses = $reponses;
-        $this->scores = [];
-        $this->highScores = [];
-        $this->ptsForts = [];
-        $this->ptsAmeliorations = [];
-        $this->formules = ['horsformule' => true, 'formule1' => true, 'formule2' => true, 'formule3' => true];
         $this->infosFormules = yaml_parse_file(self::DATA_FORMULES);
+        $this->reponses = $reponses;
 
         $this->synthetiserReponses();
     }
@@ -99,7 +94,7 @@ class Statistiques
 
     public function getFormules()
     {
-        return array_keys($this->formules);
+        return array_keys($this->infosFormules);
     }
 
     public function getFormuleIcone($formule)
@@ -265,7 +260,7 @@ class Statistiques
 
         $f3 = Base::instance();
         foreach (glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
-            $stat = new Statistiques(new Reponse($file));
+            $stat = new self(new Reponse($file));
             $all[] = $stat->scoresEnPourcent(true);
             $nb_categorie = count(current($all));
             unset($stat);
