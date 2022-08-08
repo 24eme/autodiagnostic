@@ -249,7 +249,7 @@ class App
         $f3->reroute('@resultats', ['file' => $f3->get('file'), 'md5' => $f3->get('md5')]);
     }
 
-    public function afterroute()
+    public function afterroute(Base $f3)
     {
         $f3->set('auth', $this->auth);
         echo Template::instance()->render('layout.html');
