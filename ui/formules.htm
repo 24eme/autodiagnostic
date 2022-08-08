@@ -123,7 +123,7 @@
 
           <div>
             <h5>Au format tableur</h5>
-            <a href="{{ 'export', '@file='.@file | alias }}" class="btn btn-sm border">
+            <a href="{{ 'userExport', '@file='.@file.',@md5='.@md5 | alias }}" class="btn btn-sm border">
               <i class="bi bi-download"></i> Au format tableur
             </a>
           </div>

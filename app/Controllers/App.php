@@ -9,6 +9,7 @@ use Auth\Type\Visiteur;
 use Base;
 use Exigences;
 use phpCAS;
+use Reponses\Exporter\ReponseExporter;
 use Reponses\Reponse;
 use SMTP;
 use Statistiques;
@@ -247,6 +248,24 @@ class App
         $smtp->send(Template::instance()->render('emails/envoiResultats.txt'));
 
         $f3->reroute('@formules(@file='.$f3->get('file').',@md5='.$f3->get('md5').')');
+    }
+
+    public function userExport(Base $f3, $args)
+    {
+        $f3->scrub($args['file']);
+        $f3->scrub($args['md5']);
+
+        $filename = self::$storage_engage.$args['file'].'.json';
+
+        if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
+            $f3->error(404);
+        }
+
+        $reponse = new Reponse($filename);
+
+        $reponseExporter = new ReponseExporter($reponse);
+        $reponseExporter->export();
+        exit;
     }
 
     public function afterroute(Base $f3)
