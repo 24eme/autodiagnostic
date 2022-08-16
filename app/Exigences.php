@@ -39,10 +39,12 @@ class Exigences
             if (isset($formule['func']) === true) {
                 $reponse = $formule['func'];
                 $value = eval('return '.$formule['func'].';');
+                $question = $formule['qid'];
                 $success = call_user_func($value, $reponses);
             } elseif ($formule['op'] === 'SCORE') {
                 $reponse = $this->statistiques->getScores()[$formule['cat']];
                 $value = $formule['score'];
+                $question = $formule['cat'];
 
                 foreach ($formule['mod'] as $mod) {
                     $questionnaire = new Questions();
@@ -66,11 +68,12 @@ class Exigences
 
                 $reponse = $reponse['reponse'];
                 $value = $formule['value'];
+                $question = $formule['qid'];
 
                 $success = Statistiques::isNotationSatisfaite($reponse, $formule['op'], $value);
             }
 
-            $this->explain[$exigence][$formule['qid']] = [
+            $this->explain[$exigence][$question] = [
                 'reponse' => $reponse,
                 'requis' => $formule['value'],
                 'success' => $success
