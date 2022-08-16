@@ -44,6 +44,18 @@ class Exigences
                 $reponse = $this->statistiques->getScores()[$formule['cat']];
                 $value = $formule['score'];
 
+                foreach ($formule['mod'] as $mod) {
+                    $questionnaire = new Questions();
+
+                    foreach ($mod['questions'] as $q) {
+                        $infosQuestion = $questionnaire->findQuestion($q);
+                        $notation = $this->statistiques->getNotation($infosQuestion);
+
+                        $reponse -= $notation['score'];
+                        $reponse += $notation['score'] * $mod['ratio'];
+                    }
+                }
+
                 $success = $reponse >= $value;
             } else {
                 $reponse = $reponses->get($formule['qid']);
