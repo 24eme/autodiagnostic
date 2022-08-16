@@ -315,7 +315,7 @@ const Questionnaire = Vue.createApp({
       return this.questionnaire.questions;
     },
     getProgress: function () {
-      return Math.ceil((this.indexCourant) * 100 / this.nombreQuestionsTotal);
+      return Math.ceil((this.getReponsesIds().length) * 100 / this.nombreQuestionsTotal);
     },
     passerQuestionsEnAttentesReponses: function() {
       this.modeQuestionsNonRepondues = true;
