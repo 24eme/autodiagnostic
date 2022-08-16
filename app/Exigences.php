@@ -41,6 +41,7 @@ class Exigences
                 $value = eval('return '.$formule['func'].';');
                 $question = $formule['qid'];
                 $success = call_user_func($value, $reponses);
+                $value = $formule['func'];
             } elseif ($formule['op'] === 'SCORE') {
                 $reponse = $this->statistiques->getScores()[$formule['cat']];
                 $value = $formule['score'];
@@ -75,7 +76,7 @@ class Exigences
 
             $this->explain[$exigence][$question] = [
                 'reponse' => $reponse,
-                'requis' => $formule['value'],
+                'requis' => $value,
                 'success' => $success
             ];
 

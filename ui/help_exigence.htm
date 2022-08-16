@@ -1,0 +1,16 @@
+<div id="help-exigences" class="mt-5">
+  <details>
+    <summary>Plus d'informations sur les exigences</summary>
+    <repeat group="{{ @statistiques->getElementsAValider(end(@statistiques->getFormules())) }}" value="{{ @exigence }}">
+      <strong>{{ @exigences->name(@exigence) }}</strong>
+      <ul class="list-group mb-3">
+        <repeat group="{{ @exigences->explain(@exigence) }}" key="{{ @id }}" value="{{ @requirements }}">
+          <li class="list-group-item">
+            <i class="{{ (@requirements['success']) ? 'bi bi-check text-success' : 'bi bi-x text-danger' }}"></i>
+            {{ @id }} ⋅ Requis : {{ @requirements['requis'] }} ⋅ Votre réponse : {{ @requirements['reponse'] }}</li>
+        </repeat>
+      </ul>
+    </repeat>
+  </details>
+</div>
+
