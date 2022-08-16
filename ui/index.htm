@@ -7,55 +7,52 @@
   <include href="header.htm">
 
   <div class="col-6 mx-auto pb-3 mb-5">
-
-    <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent) ? 'slideback' : 'slidestatic'">
-
-      <section id="page_home" v-if="indexCourant === -1" class="text-start d-flex justify-content-center align-items-center" key="-1">
-
-        <div id="startup-content" v-if="questionnaireStarted">
-          <div class="mb-5 mt-5 p-2 bg-light border rounded">
-            <p class="text-center m-0">
+    <section id="page_home" v-if="indexCourant === -1" class="text-start d-flex justify-content-center align-items-center" key="-1">
+      <div v-if="questionnaireStarted === true" id="startup-content">
+        <div class="mb-5 mt-5 p-2 bg-light border rounded">
+          <p class="text-center m-0">
             <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {% getReponsesIds().length %} question(s) sur un total de {% getInitialNbQuestions() %}.
-            </p>
-          </div>
-          <div class="col-md-10 mx-auto">
-            <div class="d-grid gap-2">
-              <check if="{{ @SESSION.auth.user }}">
-                <true><button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses(); this.modeQuestionsNonRepondues = false;">Continuer le questionnaire</button></true>
-                <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">S'authentifier</a></false>
-              </check>
-            </div>
-            <button type="button" class="btn btn-sm p-1 text-muted mt-2" v-on:click="reset">
-              <small><i class="bi bi-trash"></i> Recommencer le questionnaire</small>
-            </button>
-          </div>
-        </div>
-        <div v-else id="startup-content">
-          <p class="text-muted mb-5">
-            Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br /><br />Les pratiques viticoles sont évaluées à travers une charte développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br /><br />Un outil d’auto diagnostic a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules. Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées.<br /><br />La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire.
           </p>
-
-          <div class="text-center">
-            <div class="mb-5 alert alert-primary d-flex align-items-center" role="alert">
-              <div class="border-end p-1">
-                <i class="fs-2 bi-info-circle-fill"></i>
-              </div>
-              <div>
-                En répondant à ce questionnaire, vous acceptez l'utilisation de vos données par le BIVC à des fins de traitement statistiques collectives.
-              </div>
-            </div>
-
+        </div>
+        <div class="col-md-10 mx-auto">
+          <div class="d-grid gap-2">
             <check if="{{ @SESSION.auth.user }}">
-              <true><button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button></true>
-              <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">Démarrer l'autodiagnostic</a></false>
+              <true><button class="btn btn-primary" v-on:click="passerQuestionsEnAttentesReponses(); this.modeQuestionsNonRepondues = false;">Continuer le questionnaire</button></true>
+              <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">S'authentifier</a></false>
             </check>
           </div>
+          <button type="button" class="btn btn-sm p-1 text-muted mt-2 mx-auto d-block" v-on:click="reset">
+            <small><i class="bi bi-trash"></i> Recommencer le questionnaire</small>
+          </button>
         </div>
-      </section>
+      </div>
 
+      <div v-else id="startup-content">
+        <p class="text-muted mb-5">
+          Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br /><br />Les pratiques viticoles sont évaluées à travers une charte développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br /><br />Un outil d’auto diagnostic a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules. Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées.<br /><br />La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire.
+        </p>
+
+        <div class="text-center">
+          <div class="mb-5 alert alert-primary d-flex align-items-center" role="alert">
+            <div class="border-end p-1">
+              <i class="fs-2 bi-info-circle-fill"></i>
+            </div>
+            <div>
+              En répondant à ce questionnaire, vous acceptez l'utilisation de vos données par le BIVC à des fins de traitement statistiques collectives.
+            </div>
+          </div>
+
+          <check if="{{ @SESSION.auth.user }}">
+            <true><button class="btn btn-primary" v-on:click="deplacer(0)">Commencer le questionnaire</button></true>
+            <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">Démarrer l'autodiagnostic</a></false>
+          </check>
+        </div>
+      </div>
+    </section>
+
+    <transition-group tag="div" class="container-slider" v-bind:name="(indexCourant > indexPrecedent) ? 'slide' : (indexCourant < indexPrecedent && indexCourant > -1) ? 'slideback' : 'slidestatic'">
       <section v-show="isTermine" v-bind:key="nombreQuestionsTotal" class="container-fluid py-5 text-center">
-
-        <div v-if="!hasQuestionsEnAttentesReponses()">
+        <div v-if="! hasQuestionsEnAttentesReponses()">
           <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Bravo !</h1>
           <p class="fs-4">Vous êtes arrivé à la fin du questionnaire.</p>
         </div>
@@ -66,7 +63,7 @@
           <button type="button" class="btn btn-primary mt-2" v-on:click="intro(); passerQuestionsEnAttentesReponses();">Accèder aux questions sans réponses</button>
         </div>
 
-        <div class="col-md-8 mx-auto" v-if="!hasQuestionsEnAttentesReponses()">
+        <div class="col-md-8 mx-auto" v-if="! hasQuestionsEnAttentesReponses()">
           <p class="text-center lead">
             Vous pouvez vérifier vos réponses avant de valider votre auto-diagnostic, ou confirmer et voir vos résultats.
           </p>
@@ -139,7 +136,6 @@
           </div>
         </div>
       </section>
-
     </transition-group>
   </div>
 
