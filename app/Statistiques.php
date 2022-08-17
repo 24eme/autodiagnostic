@@ -275,7 +275,7 @@ class Statistiques
         $nb_categorie = 0;
 
         $f3 = Base::instance();
-        foreach (glob($f3->get('UPLOADS').'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
+        foreach (glob($f3->get('UPLOADS').'engages/'.'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
             $stat = new self(new Reponse($file));
             $all[] = $stat->scoresEnPourcent(true);
             $nb_categorie = count(current($all));
