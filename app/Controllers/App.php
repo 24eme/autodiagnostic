@@ -3,9 +3,7 @@
 namespace Controllers;
 
 use Auth\Auth;
-use Auth\Type\BIVC;
-use Auth\Type\CVI;
-use Auth\Type\Visiteur;
+use Auth\Type\{BIVC,CVI,Visiteur};
 use Base;
 use Exigences;
 use phpCAS;
