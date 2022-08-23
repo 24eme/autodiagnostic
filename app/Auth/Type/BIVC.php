@@ -31,9 +31,7 @@ class BIVC
             $f3->get('CAS_CONTEXT')
         );
 
-        if ($this->_debug) {
-            phpCAS::setNoCasServerValidation();
-        }
+        phpCAS::setNoCasServerValidation();
 
         phpCAS::setFixedServiceURL($f3->get('urlbase'));
     }
