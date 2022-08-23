@@ -97,7 +97,7 @@ class App
         $this->auth->logout();
 
         if ($this->auth->getAuthType() === BIVC::getAuthType()) {
-            (new BIVC($f3))->logout();
+            BIVC::logout($f3);
         }
 
         $f3->reroute('@home');

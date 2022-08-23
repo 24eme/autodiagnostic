@@ -69,8 +69,8 @@ class BIVC
         return phpCAS::forceAuthentication();
     }
 
-    public function logout()
+    public static function logout($f3)
     {
-        phpCAS::logoutWithRedirectService($this->f3->get('urlbase'));
+        phpCAS::logoutWithRedirectService($f3->get('urlbase'));
     }
 }
