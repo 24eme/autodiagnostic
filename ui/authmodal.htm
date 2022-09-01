@@ -18,7 +18,11 @@
                   Vous être un ressortissant du BIVC ?<br/><br/>
                   Identifiez-vous afin de compléter votre autodiagnostic.
                 </p>
-                <a href="{{ 'auth' | alias }}?bivcauth=1" class="w-100 btn btn-lg btn-secondary">S'identifier</a>
+                <form method="GET" id="form_cas">
+                  <button type="submit" class="w-100 btn btn-lg btn-secondary">S'identifier</button>
+                  <input type="hidden" name="service" value="{{ @GET.service }}"/>
+                  <input type="hidden" name="bivcauth" value="1"/>
+                </form>
               </div>
             </div>
           </div>
