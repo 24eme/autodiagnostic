@@ -92,6 +92,7 @@ class Exigences
 
     public function explain($exigence)
     {
+        $this->is($exigence);
         return $this->explain[$exigence];
     }
 }
