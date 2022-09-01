@@ -81,6 +81,8 @@ const Questionnaire = Vue.createApp({
         index = -1;
       } else if(url.hash.replace(/^#/, '') == 'fin') {
         index = this.nombreQuestionsTotal;
+      } else if(url.hash.startsWith('#start')) {
+        index = 0
       } else {
         index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
@@ -347,7 +349,7 @@ const Questionnaire = Vue.createApp({
       return this.questionnaire.questions;
     },
     getProgress: function () {
-      return Math.ceil((this.getReponsesIds().length) * 100 / this.nombreQuestionsTotal);
+      return Math.ceil((this.getReponsesIds().length) * 100 / this.getInitialNbQuestions());
     },
     passerQuestionsEnAttentesReponses: function() {
       this.modeQuestionsNonRepondues = true;
