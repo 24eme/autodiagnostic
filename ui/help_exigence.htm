@@ -5,7 +5,13 @@
       <repeat group="{{ @exigences->explain(@exigence) }}" key="{{ @id }}" value="{{ @requirements }}">
         <li class="list-group-item">
           <i class="{{ (@requirements['success']) ? 'bi bi-check text-success' : 'bi bi-x text-danger' }}"></i>
-          {{ @id }} ⋅ Requis : {{ @requirements['requis'] }} ⋅ Votre réponse : {{ @requirements['reponse'] }}</li>
+          {{ (@exigence === 'hve3') ? @id : @questions->findQuestion(@id)['libelle'] }}
+          ⋅ Requis : {{ (strpos(@requirements['requis'], 'func:') === 0)
+              ? '<code>'.str_replace('func:', '', @requirements['requis']).'</code>'
+              : @requirements['requis']
+          }}
+          ⋅ Votre réponse : {{ @requirements['reponse'] }}
+        </li>
       </repeat>
     </ul>
   </repeat>
