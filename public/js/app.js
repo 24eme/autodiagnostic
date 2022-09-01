@@ -137,6 +137,38 @@ const Questionnaire = Vue.createApp({
     getQuestionIndex: function(id) {
       return this.getQuestions().findIndex(q => q.id == id);
     },
+    getLastQuestionRepondueIndex: function() {
+      let lastIndex = -1;
+      let questionsAutomatique = [];
+      for(let index in this.questionnaire.questions) {
+        let question = this.questionnaire.questions[index];
+        if(question.type == 'categorie') {
+          continue;
+        }
+        if(this.getReponsesIds().includes(question.id) && question.reponses) {
+          for(let indexReponse in question.reponses) {
+            let reponseConfig = question.reponses[indexReponse];
+            if(reponseConfig.id != this.reponses[question.id]) {
+              continue;
+            }
+            for(let idAuto in reponseConfig.reponses_automatiques) {
+              questionsAutomatique.push(idAuto);
+              console.log(questionsAutomatique);
+            }
+          }
+
+        }
+        if(!this.getReponsesIds().includes(question.id)) {
+          continue;
+        }
+        if(questionsAutomatique.includes(question.id)) {
+          continue;
+        }
+        lastIndex = index;
+      }
+
+      return lastIndex*1;
+    },
     deplacer: function(index) {
       if(index < 0) {
         this.intro();
@@ -321,9 +353,14 @@ const Questionnaire = Vue.createApp({
       this.modeQuestionsNonRepondues = true;
       this.deplacer(0);
     },
-    passerToutesQuestions: function() {
+    verifierQuestions: function() {
       this.modeQuestionsNonRepondues = false;
       this.deplacer(0);
+    },
+    continuerQuestions: function() {
+      this.modeQuestionsNonRepondues = false;
+      console.log(this.getLastQuestionRepondueIndex() + 1);
+      this.deplacer(this.getLastQuestionRepondueIndex() + 1);
     },
     switchModeQuestions: function () {
       this.modeQuestionsNonRepondues = ! this.modeQuestionsNonRepondues;
