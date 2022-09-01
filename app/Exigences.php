@@ -37,11 +37,11 @@ class Exigences
 
         foreach ($exigenceDetail['formule'] as $formule) {
             if (isset($formule['func']) === true) {
-                $reponse = $formule['func'];
                 $value = eval('return '.$formule['func'].';');
                 $question = $formule['qid'];
                 $success = call_user_func($value, $reponses);
-                $value = $formule['func'];
+                $value = 'func:'.mb_substr($formule['func'], 0, 30).'...';
+                $reponse = $success;
             } elseif ($formule['op'] === 'SCORE') {
                 $reponse = $this->statistiques->getScores()[$formule['cat']];
                 $value = $formule['score'];
@@ -92,6 +92,7 @@ class Exigences
 
     public function explain($exigence)
     {
+        $this->is($exigence);
         return $this->explain[$exigence];
     }
 }

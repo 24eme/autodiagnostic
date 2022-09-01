@@ -466,7 +466,7 @@ questions:
   libelle: "Combien de CMR avez-vous utilisés sur la campagne ?"
   unite: CMR
   notation:
-    GTE:
+    GT:
       "3":
         score: -5
       "2":

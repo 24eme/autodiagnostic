@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Base;
+use Exigences;
 use Questions;
 use Reponses\Exporter\ReponseExporter;
 use Reponses\Exporter\ReponsesExporter;
@@ -95,10 +96,12 @@ class Admin
 
         $file = new Reponse($file);
         $statistiques = new Statistiques($file);
+        $exigences = new Exigences($statistiques);
         $questions = new Questions();
 
         $f3->set('inc', 'admin_show.htm');
         $f3->set('statistiques', $statistiques);
+        $f3->set('exigences', $exigences);
         $f3->set('questions', $questions);
         $f3->set('reponse', $file);
     }
