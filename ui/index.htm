@@ -139,7 +139,7 @@
     </transition-group>
   </div>
 
-  <div class="fixed-bottom py-1 bg-light" v-if="indexCourant > -1 && !isTermine">
+  <div class="fixed-bottom py-1 bg-light" v-if="indexCourant != null && indexCourant > -1 && !isTermine">
     <div class="row align-items-center">
       <div class="col-3 text-end">
         <button type="button" z-index="-1" title="Retour au début" class="btn me-2" v-on:click="intro()"><span class="bi bi-house"></span></button>
