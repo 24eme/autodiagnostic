@@ -6,7 +6,7 @@
 
   <include href="header.htm">
 
-  <div class="col-6 mx-auto pb-3 mb-5">
+  <div class="col-lg-6 col-md-8 col-sm-12 mx-auto pb-3 mb-5">
     <section id="page_home" v-if="indexCourant === -1" class="text-start d-flex justify-content-center align-items-center" key="-1">
       <div v-if="questionnaireStarted === true" id="startup-content">
         <div class="mb-5 mt-5 p-2 bg-light border rounded">
@@ -141,10 +141,10 @@
 
   <div class="fixed-bottom py-1 bg-light" v-if="indexCourant != null && indexCourant > -1 && !isTermine">
     <div class="row align-items-center">
-      <div class="col-3 text-end">
+      <div class="col-lg-3 col-md-12 text-end">
         <button type="button" z-index="-1" title="Retour au début" class="btn me-2" v-on:click="intro()"><span class="bi bi-house"></span></button>
       </div>
-      <div class="col-6 mx-auto">
+      <div class="col-lg-6 col-md-12 mx-auto">
         <div class="row align-items-center">
           <div class="col-3 col-">
             <button type="button" z-index="-1" class="btn btn-outline-dark border" v-on:click="deplacer(indexCourant - 1)"><span class="bi bi-chevron-compact-left"></span>Précédent</button>
@@ -161,7 +161,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-lg-3 col-md-12">
         <button type="button" z-index="-1" title="Aller à la fin" class="btn me-2" v-on:click="terminer()"><span class="bi bi-skip-end"></span></button>
       </div>
     </div>
