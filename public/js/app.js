@@ -155,7 +155,6 @@ const Questionnaire = Vue.createApp({
             }
             for(let idAuto in reponseConfig.reponses_automatiques) {
               questionsAutomatique.push(idAuto);
-              console.log(questionsAutomatique);
             }
           }
 
