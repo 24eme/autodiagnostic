@@ -8,8 +8,10 @@
       <true>
         <p class="mb-4">Vous pouvez retrouver vos réponses sur la page des résultats ou retrouver les documents liés à votre formule sur la page des formules.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <a href="{{ 'resultats', '@file='.@file.',@md5='.@md5 | alias }}" class="btn btn-primary px-4 gap-3">Résultats</a>
-          <a href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}?force=1" class="btn btn-outline-secondary px-4">Formules</a>
+          <a href="{{ 'resultats', '@file='.@file.',@md5='.@md5 | alias }}" class="btn bg-app-red text-white px-4 gap-3">Voir les résultats</a>
+          <check if="{{ @engage }}">
+            <a href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}?force=1" class="btn bg-app-yellow text-white px-4">Voir ma formule</a>
+          </check>
         </div>
       </true>
       <false>
@@ -21,6 +23,6 @@
   </div>
 
   <div class="col-lg-6 mx-auto mt-4">
-    <a href="{{ 'logout' | alias }}" class="btn btn-outline-secondary btn-sm px-4">Recommencer avec un autre compte</a>
+    <a href="{{ 'logout' | alias }}" class="btn btn-sm text-muted px-4">Recommencer avec un autre compte</a>
   </div>
 </div>

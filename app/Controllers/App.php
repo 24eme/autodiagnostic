@@ -51,12 +51,12 @@ class App
 
         if ($this->auth->isAuthenticated()) {
             $file = $this->findReponse($this->auth->getUser());
-
             if ($file !== false) {
                 $f3->set('inc', 'alreadydone.htm');
                 $f3->set('file', basename($file, '.json'));
                 $f3->set('md5', md5_file($file));
                 $f3->set('showLinks', $this->auth->getAuthType() !== CVI::getAuthType());
+                $f3->set('engage', Reponse::getFichierNameWithAuth(self::$storage_engage.$f3->get('file'), $f3->get('md5')) !== false);
             }
         }
     }
@@ -153,17 +153,16 @@ class App
         $f3->scrub($args['file']);
         $f3->scrub($args['md5']);
 
-        $engage = true;
-
         $filename = self::$storage_engage.$args['file'].'.json';
 
-        if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
-            $engage = false;
-            $filename = self::$storage.$args['file'].'.json';
+        $engage = Reponse::getFichierNameWithAuth($filename, $args['md5']) !== false;
 
-            if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
-                $f3->reroute('@home');
-            }
+        if (!$engage) {
+            $filename = self::$storage.$args['file'].'.json';
+        }
+
+        if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
+            return $f3->reroute('@home');
         }
 
         $statistiques = new Statistiques(new Reponse($filename));
