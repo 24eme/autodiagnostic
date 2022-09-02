@@ -21,8 +21,8 @@
               <false><a href="{{ 'auth', null, 'service=#start' | alias }}" class="btn btn-primary">S'authentifier</a></false>
             </check>
           </div>
-          <button type="button" class="btn btn-sm p-1 text-muted mt-2 mx-auto d-block" v-on:click="reset">
-            <small><i class="bi bi-trash"></i> Recommencer le questionnaire</small>
+          <button type="button" class="btn btn-sm p-1 text-muted mt-2 mx-auto d-block opacity-75" v-on:click="reset">
+            <small><i class="bi bi-trash"></i> Effacer mes réponses et recommencer</small>
           </button>
         </div>
       </div>
@@ -60,7 +60,14 @@
         <div v-if="hasQuestionsEnAttentesReponses()">
           <h1 class="display-5 fw-bold"><span class="bi bi-hand-thumbs-up"></span> Vous y êtes presque !</h1>
           <p class="fs-4">Vous êtes arrivé à la fin du questionnaire mais vous n'avez pas encore répondu à l'ensemble des questions</p>
+          <div class="mb-3 mt-2 p-2 bg-light border rounded">
+            <p class="text-center m-0">
+              <i class="bi-journal-check" role="img" aria-label="Questions répondues"></i> Vous avez répondu à {% getReponsesIds().length %} question(s) sur un total de {% getInitialNbQuestions() %}.
+            </p>
+          </div>
           <button type="button" class="btn btn-primary mt-2" v-on:click="intro(); passerQuestionsEnAttentesReponses();">Accèder aux questions sans réponses</button>
+          <button type="button" class="btn btn-sm p-1 text-muted mt-2 mx-auto d-block" v-on:click="verifierQuestions()">Vérifier mes réponses</button>
+          <button type="button" class="btn btn-sm p-1 text-muted mt-1 mx-auto d-block opacity-75" v-on:click="reset"><small><i class="bi bi-trash"></i> Effacer mes réponses et recommencer</small></button>
         </div>
 
         <div class="col-md-8 mx-auto" v-if="! hasQuestionsEnAttentesReponses()">

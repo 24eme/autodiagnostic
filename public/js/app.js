@@ -82,7 +82,8 @@ const Questionnaire = Vue.createApp({
       } else if(url.hash.replace(/^#/, '') == 'fin') {
         index = this.nombreQuestionsTotal;
       } else if(url.hash.startsWith('#start')) {
-        index = 0
+        this.continuerQuestions();
+        return;
       } else {
         index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
@@ -253,6 +254,10 @@ const Questionnaire = Vue.createApp({
       }
     },
     intro: function() {
+      if(this.getLastQuestionRepondueIndex() == this.nombreQuestionsTotal - 1) {
+        this.terminer();
+        return;
+      }
       this.isTermine = false;
       this.indexCourant = -1;
       this.updatePageInfos('', '');
@@ -272,6 +277,9 @@ const Questionnaire = Vue.createApp({
       document.forms["synthetiserForm"].submit();
     },
     reset: function() {
+      if(!confirm('Étes-vous sûr de vouloir effacer toutes vos réponses ?')) {
+        return;
+      }
       localStorage.clear();
       this.reponses = {}
       this.modeQuestionsNonRepondues = false;
@@ -360,7 +368,6 @@ const Questionnaire = Vue.createApp({
     },
     continuerQuestions: function() {
       this.modeQuestionsNonRepondues = false;
-      console.log(this.getLastQuestionRepondueIndex() + 1);
       this.deplacer(this.getLastQuestionRepondueIndex() + 1);
     },
     switchModeQuestions: function () {
