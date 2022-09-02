@@ -360,6 +360,7 @@ const Questionnaire = Vue.createApp({
     },
     passerQuestionsEnAttentesReponses: function() {
       this.modeQuestionsNonRepondues = true;
+      this.indexCourant = -1;
       this.deplacer(0);
     },
     verifierQuestions: function() {
