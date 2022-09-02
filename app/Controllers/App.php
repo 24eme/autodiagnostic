@@ -56,7 +56,7 @@ class App
                 $f3->set('file', basename($file, '.json'));
                 $f3->set('md5', md5_file($file));
                 $f3->set('showLinks', $this->auth->getAuthType() !== CVI::getAuthType());
-                $f3->set('engage', Reponse::getFichierNameWithAuth(self::$storage_engage.$f3->get('file'), $f3->get('md5')) !== false);
+                $f3->set('engage', Reponse::getFichierNameWithAuth(self::$storage_engage.$f3->get('file').'.json', $f3->get('md5')) !== false);
             }
         }
     }
