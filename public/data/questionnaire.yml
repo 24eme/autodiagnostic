@@ -4,7 +4,7 @@ questions:
 - type: categorie
   id: INFORMATIONS
   libelle: Informations générales
-  complement_information: "Utilisez cet outil d'auto diagnostic pour vos surfaces en vigne uniquement et pour&nbsp;la&nbsp;campagne&nbsp;2021.<br /><br />Répondez le plus sincèrement possible, vos résultats seront utilisés à des fins statistiques uniquement. En aucun cas, vos réponses seront transmises à autrui"
+  complement_information: "Utilisez cet outil d'auto diagnostic pour vos surfaces en vigne uniquement et pour&nbsp;la&nbsp;campagne&nbsp;actuelle.<br /><br />Répondez le plus sincèrement possible, vos résultats seront utilisés à des fins statistiques uniquement. En aucun cas, vos réponses seront transmises à autrui"
   couleur: "#964320"
   opacite: "#96432080"
   couleur_texte: "#fff"
