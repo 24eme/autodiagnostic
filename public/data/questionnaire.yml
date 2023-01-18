@@ -217,7 +217,7 @@ questions:
 - type: question
   id: SURFACE_ALTERNATIVE_CHIMIE
   libelle: "Sur quel pourcentage de votre surface utilisez-vous au moins une méthode alternative à la lutte chimique ?"
-  complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle"
+  complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle, utilisation de produits de biocontrôle"
   unite: "%"
   notation:
     LTE:
