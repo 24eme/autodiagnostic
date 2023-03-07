@@ -82,7 +82,8 @@ const Questionnaire = Vue.createApp({
       } else if(url.hash.replace(/^#/, '') == 'fin') {
         index = this.nombreQuestionsTotal;
       } else if(url.hash.startsWith('#start')) {
-        index = 0
+        this.continuerQuestions();
+        return;
       } else {
         index = this.getQuestionIndex(url.hash.replace(/^#/, ''));
       }
@@ -138,6 +139,37 @@ const Questionnaire = Vue.createApp({
     },
     getQuestionIndex: function(id) {
       return this.getQuestions().findIndex(q => q.id == id);
+    },
+    getLastQuestionRepondueIndex: function() {
+      let lastIndex = -1;
+      let questionsAutomatique = [];
+      for(let index in this.questionnaire.questions) {
+        let question = this.questionnaire.questions[index];
+        if(question.type == 'categorie') {
+          continue;
+        }
+        if(this.getReponsesIds().includes(question.id) && question.reponses) {
+          for(let indexReponse in question.reponses) {
+            let reponseConfig = question.reponses[indexReponse];
+            if(reponseConfig.id != this.reponses[question.id]) {
+              continue;
+            }
+            for(let idAuto in reponseConfig.reponses_automatiques) {
+              questionsAutomatique.push(idAuto);
+            }
+          }
+
+        }
+        if(!this.getReponsesIds().includes(question.id)) {
+          continue;
+        }
+        if(questionsAutomatique.includes(question.id)) {
+          continue;
+        }
+        lastIndex = index;
+      }
+
+      return lastIndex*1;
     },
     deplacer: function(index) {
       if(index < 0) {
@@ -222,6 +254,10 @@ const Questionnaire = Vue.createApp({
       }
     },
     intro: function() {
+      if(this.getLastQuestionRepondueIndex() == this.nombreQuestionsTotal - 1) {
+        this.terminer();
+        return;
+      }
       this.isTermine = false;
       this.indexCourant = -1;
       this.updatePageInfos('', '');
@@ -241,6 +277,9 @@ const Questionnaire = Vue.createApp({
       document.forms["synthetiserForm"].submit();
     },
     reset: function() {
+      if(!confirm('Étes-vous sûr de vouloir effacer toutes vos réponses ?')) {
+        return;
+      }
       localStorage.clear();
       this.reponses = {}
       this.modeQuestionsNonRepondues = false;
@@ -321,11 +360,16 @@ const Questionnaire = Vue.createApp({
     },
     passerQuestionsEnAttentesReponses: function() {
       this.modeQuestionsNonRepondues = true;
+      this.indexCourant = -1;
       this.deplacer(0);
     },
-    passerToutesQuestions: function() {
+    verifierQuestions: function() {
       this.modeQuestionsNonRepondues = false;
       this.deplacer(0);
+    },
+    continuerQuestions: function() {
+      this.modeQuestionsNonRepondues = false;
+      this.deplacer(this.getLastQuestionRepondueIndex() + 1);
     },
     switchModeQuestions: function () {
       this.modeQuestionsNonRepondues = ! this.modeQuestionsNonRepondues;
