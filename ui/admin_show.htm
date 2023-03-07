@@ -18,8 +18,8 @@
           </th>
         </true>
         <false>
-          <tr>
-            <td title="{{ @question.id }}">{{ @questions->getQuestionPosition(@question.id) }}. {{ @question.libelle }} <a href="{{ 'config' | alias }}#modal-{{ @categorie }}-{{ @question.id }}" class="text-dark"><i class="bi-eye"></i></a></td>
+          <tr id="Q_{{ @question.id }}">
+            <td title="{{ @question.id }}"><a href="#Q_{{ @question.id }}" class="text-dark">{{ @questions->getQuestionPosition(@question.id) }}</a>. {{ @question.libelle }} <a href="{{ 'config' | alias }}#modal-{{ @categorie }}-{{ @question.id }}" class="text-dark"><i class="bi-eye"></i></a></td>
             <td>{{ @reponse->get(@question.id)['reponse'] }} <small class="text-muted">{{ @question.unite }}</small></td>
             <check if="{{ @question.notation }}">
             <true>
