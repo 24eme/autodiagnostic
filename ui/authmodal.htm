@@ -5,8 +5,10 @@
         <h3 class="modal-title">Accès à l'autodiagnostic</h3>
       </div>
       <div class="modal-body">
+        <div class="alert alert-primary">
+            <i class="bi bi-info-circle"></i>&nbsp;En vous identifiant ou en saisissant votre CVI, vous pourrez optimiser votre temps car certaines réponses seront pré-remplis automatiquement en se basant sur vos réponses de l'année précédente.</p>
+        </div>
         <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
-
           <div class="col">
             <div class="card mb-4 rounded-3 shadow-sm h-100">
               <div class="card-header py-3">
@@ -18,9 +20,6 @@
                   Vous être un ressortissant du BIVC ?<br/><br/>
                   Identifiez-vous afin de compléter votre autodiagnostic.
                 </p>
-                  <div class="alert alert-primary">
-                      <small><i class="bi bi-info-circle"></i>&nbsp;En vous identifiant, vous pourrez optimiser votre temps car certaines réponses seront pré-remplis automatiquement en se basant sur vos réponses de l'année précédente.</p></small>
-                  </div>
                 <form method="GET" id="form_cas">
                   <button type="submit" class="w-100 btn btn-lg btn-secondary">S'identifier</button>
                   <input type="hidden" name="service" value="{{ @GET.service }}"/>
