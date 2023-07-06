@@ -1222,6 +1222,8 @@ questions:
     EQ:
       "DECHETTERIE":
         score: 10
+      "NON_UTILISE":
+        score: 10
       "STOCK":
         score: 0
       "AUTRE":
