@@ -197,23 +197,25 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "10":
+     "5":
+        score: 0
+      "15":
         score: 1
-      "20":
+      "25":
         score: 2
-      "30":
+      "35":
         score: 3
-      "40":
+      "45":
         score: 4
-      "50":
+      "55":
         score: 5
-      "60":
+      "65":
         score: 6
-      "70":
+      "75":
         score: 7
-      "80":
+      "85":
         score: 8
-      "90":
+      "95":
         score: 9
       "100":
         score: 10
