@@ -254,14 +254,10 @@ questions:
     libelle: "Réserves de collecte des eaux de pluie et réseau correspondant (équipements à l'échelle des bâtiments de l'exploitation)"
   - id: VOLUCOMPTEUR
     libelle: "Volucompteur programmable pour éviter le débordement des cuves"
-  - id: ANTIGOUTTES
-    libelle: "Système anti-gouttes (à la rampe pour la régularité de la pulvérisation)"
-  - id: BOUILLIE
-    libelle: "Panneaux récupérateurs de bouillie"
-  - id: PRECISION
-    libelle: "Matériel de précision permettant de réduire les doses de produits phytosanitaires (traitement face par face)"
-  - id: RINCAGE
-    libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d'automisation de rinçage des cuves"
+  - id: DPAE
+    libelle: "DPAE (débit proportionnel à l'avancement électronique)"
+  - id: APPLICATION
+    libelle: "Système d'application localisé (pulvérisateur avec rampe, localisation sur le rang, rampe à assistance d'air)"
   - id: PRESTATAIRE
     libelle: "Je fais appel à un prestataire de service"
   - id: AUCUN
@@ -281,13 +277,11 @@ questions:
         score: 1
       "VOLUCOMPTEUR":
         score: 1
-      "ANTIGOUTTES":
+      "DPAE":
         score: 1
-      "BOUILLIE":
+      "APPLICATION":
         score: 1
-      "PRECISION":
-        score: 1
-      "RINCAGE":
+      "PRESTATAIRE":
         score: 1
       "AUCUN":
         score: 0
