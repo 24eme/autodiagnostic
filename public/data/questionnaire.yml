@@ -741,14 +741,20 @@ questions:
 - type: question
   id: UNITE_AZOTE
   libelle: "Quelle est la part d'azote organique utilisé sur la quantité totale d'azote apporté ?"
-  unite: "N/ha"
+  unite: "%"
   notation:
-    GTE:
-      "16":
-        score: -5
-      "0":
+    LTE:
+      "25":
         score: 0
-
+      "35":
+        score: 1
+      "45":
+        score: 2
+      "55":
+        score: 3
+      "55.01":
+        score: 4
+        
 - type: categorie
   id: BIODIVERSITE
   libelle: "Biodiversité"
