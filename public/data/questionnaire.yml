@@ -740,7 +740,7 @@ questions:
 
 - type: question
   id: UNITE_AZOTE
-  libelle: "Combien d'unités d'azote chimique avez-vous utilisé sur la campagne ?"
+  libelle: "Quelle est la part d'azote organique utilisé sur la quantité totale d'azote apporté ?"
   unite: "N/ha"
   notation:
     GTE:
