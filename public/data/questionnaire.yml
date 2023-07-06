@@ -13,7 +13,11 @@ questions:
   id: SURFACE_EXPLOITATION
   libelle: "Quelle est la surface de votre exploitation ?"
   unite: "ha"
-
+ notation:
+    GTE:
+      "6":
+        score: 5
+        
 - type: question
   id: APPELLATIONS
   libelle: "Quelle(s) appellation(s) produisez-vous ?"
