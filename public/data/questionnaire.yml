@@ -828,6 +828,7 @@ questions:
 - type: question
   id: DESHERBAGE_CHIMIQUE_AUTOMNE
   libelle: "Pratiquez-vous un desherbage chimique ou mécanique à l'automne sur au moins une partie de votre exploitation ?"
+  complement_information: "Ne comptez pas votre desherbage mécanique si celui-ci sert de préparation à vos sols pour le semis d'engrais-verts."
   reponses:
   - id: OUI
     libelle: "Oui"
