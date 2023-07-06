@@ -636,28 +636,35 @@ questions:
         score: -5
 
 - type: question
-  id: CLONES
-  libelle: "Quel nombre de clones différents utilisez-vous ?"
-  complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
+  id: CAMPAGNE_COLLECTIVE_PROSPECTION
+  libelle: "Participez-vous à une campagne collective de prospection ?"
   reponses:
-  - id: 0
-    libelle: "0"
-  - id: 1
-    libelle: "1"
-  - id: 2
-    libelle: "2"
-  - id: 3_PLUS
-    libelle: "3 ou plus"
+  - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
   notation:
     EQ:
-      "0":
-        score: 0
-      "1":
-        score: 0
-      "2":
-        score: 1
-      "3_PLUS":
+      "OUI":
         score: 2
+      "NON":
+        score: 2
+
+- type: question
+  id: CLONES
+  libelle: "Utilisez-vous plus de 3 clones différents ?"
+  complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
+  reponses:
+ - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
+  notation:
+    EQ:
+      "OUI":
+        score: 2
+      "NON":
+        score: 0
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
