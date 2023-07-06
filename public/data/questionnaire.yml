@@ -802,6 +802,20 @@ questions:
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
 - type: question
+  id: 4_FAMILLES_IAE
+  libelle: "Parmis les 4 familles d'IAE suivantes (aquatique, herbager, ligneux et rocheux), lesquels de ces éléments sont présents sur la surface de votre exploitation ?"
+  multiple: true
+  reponses:
+  - id: AQUATIQUE
+    libelle: "Famille Aquatique (mares, zones humides)"
+  - id: HERBAGER
+    libelle: "Famille Herbager (fossé, bordure non productives, jachère, bande enherbées interparcellaire, zones Natura 2000, zone herbacée mise en défens)"
+  - id: LIGNEUX
+    libelle: "Famille Ligneux (arbre isolé, alignement d'arbres, bosquets, haies, vergers haute-tige)"
+  - id: ROCHEUX
+    libelle: "Famille Rocheux (murs traditionnels en pierres, ruines)"
+
+- type: question
   id: POSSESSION_RUCHES
   libelle: "Disposez-vous d'une ou plusieurs ruches dont vous êtes propriétaire ?"
   complement_information: "La ou les ruches doivent être sédentaires et en bon état de fonctionnement."
