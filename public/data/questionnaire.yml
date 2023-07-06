@@ -1247,6 +1247,8 @@ questions:
     libelle: "Je les réutilise"
   - id: NON_UTILISE
     libelle: "Je n'en utilise pas"
+ - id: BIODEGRADABLE
+    libelle: "J'utilise des agrafes biodégradables et les laisse dans les vignes"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1256,6 +1258,10 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
+        score: 10
+      "BIODEGRADABLE":
+        score: 10
+      "NON_UTILISE":
         score: 10
       "STOCK":
         score: 0
@@ -1289,6 +1295,8 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
+        score: 10
+      "NON_UTILISE":
         score: 10
       "STOCK":
         score: 0
