@@ -321,15 +321,15 @@ questions:
   unite: IFT
   notation:
     GTE:
-      "1.08":
+      "0.89":
         score: 0
-      "0.945":
+      "0.67":
         score: 2
-      "0.81":
+      "0.445":
         score: 4
-      "0.675":
+      "0.2225":
         score: 6
-      "0.54":
+      "0.000001":
         score: 8
       "0.00":
         score: 10
@@ -341,19 +341,19 @@ questions:
   unite: IFT
   notation:
     GTE:
-      "10.89":
+      "11.68":
         score: 0
         faiblesse: "J'ai un IFT Hors herbicides important"
-      "9.53":
+      "10.46":
         score: 2
-      "8.17":
+      "9.24":
         score: 4
-      "6.81":
+      "8.02":
         score: 6
-      "5.45":
+      "6.800000001":
         score: 8
         atout: "J'ai un IFT Hors herbicides faible"
-      "0.00":
+      "8.80":
         score: 10
         atout: "J'ai un IFT Hors herbicides faible"
 
