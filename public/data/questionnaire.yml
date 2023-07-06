@@ -806,6 +806,9 @@ questions:
       "10":
         score: 6
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+        "100":
+        score: 7
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
 - type: question
   id: 4_FAMILLES_IAE
