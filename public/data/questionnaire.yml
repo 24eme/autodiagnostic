@@ -817,19 +817,13 @@ questions:
 
 - type: question
   id: POSSESSION_RUCHES
-  libelle: "Disposez-vous d'une ou plusieurs ruches dont vous êtes propriétaire ?"
+  libelle: "De combien de ruches dont vous êtes propriétaire disposez-vous ?"
   complement_information: "La ou les ruches doivent être sédentaires et en bon état de fonctionnement."
-  reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
+  unite: "ruches"
   notation:
-    EQ:
-      "OUI":
+    GTE:
+      "2":
         score: 1
-      "NON":
-        score: 0
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AUTOMNE
