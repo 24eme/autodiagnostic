@@ -781,33 +781,24 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "10":
-        score: 1
+      "4":
+        score: 0
         faiblesse: "J'ai peu d'infrastructures agro-écologiques (IAE)"
-      "20":
+      "5":
+        score: 1
+      "6":
         score: 2
-      "30":
+      "7":
         score: 3
-      "40":
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "8":
         score: 4
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "50":
+      "9":
         score: 5
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "60":
+      "10":
         score: 6
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "70":
-        score: 7
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "80":
-        score: 8
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "90":
-        score: 9
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "100":
-        score: 10
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
 - type: question
