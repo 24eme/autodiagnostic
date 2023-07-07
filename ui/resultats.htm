@@ -79,10 +79,12 @@
         data-type="radar"
         data-labels="{{ @statistiques->renderTabKeysScores() }}"
         data-series="{{ @statistiques->renderTabValuesScores() }}"
+        <check if="{{ @statistiquesLastYear}}">
+          <true>data-lastYear="{{ @statistiquesLastYear->renderTabValuesScores() }}"</true>
+        </check>
         data-moyenne="{{ implode(',', @statistiques->calculMoyenneVignoble()) }}">
       </canvas>
     </div>
-
   </div>
 </div>
 

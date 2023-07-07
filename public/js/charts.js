@@ -38,9 +38,15 @@ const radarChart = new Chart(
               fill: true,
               backgroundColor: 'rgba(75, 87, 103, 0.2)',
               borderColor: 'rgb(75, 87, 103)',
+          },
+          {
+              label: 'Score année passée',
+              data: canvas.getAttribute("data-lastYear").split(','),
+              fill: true,
+              backgroundColor: 'rgba(124,252,0,0.2)',
+              borderColor: '(124,252,0)',
           }
         ]
       }
     }
 );
-
