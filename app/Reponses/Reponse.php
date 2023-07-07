@@ -54,10 +54,14 @@ class Reponse
         return $file;
     }
 
-    public static function getFichier(string $path, string $user)
+    public static function getFichier(string $path, string $user, $year = null)
     {
-        return glob(sprintf('%s/%s-%s-*.json', $path, $user, date('Y')));
+        if(!$year){
+            $year = date('Y');
+        }
+        return glob(sprintf('%s/%s-%s-*.json', $path, $user, $year));
     }
+
 
     public static function rename(string $path, string $olduser, string $newuser)
     {

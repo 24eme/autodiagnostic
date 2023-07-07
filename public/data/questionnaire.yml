@@ -11,6 +11,7 @@ questions:
 
 - type: question
   id: SURFACE_EXPLOITATION
+  prerempli: true
   libelle: "Quelle est la surface de votre exploitation ?"
   unite: "ha"
   notation:
@@ -22,77 +23,90 @@ questions:
   id: APPELLATIONS
   libelle: "Quelle(s) appellation(s) produisez-vous ?"
   multiple: true
+  prerempli: true
   reponses:
   - id: SANCERRE
     libelle: "AOC Sancerre"
     question:
       id: DTL_SURFACE_SANCERRE
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: POUILLY_FUME
     libelle: "AOC Pouilly-Fumé"
     question:
       id: DTL_SURFACE_POUILLY_FUME
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: POUILLY_SUR_LOIRE
     libelle: "AOC Pouilly-sur-Loire"
     question:
       id: DTL_SURFACE_POUILLY_SUR_LOIRE
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: MENETOU_SALON
     libelle: "AOC Menetou-Salon"
     question:
       id: DTL_SURFACE_MENETOU_SALON
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: QUINCY
     libelle: "AOC Quincy"
     question:
       id: DTL_SURFACE_QUINCY
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: REUILLY
     libelle: "AOC Reuilly"
     question:
       id: DTL_SURFACE_REUILLY
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: COT_GIENNOIS
     libelle: "AOC Coteaux du Giennois"
     question:
       id: DTL_SURFACE_COT_GIENNOIS
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: CHATEAUMEILLANT
     libelle: "AOC Châteaumeillant"
     question:
       id: DTL_SURFACE_CHATEAUMEILLANT
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: COTES_CHARITE
     libelle: "IGP Côtes de la Charité"
     question:
       id: DTL_SURFACE_COTES_CHARITE
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
   - id: COT_TANNAY
     libelle: "IGP Coteaux de Tannay"
     question:
       id: DTL_SURFACE_COT_TANNAY
       libelle: "Précisez la surface : "
+      prerempli: true
       unite: "ha"
 
 - type: question
   id: SURFACE_SAUVIGNON
   libelle: "Quelle est votre surface en Sauvignon ?"
+  prerempli: true
   complement_information: "Cette information est nécessaire pour traiter les données relatives aux maladies du bois"
   unite: "ha"
 
 - type: question
   id: VENTE_RECOLTE_RAISIN
   libelle: "Vendez-vous l'intégralité de votre récolte en raisin ?"
+  prerempli: true
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -111,6 +125,7 @@ questions:
   id: SELECTION_CERTIF
   libelle: "Quelles sont vos certifications actuelles ?"
   complement_information: "En fonction de vos choix, certaines des réponses seront préremplies."
+  prerempli: true
   multiple: true
   reponses:
   - id: BIO_CONVERSION
@@ -167,6 +182,7 @@ questions:
 - type: question
   id: SELECTION_SANS_CERTIF
   libelle: "Même sans être certifié, suivez-vous un ou plusieurs de ces cahiers des charges ?"
+  prerempli: true
   multiple: true
   reponses:
   - id: BIO

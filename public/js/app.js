@@ -1,6 +1,6 @@
 /* global Vue */
-
 const file = 'data/questionnaire.yml'
+const lastYear = new Date().getFullYear()-1;
 
 const Questionnaire = Vue.createApp({
   delimiters: ['{%', '%}'],
@@ -13,7 +13,8 @@ const Questionnaire = Vue.createApp({
       isTermine: false,
       reponses: {},
       modeQuestionsNonRepondues: false,
-      nombreQuestionsTotal: 0
+      nombreQuestionsTotal: 0,
+      lastYearReponse: ''
     }
   },
   mounted() {
@@ -21,6 +22,13 @@ const Questionnaire = Vue.createApp({
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
     this.loadQuestions(file)
     window.addEventListener('hashchange', this.hashChange);
+    axios.get('/api/reponses/'+lastYear)
+       .then(reponse => {
+         this.lastYearReponse = reponse.data;
+       })
+       .catch(error => {
+         console.error(error);
+       });
   },
   computed: {
     questionnaireStarted() {
@@ -57,7 +65,7 @@ const Questionnaire = Vue.createApp({
       }, this);
 
       if (localStorage.key('reponses')) {
-        this.reponses = JSON.parse(localStorage.getItem('reponses'))
+        this.reponses = JSON.parse(localStorage.getItem('reponses'));
       }
     },
     loadQuestions: function(file) {
@@ -209,6 +217,40 @@ const Questionnaire = Vue.createApp({
       if (document.querySelector('#question_' + question.id + ' input')) {
         setTimeout(function() {document.querySelector('#question_' + question.id + ' input').focus()}, 100);
       }
+
+      /*Prérempli les questions avec prérempli à true*/
+      const keys = Object.keys(JSON.parse(JSON.stringify(this.lastYearReponse)));
+      var tabSousReponses;
+      for(var key in keys){
+        if(!question.prerempli){
+          continue
+        }
+        if(keys[key] != question.id){
+          continue
+        }
+        if(!question.multiple){
+          if(!this.reponses[keys[key]]){
+            this.reponses[keys[key]] = this.lastYearReponse[keys[key]];
+          }
+          continue
+        }else{
+          if(!this.reponses[keys[key]].length){
+            tabSousReponses = this.lastYearReponse[keys[key]]
+            this.reponses[keys[key]] = this.lastYearReponse[keys[key]];
+          }
+          if(question.reponses && tabSousReponses){
+            for(var sousReponse in tabSousReponses){
+              if(!question.reponses[sousReponse].question){
+                continue
+              }
+              if(!this.reponses[question.reponses[sousReponse].question.id]){
+                this.reponses[question.reponses[sousReponse].question.id] = this.lastYearReponse[question.reponses[sousReponse].question.id]
+              }
+            }
+          }
+        }
+      }
+      localStorage.setItem('reponses', JSON.stringify(this.reponses));
     },
     categorieFullAnswered: function (id) {
       const categorie = this.categories.findIndex(c => c.id === id)

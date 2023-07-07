@@ -58,6 +58,13 @@ class App
                 $f3->set('showLinks', $this->auth->getAuthType() !== CVI::getAuthType());
                 $f3->set('engage', Reponse::getFichierNameWithAuth(self::$storage_engage.$f3->get('file').'.json', $f3->get('md5')) !== false);
             }
+
+            $lastYearReponseFile = $this->findReponseFile($this->auth->getUser(),date('Y')-1);
+            if($lastYearReponseFile){
+                $lastYearReponse = new Reponse($lastYearReponseFile);
+                $f3->set('lastYearReponse', $lastYearReponse);
+                $f3->set('lastYearReponseFile', $lastYearReponseFile);
+            }
         }
     }
 
@@ -171,6 +178,14 @@ class App
         $f3->set('inc', 'resultats.htm');
         $f3->set('file', $args['file']);
         $f3->set('md5', $args['md5']);
+
+        if($this->auth->getUser()){
+            $lastYearReponsesFile = $this->findReponseFile($this->auth->getUser(),date('Y')-1);
+            if($lastYearReponsesFile){
+                $statistiquesLastYear = new Statistiques(new Reponse($lastYearReponsesFile));
+                $f3->set('statistiquesLastYear', $statistiquesLastYear);
+            }
+        }
     }
 
     public function engagement(Base $f3)
@@ -269,6 +284,26 @@ class App
     {
         $f3->set('auth', $this->auth);
         echo Template::instance()->render('layout.html');
+    }
+
+    public function apiReponse(Base $f3,$args)
+    {
+        $reponseFile = $this->findReponseFile($this->auth->getUser(),(int)$args['year']);
+        if($reponseFile){
+            $reponse = new Reponse($reponseFile);
+        }
+        $data = $reponse->decoded;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    private function findReponseFile(string $user,$year){
+        $file = Reponse::getFichier(self::$storage_engage, $user,$year);
+        if(!$file){
+            return true;
+        }
+        return current($file);
     }
 
     private function findReponse(string $user)
