@@ -50,6 +50,15 @@ class Statistiques
         return implode(',', $this->scoresEnPourcent(true));
     }
 
+    public function renderTabValuesScoresLastYear($pourcent = true) {
+        if ($pourcent === false) {
+            return implode(',', $this->getScoresLastYear(true));
+        }
+
+        return implode(',', $this->scoresEnPourcentLastYear(true));
+    }
+
+
     public function getScores($blacklist = false) {
         if ($blacklist === true) {
             return $this->blacklist($this->scores);

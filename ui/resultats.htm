@@ -31,6 +31,20 @@
               <i class="bi-check-circle-fill fs-3 text-success me-3"></i> {{ @ptFort }}
             </div>
           </repeat>
+          <check if="{{ @statistiquesLastYear and count(@statistiques->getPtsForts()) > count(@statistiquesLastYear->getPtsForts()) }}">
+            <true>
+              <div class="p-1 d-flex align-items-center">
+                <i class="bi-check-circle-fill fs-3 text-success me-3"></i>Vous avez plus de "points forts" par rapport à l'année précédente
+              </div>
+            </true>
+          </check>
+          <check if="{{ @statistiquesLastYear and count(@statistiques->getPtsAmeliorations()) < count(@statistiquesLastYear->getPtsAmeliorations()) }}">
+            <true>
+              <div class="p-1 d-flex align-items-center">
+                <i class="bi-check-circle-fill fs-3 text-success me-3"></i>Vous avez moins de "points d'améliorations" par rapport à l'année précédente
+              </div>
+            </true>
+          </check>
         </true>
         <false>
           <div class="p-1 d-flex align-items-center">
