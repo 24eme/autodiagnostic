@@ -13,7 +13,11 @@ questions:
   id: SURFACE_EXPLOITATION
   libelle: "Quelle est la surface de votre exploitation ?"
   unite: "ha"
-
+ notation:
+    GTE:
+      "6":
+        score: 5
+        
 - type: question
   id: APPELLATIONS
   libelle: "Quelle(s) appellation(s) produisez-vous ?"
@@ -193,23 +197,25 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "10":
+     "5":
+        score: 0
+      "15":
         score: 1
-      "20":
+      "25":
         score: 2
-      "30":
+      "35":
         score: 3
-      "40":
+      "45":
         score: 4
-      "50":
+      "55":
         score: 5
-      "60":
+      "65":
         score: 6
-      "70":
+      "75":
         score: 7
-      "80":
+      "85":
         score: 8
-      "90":
+      "95":
         score: 9
       "100":
         score: 10
@@ -248,14 +254,10 @@ questions:
     libelle: "Réserves de collecte des eaux de pluie et réseau correspondant (équipements à l'échelle des bâtiments de l'exploitation)"
   - id: VOLUCOMPTEUR
     libelle: "Volucompteur programmable pour éviter le débordement des cuves"
-  - id: ANTIGOUTTES
-    libelle: "Système anti-gouttes (à la rampe pour la régularité de la pulvérisation)"
-  - id: BOUILLIE
-    libelle: "Panneaux récupérateurs de bouillie"
-  - id: PRECISION
-    libelle: "Matériel de précision permettant de réduire les doses de produits phytosanitaires (traitement face par face)"
-  - id: RINCAGE
-    libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d'automisation de rinçage des cuves"
+  - id: DPAE
+    libelle: "DPAE (débit proportionnel à l'avancement électronique)"
+  - id: APPLICATION
+    libelle: "Système d'application localisé (pulvérisateur avec rampe, localisation sur le rang, rampe à assistance d'air)"
   - id: PRESTATAIRE
     libelle: "Je fais appel à un prestataire de service"
   - id: AUCUN
@@ -275,13 +277,11 @@ questions:
         score: 1
       "VOLUCOMPTEUR":
         score: 1
-      "ANTIGOUTTES":
+      "DPAE":
         score: 1
-      "BOUILLIE":
+      "APPLICATION":
         score: 1
-      "PRECISION":
-        score: 1
-      "RINCAGE":
+      "PRESTATAIRE":
         score: 1
       "AUCUN":
         score: 0
@@ -321,15 +321,15 @@ questions:
   unite: IFT
   notation:
     GTE:
-      "1.08":
+      "0.89":
         score: 0
-      "0.945":
+      "0.67":
         score: 2
-      "0.81":
+      "0.445":
         score: 4
-      "0.675":
+      "0.2225":
         score: 6
-      "0.54":
+      "0.000001":
         score: 8
       "0.00":
         score: 10
@@ -341,19 +341,19 @@ questions:
   unite: IFT
   notation:
     GTE:
-      "10.89":
+      "11.68":
         score: 0
         faiblesse: "J'ai un IFT Hors herbicides important"
-      "9.53":
+      "10.46":
         score: 2
-      "8.17":
+      "9.24":
         score: 4
-      "6.81":
+      "8.02":
         score: 6
-      "5.45":
+      "6.800000001":
         score: 8
         atout: "J'ai un IFT Hors herbicides faible"
-      "0.00":
+      "8.80":
         score: 10
         atout: "J'ai un IFT Hors herbicides faible"
 
@@ -636,28 +636,35 @@ questions:
         score: -5
 
 - type: question
-  id: CLONES
-  libelle: "Quel nombre de clones différents utilisez-vous ?"
-  complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
+  id: CAMPAGNE_COLLECTIVE_PROSPECTION
+  libelle: "Participez-vous à une campagne collective de prospection ?"
   reponses:
-  - id: 0
-    libelle: "0"
-  - id: 1
-    libelle: "1"
-  - id: 2
-    libelle: "2"
-  - id: 3_PLUS
-    libelle: "3 ou plus"
+  - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
   notation:
     EQ:
-      "0":
-        score: 0
-      "1":
-        score: 0
-      "2":
-        score: 1
-      "3_PLUS":
+      "OUI":
         score: 2
+      "NON":
+        score: 2
+
+- type: question
+  id: CLONES
+  libelle: "Utilisez-vous plus de 3 clones différents ?"
+  complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
+  reponses:
+ - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
+  notation:
+    EQ:
+      "OUI":
+        score: 2
+      "NON":
+        score: 0
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
@@ -733,15 +740,21 @@ questions:
 
 - type: question
   id: UNITE_AZOTE
-  libelle: "Combien d'unités d'azote chimique avez-vous utilisé sur la campagne ?"
-  unite: "N/ha"
+  libelle: "Quelle est la part d'azote organique utilisé sur la quantité totale d'azote apporté ?"
+  unite: "%"
   notation:
-    GTE:
-      "16":
-        score: -5
-      "0":
+    LTE:
+      "25":
         score: 0
-
+      "35":
+        score: 1
+      "45":
+        score: 2
+      "55":
+        score: 3
+      "55.01":
+        score: 4
+        
 - type: categorie
   id: BIODIVERSITE
   libelle: "Biodiversité"
@@ -774,54 +787,57 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "10":
-        score: 1
+      "4":
+        score: 0
         faiblesse: "J'ai peu d'infrastructures agro-écologiques (IAE)"
-      "20":
+      "5":
+        score: 1
+      "6":
         score: 2
-      "30":
+      "7":
         score: 3
-      "40":
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "8":
         score: 4
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "50":
+      "9":
         score: 5
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "60":
+      "10":
         score: 6
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "70":
+        "100":
         score: 7
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "80":
-        score: 8
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "90":
-        score: 9
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "100":
-        score: 10
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
 - type: question
-  id: POSSESSION_RUCHES
-  libelle: "Disposez-vous d'une ou plusieurs ruches dont vous êtes propriétaire ?"
-  complement_information: "La ou les ruches doivent être sédentaires et en bon état de fonctionnement."
+  id: 4_FAMILLES_IAE
+  libelle: "Parmis les 4 familles d'IAE suivantes (aquatique, herbager, ligneux et rocheux), lesquels de ces éléments sont présents sur la surface de votre exploitation ?"
+  multiple: true
   reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
+  - id: AQUATIQUE
+    libelle: "Famille Aquatique (mares, zones humides)"
+  - id: HERBAGER
+    libelle: "Famille Herbager (fossé, bordure non productives, jachère, bande enherbées interparcellaire, zones Natura 2000, zone herbacée mise en défens)"
+  - id: LIGNEUX
+    libelle: "Famille Ligneux (arbre isolé, alignement d'arbres, bosquets, haies, vergers haute-tige)"
+  - id: ROCHEUX
+    libelle: "Famille Rocheux (murs traditionnels en pierres, ruines)"
+
+- type: question
+  id: POSSESSION_RUCHES
+  libelle: "De combien de ruches dont vous êtes propriétaire disposez-vous ?"
+  complement_information: "La ou les ruches doivent être sédentaires et en bon état de fonctionnement."
+  unite: "ruches"
   notation:
-    EQ:
-      "OUI":
+    GTE:
+      "2":
         score: 1
-      "NON":
-        score: 0
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AUTOMNE
   libelle: "Pratiquez-vous un desherbage chimique ou mécanique à l'automne sur au moins une partie de votre exploitation ?"
+  complement_information: "Ne comptez pas votre desherbage mécanique si celui-ci sert de préparation à vos sols pour le semis d'engrais-verts."
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1215,6 +1231,8 @@ questions:
     EQ:
       "DECHETTERIE":
         score: 10
+      "NON_UTILISE":
+        score: 10
       "STOCK":
         score: 0
       "AUTRE":
@@ -1238,6 +1256,8 @@ questions:
     libelle: "Je les réutilise"
   - id: NON_UTILISE
     libelle: "Je n'en utilise pas"
+ - id: BIODEGRADABLE
+    libelle: "J'utilise des agrafes biodégradables et les laisse dans les vignes"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1247,6 +1267,10 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
+        score: 10
+      "BIODEGRADABLE":
+        score: 10
+      "NON_UTILISE":
         score: 10
       "STOCK":
         score: 0
@@ -1280,6 +1304,8 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
+        score: 10
+      "NON_UTILISE":
         score: 10
       "STOCK":
         score: 0
