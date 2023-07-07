@@ -13,11 +13,11 @@ questions:
   id: SURFACE_EXPLOITATION
   libelle: "Quelle est la surface de votre exploitation ?"
   unite: "ha"
- notation:
+  notation:
     GTE:
       "6":
         score: 5
-        
+
 - type: question
   id: APPELLATIONS
   libelle: "Quelle(s) appellation(s) produisez-vous ?"
@@ -197,7 +197,7 @@ questions:
   unite: "%"
   notation:
     LTE:
-     "5":
+      "5":
         score: 0
       "15":
         score: 1
@@ -655,7 +655,7 @@ questions:
   libelle: "Utilisez-vous plus de 3 clones différents ?"
   complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
   reponses:
- - id: OUI
+  - id: OUI
     libelle: "Oui"
   - id: NON
     libelle: "Non"
@@ -806,7 +806,7 @@ questions:
       "10":
         score: 6
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-        "100":
+      "100":
         score: 7
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
@@ -1256,7 +1256,7 @@ questions:
     libelle: "Je les réutilise"
   - id: NON_UTILISE
     libelle: "Je n'en utilise pas"
- - id: BIODEGRADABLE
+  - id: BIODEGRADABLE
     libelle: "J'utilise des agrafes biodégradables et les laisse dans les vignes"
   - id: AUTRE
     libelle: "Autre"
