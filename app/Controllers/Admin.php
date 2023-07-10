@@ -68,6 +68,16 @@ class Admin
         $f3->set('sub', 'files.htm');
     }
 
+    public function exigences(Base $f3)
+    {
+        $exigences = new Exigences();
+        $questions = new Questions();
+        $f3->set('exigences', $exigences);
+        $f3->set('questions', $questions);
+        $f3->set('inc', 'admin.htm');
+        $f3->set('sub', 'exigences.htm');
+    }
+
     public function exportGlobal(Base $f3)
     {
         $reponses = new Reponses(
