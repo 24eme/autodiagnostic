@@ -11,7 +11,7 @@ class Exigences
     private $exigences;
     private $explain = [];
 
-    public function __construct(Statistiques $statistiques)
+    public function __construct(Statistiques $statistiques=null)
     {
         $this->exigences = yaml_parse_file(self::DATA_EXIGENCES);
         $this->statistiques = $statistiques;
@@ -94,5 +94,9 @@ class Exigences
     {
         $this->is($exigence);
         return $this->explain[$exigence];
+    }
+
+    public function getExigences(){
+        return $this->exigences;
     }
 }

@@ -130,11 +130,15 @@ class Questions
         }
     }
 
-    public function getQuestionUnite($id)
+    public function getQuestionUnite($id,$withoutSansUnite=null)
     {
         $question = $this->findQuestion($id);
+        if($withoutSansUnite){
+            return isset($question['unite']) ? $question['unite'] : '';
+        }
         return isset($question['unite']) ? $question['unite'] : 'Sans unité';
     }
+
 
     public function getQuestionAide($id)
     {
@@ -231,5 +235,33 @@ class Questions
     public function getQuestionNumeroLigne($id)
     {
         return array_search('id: '.$id, $this->file) + 1;
+    }
+
+    public function isMultipleQuestions($id)
+    {
+        if(strpos($id, '+')){
+            return true;
+        }
+        return false;
+    }
+
+    public function getMultipleQuestionCategorie($id)
+    {
+        $result = '';
+        $questions = explode('+',$id);
+        foreach($questions as $idquestion){
+            $result .= $this->getCategoriePosition($this->findQuestionCategorie($idquestion)).'. '.$this->findQuestionCategorie($idquestion)['libelle']."<br>";
+        }
+        return $result;
+    }
+
+    public function getMultipleQuestion($id)
+    {
+        $result = '';
+        $questions = explode('+',$id);
+        foreach($questions as $idquestion){
+            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='_config#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title='Plus d'info sur la question'><i class='bi-eye'></i></a>"."<br>";
+        }
+        return $result;
     }
 }
