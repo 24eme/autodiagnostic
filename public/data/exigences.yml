@@ -4,16 +4,29 @@ hve3:
     - op: SCORE
       score: 10
       cat: Protection de la vigne
-      mod:
-        - ratio: 0.5
-          questions: [IFT_HERBICIDE, IFT_HORS_HERBICIDE]
+      questions:
+        SURFACE_NON_TRAITEE: null
+        SURFACE_ALTERNATIVE_CHIMIE: null
+        MATERIELS: null
+        IFT_HERBICIDE:
+          mod:
+            ratio: 0.5
+        IFT_HORS_HERBICIDE:
+          mod:
+            ratio: 0.5
+        CLONES: null
     - op: SCORE
       score: 10
       cat: Fertilisation
+      questions:
+        BILAN_AZOTE: null
       mod: []
     - op: SCORE
       score: 10
       cat: Biodiversité
+      questions:
+        POURCENTAGE_SAU_IAE: null
+        POSSESSION_RUCHES: null
       mod: []
 
 echelon1:
