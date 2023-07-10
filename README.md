@@ -7,7 +7,7 @@ Logiciel libre sous license AGPL V3
 
 ## Librairies requises
 
-Le module `php-yaml`
+Le module `php-yaml` et `php-mbstring`
 
 ## Installation
 
