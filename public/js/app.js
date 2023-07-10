@@ -219,6 +219,9 @@ const Questionnaire = Vue.createApp({
       }
 
       /*Prérempli les questions avec prérempli à true*/
+      if(!this.lastYearReponse){
+        return;
+      }
       const keys = Object.keys(JSON.parse(JSON.stringify(this.lastYearReponse)));
       var tabSousReponses;
       for(var key in keys){

@@ -140,9 +140,10 @@
               <button class="btn btn-sm" :class="{'btn-primary active': isNonConcerne(index), 'text-muted': ! isNonConcerne(index)}" v-on:click="nonConcerne(index)">Non concerné</button>
               <button class="btn btn-link d-none" v-bind:style="'color: ' + getCategorieCouleur(indexCourant) + ';'" v-on:click="deplacer(indexCourant + 1)">Suivant <span class="bi-chevron-compact-right"></span></button>
             </div>
-            <p v-if="lastYearReponse[question.id] == 'NC'" class="text-muted text-end"><small>Réponse année précédente : Non concerné</small></p>
+            <p v-if="!lastYearReponse"></p>
+            <p v-else-if="lastYearReponse[question.id] == 'NC'" class="text-muted text-end"><small>Réponse année précédente : Non concerné</small></p>
             <p v-else-if="question.format && question.format == 'date'" class="text-muted text-end"><small>Réponse année précédente : {% lastYearReponse[question.id]%}</small></p>
-            <p v-else="question.format && question.format == 'date'" class="text-muted text-end"><small>Réponse année précédente : {% lastYearReponse[question.id]%} {% question.unite %}</small></p>
+            <p v-else class="text-muted text-end"><small>Réponse année précédente : {% lastYearReponse[question.id]%} {% question.unite %}</small></p>
           </div>
         </div>
       </section>

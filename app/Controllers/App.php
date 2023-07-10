@@ -301,8 +301,8 @@ class App
     private function findReponseFile(string $user,$year){
         $file = Reponse::getFichier(self::$storage_engage, $user,$year);
         if(!$file){
-            return true;
-        }
+            return null;
+         }
         return current($file);
     }
 
