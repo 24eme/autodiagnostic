@@ -11,102 +11,84 @@ questions:
 
 - type: question
   id: SURFACE_EXPLOITATION
-  prerempli: true
   libelle: "Quelle est la surface de votre exploitation ?"
   unite: "ha"
-  notation:
-    GTE:
-      "6":
-        score: 5
 
 - type: question
   id: APPELLATIONS
   libelle: "Quelle(s) appellation(s) produisez-vous ?"
   multiple: true
-  prerempli: true
   reponses:
   - id: SANCERRE
     libelle: "AOC Sancerre"
     question:
       id: DTL_SURFACE_SANCERRE
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: POUILLY_FUME
     libelle: "AOC Pouilly-Fumé"
     question:
       id: DTL_SURFACE_POUILLY_FUME
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: POUILLY_SUR_LOIRE
     libelle: "AOC Pouilly-sur-Loire"
     question:
       id: DTL_SURFACE_POUILLY_SUR_LOIRE
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: MENETOU_SALON
     libelle: "AOC Menetou-Salon"
     question:
       id: DTL_SURFACE_MENETOU_SALON
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: QUINCY
     libelle: "AOC Quincy"
     question:
       id: DTL_SURFACE_QUINCY
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: REUILLY
     libelle: "AOC Reuilly"
     question:
       id: DTL_SURFACE_REUILLY
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: COT_GIENNOIS
     libelle: "AOC Coteaux du Giennois"
     question:
       id: DTL_SURFACE_COT_GIENNOIS
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: CHATEAUMEILLANT
     libelle: "AOC Châteaumeillant"
     question:
       id: DTL_SURFACE_CHATEAUMEILLANT
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: COTES_CHARITE
     libelle: "IGP Côtes de la Charité"
     question:
       id: DTL_SURFACE_COTES_CHARITE
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
   - id: COT_TANNAY
     libelle: "IGP Coteaux de Tannay"
     question:
       id: DTL_SURFACE_COT_TANNAY
       libelle: "Précisez la surface : "
-      prerempli: true
       unite: "ha"
 
 - type: question
   id: SURFACE_SAUVIGNON
   libelle: "Quelle est votre surface en Sauvignon ?"
-  prerempli: true
   complement_information: "Cette information est nécessaire pour traiter les données relatives aux maladies du bois"
   unite: "ha"
 
 - type: question
   id: VENTE_RECOLTE_RAISIN
   libelle: "Vendez-vous l'intégralité de votre récolte en raisin ?"
-  prerempli: true
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -125,7 +107,6 @@ questions:
   id: SELECTION_CERTIF
   libelle: "Quelles sont vos certifications actuelles ?"
   complement_information: "En fonction de vos choix, certaines des réponses seront préremplies."
-  prerempli: true
   multiple: true
   reponses:
   - id: BIO_CONVERSION
@@ -182,7 +163,6 @@ questions:
 - type: question
   id: SELECTION_SANS_CERTIF
   libelle: "Même sans être certifié, suivez-vous un ou plusieurs de ces cahiers des charges ?"
-  prerempli: true
   multiple: true
   reponses:
   - id: BIO
@@ -213,25 +193,23 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "5":
-        score: 0
-      "15":
+      "10":
         score: 1
-      "25":
+      "20":
         score: 2
-      "35":
+      "30":
         score: 3
-      "45":
+      "40":
         score: 4
-      "55":
+      "50":
         score: 5
-      "65":
+      "60":
         score: 6
-      "75":
+      "70":
         score: 7
-      "85":
+      "80":
         score: 8
-      "95":
+      "90":
         score: 9
       "100":
         score: 10
@@ -239,7 +217,7 @@ questions:
 - type: question
   id: SURFACE_ALTERNATIVE_CHIMIE
   libelle: "Sur quel pourcentage de votre surface utilisez-vous au moins une méthode alternative à la lutte chimique ?"
-  complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle, utilisation de produits de biocontrôle"
+  complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle"
   unite: "%"
   notation:
     LTE:
@@ -270,10 +248,14 @@ questions:
     libelle: "Réserves de collecte des eaux de pluie et réseau correspondant (équipements à l'échelle des bâtiments de l'exploitation)"
   - id: VOLUCOMPTEUR
     libelle: "Volucompteur programmable pour éviter le débordement des cuves"
-  - id: DPAE
-    libelle: "DPAE (débit proportionnel à l'avancement électronique)"
-  - id: APPLICATION
-    libelle: "Système d'application localisé (pulvérisateur avec rampe, localisation sur le rang, rampe à assistance d'air)"
+  - id: ANTIGOUTTES
+    libelle: "Système anti-gouttes (à la rampe pour la régularité de la pulvérisation)"
+  - id: BOUILLIE
+    libelle: "Panneaux récupérateurs de bouillie"
+  - id: PRECISION
+    libelle: "Matériel de précision permettant de réduire les doses de produits phytosanitaires (traitement face par face)"
+  - id: RINCAGE
+    libelle: "Cuve de rinçage embarquée sur le pulvérisateur (ou sur le tracteur) avec kit de rinçage intérieur des cuves ou kit d'automisation de rinçage des cuves"
   - id: PRESTATAIRE
     libelle: "Je fais appel à un prestataire de service"
   - id: AUCUN
@@ -293,11 +275,13 @@ questions:
         score: 1
       "VOLUCOMPTEUR":
         score: 1
-      "DPAE":
+      "ANTIGOUTTES":
         score: 1
-      "APPLICATION":
+      "BOUILLIE":
         score: 1
-      "PRESTATAIRE":
+      "PRECISION":
+        score: 1
+      "RINCAGE":
         score: 1
       "AUCUN":
         score: 0
@@ -337,15 +321,15 @@ questions:
   unite: IFT
   notation:
     GTE:
-      "0.89":
+      "1.08":
         score: 0
-      "0.67":
+      "0.945":
         score: 2
-      "0.445":
+      "0.81":
         score: 4
-      "0.2225":
+      "0.675":
         score: 6
-      "0.000001":
+      "0.54":
         score: 8
       "0.00":
         score: 10
@@ -357,19 +341,19 @@ questions:
   unite: IFT
   notation:
     GTE:
-      "11.68":
+      "10.89":
         score: 0
         faiblesse: "J'ai un IFT Hors herbicides important"
-      "10.46":
+      "9.53":
         score: 2
-      "9.24":
+      "8.17":
         score: 4
-      "8.02":
+      "6.81":
         score: 6
-      "6.800000001":
+      "5.45":
         score: 8
         atout: "J'ai un IFT Hors herbicides faible"
-      "8.80":
+      "0.00":
         score: 10
         atout: "J'ai un IFT Hors herbicides faible"
 
@@ -652,35 +636,28 @@ questions:
         score: -5
 
 - type: question
-  id: CAMPAGNE_COLLECTIVE_PROSPECTION
-  libelle: "Participez-vous à une campagne collective de prospection ?"
-  reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
-  notation:
-    EQ:
-      "OUI":
-        score: 2
-      "NON":
-        score: 2
-
-- type: question
   id: CLONES
-  libelle: "Utilisez-vous plus de 3 clones différents ?"
+  libelle: "Quel nombre de clones différents utilisez-vous ?"
   complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
   reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
+  - id: 0
+    libelle: "0"
+  - id: 1
+    libelle: "1"
+  - id: 2
+    libelle: "2"
+  - id: 3_PLUS
+    libelle: "3 ou plus"
   notation:
     EQ:
-      "OUI":
-        score: 2
-      "NON":
+      "0":
         score: 0
+      "1":
+        score: 0
+      "2":
+        score: 1
+      "3_PLUS":
+        score: 2
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
@@ -756,21 +733,15 @@ questions:
 
 - type: question
   id: UNITE_AZOTE
-  libelle: "Quelle est la part d'azote organique utilisé sur la quantité totale d'azote apporté ?"
-  unite: "%"
+  libelle: "Combien d'unités d'azote chimique avez-vous utilisé sur la campagne ?"
+  unite: "N/ha"
   notation:
-    LTE:
-      "25":
+    GTE:
+      "16":
+        score: -5
+      "0":
         score: 0
-      "35":
-        score: 1
-      "45":
-        score: 2
-      "55":
-        score: 3
-      "55.01":
-        score: 4
-        
+
 - type: categorie
   id: BIODIVERSITE
   libelle: "Biodiversité"
@@ -803,57 +774,54 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "4":
-        score: 0
-        faiblesse: "J'ai peu d'infrastructures agro-écologiques (IAE)"
-      "5":
+      "10":
         score: 1
-      "6":
+        faiblesse: "J'ai peu d'infrastructures agro-écologiques (IAE)"
+      "20":
         score: 2
-      "7":
+      "30":
         score: 3
-        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "8":
+      "40":
         score: 4
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "9":
+      "50":
         score: 5
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "10":
+      "60":
         score: 6
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "100":
+      "70":
         score: 7
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-
-- type: question
-  id: 4_FAMILLES_IAE
-  libelle: "Parmis les 4 familles d'IAE suivantes (aquatique, herbager, ligneux et rocheux), lesquels de ces éléments sont présents sur la surface de votre exploitation ?"
-  multiple: true
-  reponses:
-  - id: AQUATIQUE
-    libelle: "Famille Aquatique (mares, zones humides)"
-  - id: HERBAGER
-    libelle: "Famille Herbager (fossé, bordure non productives, jachère, bande enherbées interparcellaire, zones Natura 2000, zone herbacée mise en défens)"
-  - id: LIGNEUX
-    libelle: "Famille Ligneux (arbre isolé, alignement d'arbres, bosquets, haies, vergers haute-tige)"
-  - id: ROCHEUX
-    libelle: "Famille Rocheux (murs traditionnels en pierres, ruines)"
+      "80":
+        score: 8
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "90":
+        score: 9
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
+      "100":
+        score: 10
+        atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
 - type: question
   id: POSSESSION_RUCHES
-  libelle: "De combien de ruches dont vous êtes propriétaire disposez-vous ?"
+  libelle: "Disposez-vous d'une ou plusieurs ruches dont vous êtes propriétaire ?"
   complement_information: "La ou les ruches doivent être sédentaires et en bon état de fonctionnement."
-  unite: "ruches"
+  reponses:
+  - id: OUI
+    libelle: "Oui"
+  - id: NON
+    libelle: "Non"
   notation:
-    GTE:
-      "2":
+    EQ:
+      "OUI":
         score: 1
+      "NON":
+        score: 0
 
 - type: question
   id: DESHERBAGE_CHIMIQUE_AUTOMNE
   libelle: "Pratiquez-vous un desherbage chimique ou mécanique à l'automne sur au moins une partie de votre exploitation ?"
-  complement_information: "Ne comptez pas votre desherbage mécanique si celui-ci sert de préparation à vos sols pour le semis d'engrais-verts."
   reponses:
   - id: OUI
     libelle: "Oui"
@@ -1247,8 +1215,6 @@ questions:
     EQ:
       "DECHETTERIE":
         score: 10
-      "NON_UTILISE":
-        score: 10
       "STOCK":
         score: 0
       "AUTRE":
@@ -1272,8 +1238,6 @@ questions:
     libelle: "Je les réutilise"
   - id: NON_UTILISE
     libelle: "Je n'en utilise pas"
-  - id: BIODEGRADABLE
-    libelle: "J'utilise des agrafes biodégradables et les laisse dans les vignes"
   - id: AUTRE
     libelle: "Autre"
     question:
@@ -1283,10 +1247,6 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
-        score: 10
-      "BIODEGRADABLE":
-        score: 10
-      "NON_UTILISE":
         score: 10
       "STOCK":
         score: 0
@@ -1320,8 +1280,6 @@ questions:
   notation:
     EQ:
       "DECHETTERIE":
-        score: 10
-      "NON_UTILISE":
         score: 10
       "STOCK":
         score: 0

@@ -34,6 +34,7 @@ class Exigences
         $exigenceDetail = $this->exigences[$exigence];
         $reponses = $this->statistiques->getReponses();
         $satisfied = true;
+        $questionnaire = new Questions();
 
         foreach ($exigenceDetail['formule'] as $formule) {
             if (isset($formule['func']) === true) {
@@ -43,21 +44,17 @@ class Exigences
                 $value = 'func:'.mb_substr($formule['func'], 0, 30).'...';
                 $reponse = $success;
             } elseif ($formule['op'] === 'SCORE') {
-                $reponse = $this->statistiques->getScores()[$formule['cat']];
-                $value = $formule['score'];
-                $question = $formule['cat'];
-
-                foreach ($formule['mod'] as $mod) {
-                    $questionnaire = new Questions();
-
-                    foreach ($mod['questions'] as $q) {
-                        $infosQuestion = $questionnaire->findQuestion($q);
-                        $notation = $this->statistiques->getNotation($infosQuestion);
-
+                $reponse = 0;
+                foreach($formule['questions'] as $q => $exigenceNotation)  {
+                    $notation = $this->statistiques->getNotation($questionnaire->findQuestion($q));
+                    $reponse += $notation['score'];
+                    if(isset($exigenceNotation['mod'])) {
                         $reponse -= $notation['score'];
-                        $reponse += $notation['score'] * $mod['ratio'];
+                        $reponse += $notation['score'] * $exigenceNotation['mod']['ratio'];
                     }
                 }
+                $value = $formule['score'];
+                $question = $formule['cat'];
 
                 $success = $reponse >= $value;
             } else {
