@@ -81,6 +81,7 @@
         data-series="{{ @statistiques->renderTabValuesScores() }}"
         <check if="{{ @statistiquesLastYear}}">
           <true>data-lastYear="{{ @statistiquesLastYear->renderTabValuesScores() }}"</true>
+          <false>data-lastYear=null</false>
         </check>
         data-moyenne="{{ implode(',', @statistiques->calculMoyenneVignoble()) }}">
       </canvas>
