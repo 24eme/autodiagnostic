@@ -1,0 +1,66 @@
+<div>
+  <h3 class="display-6 mb-5">Liste des exigences</h3>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <td class="fw-bold">Nom</td>
+        <td class="fw-bold">Catégorie</td>
+        <td class="fw-bold">Questions</td>
+        <td class="fw-bold">Condition</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <repeat group="{{ @exigences->getExigences() }}" key="{{ @exigence }}" value="{{ @contentExigence }}">
+          <th scope="row" rowspan="{{ count(@contentExigence['formule'])+1 }}"> {{@contentExigence["name"]}}</th>
+          </tr>
+            <loop from="{{ @i=0 }}" to="{{ @i < count(@contentExigence['formule']) }}" step="{{ @i++ }}">
+                <tr>
+                  <check if="{{ @contentExigence['formule'][@i]['cat']}}">
+                    <true>
+                      <td>{{@questions->getCategoriePosition(@contentExigence['formule'][@i]['cat'])}}. {{@contentExigence['formule'][@i]['cat']}}</td>
+                      <td></td>
+                    </true>
+                  </check>
+                  <check if="{{ @contentExigence['formule'][@i]['qid'] }}">
+                    <true>
+                      <check if="{{ @questions->isMultipleQuestions(@contentExigence['formule'][@i]['qid']) }}">
+                        <true>
+                          <td>{{ @questions->getMultipleQuestionCategorie(@contentExigence['formule'][@i]['qid']) }}</td>
+                          <td>{{ @questions->getMultipleQuestion(@contentExigence['formule'][@i]['qid']) }}</td>
+                        </true>
+                        <false>
+                          <td>{{ @questions->getCategoriePosition(@questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['id'])}}. {{ @questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['libelle'] }}
+                          </td>
+                          <td>{{ @questions->getQuestionPosition(@contentExigence['formule'][@i]['qid'])}}. {{ @questions->findQuestion(@contentExigence['formule'][@i]['qid'])['libelle'] }}<a class="float-end text-dark" href="{{ 'config' | alias }}#modal-{{@questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['id']}}-{{@questions->findQuestion(@contentExigence['formule'][@i]['qid'])['id']}}" title="Plus d'info sur la question"><i class='bi-eye'></i></a></td>
+                        </false>
+                      </check>
+                    </true>
+                  </check>
+                  <check if="{{ @contentExigence['formule'][@i]['op'] === 'SCORE' }}">
+                    <true>
+                      <td>SCORE ={{@contentExigence['formule'][@i]['score']}}</td>
+                    </true>
+                  </check>
+                  <check if="{{ @contentExigence['formule'][@i]['op'] === 'EQ' }}">
+                    <true>
+                      <td> = {{@contentExigence['formule'][@i]['value']}} {{ @questions->getQuestionUnite(@contentExigence['formule'][@i]['qid'],true)}}</td>
+                    </true>
+                  </check>
+                 <check if="{{ @contentExigence['formule'][@i]['op'] === 'LTE' }}">
+                    <true>
+                      <td> <= {{@contentExigence['formule'][@i]['value']}} {{ @questions->getQuestionUnite(@contentExigence['formule'][@i]['qid'],true)}} </td>
+                    </true>
+                  </check>
+                  <check if="{{ @contentExigence['formule'][@i]['op'] === 'FUNC' }}">
+                    <true>
+                      <td>FUNC</td>
+                    </true>
+                  </check>
+                  </tr>
+            </loop>
+          </repeat>
+       </tr>
+    </tbody>
+  </table>
+</div>
