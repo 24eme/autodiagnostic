@@ -12,7 +12,7 @@ class Statistiques
     const NOTATION_METHODE_SUM = 'SUM';
     const NOTATION_METHODE_MIN = 'MIN';
     const NOTATION_METHODE_MAX = 'MAX';
-    const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
+    const DATA_QUESTIONNAIRE = 'data/questionnaire';
     const DATA_FORMULES = 'data/formules.yml';
     const NON_CONCERNE = 'NC';
 
@@ -28,8 +28,11 @@ class Statistiques
     private $formules = [];
     private $infosFormules;
 
-    public function __construct(Reponse $reponses) {
-        $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE);
+    public function __construct(Reponse $reponses, $year=null) {
+        if(!$year){
+            $year = date('Y');
+        }
+        $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE.".$year.yml");
         $this->infosFormules = yaml_parse_file(self::DATA_FORMULES);
         $this->reponses = $reponses;
 
@@ -49,15 +52,6 @@ class Statistiques
 
         return implode(',', $this->scoresEnPourcent(true));
     }
-
-    public function renderTabValuesScoresLastYear($pourcent = true) {
-        if ($pourcent === false) {
-            return implode(',', $this->getScoresLastYear(true));
-        }
-
-        return implode(',', $this->scoresEnPourcentLastYear(true));
-    }
-
 
     public function getScores($blacklist = false) {
         if ($blacklist === true) {
@@ -283,13 +277,16 @@ class Statistiques
         $all = [];
         $nb_categorie = 0;
 
+
         $f3 = Base::instance();
         foreach (glob($f3->get('UPLOADS').'engages/'.'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
-            $stat = new self(new Reponse($file));
+            $year = $this->findYearFromFileName($file);
+            $stat = new self(new Reponse($file),$year);
             $all[] = $stat->scoresEnPourcent(true);
             $nb_categorie = count(current($all));
             unset($stat);
         }
+
 
         $avg = [];
 
@@ -323,5 +320,10 @@ class Statistiques
         }
 
         return $faiblesses;
+    }
+
+    private function findYearFromFileName($filename){
+        preg_match("(20\d{2})",$filename,$result);
+        return $result[0];
     }
 }

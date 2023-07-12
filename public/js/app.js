@@ -1,6 +1,7 @@
 /* global Vue */
-const file = 'data/questionnaire.yml'
-const lastYear = new Date().getFullYear()-1;
+const currentYear = new Date().getFullYear()
+const file = 'data/questionnaire.'+currentYear+'.yml'
+const lastYear = currentYear-1;
 
 const Questionnaire = Vue.createApp({
   delimiters: ['{%', '%}'],

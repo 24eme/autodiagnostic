@@ -39,7 +39,7 @@ class Admin
 
     public function config(Base $f3)
     {
-        $questions = new Questions();
+        $questions = new Questions(date('Y'));
         $f3->set('questionnaire', $questions);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'config.htm');
@@ -105,9 +105,10 @@ class Admin
         $file = $this->findFile($args['file']);
 
         $file = new Reponse($file);
-        $statistiques = new Statistiques($file);
+        $year = $this->findYearFromFileName($args['file']);
+        $statistiques = new Statistiques($file,$year);
         $exigences = new Exigences($statistiques);
-        $questions = new Questions();
+        $questions = new Questions($year);
 
         $f3->set('inc', 'admin_show.htm');
         $f3->set('statistiques', $statistiques);
@@ -138,5 +139,10 @@ class Admin
         }
 
         return $file;
+    }
+
+    private function findYearFromFileName($filename){
+        preg_match("(20\d{2})",$filename,$result);
+        return $result[0];
     }
 }

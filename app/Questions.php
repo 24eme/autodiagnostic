@@ -2,7 +2,7 @@
 
 class Questions
 {
-    const DATA_QUESTIONNAIRE = 'data/questionnaire.yml';
+    const DATA_QUESTIONNAIRE = 'data/questionnaire';
 
     private $file = [];
     private $questions = [];
@@ -11,14 +11,17 @@ class Questions
     private $qfound = [];
     private $cfound = [];
 
-    public function __construct()
+    public function __construct($year=null)
     {
-        $questionnaire = yaml_parse_file(self::DATA_QUESTIONNAIRE);
+        if(!$year){
+            $year = date('Y');
+        }
+        $questionnaire = yaml_parse_file(self::DATA_QUESTIONNAIRE.".$year.yml");
         $this->questions = $this->extract('question', $questionnaire['questions']);
         $this->categories = $this->extract('categorie', $questionnaire['questions']);
         $this->questionnaire = $this->build($questionnaire['questions']);
 
-        $this->file = array_map('trim', file(self::DATA_QUESTIONNAIRE));
+        $this->file = array_map('trim', file(self::DATA_QUESTIONNAIRE.".$year.yml"));
     }
 
     private function extract($type, array $content)
@@ -260,7 +263,7 @@ class Questions
         $result = '';
         $questions = explode('+',$id);
         foreach($questions as $idquestion){
-            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='_config#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title='Plus d'info sur la question'><i class='bi-eye'></i></a>"."<br>";
+            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='_config#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title=\"Plus d'info sur la question\"><i class='bi-eye'></i></a>"."<br>";
         }
         return $result;
     }

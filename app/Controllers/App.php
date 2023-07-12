@@ -168,11 +168,13 @@ class App
             $filename = self::$storage.$args['file'].'.json';
         }
 
+        $year = $this->findYearFromFileName($filename);
+
         if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             return $f3->reroute('@home');
         }
 
-        $statistiques = new Statistiques(new Reponse($filename));
+        $statistiques = new Statistiques(new Reponse($filename),$year);
         $f3->set('statistiques', $statistiques);
         $f3->set('engage', $engage);
         $f3->set('inc', 'resultats.htm');
@@ -180,9 +182,10 @@ class App
         $f3->set('md5', $args['md5']);
 
         if($this->auth->getUser()){
-            $lastYearReponsesFile = $this->findReponseFile($this->auth->getUser(),date('Y')-1);
+            $lastYear = $year-1;
+            $lastYearReponsesFile = $this->findReponseFile($this->auth->getUser(),$lastYear);
             if($lastYearReponsesFile){
-                $statistiquesLastYear = new Statistiques(new Reponse($lastYearReponsesFile));
+                $statistiquesLastYear = new Statistiques(new Reponse($lastYearReponsesFile),$lastYear);
                 $f3->set('statistiquesLastYear', $statistiquesLastYear);
             }
         }
@@ -325,5 +328,10 @@ class App
     {
         return $this->auth->isAuthenticated() &&
                in_array($this->auth->getAuthType(), $unauthorized) === false;
+    }
+
+    private function findYearFromFileName($filename){
+        preg_match("(20\d{2})",$filename,$result);
+        return $result[0];
     }
 }
