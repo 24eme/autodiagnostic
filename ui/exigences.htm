@@ -15,7 +15,7 @@
                 <tr>
                   <check if="{{ @contentExigence['formule'][@i]['cat']}}">
                     <true>
-                      <td>{{@questions->getCategoriePosition(@contentExigence['formule'][@i]['cat'])}}. {{@contentExigence['formule'][@i]['cat']}}</td>
+                      <td>{{@questions->getCategoriePosition(@questions->findQuestionCategorie(array_keys(@contentExigence['formule'][@i]['questions'])[0])['id'])}}. {{@contentExigence['formule'][@i]['cat']}}</td>
                       <td>
                       <repeat group="{{ @contentExigence['formule'][@i]['questions'] }}" key="{{ @qExigence }}" value="{{ @notationExigence }}">
                         {{ @questions->getMultipleQuestion(@qExigence) }}
