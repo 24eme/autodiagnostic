@@ -29,8 +29,8 @@ const radarChart = new Chart(
               label: 'Mon score',
               data: canvas.getAttribute('data-series').split(","),
               fill: true,
-              backgroundColor: 'rgba(194, 145, 64, 0.2)',
-              borderColor: 'rgb(194, 145, 64)',
+              backgroundColor: 'rgba(175,70,29,0.2)',
+              borderColor: 'rgb(175,70,29)',
           },
           {
               label: 'Moyenne vignoble',
@@ -43,8 +43,8 @@ const radarChart = new Chart(
               label: 'Score année passée',
               data: canvas.getAttribute("data-lastYear").split(','),
               fill: true,
-              backgroundColor: 'rgba(124,252,0,0.2)',
-              borderColor: '(124,252,0)',
+              backgroundColor: 'rgba(194, 145, 64, 0.2)',
+              borderColor: 'rgb(194, 145, 64)',
           }
         ]
       }
