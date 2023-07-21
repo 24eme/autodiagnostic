@@ -29,14 +29,20 @@
 
       <div v-else id="startup-content">
         <p class="text-muted mb-4">
-          Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br /><br />Les pratiques viticoles sont évaluées à travers une charte développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br /><br />Un outil d’auto diagnostic a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules. Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées.<br /><br />La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire.
+          Le BIVC, en collaboration avec la FUVC, a développé une stratégie ambitieuse pour sécuriser la filière et penser l’avenir en agissant à chaque étape clé du process de l’élaboration et de la valorisation des vins du Centre-Loire.<br />
+          <br />
+          Les pratiques viticoles sont évaluées à travers une charte de développement durable permettant à tous les vigneron.ne.s de se positionner selon un gradient de différentes formules 1, 2 ou 3.<br />
+          <br />
+          Un outil d’auto diagnostic, <strong>à remplir chaque année</strong>, a été créé pour permettre à chacun de s’autoévaluer. Il situe l’exploitation dans une des différentes formules.<br />
+          <br />
+          Il propose également des pistes d’amélioration des pratiques et des fiches techniques appropriées. Il remplace la traditionnelle enquête millésime SICAVAC et permet au Centre-Loire de disposer de statistiques fiables en matière de pratiques vitivinicoles.<br />
+          <br />
+          Le questionnaire est à renseigner pour le millésime courant, il peut donc être saisi chaque année. Vous pouvez remplir dès à présent celui pour <strong>la campagne 2023</strong> (fertilisation 2022 - 2023 et saison 2023).<br />
+          <br />
+          La compilation de l’ensemble des autoévaluations indiquera le niveau de durabilité des pratiques des vigneron.ne.s du Centre-Loire. Nous vous garantissons l'anonymat des résultats.
         </p>
 
-        <p class="text-muted mb-4">Le questionnaire est à renseigner pour le millésime courant, il peut donc être saisi chaque année. Vous pouvez remplir dés à présent celui pour la <strong>récolte 2023</strong>.</p>
-
         <div class="text-center">
-
-
           <check if="{{ @SESSION.auth.user }}">
             <true><button class="btn btn-primary" v-on:click="continuerQuestions()">Commencer le questionnaire</button></true>
             <false><a href="{{ 'auth' | alias }}" class="btn btn-primary">Démarrer l'autodiagnostic</a></false>
