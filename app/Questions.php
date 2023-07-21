@@ -258,12 +258,12 @@ class Questions
         return $result;
     }
 
-    public function getMultipleQuestion($id)
+    public function getMultipleQuestion($id,$year)
     {
         $result = '';
         $questions = explode('+',$id);
         foreach($questions as $idquestion){
-            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='_config#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title=\"Plus d'info sur la question\"><i class='bi-eye'></i></a>"."<br>";
+            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='../_config/$year#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title=\"Plus d'info sur la question\"><i class='bi-eye'></i></a>"."<br>";
         }
         return $result;
     }

@@ -207,50 +207,10 @@ questions:
   couleur_texte: "#fff"
 
 - type: question
-  id: SURFACE_NON_TRAITEE
-  libelle: "Quel pourcentage de votre surface ne reçoit aucun traitement ?"
-  complement_information: "Sont concernées ici les parcelles exploitées (au moins une opération agricole par an) mais non traitées lors de la campagne étudiée comme les prairies permanentes ou les parcelles en attente de replantation."
-  unite: "%"
-  notation:
-    LTE:
-      "5":
-        score: 0
-      "15":
-        score: 1
-      "25":
-        score: 2
-      "35":
-        score: 3
-      "45":
-        score: 4
-      "55":
-        score: 5
-      "65":
-        score: 6
-      "75":
-        score: 7
-      "85":
-        score: 8
-      "95":
-        score: 9
-      "100":
-        score: 10
-
-- type: question
   id: SURFACE_ALTERNATIVE_CHIMIE
   libelle: "Sur quel pourcentage de votre surface utilisez-vous au moins une méthode alternative à la lutte chimique ?"
   complement_information: "Liste des principales méthodes alternatives en viticulture : désherbage mécanique, épamprage manuel ou mécanique, tonte de l'enherbement permanent, confusion sexuelle, utilisation de produits de biocontrôle"
   unite: "%"
-  notation:
-    LTE:
-      "25":
-        score: 0
-      "50":
-        score: 1
-      "75":
-        score: 2
-      "100":
-        score: 3
 
 - type: question
   id: MATERIELS
@@ -664,22 +624,6 @@ questions:
       "OUI":
         score: 2
       "NON":
-        score: 2
-
-- type: question
-  id: CLONES
-  libelle: "Utilisez-vous plus de 3 clones différents ?"
-  complement_information: "On parle ici du clone du greffon du cépage et non du porte-greffe"
-  reponses:
-  - id: OUI
-    libelle: "Oui"
-  - id: NON
-    libelle: "Non"
-  notation:
-    EQ:
-      "OUI":
-        score: 2
-      "NON":
         score: 0
 
 - type: question
@@ -729,10 +673,17 @@ questions:
   unite: "kg N/ha"
   notation:
     GTE:
-      "60":
+      "51":
         score: 0
+      "40":
+        score: 2
+      "30":
+        score: 4
+      "20":
+        score: 6
       "0":
-        score: 10
+        score: 8
+
 
 - type: question
   id: AZOTE_ORGANIQUE
@@ -768,7 +719,7 @@ questions:
         score: 2
       "55":
         score: 3
-      "55.01":
+      "100":
         score: 4
 
 - type: categorie
@@ -790,6 +741,13 @@ questions:
   libelle: "Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?"
   unite: "mètres"
   complement_information: "Un alignement d'arbres est composé d'une ou deux rangées d'arbres de haut-jet plantés en ligne.<br />Il est comptabilisé en mètres linéaires à partir de deux arbres.<br />Il ne doit pas être confondu avec les arbres en groupe ou les bosquets ou encore les vergers."
+  # notation_methode: 'FUNC'
+  # notation:
+  #   FUNC:
+  #     "":
+  #       score: 'function($r){
+  #         return (0.1/$r->get("SURFACE_EXPLOITATION")["reponse"])*$r->get("METRE_LINEAIRE_ARBRE")["reponse"]
+  #       }'
 
 - type: question
   id: ARBRE_ISOLE
@@ -839,6 +797,17 @@ questions:
     libelle: "Famille Ligneux (arbre isolé, alignement d'arbres, bosquets, haies, vergers haute-tige)"
   - id: ROCHEUX
     libelle: "Famille Rocheux (murs traditionnels en pierres, ruines)"
+  notation_methode: 'SUM'
+  notation:
+    EQ:
+      "AQUATIQUE":
+        score: 1
+      "HERBAGER":
+        score: 1
+      "LIGNEUX":
+        score: 1
+      "ROCHEUX":
+        score: 1
 
 - type: question
   id: POSSESSION_RUCHES

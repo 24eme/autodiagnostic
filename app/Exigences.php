@@ -5,15 +5,18 @@ use Statistiques;
 
 class Exigences
 {
-    const DATA_EXIGENCES = 'data/exigences.yml';
+    const DATA_EXIGENCES = 'data/exigences';
 
     private $statistiques;
     private $exigences;
     private $explain = [];
 
-    public function __construct(Statistiques $statistiques=null)
+    public function __construct(Statistiques $statistiques=null,$year=null)
     {
-        $this->exigences = yaml_parse_file(self::DATA_EXIGENCES);
+        if(!$year){
+            $year = date("Y");
+        }
+        $this->exigences = yaml_parse_file(self::DATA_EXIGENCES.".$year.yml");
         $this->statistiques = $statistiques;
     }
 

@@ -1,0 +1,131 @@
+hve3:
+  name: "Niveau HVE 3"
+  formule:
+    - op: SCORE
+      score: 3
+      cat: Protection de la vigne
+      questions:
+        SURFACE_ALTERNATIVE_CHIMIE: null
+        IFT_HERBICIDE:
+          mod:
+            ratio: 0.5
+        IFT_HORS_HERBICIDE:
+          mod:
+            ratio: 0.5
+    - op: SCORE
+      score: 10
+      cat: Fertilisation
+      questions:
+        BILAN_AZOTE: null
+        AZOTE_ORGANIQUE: null
+        UNITE_AZOTE: null
+      mod: []
+    - op: SCORE
+      score: 5
+      cat: Biodiversité
+      questions:
+        POURCENTAGE_SAU_IAE: null
+        POSSESSION_RUCHES: null
+        4_FAMILLES_IAE: null
+      mod: []
+
+echelon1:
+  name: "Échelon 1"
+  formule:
+    -
+      op: FUNC
+      qid: DESHERBAGE_CHIMIQUE
+      func:
+        'function ($r) {
+          return $r->get("DESHERBAGE_CHIMIQUE")["reponse"] === "NON"
+          || (
+              $r->get("DESHERBAGE_CHIMIQUE_VERAISON")["reponse"] === "NON"
+              && $r->get("DESHERBAGE_CHIMIQUE_VERAISON")["reponse"] === "NON"
+              && $r->get("DESHERBAGE_CHIMIQUE_VERAISON")["reponse"] === "NON"
+          );
+        }'
+    -
+      op: LTE
+      qid: ANTI_BROTRYTIS
+      value: 1
+    -
+      op: FUNC
+      qid: INSECTICIDES_AB+INSECTICIDES_NON_AB
+      func:
+        'function ($r) {
+          $ab = $r->get("INSECTICIDES_AB")["reponse"];
+          $nonab = $r->get("INSECTICIDES_NON_AB")["reponse"];
+          return ((($ab === "NC") ? 0 : $ab) + (($nonab === "NC") ? 0 : $nonab)) <= 2;
+        }'
+    -
+      op: EQ
+      qid: PRODUITS_CMR
+      value: 0
+    -
+      op: LTE
+      qid: UNITE_AZOTE
+      value: 15
+
+echelon2:
+  name: "Échelon 2"
+  formule:
+    -
+      op: EQ
+      qid: DESHERBAGE_CHIMIQUE
+      value: NON
+    -
+      op: LTE
+      qid: ANTI_BROTRYTIS
+      value: 1
+    -
+      op: LTE
+      qid: INSECTICIDES_AB
+      value: 2
+    -
+      op: EQ
+      qid: INSECTICIDES_NON_AB
+      value: 0
+    -
+      op: EQ
+      qid: PRODUITS_CMR
+      value: 0
+    -
+      op: EQ
+      qid: AZOTE_ORGANIQUE
+      value: OUI
+
+ab:
+  name: "Niveau AB"
+  formule:
+    -
+      op: EQ
+      qid: SURFACE_NON_TRAITEE
+      value: 100
+    -
+      op: EQ
+      qid: SURFACE_ALTERNATIVE_CHIMIE
+      value: 100
+    -
+      op: EQ
+      qid: IFT_HERBICIDE
+      value: 0
+    -
+      op: EQ
+      qid: DESHERBAGE_CHIMIQUE
+      value: NON
+    -
+      op: EQ
+      qid: UTILISATION_CMR
+      value: NON
+    -
+      op: EQ
+      qid: INSECTICIDES_NON_AB
+      value: 0
+    -
+      op: EQ
+      qid: TRAITEMENT_BROTRYTIS
+      value: NON
+    -
+      op: EQ
+      qid: AZOTE_ORGANIQUE
+      value: OUI

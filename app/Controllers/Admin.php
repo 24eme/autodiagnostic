@@ -37,12 +37,14 @@ class Admin
         echo Template::instance()->render('layout.html');
     }
 
-    public function config(Base $f3)
+    public function config(Base $f3,$args)
     {
-        $questions = new Questions(date('Y'));
+        $year = isset($args['year']) ? $args['year'] : $f3->get('CAMPAGNE_COURANTE');
+        $questions = new Questions($year);
         $f3->set('questionnaire', $questions);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'config.htm');
+        $f3->set('year',$year);
     }
 
     public function index(Base $f3)
@@ -68,14 +70,16 @@ class Admin
         $f3->set('sub', 'files.htm');
     }
 
-    public function exigences(Base $f3)
+    public function exigences(Base $f3,$args)
     {
-        $exigences = new Exigences();
+        $year = isset($args['year']) ? $args['year'] : $f3->get('CAMPAGNE_COURANTE');
+        $exigences = new Exigences(null,$year);
         $questions = new Questions();
         $f3->set('exigences', $exigences);
         $f3->set('questions', $questions);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'exigences.htm');
+        $f3->set('year',$year);
     }
 
     public function exportGlobal(Base $f3)
@@ -107,7 +111,7 @@ class Admin
         $file = new Reponse($file);
         $year = $this->findYearFromFileName($args['file']);
         $statistiques = new Statistiques($file,$year);
-        $exigences = new Exigences($statistiques);
+        $exigences = new Exigences($statistiques,$year);
         $questions = new Questions($year);
 
         $f3->set('inc', 'admin_show.htm');

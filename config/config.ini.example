@@ -5,6 +5,7 @@ LOGS=../var/log/
 UPLOADS=../storage/uploads/
 CACHE=true
 FICHES_FILE=../config/fiches.yml
+CAMPAGNE_COURANTE=2023
 
 DEBUG=3 ; Supprimer pour prod
 ONERROR="CMS->error"
