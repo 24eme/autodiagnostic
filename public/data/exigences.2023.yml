@@ -99,10 +99,6 @@ ab:
   formule:
     -
       op: EQ
-      qid: SURFACE_NON_TRAITEE
-      value: 100
-    -
-      op: EQ
       qid: SURFACE_ALTERNATIVE_CHIMIE
       value: 100
     -
