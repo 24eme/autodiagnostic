@@ -7,6 +7,7 @@
           <tr>
             <th scope="col"><abbr title="Engagement">Eng.</abbr></th>
             <th scope="col">Date</th>
+            <th scope="col">Campagne</th>
             <th scope="col">CVI <span class='text-muted'>ID</span></th>
             <th class="text-center" scope="col">Actions</th>
           </tr>
@@ -22,6 +23,9 @@
             </td>
             <td>
               {{ Base::instance()->format('{0,date,long}', filemtime(@name)) }}
+            </td>
+            <td>
+              {{ explode("-", basename(@name))[1] }}
             </td>
             <td>
               {{ sprintf("%s", strtok(basename(@name), '-')) }}
