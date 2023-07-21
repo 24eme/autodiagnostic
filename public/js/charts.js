@@ -41,7 +41,7 @@ const radarChart = new Chart(
           },
           {
               label: 'Score année passée',
-              data: canvas.getAttribute("data-lastYear").split(','),
+              data: canvas.getAttribute("data-lastCampagne").split(','),
               fill: true,
               backgroundColor: 'rgba(175,70,29,0.2)',
               borderColor: 'rgb(175,70,29)',

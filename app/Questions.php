@@ -11,17 +11,17 @@ class Questions
     private $qfound = [];
     private $cfound = [];
 
-    public function __construct($year=null)
+    public function __construct($campagne = null)
     {
-        if(!$year){
-            $year = date('Y');
+        if(!$campagne){
+            $f3 = Base::instance();
+            $campagne = $f3->get("CAMPAGNE_COURANTE");
         }
-        $questionnaire = yaml_parse_file(self::DATA_QUESTIONNAIRE.".$year.yml");
+        $questionnaire = yaml_parse_file(self::DATA_QUESTIONNAIRE.".$campagne.yml");
         $this->questions = $this->extract('question', $questionnaire['questions']);
         $this->categories = $this->extract('categorie', $questionnaire['questions']);
         $this->questionnaire = $this->build($questionnaire['questions']);
-
-        $this->file = array_map('trim', file(self::DATA_QUESTIONNAIRE.".$year.yml"));
+        $this->file = array_map('trim', file(self::DATA_QUESTIONNAIRE.".$campagne.yml"));
     }
 
     private function extract($type, array $content)
@@ -258,12 +258,12 @@ class Questions
         return $result;
     }
 
-    public function getMultipleQuestion($id,$year)
+    public function getMultipleQuestion($id,$campagne)
     {
         $result = '';
         $questions = explode('+',$id);
         foreach($questions as $idquestion){
-            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='../_config/$year#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title=\"Plus d'info sur la question\"><i class='bi-eye'></i></a>"."<br>";
+            $result .= $this->getQuestionPosition($idquestion).'. '.$this->findQuestion($idquestion)['libelle']."<a class='float-end text-dark' href='../_config/$campagne#modal-".$this->findQuestionCategorie($idquestion)['id']."-".$this->findQuestion($idquestion)['id']."' title=\"Plus d'info sur la question\"><i class='bi-eye'></i></a>"."<br>";
         }
         return $result;
     }

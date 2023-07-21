@@ -1,5 +1,5 @@
 <div>
-  <h3 class="display-6 mb-5">Liste des exigences {{ @year }}</h3>
+  <h3 class="display-6 mb-5">Liste des exigences {{ @campagne }}</h3>
       <repeat group="{{ @exigences->getExigences() }}" key="{{ @exigence }}" value="{{ @contentExigence }}">
         <h3>{{ @contentExigence["name"] }}</h3>
         <table class="table table-striped table-bordered">
@@ -18,7 +18,7 @@
                       <td>{{@questions->getCategoriePosition(@questions->findQuestionCategorie(array_keys(@contentExigence['formule'][@i]['questions'])[0])['id'])}}. {{@contentExigence['formule'][@i]['cat']}}</td>
                       <td>
                       <repeat group="{{ @contentExigence['formule'][@i]['questions'] }}" key="{{ @qExigence }}" value="{{ @notationExigence }}">
-                        {{ @questions->getMultipleQuestion(@qExigence,@year) }}
+                        {{ @questions->getMultipleQuestion(@qExigence,@campagne) }}
                       </repeat>
                       </td>
                     </true>
@@ -28,12 +28,12 @@
                       <check if="{{ @questions->isMultipleQuestions(@contentExigence['formule'][@i]['qid']) }}">
                         <true>
                           <td>{{ @questions->getMultipleQuestionCategorie(@contentExigence['formule'][@i]['qid']) }}</td>
-                          <td>{{ @questions->getMultipleQuestion(@contentExigence['formule'][@i]['qid'],@year) }}</td>
+                          <td>{{ @questions->getMultipleQuestion(@contentExigence['formule'][@i]['qid'],@campagne) }}</td>
                         </true>
                         <false>
                           <td>{{ @questions->getCategoriePosition(@questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['id'])}}. {{ @questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['libelle'] }}
                           </td>
-                          <td>{{ @questions->getQuestionPosition(@contentExigence['formule'][@i]['qid'])}}. {{ @questions->findQuestion(@contentExigence['formule'][@i]['qid'])['libelle'] }}<a class="float-end text-dark" href="{{ 'config' | alias }}/{{ @year }}#modal-{{@questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['id']}}-{{@questions->findQuestion(@contentExigence['formule'][@i]['qid'])['id']}}" title="Plus d'info sur la question"><i class='bi-eye'></i></a></td>
+                          <td>{{ @questions->getQuestionPosition(@contentExigence['formule'][@i]['qid'])}}. {{ @questions->findQuestion(@contentExigence['formule'][@i]['qid'])['libelle'] }}<a class="float-end text-dark" href="{{ 'config' | alias }}/{{ @campagne }}#modal-{{@questions->findQuestionCategorie(@contentExigence['formule'][@i]['qid'])['id']}}-{{@questions->findQuestion(@contentExigence['formule'][@i]['qid'])['id']}}" title="Plus d'info sur la question"><i class='bi-eye'></i></a></td>
                         </false>
                       </check>
                     </true>

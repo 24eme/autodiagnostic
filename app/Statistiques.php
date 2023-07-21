@@ -28,14 +28,13 @@ class Statistiques
     private $formules = [];
     private $infosFormules;
 
-    public function __construct(Reponse $reponses, $year=null) {
-        if(!$year){
-            $year = date('Y');
-        }
-        $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE.".$year.yml");
+    public function __construct(Reponse $reponses) {
+
+        $campagne = $reponses->getCampagne();
+
+        $this->config = yaml_parse_file(self::DATA_QUESTIONNAIRE.".$campagne.yml");
         $this->infosFormules = yaml_parse_file(self::DATA_FORMULES);
         $this->reponses = $reponses;
-
         $this->formules = array_fill_keys(array_keys($this->infosFormules), true);
 
         $this->synthetiserReponses();
@@ -277,16 +276,13 @@ class Statistiques
         $all = [];
         $nb_categorie = 0;
 
-
         $f3 = Base::instance();
         foreach (glob($f3->get('UPLOADS').'engages/'.'[!{VISITEUR}]*.json', GLOB_BRACE) as $file) {
-            $year = $this->findYearFromFileName($file);
-            $stat = new self(new Reponse($file),$year);
+            $stat = new self(new Reponse($file));
             $all[] = $stat->scoresEnPourcent(true);
             $nb_categorie = count(current($all));
             unset($stat);
         }
-
 
         $avg = [];
 
@@ -322,8 +318,4 @@ class Statistiques
         return $faiblesses;
     }
 
-    private function findYearFromFileName($filename){
-        preg_match("(20\d{2})",$filename,$result);
-        return $result[0];
-    }
 }

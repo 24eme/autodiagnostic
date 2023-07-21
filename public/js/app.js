@@ -1,7 +1,7 @@
 /* global Vue */
-const currentYear = new Date().getFullYear()
-const file = 'data/questionnaire.'+currentYear+'.yml'
-const lastYear = currentYear-1;
+const currentCampagne = new Date().getMonth() <= 6 ? new Date().getFullYear() - 1 : new Date().getFullYear();
+const file = 'data/questionnaire.'+currentCampagne+'.yml'
+const lastCampagne = currentCampagne-1;
 
 const Questionnaire = Vue.createApp({
   delimiters: ['{%', '%}'],
@@ -15,7 +15,7 @@ const Questionnaire = Vue.createApp({
       reponses: {},
       modeQuestionsNonRepondues: false,
       nombreQuestionsTotal: 0,
-      lastYearReponse: ''
+      lastCampagneReponse: ''
     }
   },
   mounted() {
@@ -23,9 +23,9 @@ const Questionnaire = Vue.createApp({
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
     this.loadQuestions(file)
     window.addEventListener('hashchange', this.hashChange);
-    axios.get('/api/reponses/'+lastYear)
+    axios.get('/api/reponses/'+lastCampagne)
        .then(reponse => {
-         this.lastYearReponse = reponse.data;
+         this.lastCampagneReponse = reponse.data;
        })
        .catch(error => {
          console.error(error);
@@ -220,10 +220,10 @@ const Questionnaire = Vue.createApp({
       }
 
       /*Prérempli les questions avec prérempli à true*/
-      if(!this.lastYearReponse){
+      if(!this.lastCampagneReponse){
         return;
       }
-      const keys = Object.keys(JSON.parse(JSON.stringify(this.lastYearReponse)));
+      const keys = Object.keys(JSON.parse(JSON.stringify(this.lastCampagneReponse)));
       var tabSousReponses;
       for(var key in keys){
         if(!question.prerempli){
@@ -234,13 +234,13 @@ const Questionnaire = Vue.createApp({
         }
         if(!question.multiple){
           if(!this.reponses[keys[key]]){
-            this.reponses[keys[key]] = this.lastYearReponse[keys[key]];
+            this.reponses[keys[key]] = this.lastCampagneReponse[keys[key]];
           }
           continue
         }else{
           if(!this.reponses[keys[key]].length){
-            tabSousReponses = this.lastYearReponse[keys[key]]
-            this.reponses[keys[key]] = this.lastYearReponse[keys[key]];
+            tabSousReponses = this.lastCampagneReponse[keys[key]]
+            this.reponses[keys[key]] = this.lastCampagneReponse[keys[key]];
           }
           if(question.reponses && tabSousReponses){
             for(var sousReponse in tabSousReponses){
@@ -248,7 +248,7 @@ const Questionnaire = Vue.createApp({
                 continue
               }
               if(!this.reponses[question.reponses[sousReponse].question.id]){
-                this.reponses[question.reponses[sousReponse].question.id] = this.lastYearReponse[question.reponses[sousReponse].question.id]
+                this.reponses[question.reponses[sousReponse].question.id] = this.lastCampagneReponse[question.reponses[sousReponse].question.id]
               }
             }
           }

@@ -10,10 +10,12 @@ class Reponse
     public $id;
     public $decoded = [];
     private $raw;
+    private $campagne;
 
     public function __construct($file)
     {
         $this->id = basename($file, '.json');
+        $this->campagne  = $this->findCampagneFromFileName($file);
 
         if (is_file($file) === false) {
             throw new \InvalidArgumentException("Le fichier n'existe pas");
@@ -54,12 +56,9 @@ class Reponse
         return $file;
     }
 
-    public static function getFichier(string $path, string $user, $year = null)
+    public static function getFichier(string $path, string $user, $campagne)
     {
-        if(!$year){
-            $year = date('Y');
-        }
-        return glob(sprintf('%s/%s-%s-*.json', $path, $user, $year));
+        return glob(sprintf('%s/%s-%s-*.json', $path, $user, $campagne));
     }
 
 
@@ -112,5 +111,15 @@ class Reponse
             'reponse' => $this->hasMultiplesReponses($id) ? implode(',', $reponse) : $reponse,
             'complement' => $this->hasComplementReponse($id) ? $this->decoded[self::PREFIX_COMPLEMENT.$id] : null
         ];
+    }
+
+
+    public function getCampagne(){
+        return $this->campagne;
+    }
+
+    private function findCampagneFromFileName($filename){
+        preg_match("(20\d{2})",$filename,$result);
+        return $result[0];
     }
 }

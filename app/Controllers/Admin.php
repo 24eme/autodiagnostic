@@ -39,12 +39,12 @@ class Admin
 
     public function config(Base $f3,$args)
     {
-        $year = isset($args['year']) ? $args['year'] : $f3->get('CAMPAGNE_COURANTE');
-        $questions = new Questions($year);
+        $campagne = isset($args['campagne']) ? $args['campagne'] : $f3->get('CAMPAGNE_COURANTE');
+        $questions = new Questions($campagne);
         $f3->set('questionnaire', $questions);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'config.htm');
-        $f3->set('year',$year);
+        $f3->set('campagne',$campagne);
     }
 
     public function index(Base $f3)
@@ -72,14 +72,14 @@ class Admin
 
     public function exigences(Base $f3,$args)
     {
-        $year = isset($args['year']) ? $args['year'] : $f3->get('CAMPAGNE_COURANTE');
-        $exigences = new Exigences(null,$year);
-        $questions = new Questions();
+        $campagne = isset($args['campagne']) ? $args['campagne'] : $f3->get('CAMPAGNE_COURANTE');
+        $exigences = new Exigences(null,$campagne);
+        $questions = new Questions($campagne);
         $f3->set('exigences', $exigences);
         $f3->set('questions', $questions);
         $f3->set('inc', 'admin.htm');
         $f3->set('sub', 'exigences.htm');
-        $f3->set('year',$year);
+        $f3->set('campagne',$campagne);
     }
 
     public function exportGlobal(Base $f3)
@@ -109,10 +109,11 @@ class Admin
         $file = $this->findFile($args['file']);
 
         $file = new Reponse($file);
-        $year = $this->findYearFromFileName($args['file']);
-        $statistiques = new Statistiques($file,$year);
-        $exigences = new Exigences($statistiques,$year);
-        $questions = new Questions($year);
+        $campagne = $file->getCampagne();
+
+        $statistiques = new Statistiques($file);
+        $exigences = new Exigences($statistiques);
+        $questions = new Questions($campagne);
 
         $f3->set('inc', 'admin_show.htm');
         $f3->set('statistiques', $statistiques);
@@ -143,10 +144,5 @@ class Admin
         }
 
         return $file;
-    }
-
-    private function findYearFromFileName($filename){
-        preg_match("(20\d{2})",$filename,$result);
-        return $result[0];
     }
 }

@@ -11,20 +11,25 @@ class Exigences
     private $exigences;
     private $explain = [];
 
-    public function __construct(Statistiques $statistiques=null,$year=null)
+    public function __construct(Statistiques $statistiques=null,$campagne = null)
     {
-        if(!$year){
-            $year = date("Y");
+        if(!$statistiques && !$campagne){
+            $f3 = Base::instance();
+            $campagne = $f3->get("CAMPAGNE_COURANTE");
         }
-        $this->exigences = yaml_parse_file(self::DATA_EXIGENCES.".$year.yml");
+        elseif(!$campagne){
+            $campagne = $statistiques->getReponses()->getCampagne();
+        }
+
+        $this->exigences = yaml_parse_file(self::DATA_EXIGENCES.".$campagne.yml");
         $this->statistiques = $statistiques;
+        $this->campagne = $campagne;
     }
 
     public function name($exigence) {
         if (array_key_exists($exigence, $this->exigences) === false) {
             return false;
         }
-
         return $this->exigences[$exigence]['name'];
     }
 
@@ -37,7 +42,7 @@ class Exigences
         $exigenceDetail = $this->exigences[$exigence];
         $reponses = $this->statistiques->getReponses();
         $satisfied = true;
-        $questionnaire = new Questions();
+        $questionnaire = new Questions($reponses->getCampagne());
 
         foreach ($exigenceDetail['formule'] as $formule) {
             if (isset($formule['func']) === true) {

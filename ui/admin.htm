@@ -23,10 +23,10 @@
   <div class="g-5 tabs">
     <ul class="nav nav-tabs nav-fill mb-5">
       <li class="nav-item">
-        <a class="nav-link{{ (@sub === 'config.htm') ? ' active' : '' }}" href="{{ 'config' | alias }}/{{@year}}">Liste des questions</a>
+        <a class="nav-link{{ (@sub === 'config.htm') ? ' active' : '' }}" href="{{ 'config' | alias }}/{{@campagne}}">Liste des questions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link{{ (@sub === 'exigences.htm') ? ' active' : '' }}" href="{{ 'exigences' | alias }}/{{@year}}">Liste des exigences</a>
+        <a class="nav-link{{ (@sub === 'exigences.htm') ? ' active' : '' }}" href="{{ 'exigences' | alias }}/{{@campagne}}">Liste des exigences</a>
       </li>
       <li class="nav-item">
         <a class="nav-link{{ (@sub === 'files.htm') ? ' active' : '' }}" href="{{ 'admin' | alias }}">Tous les résultats</a>

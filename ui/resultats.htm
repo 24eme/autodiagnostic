@@ -31,14 +31,14 @@
               <i class="bi-check-circle-fill fs-3 text-success me-3"></i> {{ @ptFort }}
             </div>
           </repeat>
-          <check if="{{ @statistiquesLastYear and count(@statistiques->getPtsForts()) > count(@statistiquesLastYear->getPtsForts()) }}">
+          <check if="{{ @statistiqueslastCampagne and count(@statistiques->getPtsForts()) > count(@statistiqueslastCampagne->getPtsForts()) }}">
             <true>
               <div class="p-1 d-flex align-items-center">
                 <i class="bi-check-circle-fill fs-3 text-success me-3"></i>Vous avez plus de "points forts" par rapport à l'année précédente
               </div>
             </true>
           </check>
-          <check if="{{ @statistiquesLastYear and count(@statistiques->getPtsAmeliorations()) < count(@statistiquesLastYear->getPtsAmeliorations()) }}">
+          <check if="{{ @statistiqueslastCampagne and count(@statistiques->getPtsAmeliorations()) < count(@statistiqueslastCampagne->getPtsAmeliorations()) }}">
             <true>
               <div class="p-1 d-flex align-items-center">
                 <i class="bi-check-circle-fill fs-3 text-success me-3"></i>Vous avez moins de "points d'améliorations" par rapport à l'année précédente
@@ -79,9 +79,9 @@
         data-type="radar"
         data-labels="{{ @statistiques->renderTabKeysScores() }}"
         data-series="{{ @statistiques->renderTabValuesScores() }}"
-        <check if="{{ @statistiquesLastYear}}">
-          <true>data-lastYear="{{ @statistiquesLastYear->renderTabValuesScores() }}"</true>
-          <false>data-lastYear=null</false>
+        <check if="{{ @statistiqueslastCampagne}}">
+          <true>data-lastCampagne="{{ @statistiqueslastCampagne->renderTabValuesScores() }}"</true>
+          <false>data-lastCampagne=null</false>
         </check>
         data-moyenne="{{ implode(',', @statistiques->calculMoyenneVignoble()) }}">
       </canvas>

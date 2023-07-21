@@ -50,7 +50,7 @@ class App
         $f3->set('inc', 'index.htm');
 
         if ($this->auth->isAuthenticated()) {
-            $file = $this->findReponse($this->auth->getUser());
+            $file = $this->findReponse($this->auth->getUser(),$f3->get('CAMPAGNE_COURANTE'));
             if ($file !== false) {
                 $f3->set('inc', 'alreadydone.htm');
                 $f3->set('file', basename($file, '.json'));
@@ -59,11 +59,11 @@ class App
                 $f3->set('engage', Reponse::getFichierNameWithAuth(self::$storage_engage.$f3->get('file').'.json', $f3->get('md5')) !== false);
             }
 
-            $lastYearReponseFile = $this->findReponseFile($this->auth->getUser(),date('Y')-1);
-            if($lastYearReponseFile){
-                $lastYearReponse = new Reponse($lastYearReponseFile);
-                $f3->set('lastYearReponse', $lastYearReponse);
-                $f3->set('lastYearReponseFile', $lastYearReponseFile);
+            $lastCampagneReponseFile = $this->findReponseFile($this->auth->getUser(),$f3->get('CAMPAGNE_COURANTE')-1);
+            if($lastCampagneReponseFile){
+                $lastCampagneReponse = new Reponse($lastCampagneReponseFile);
+                $f3->set('lastCampagneReponse', $lastCampagneReponse);
+                $f3->set('lastCampagneReponseFile', $lastCampagneReponseFile);
             }
         }
     }
@@ -121,7 +121,7 @@ class App
         $uniqid = substr(bin2hex(random_bytes(13)), 0, 13);
 
         $generatedFilename = implode('-', [
-            $user, date('Y'), $uniqid
+            $user, $f3->get("CAMPAGNE_COURANTE"), $uniqid
         ]) . '.json';
 
         // Destination : $f3->get('UPLOADS')
@@ -168,13 +168,11 @@ class App
             $filename = self::$storage.$args['file'].'.json';
         }
 
-        $year = $this->findYearFromFileName($filename);
-
         if (Reponse::getFichierNameWithAuth($filename, $args['md5']) === false) {
             return $f3->reroute('@home');
         }
 
-        $statistiques = new Statistiques(new Reponse($filename),$year);
+        $statistiques = new Statistiques(new Reponse($filename));
         $f3->set('statistiques', $statistiques);
         $f3->set('engage', $engage);
         $f3->set('inc', 'resultats.htm');
@@ -182,11 +180,11 @@ class App
         $f3->set('md5', $args['md5']);
 
         if($this->auth->getUser()){
-            $lastYear = $year-1;
-            $lastYearReponsesFile = $this->findReponseFile($this->auth->getUser(),$lastYear);
-            if($lastYearReponsesFile){
-                $statistiquesLastYear = new Statistiques(new Reponse($lastYearReponsesFile),$lastYear);
-                $f3->set('statistiquesLastYear', $statistiquesLastYear);
+            $lastCampagne = $statistiques->getReponses()->getCampagne()-1;
+            $lastCampagneReponsesFile = $this->findReponseFile($this->auth->getUser(),$lastCampagne);
+            if($lastCampagneReponsesFile){
+                $statistiqueslastCampagne = new Statistiques(new Reponse($lastCampagneReponsesFile));
+                $f3->set('statistiqueslastCampagne', $statistiqueslastCampagne);
             }
         }
     }
@@ -234,6 +232,7 @@ class App
         }
 
         $reponse = new Reponse($filename);
+        $campagne = $reponse->getCampagne();
 
         $statistiques = new Statistiques($reponse);
         $exigences = new Exigences($statistiques);
@@ -291,7 +290,7 @@ class App
 
     public function apiReponse(Base $f3,$args)
     {
-        $reponseFile = $this->findReponseFile($this->auth->getUser(),(int)$args['year']);
+        $reponseFile = $this->findReponseFile($this->auth->getUser(),(int)$args['campagne']);
         if($reponseFile){
             $reponse = new Reponse($reponseFile);
         }
@@ -301,20 +300,20 @@ class App
         exit;
     }
 
-    private function findReponseFile(string $user,$year){
-        $file = Reponse::getFichier(self::$storage_engage, $user,$year);
+    private function findReponseFile(string $user,$campagne){
+        $file = Reponse::getFichier(self::$storage_engage, $user,$campagne);
         if(!$file){
             return null;
          }
         return current($file);
     }
 
-    private function findReponse(string $user)
+    private function findReponse(string $user,$campagne)
     {
-        $files = Reponse::getFichier(self::$storage_engage, $user);
+        $files = Reponse::getFichier(self::$storage_engage, $user,$campagne);
 
         if ($files === false || count($files) === 0) {
-            $files = Reponse::getFichier(self::$storage, $user);
+            $files = Reponse::getFichier(self::$storage, $user,$campagne);
 
             if ($files === false || count($files) === 0) {
                 return false;
@@ -330,8 +329,4 @@ class App
                in_array($this->auth->getAuthType(), $unauthorized) === false;
     }
 
-    private function findYearFromFileName($filename){
-        preg_match("(20\d{2})",$filename,$result);
-        return $result[0];
-    }
 }
