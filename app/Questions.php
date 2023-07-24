@@ -267,4 +267,16 @@ class Questions
         }
         return $result;
     }
+
+    public function getReponseLibelle($idquestion,$idreponse)
+    {
+        $question = $this->findQuestion($idquestion);
+        foreach($question['reponses'] as $k => $v){
+            if($question['reponses'][$k]['id'] === $idreponse){
+                return $question['reponses'][$k]['libelle'];
+            }
+        }
+        return;
+    }
+
 }

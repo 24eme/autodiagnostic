@@ -11,6 +11,7 @@ use Reponses\Exporter\ReponseExporter;
 use Reponses\Reponse;
 use SMTP;
 use Statistiques;
+use Questions;
 use Template;
 use Web;
 
@@ -290,11 +291,23 @@ class App
 
     public function apiReponse(Base $f3,$args)
     {
-        $reponseFile = $this->findReponseFile($this->auth->getUser(),(int)$args['campagne']);
+        $campagne = (int)$args['campagne'];
+        $questions = new Questions($campagne);
+        $reponseFile = $this->findReponseFile($this->auth->getUser(),$campagne);
         if($reponseFile){
             $reponse = new Reponse($reponseFile);
         }
         $data = $reponse->decoded;
+
+        foreach($data as $idquestion => $reponses){
+            if(!is_array($data[$idquestion])){
+                continue;
+            }
+            foreach($data[$idquestion] as $i => $r){
+                $data[$idquestion][$i] = $questions->getReponseLibelle($idquestion,$r);
+            }
+        }
+
         header('Content-Type: application/json');
         echo json_encode($data);
         exit;
