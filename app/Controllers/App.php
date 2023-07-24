@@ -174,19 +174,30 @@ class App
         }
 
         $statistiques = new Statistiques(new Reponse($filename));
+        $campagne = $statistiques->getReponses()->getCampagne();
         $f3->set('statistiques', $statistiques);
         $f3->set('engage', $engage);
         $f3->set('inc', 'resultats.htm');
         $f3->set('file', $args['file']);
         $f3->set('md5', $args['md5']);
+        $f3->set('campagne',$campagne);
 
-        if($this->auth->getUser()){
-            $lastCampagne = $statistiques->getReponses()->getCampagne()-1;
+
+
+        if($this->auth->getUser()){ // ou si t'es Admin !!
+            $lastCampagne = $campagne-1;
             $lastCampagneReponsesFile = $this->findReponseFile($this->auth->getUser(),$lastCampagne);
             if($lastCampagneReponsesFile){
                 $statistiqueslastCampagne = new Statistiques(new Reponse($lastCampagneReponsesFile));
                 $f3->set('statistiqueslastCampagne', $statistiqueslastCampagne);
             }
+            $tabOtherCampagne = array();
+            for($c = $lastCampagne;$c < $lastCampagne+3; $c++){
+                if($this->findReponseFile($this->auth->getUser(),$c)){
+                    $tabOtherCampagne[$c]= $this->findReponseFile($this->auth->getUser(),$c);
+                }
+            }
+            $f3->set('tabOtherCampagne', $tabOtherCampagne);
         }
     }
 
@@ -248,6 +259,15 @@ class App
         $f3->set('inc', 'formules.htm');
         $f3->set('file', $args['file']);
         $f3->set('md5', $args['md5']);
+        $f3->set('campagne',$campagne);
+
+        $tabOtherCampagne = array();
+        for($c = $campagne-1;$c < $campagne+3; $c++){
+            if($this->findReponseFile($this->auth->getUser(),$c)){
+                $tabOtherCampagne[$c]= $this->findReponseFile($this->auth->getUser(),$c);
+            }
+        }
+        $f3->set('tabOtherCampagne', $tabOtherCampagne);
     }
 
     public function envoiMail(Base $f3, array $args)

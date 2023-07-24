@@ -5,7 +5,19 @@
         <div class="container-fluid text-center">
           <h1 class="text-center opacity-25 d-inline-block display-5 fw-bold"><a class="text-white" href="{{ 'resultats', '@file='.@file.',@md5='.@md5 | alias }}"><i class="bi-award"></i> Vos résultats</a></h1>
           <h1 class="text-center d-inline-block display-5 fw-bold ms-5"><a class="text-white" href="{{ 'formules', '@file='.@file.',@md5='.@md5 | alias }}"><i class="bi bi-card-checklist"></i> Votre formule</a></h1>
-          <h2 class="fw-bold"><a class="opacity-25 small text-white" href="">2022-2023<a><i class="bi bi-dot text-white opacity-25 small"></i><a class="text-white" href="">2023-2024</a></h2>
+          <h2 class="fw-bold">
+            <repeat group="{{ @tabOtherCampagne}}" key="{{ @key }}" value="{{ @value }}">
+              <a class="
+                <check if='{{ @key == @campagne }}'>
+                  <true></true>
+                  <false>opacity-25</false>
+                </check>
+                small text-white" href="{{ 'formules', '@file='.pathinfo(basename(@value),PATHINFO_FILENAME).',@md5='.md5_file(@value) | alias }}">{{ @key }}<a>
+                <i class="bi bi-dot text-white opacity-25 small"></i>
+            </repeat>
+
+
+          </h2>
         </div>
       </div>
     </div>
