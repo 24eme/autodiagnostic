@@ -182,23 +182,23 @@ class App
         $f3->set('md5', $args['md5']);
         $f3->set('campagne',$campagne);
 
+        $user = $this->findUserFromFileName($filename);
 
-
-        if($this->auth->getUser()){ // ou si t'es Admin !!
-            $lastCampagne = $campagne-1;
-            $lastCampagneReponsesFile = $this->findReponseFile($this->auth->getUser(),$lastCampagne);
-            if($lastCampagneReponsesFile){
-                $statistiqueslastCampagne = new Statistiques(new Reponse($lastCampagneReponsesFile));
-                $f3->set('statistiqueslastCampagne', $statistiqueslastCampagne);
-            }
-            $tabOtherCampagne = array();
-            for($c = $lastCampagne;$c < $lastCampagne+3; $c++){
-                if($this->findReponseFile($this->auth->getUser(),$c)){
-                    $tabOtherCampagne[$c]= $this->findReponseFile($this->auth->getUser(),$c);
-                }
-            }
-            $f3->set('tabOtherCampagne', $tabOtherCampagne);
+        $lastCampagne = $campagne-1;
+        $lastCampagneReponsesFile = $this->findReponseFile($user,$lastCampagne);
+        if($lastCampagneReponsesFile){
+            $statistiqueslastCampagne = new Statistiques(new Reponse($lastCampagneReponsesFile));
+            $f3->set('statistiqueslastCampagne', $statistiqueslastCampagne);
         }
+
+        $tabOtherCampagne = array();
+        for($c = $lastCampagne;$c < $lastCampagne+3; $c++){
+            if($this->findReponseFile($user,$c)){
+                $tabOtherCampagne[$c]= $this->findReponseFile($user,$c);
+            }
+        }
+
+        $f3->set('tabOtherCampagne', $tabOtherCampagne);
     }
 
     public function engagement(Base $f3)
@@ -261,10 +261,11 @@ class App
         $f3->set('md5', $args['md5']);
         $f3->set('campagne',$campagne);
 
+        $user = $this->findUserFromFileName($filename);
         $tabOtherCampagne = array();
         for($c = $campagne-1;$c < $campagne+3; $c++){
-            if($this->findReponseFile($this->auth->getUser(),$c)){
-                $tabOtherCampagne[$c]= $this->findReponseFile($this->auth->getUser(),$c);
+            if($this->findReponseFile($user,$c)){
+                $tabOtherCampagne[$c]= $this->findReponseFile($user,$c);
             }
         }
         $f3->set('tabOtherCampagne', $tabOtherCampagne);
@@ -362,4 +363,8 @@ class App
                in_array($this->auth->getAuthType(), $unauthorized) === false;
     }
 
+    private function findUserFromFileName($filename){
+        preg_match("/(\d*)-/",$filename,$result);
+        return $result[1];
+    }
 }
