@@ -1,5 +1,5 @@
 /* global Vue */
-const currentCampagne = new Date().getMonth() <= 6 ? new Date().getFullYear() - 1 : new Date().getFullYear();
+const currentCampagne = new Date().getMonth() <= 5 ? new Date().getFullYear() - 1 : new Date().getFullYear(); //changer le 5 en 6 peut être ?
 const file = 'data/questionnaire.'+currentCampagne+'.yml'
 const lastCampagne = currentCampagne-1;
 
