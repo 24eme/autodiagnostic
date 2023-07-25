@@ -48,12 +48,16 @@
 
                     {{ @questionnaire->getQuestionType(@question.id) }}
                   </li>
+                  <check if="{{@questionnaire->isPrerempli(@question.id)}}">
+                    <li>
+                      <span class="fw-bold">Préremplis avec donnée de l'année précédente si elle existe</span>
+                    </li>
+                  </check>
                 </ul>
                 <h5 class="mt-4">Message d'aide</h5>
                 <p class="h-100 p-3 bg-light border">
                   {{ @questionnaire->getQuestionAide(@question.id) ?? '<span class="fst-italic text-muted">Sans message d\'aide</span>' }}
                 </p>
-
                 <check if="{{ @questionnaire->hasReponses(@question.id) }}">
                   <h5 class="mt-4">Réponses</h5>
                   <table class="table table-striped table-bordered table-sm">

@@ -279,4 +279,9 @@ class Questions
         return;
     }
 
+    public function isPrerempli($idquestion){
+        $question = $this->findQuestion($idquestion);
+        return $question['prerempli'] ?  $question['prerempli'] : false;
+    }
+
 }
