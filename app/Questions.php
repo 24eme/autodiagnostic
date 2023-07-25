@@ -252,8 +252,10 @@ class Questions
     {
         $result = '';
         $questions = explode('+',$id);
+        $position = null;
         foreach($questions as $idquestion){
-            $result .= $this->getCategoriePosition($this->findQuestionCategorie($idquestion)).'. '.$this->findQuestionCategorie($idquestion)['libelle']."<br>";
+            $result .= $this->getCategoriePosition($this->findQuestionCategorie($idquestion)['id']).'. '.$this->findQuestionCategorie($idquestion)['libelle']."<br>";
+            break;
         }
         return $result;
     }
