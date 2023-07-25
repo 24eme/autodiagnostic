@@ -10,12 +10,13 @@
       <h2 class="fw-bold">
         <repeat group="{{ @tabOtherCampagne}}" key="{{ @key }}" value="{{ @value }}">
           <a class="
-          <check if='{{ @key == @campagne }}'>
-            <true></true>
-            <false>opacity-25</false>
+          <check if='{{ @key != @campagne }}'>
+            <true>opacity-25</true>
           </check>
             small text-white" href="{{ 'resultats', '@file='.pathinfo(basename(@value),PATHINFO_FILENAME).',@md5='.md5_file(@value) | alias }}">{{ @key }}<a>
-            <i class="bi bi-dot text-white opacity-25 small"></i>
+            <check if='{{ @value != end(@tabOtherCampagne) }}'>
+              <true><i class="bi bi-dot text-white opacity-25 small"></i></true>
+            </check>
         </repeat>
     </div>
   </div>
