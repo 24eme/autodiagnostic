@@ -119,7 +119,7 @@ class Reponse
     }
 
     private function findCampagneFromFileName($filename){
-        preg_match("(20\d{2})",$filename,$result);
-        return $result[0];
+        preg_match("/-(20\d{2})/",$filename,$result);
+        return $result[1];
     }
 }
