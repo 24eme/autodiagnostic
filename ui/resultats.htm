@@ -45,14 +45,14 @@
           <check if="{{ @statistiqueslastCampagne and count(@statistiques->getPtsForts()) > count(@statistiqueslastCampagne->getPtsForts()) }}">
             <true>
               <div class="p-1 d-flex align-items-center">
-                <i class="bi-check-circle-fill fs-3 text-success me-3"></i>Vous avez plus de "points forts" par rapport à l'année précédente
+                <i class="bi-check-circle-fill fs-3 text-success me-3"></i>J'ai plus de "points forts" par rapport à l'année précédente
               </div>
             </true>
           </check>
           <check if="{{ @statistiqueslastCampagne and count(@statistiques->getPtsAmeliorations()) < count(@statistiqueslastCampagne->getPtsAmeliorations()) }}">
             <true>
               <div class="p-1 d-flex align-items-center">
-                <i class="bi-check-circle-fill fs-3 text-success me-3"></i>Vous avez moins de "points d'améliorations" par rapport à l'année précédente
+                <i class="bi-check-circle-fill fs-3 text-success me-3"></i>J'ai moins de "points d'améliorations" par rapport à l'année précédente
               </div>
             </true>
           </check>
