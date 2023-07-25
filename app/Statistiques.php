@@ -12,6 +12,7 @@ class Statistiques
     const NOTATION_METHODE_SUM = 'SUM';
     const NOTATION_METHODE_MIN = 'MIN';
     const NOTATION_METHODE_MAX = 'MAX';
+    const NOTATION_METHODE_FUNC = 'FUNC';
     const DATA_QUESTIONNAIRE = 'data/questionnaire';
     const DATA_FORMULES = 'data/formules.yml';
     const NON_CONCERNE = 'NC';
@@ -195,13 +196,21 @@ class Statistiques
             throw new \Exception('Une réponse est attendue pour la question : '.$question['id']);
         }
 
+
         $configNotation = $question['notation'];
 
         $reponses = explode(',', $this->reponses->get($question['id'])['reponse']);
 
         $notationMethode = self::NOTATION_METHODE_MAX;
+
         if(isset($question['notation_methode']) && $question['notation_methode']) {
             $notationMethode = $question['notation_methode'];
+        }
+
+        if(isset($question['notation_methode']) && $notationMethode === self::NOTATION_METHODE_FUNC){
+            $notation["score"] = eval($question['notation']);
+            // var_dump($notation);
+            return($notation);
         }
 
         foreach($configNotation as $comparateur => $valeurs) {

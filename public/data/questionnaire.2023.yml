@@ -741,13 +741,8 @@ questions:
   libelle: "Combien de mètres linéaires d'alignement(s) d'arbres avez-vous sur votre exploitation ?"
   unite: "mètres"
   complement_information: "Un alignement d'arbres est composé d'une ou deux rangées d'arbres de haut-jet plantés en ligne.<br />Il est comptabilisé en mètres linéaires à partir de deux arbres.<br />Il ne doit pas être confondu avec les arbres en groupe ou les bosquets ou encore les vergers."
-  # notation_methode: 'FUNC'
-  # notation:
-  #   FUNC:
-  #     "":
-  #       score: 'function($r){
-  #         return (0.1/$r->get("SURFACE_EXPLOITATION")["reponse"])*$r->get("METRE_LINEAIRE_ARBRE")["reponse"]
-  #       }'
+  notation_methode: "FUNC"
+  notation: 'return round(((0.1/$this->reponses->get("SURFACE_EXPLOITATION")["reponse"])*(float)$this->reponses->get("METRE_LINEAIRE_ARBRE")["reponse"])/10);'
 
 - type: question
   id: ARBRE_ISOLE
@@ -797,17 +792,8 @@ questions:
     libelle: "Famille Ligneux (arbre isolé, alignement d'arbres, bosquets, haies, vergers haute-tige)"
   - id: ROCHEUX
     libelle: "Famille Rocheux (murs traditionnels en pierres, ruines)"
-  notation_methode: 'SUM'
-  notation:
-    EQ:
-      "AQUATIQUE":
-        score: 1
-      "HERBAGER":
-        score: 1
-      "LIGNEUX":
-        score: 1
-      "ROCHEUX":
-        score: 1
+  notation_methode: "FUNC"
+  notation: '$nbElementSelectionne = substr_count($this->reponses->get("4_FAMILLES_IAE")["reponse"],",")+1; if( $nbElementSelectionne > 2){ return 2; } return 0; '
 
 - type: question
   id: POSSESSION_RUCHES

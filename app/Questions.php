@@ -3,6 +3,7 @@
 class Questions
 {
     const DATA_QUESTIONNAIRE = 'data/questionnaire';
+    const NOTATION_METHODE_FUNC = 'FUNC';
 
     private $file = [];
     private $questions = [];
@@ -286,4 +287,16 @@ class Questions
         return $question['prerempli'] ?  $question['prerempli'] : false;
     }
 
+    public function hasFunctionForNotation($idquestion){
+        $question = $this->findQuestion($idquestion);
+        return (isset($question['notation_methode']) && $question['notation_methode'] === self::NOTATION_METHODE_FUNC);
+    }
+
+    public function getFunctionForNotation($idquestion){
+        if(!$this->hasFunctionForNotation($idquestion)){
+            return false;
+        }
+        $question = $this->findQuestion($idquestion);
+        return $question['notation'];
+    }
 }
