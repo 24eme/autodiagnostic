@@ -623,8 +623,10 @@ questions:
     EQ:
       "OUI":
         score: 2
+        atout: "Je participe à la campagne de prospection flavescence doré"
       "NON":
         score: 0
+        faiblesse: "Je ne participe pas à la campagne de prospection flavescence doré"
 
 - type: question
   id: REMPLACEMENT_SAUVIGNON
