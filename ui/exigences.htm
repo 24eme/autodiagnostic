@@ -18,6 +18,12 @@
                       <td>{{@questions->getCategoriePosition(@questions->findQuestionCategorie(array_keys(@contentExigence['formule'][@i]['questions'])[0])['id'])}}. {{@contentExigence['formule'][@i]['cat']}}</td>
                       <td>
                       <repeat group="{{ @contentExigence['formule'][@i]['questions'] }}" key="{{ @qExigence }}" value="{{ @notationExigence }}">
+                        <check if="{{@notationExigence['func']}}">
+                          <span title='Score {{ @qExigence }} : {{@notationExigence["func"]}}'><i style="color:"class="bi-braces"></i></span>
+                        </check>
+                        <check if="{{@notationExigence['mod']}}">
+                          <span title='Score {{ @qExigence }} : Modulo de {{@notationExigence["mod"]["ratio"]}} '><i style="color:"class="bi-braces"></i></span>
+                        </check>
                         {{ @questions->getMultipleQuestion(@qExigence,@campagne) }}
                       </repeat>
                       </td>

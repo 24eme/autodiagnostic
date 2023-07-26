@@ -42,8 +42,8 @@ hve3:
       cat: Biodiversité
       questions:
         POURCENTAGE_SAU_IAE: null
-        POSSESSION_RUCHES: null
         4_FAMILLES_IAE: null
+        POSSESSION_RUCHES: null
 echelon1:
   name: "Échelon 1"
   formule:
