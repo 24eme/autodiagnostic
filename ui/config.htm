@@ -109,11 +109,17 @@
                           <check if="{{ @comparateur === 'EQ' }}">
                           =
                           </check>
-                          <check if="{{ @comparateur === 'LTE' }}">
+                          <check if="{{ @comparateur === 'LT' }}">
                           <
                           </check>
-                          <check if="{{ @comparateur === 'GTE' }}">
+                          <check if="{{ @comparateur === 'GT' }}">
                           >
+                          </check>
+                          <check if="{{ @comparateur === 'LTE' }}">
+                          <=
+                          </check>
+                          <check if="{{ @comparateur === 'GTE' }}">
+                          >=
                           </check>
                         </td>
                         <td>{{ @note }}</td>
