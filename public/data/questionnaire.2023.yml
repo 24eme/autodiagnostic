@@ -731,6 +731,9 @@ questions:
   libelle: "Combien de mètres linéaires de haie(s) avez-vous sur votre exploitation ?"
   complement_information: "Une haie est une association d'arbustes. Des arbres peuvent appartenir à la haie, mais la haie ne doit pas être uniquement composée d'arbres, sinon c'est un alignement d'arbres.<br />Elle est comptabilisée en mètres linéaires.<br />La haie doit réellement participer à la biodiversité de votre parcelle. Si, par exemple, un chemin communal la sépare de votre parcelle, elle ne compte pas comme une IAE pour l'exploitation.<br />Une haie qui sépare deux parcelles exploitées par deux viticulteurs distincts et que chacun entretient peut être comptabilisé pour chaque exploitant."
   unite: "mètres"
+  notation_methode: "FUNC"
+  notation: 'return ceil(((0.1*(float)$this->reponses->get("METRE_LINEAIRE_HAIE")["reponse"])/$this->reponses->get("SURFACE_EXPLOITATION")["reponse"])*0.1);'
+  notation_highScore: 10
 
 - type: question
   id: METRE_LINEAIRE_ARBRE
@@ -738,8 +741,8 @@ questions:
   unite: "mètres"
   complement_information: "Un alignement d'arbres est composé d'une ou deux rangées d'arbres de haut-jet plantés en ligne.<br />Il est comptabilisé en mètres linéaires à partir de deux arbres.<br />Il ne doit pas être confondu avec les arbres en groupe ou les bosquets ou encore les vergers."
   notation_methode: "FUNC"
-  notation: 'return round(((0.1/$this->reponses->get("SURFACE_EXPLOITATION")["reponse"])*(float)$this->reponses->get("METRE_LINEAIRE_ARBRE")["reponse"]));'
-  notation_highScore: 2
+  notation: 'return ceil(((0.1*(float)$this->reponses->get("METRE_LINEAIRE_ARBRE")["reponse"])/$this->reponses->get("SURFACE_EXPLOITATION")["reponse"])*0.1);'
+  notation_highScore: 10
 
 - type: question
   id: ARBRE_ISOLE
