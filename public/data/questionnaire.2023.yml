@@ -466,14 +466,13 @@ questions:
   complement_information: "Pour identifier les insecticides autorisés en AB, se référer à l'index phytosanitaire SICAVAC disponible sur <a href='https://www.vins-centre-loire.com/files/Guide_de_protection_de_la_vigne_2022.pdf'>www.vins-centre-loire.com</a> ou l'étiquette du produit"
   notation:
     GTE:
-      GTE:
-        "3":
-          score: -10
-        "1":
-          score: -5
-        "0":
-          score: 0
-          atout: "Je n'utilise pas d'insecticides (hors traitements obligatoires)"
+      "3":
+        score: -10
+      "1":
+        score: -5
+      "0":
+        score: 0
+        atout: "Je n'utilise pas d'insecticides (hors traitements obligatoires)"
 
 - type: question
   id: SURFACE_RAKS
