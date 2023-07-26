@@ -19,10 +19,10 @@
                       <td>
                       <repeat group="{{ @contentExigence['formule'][@i]['questions'] }}" key="{{ @qExigence }}" value="{{ @notationExigence }}">
                         <check if="{{@notationExigence['func']}}">
-                          <span title='Score {{ @qExigence }} : {{@notationExigence["func"]}}'><i style="color:"class="bi-braces"></i></span>
+                          <span style="cursor:pointer;" title='Score {{ @qExigence }} : {{@notationExigence["func"]}}'><i style="color:"class="bi-braces"></i></span>
                         </check>
                         <check if="{{@notationExigence['mod']}}">
-                          <span title='Score {{ @qExigence }} : Modulo de {{@notationExigence["mod"]["ratio"]}} '><i style="color:"class="bi-braces"></i></span>
+                          <span style="cursor:pointer;" title='Score {{ @qExigence }} : Modulo de {{@notationExigence["mod"]["ratio"]}} '><i style="color:"class="bi-braces"></i></span>
                         </check>
                         {{ @questions->getMultipleQuestion(@qExigence,@campagne) }}
                       </repeat>
