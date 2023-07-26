@@ -668,16 +668,16 @@ questions:
   complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté.xlsm' class='link-icon'>outil suivant</a>"
   unite: "kg N/ha"
   notation:
-    GTE:
-      "50.0001":
+    GT:
+      "50":
         score: 0
-      "40.0001":
+      "40":
         score: 2
-      "30.0001":
+      "30":
         score: 5
-      "20.0001":
+      "20":
         score: 7
-      "0":
+      "-0.00001":
         score: 8
 
 
@@ -743,27 +743,27 @@ questions:
   complement_information: "Vous pouvez le calculer grâce à <a href='data/Calcul de la SET.xlsm' class='link-icon'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
   unite: "%"
   notation:
-    LTE:
-      "3.9999":
+    LT:
+      "4":
         score: 0
         faiblesse: "J'ai peu d'infrastructures agro-écologiques (IAE)"
-      "4.9999":
+      "5":
         score: 1
-      "5.9999":
+      "6":
         score: 2
-      "6.9999":
+      "7":
         score: 3
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "7.9999":
+      "8":
         score: 4
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "8.9999":
+      "9":
         score: 5
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "9.9999":
+      "10":
         score: 6
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
-      "100":
+      "100.00001":
         score: 7
         atout: "Je favorise la biodiversité à travers la présence d'infrastructures agro-écologiques (IAE) sur mon exploitation"
 
