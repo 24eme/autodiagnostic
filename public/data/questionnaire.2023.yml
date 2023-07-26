@@ -707,13 +707,13 @@ questions:
   unite: "%"
   notation:
     LTE:
-      "25":
+      "24.9999":
         score: 0
-      "35":
+      "34.9999":
         score: 1
-      "45":
+      "44.9999":
         score: 2
-      "55":
+      "54.9999":
         score: 3
       "100":
         score: 4
