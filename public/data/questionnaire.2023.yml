@@ -669,14 +669,14 @@ questions:
   unite: "kg N/ha"
   notation:
     GTE:
-      "51":
+      "50.0001":
         score: 0
-      "40":
+      "40.0001":
         score: 2
-      "30":
-        score: 4
-      "20":
-        score: 6
+      "30.0001":
+        score: 5
+      "20.0001":
+        score: 7
       "0":
         score: 8
 
