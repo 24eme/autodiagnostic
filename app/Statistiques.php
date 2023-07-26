@@ -239,7 +239,7 @@ class Statistiques
                         $notation['score'] = $configScore['score'];
                     } elseif($notationMethode == self::NOTATION_METHODE_SUM) {
                         $notation['score'] += $configScore['score'];
-                    } elseif($notationMethode == self::NOTATION_METHODE_MAX && $configScore['score'] > $notation['score']) {
+                    } elseif($notationMethode == self::NOTATION_METHODE_MAX && $configScore['score'] < $notation['score']) {
                         $notation['score'] = $configScore['score'];
                     }
 
