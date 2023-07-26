@@ -60,6 +60,9 @@ class Exigences
                         $reponse -= $notation['score'];
                         $reponse += $notation['score'] * $exigenceNotation['mod']['ratio'];
                     }
+                    if(isset($exigenceNotation['func'])){
+                        $reponse += eval($exigenceNotation['func']);
+                    }
                 }
                 $value = $formule['score'];
                 $question = $formule['cat'];

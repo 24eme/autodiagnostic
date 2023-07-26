@@ -20,7 +20,23 @@ hve3:
       cat: Fertilisation
       questions:
         BILAN_AZOTE: null
-        UNITE_AZOTE: null
+        UNITE_AZOTE:
+          func: '$r = $reponses->get("UNITE_AZOTE")["reponse"];
+                 if($r < 25){
+                    return 0;
+                 }
+                 elseif($r < 35){
+                    return 1;
+                 }
+                 elseif($r < 45){
+                    return 2;
+                 }
+                 elseif($r < 55){
+                    return 3;
+                 }
+                 else{
+                    return 4;
+                 }'
     - op: SCORE
       score: 5
       cat: Biodiversité

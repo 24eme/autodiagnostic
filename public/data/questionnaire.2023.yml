@@ -705,18 +705,6 @@ questions:
   id: UNITE_AZOTE
   libelle: "Quelle est la part d'azote organique utilisé sur la quantité totale d'azote apporté ?"
   unite: "%"
-  notation:
-    LTE:
-      "24.9999":
-        score: 0
-      "34.9999":
-        score: 1
-      "44.9999":
-        score: 2
-      "54.9999":
-        score: 3
-      "100":
-        score: 4
 
 - type: categorie
   id: BIODIVERSITE
