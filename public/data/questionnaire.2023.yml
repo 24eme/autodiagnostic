@@ -803,7 +803,7 @@ questions:
   unite: "ruches"
   notation:
     GTE:
-      "2":
+      "3":
         score: 1
 
 - type: question
