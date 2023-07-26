@@ -20,7 +20,6 @@ hve3:
       cat: Fertilisation
       questions:
         BILAN_AZOTE: null
-        AZOTE_ORGANIQUE: null
         UNITE_AZOTE: null
     - op: SCORE
       score: 5
@@ -29,7 +28,6 @@ hve3:
         POURCENTAGE_SAU_IAE: null
         POSSESSION_RUCHES: null
         4_FAMILLES_IAE: null
-        METRE_LINEAIRE_ARBRE: null
 echelon1:
   name: "Échelon 1"
   formule:
