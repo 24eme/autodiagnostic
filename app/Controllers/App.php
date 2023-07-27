@@ -364,7 +364,10 @@ class App
     }
 
     private function findUserFromFileName($filename){
-        preg_match("/(\d*)-/",$filename,$result);
-        return $result[1];
+        preg_match("/([\w\d]+)-/",$filename,$result);
+        if($result[1] != "VISITEUR"){
+            return $result[1];
+        }
+        return false;
     }
 }
