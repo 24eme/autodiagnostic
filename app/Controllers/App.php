@@ -307,7 +307,7 @@ class App
     public function afterroute(Base $f3)
     {
         $f3->set('auth', $this->auth);
-        $f3->set('campagne',$f3->get('CAMPAGNE_COURANTE'));
+        $f3->set('campagne_courante',$f3->get('CAMPAGNE_COURANTE'));
         echo Template::instance()->render('layout.html');
     }
 
