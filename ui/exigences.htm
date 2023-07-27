@@ -59,6 +59,11 @@
                       <td> <= {{@contentExigence['formule'][@i]['value']}} {{ @questions->getQuestionUnite(@contentExigence['formule'][@i]['qid'],true)}} </td>
                     </true>
                   </check>
+                  <check if="{{ @contentExigence['formule'][@i]['op'] === 'GT' }}">
+                     <true>
+                       <td> > {{@contentExigence['formule'][@i]['value']}} {{ @questions->getQuestionUnite(@contentExigence['formule'][@i]['qid'],true)}} </td>
+                     </true>
+                   </check>
                   <check if="{{ @contentExigence['formule'][@i]['op'] === 'FUNC' }}">
                     <true>
                       <td style="cursor:pointer" title='{{ @contentExigence["formule"][@i]["func"] }}'>FONCTION</td>

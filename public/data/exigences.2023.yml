@@ -77,9 +77,9 @@ echelon1:
       qid: PRODUITS_CMR
       value: 0
     -
-      op: LTE
+      op: GT
       qid: UNITE_AZOTE
-      value: 15
+      value: 85
 
 echelon2:
   name: "Échelon 2"
