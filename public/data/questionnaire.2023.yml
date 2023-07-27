@@ -131,8 +131,6 @@ questions:
   - id: BIO_CONVERSION
     libelle: "En conversion vers AB"
     reponses_automatiques:
-      SURFACE_NON_TRAITEE: 100
-      SURFACE_ALTERNATIVE_CHIMIE: 100
       IFT_HERBICIDE: 0
       DESHERBAGE_CHIMIQUE: NON
       UTILISATION_CMR: NON
@@ -142,8 +140,6 @@ questions:
   - id: BIO
     libelle: "AB"
     reponses_automatiques:
-      SURFACE_NON_TRAITEE: 100
-      SURFACE_ALTERNATIVE_CHIMIE: 100
       IFT_HERBICIDE: 0
       DESHERBAGE_CHIMIQUE: NON
       UTILISATION_CMR: NON
@@ -157,8 +153,6 @@ questions:
   - id: DEMETER
     libelle: "Demeter"
     reponses_automatiques:
-      SURFACE_NON_TRAITEE: 100
-      SURFACE_ALTERNATIVE_CHIMIE: 100
       IFT_HERBICIDE: 0
       DESHERBAGE_CHIMIQUE: NON
       UTILISATION_CMR: NON
@@ -168,8 +162,6 @@ questions:
   - id: BIODYVIN
     libelle: "Biodyvin"
     reponses_automatiques:
-      SURFACE_NON_TRAITEE: 100
-      SURFACE_ALTERNATIVE_CHIMIE: 100
       IFT_HERBICIDE: 0
       DESHERBAGE_CHIMIQUE: NON
       UTILISATION_CMR: NON
