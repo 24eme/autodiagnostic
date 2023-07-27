@@ -13,7 +13,7 @@ hve3:
             ratio: 0.5
         UTILISATION_CMR:
           mod:
-            ratio: 5
+            ratio: 0.2
         CAMPAGNE_COLLECTIVE_PROSPECTION: null
     - op: SCORE
       score: 10
