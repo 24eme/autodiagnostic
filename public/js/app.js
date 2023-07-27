@@ -239,10 +239,14 @@ const Questionnaire = Vue.createApp({
           continue
         }else{
           if(!this.reponses[keys[key]].length){
-            tabSousReponses = this.lastCampagneReponse[keys[key]]
-            this.reponses[keys[key]] = this.lastCampagneReponse[keys[key]];
+            var reponsesArray = this.lastCampagneReponse[keys[key]].slice(0, Math.ceil(this.lastCampagneReponse[keys[key]].length / 2)); //on récupere la première moitié  du tableau qui correspondent aux réponses (la deuxième moitié correspon aux libelle)
+            tabSousReponses = reponsesArray
+            this.reponses[keys[key]] = reponsesArray;
           }
-          if(question.reponses && tabSousReponses){
+
+          tabSousReponses = Object.assign({}, tabSousReponses); //proxy object to object pour récupérer les réponses
+
+          if(question.reponses && tabSousReponses){ //s'il y a des sous réponses aux questions multiple :
             for(var sousReponse in tabSousReponses){
               if(!question.reponses[sousReponse].question){
                 continue

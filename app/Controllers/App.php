@@ -325,7 +325,7 @@ class App
                 continue;
             }
             foreach($data[$idquestion] as $i => $r){
-                $data[$idquestion][$i] = $questions->getReponseLibelle($idquestion,$r);
+                $data[$idquestion][] = $questions->getReponseLibelle($idquestion,$r);
             }
         }
 

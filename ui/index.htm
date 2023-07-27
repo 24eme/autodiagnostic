@@ -153,6 +153,7 @@
             <p v-if="!lastCampagneReponse"></p>
             <p v-else-if="lastCampagneReponse[question.id] == 'NC'" class="text-muted text-end"><small>Réponse année précédente : Non concerné</small></p>
             <p v-else-if="question.format && question.format == 'date'" class="text-muted text-end"><small>Réponse année précédente : {% lastCampagneReponse[question.id]%}</small></p>
+            <p v-else-if="lastCampagneReponse && (typeof lastCampagneReponse[question.id] == 'object')" class="text-muted text-end"><small>Réponse année précédente : {% lastCampagneReponse[question.id].slice(Math.ceil(lastCampagneReponse[question.id].length)/2) %} {% question.unite %}</small></p>
             <p v-else class="text-muted text-end"><small>Réponse année précédente : {% lastCampagneReponse[question.id]%} {% question.unite %}</small></p>
           </div>
         </div>
