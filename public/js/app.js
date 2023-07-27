@@ -1,5 +1,5 @@
 /* global Vue */
-const currentCampagne = new Date().getMonth() <= 5 ? new Date().getFullYear() - 1 : new Date().getFullYear(); //changer le 5 en 6 peut être ?
+const currentCampagne = campagne;
 const file = 'data/questionnaire.'+currentCampagne+'.yml'
 const lastCampagne = currentCampagne-1;
 
@@ -22,14 +22,21 @@ const Questionnaire = Vue.createApp({
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L55
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
     this.loadQuestions(file)
+    console.log(file)
     window.addEventListener('hashchange', this.hashChange);
-    axios.get('/api/reponses/'+lastCampagne)
-       .then(reponse => {
-         this.lastCampagneReponse = reponse.data;
-       })
-       .catch(error => {
-         console.error(error);
-       });
+    fetch('/api/reponses/' + lastCampagne)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.lastCampagneReponse = data;
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
   },
   computed: {
     questionnaireStarted() {

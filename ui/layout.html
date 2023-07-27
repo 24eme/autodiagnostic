@@ -11,7 +11,6 @@
       <script type="text/javascript" src="/lib/vendor/vuejs-3.2.20/vue.global.js"></script> <!-- version de dev -->
       <script type="text/javascript" src="/lib/vendor/js-yaml-4.1.0/js-yaml.min.js"></script>
       <script type="text/javascript" src="/lib/vendor/maska-1.5.0/maska.js"></script>
-      <script type="text/javascript" src="/lib/vendor/axios/axios.min.js"></script>
   </check>
   </head>
   <body style="overflow-y: scroll;">
@@ -28,6 +27,7 @@
   </check>
 
   <check if="{{ @inc === 'index.htm' }}">
+    <script>var campagne = {{ @campagne }};</script>
     <script type="text/javascript" src="/js/app.js?202205130038"></script>
   </check>
   <check if="{{ @inc === 'resultats.htm' }}">

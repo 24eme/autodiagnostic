@@ -307,6 +307,7 @@ class App
     public function afterroute(Base $f3)
     {
         $f3->set('auth', $this->auth);
+        $f3->set('campagne',$f3->get('CAMPAGNE_COURANTE'));
         echo Template::instance()->render('layout.html');
     }
 
@@ -364,7 +365,8 @@ class App
     }
 
     private function findUserFromFileName($filename){
-        preg_match("/([\w\d]+)-/",$filename,$result);
+        preg_match("/([\w\d]+)-/",$filename,$result); //faire un explode.
+        //$result = explode("-",basename($filename));
         if($result[1] != "VISITEUR"){
             return $result[1];
         }
