@@ -209,9 +209,9 @@ class Statistiques
 
         if(isset($question['notation_methode']) && $notationMethode === self::NOTATION_METHODE_FUNC){
             $notation["score"] = eval($question['notation']);
-            $notation['highScore'] = $question['notation_highScore'];
-            if($notation["score"]>$question['notation_highScore']){
-                $notation['score'] = $question['notation_highScore'];
+            $notation['highScore'] = $question['notation_high_score'];
+            if($notation["score"]>$question['notation_high_score']){
+                $notation['score'] = $question['notation_high_score'];
             }
             return($notation);
         }

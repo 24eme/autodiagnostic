@@ -712,7 +712,7 @@ questions:
   unite: "mètres"
   notation_methode: "FUNC"
   notation: 'return ceil(((0.1*(float)$this->reponses->get("METRE_LINEAIRE_HAIE")["reponse"])/$this->reponses->get("SURFACE_EXPLOITATION")["reponse"])*0.1);'
-  notation_highScore: 10
+  notation_high_score: 10
 
 - type: question
   id: METRE_LINEAIRE_ARBRE
@@ -721,7 +721,7 @@ questions:
   complement_information: "Un alignement d'arbres est composé d'une ou deux rangées d'arbres de haut-jet plantés en ligne.<br />Il est comptabilisé en mètres linéaires à partir de deux arbres.<br />Il ne doit pas être confondu avec les arbres en groupe ou les bosquets ou encore les vergers."
   notation_methode: "FUNC"
   notation: 'return ceil(((0.1*(float)$this->reponses->get("METRE_LINEAIRE_ARBRE")["reponse"])/$this->reponses->get("SURFACE_EXPLOITATION")["reponse"])*0.1);'
-  notation_highScore: 10
+  notation_high_score: 10
 
 - type: question
   id: ARBRE_ISOLE
@@ -773,7 +773,7 @@ questions:
     libelle: "Famille Rocheux (murs traditionnels en pierres, ruines)"
   notation_methode: "FUNC"
   notation: '$nbElementSelectionne = substr_count($this->reponses->get("4_FAMILLES_IAE")["reponse"],",")+1; if( $nbElementSelectionne > 2){ return 2; } return 0; '
-  notation_highScore: 2
+  notation_high_score: 2
 
 - type: question
   id: POSSESSION_RUCHES
