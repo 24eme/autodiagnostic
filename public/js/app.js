@@ -73,6 +73,7 @@ const Questionnaire = Vue.createApp({
 
       if (localStorage.key('reponses')) {
         this.reponses = JSON.parse(localStorage.getItem('reponses'));
+        this.cleanOldQuestions()
       }
     },
     loadQuestions: function(file) {
@@ -112,6 +113,10 @@ const Questionnaire = Vue.createApp({
       if (question && deplacer) {
         this.deplacer(this.getQuestionIndex(question.id) + 1);
       }
+    },
+    cleanOldQuestions: function() {
+      const oldQuestions = Object.keys(this.reponses).filter((qId) => qId.substr(0,4) !== 'DTL_' && this.getQuestionIndex(qId) === -1)
+      oldQuestions.forEach((id) => delete this.reponses[id])
     },
     gererReponsesAutomatiques: function(question = null) {
       if (question && question.reponses) {
