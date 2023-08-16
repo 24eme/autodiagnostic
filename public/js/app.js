@@ -22,7 +22,6 @@ const Questionnaire = Vue.createApp({
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L55
     // @See https://github.com/bedakb/vue-typeahead-component/blob/master/src/components/Typeahead.vue#L83
     this.loadQuestions(file)
-    console.log(file)
     window.addEventListener('hashchange', this.hashChange);
     fetch('/api/reponses/' + lastCampagne)
       .then(response => {
