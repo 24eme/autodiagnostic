@@ -47,6 +47,15 @@ const Questionnaire = Vue.createApp({
       let categorie = null;
       let num = 0;
       this.nombreQuestionsTotal = this.getQuestions().length;
+
+      if(localStorage.key('reponses')) {
+        var json = JSON.parse(localStorage.getItem('reponses'));
+        if(!json["CAMPAGNE"] || json["CAMPAGNE"] != currentCampagne){
+          localStorage.clear();
+          this.reponses = {}
+        }
+      }
+
       this.getQuestions().forEach(function (question, index) {
         if (question.type == 'categorie') {
           num = 0;
@@ -69,6 +78,7 @@ const Questionnaire = Vue.createApp({
         if (question.type == 'question' && question.multiple === true) {
           this.reponses[question.id] = [];
         }
+        this.reponses["CAMPAGNE"] = currentCampagne;
       }, this);
 
       if (localStorage.key('reponses')) {
