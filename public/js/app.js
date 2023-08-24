@@ -340,7 +340,6 @@ const Questionnaire = Vue.createApp({
       this.indexCourant = this.nombreQuestionsTotal;
       this.updatePageInfos('#fin', 'Fin');
       this.storeReponses();
-      localStorage.clear();
     },
     synthetiser: function() {
       let file = new File([localStorage.getItem('reponses')], "reponses.json", {type:"application/json"});
