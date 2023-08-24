@@ -52,9 +52,11 @@ const Questionnaire = Vue.createApp({
         var json = JSON.parse(localStorage.getItem('reponses'));
         if(!json["CAMPAGNE"] || json["CAMPAGNE"] != currentCampagne){
           localStorage.clear();
-          this.reponses = {}
+          this.reponses = {};
         }
       }
+
+      this.reponses["CAMPAGNE"] = currentCampagne;
 
       this.getQuestions().forEach(function (question, index) {
         if (question.type == 'categorie') {
@@ -78,7 +80,6 @@ const Questionnaire = Vue.createApp({
         if (question.type == 'question' && question.multiple === true) {
           this.reponses[question.id] = [];
         }
-        this.reponses["CAMPAGNE"] = currentCampagne;
       }, this);
 
       if (localStorage.key('reponses')) {
@@ -405,6 +406,9 @@ const Questionnaire = Vue.createApp({
     getRealReponses: function() {
       let reponses = {};
       Object.keys(this.reponses).forEach(key => {
+        if (key == 'CAMPAGNE') {
+          return;
+        }
         if (key.substr(0,4) == 'DTL_') {
           return;
         }
