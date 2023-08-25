@@ -656,7 +656,7 @@ questions:
 - type: question
   id: BILAN_AZOTE
   libelle: "Quel est votre bilan azoté global ?"
-  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='data/Bilan azoté 2023.xlsm' class='link-icon'>outil suivant</a>"
+  complement_information: "Bilan azoté = quantité d'azote (N) apportée en moyenne par ha et par an exprimée en kg. Vous pouvez le calculer grâce à l'<a href='/data/Bilan azoté 2023.xlsx' class='link-icon'>outil suivant</a>"
   unite: "kg N/ha"
   notation:
     GT:
@@ -731,7 +731,7 @@ questions:
 - type: question
   id: POURCENTAGE_SAU_IAE
   libelle: "Quel pourcentage de votre surface est dédié aux infrastructures agro-écologiques (haies, arbres,...) recensées précédemment ?"
-  complement_information: "Vous pouvez le calculer grâce à <a href='data/Calcul de la SET 2023.xlsm' class='link-icon'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
+  complement_information: "Vous pouvez le calculer grâce à <a href='/data/Calcul de la SET 2023.xlsm' class='link-icon'>l'outil suivant</a>.<br /><br />Ce mode de calcul est utilisé pour la thématique \"biodiversité\" de la HVE."
   unite: "%"
   notation:
     LT:
